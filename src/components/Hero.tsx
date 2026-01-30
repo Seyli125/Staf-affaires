@@ -10,87 +10,71 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const scale = useTransform(scrollY, [0, 300], [1, 1.1]);
+  const yImage = useTransform(scrollY, [0, 500], [0, 100]);
+  const yText = useTransform(scrollY, [0, 500], [0, -50]);
+  const opacityIndicator = useTransform(scrollY, [0, 200], [1, 0]);
 
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20"
     >
       {/* Background Gradient */}
-      <div className="absolute inset-0 hero-gradient opacity-90" />
+      <div className="absolute inset-0 hero-gradient opacity-95" />
       
-      {/* Animated Particles/Orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/20 rounded-full blur-3xl"
-        />
-        <motion.div 
-          animate={{
-            y: [0, 20, 0],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-orange/20 rounded-full blur-3xl"
-        />
+      {/* 1. Large Faded Background Text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <motion.span 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 0.1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="text-[35vw] font-black text-white leading-none tracking-tighter"
+        >
+          STAFF
+        </motion.span>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-        {/* Text Content */}
+      {/* 2. Main Hero Content (Grid) */}
+      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center flex-grow">
+        {/* Left: Info & CTA */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-2xl"
+          style={{ y: yText }}
+          className="max-w-2xl relative z-30"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center gap-2 mb-6"
+            className="flex items-center gap-3 mb-8"
           >
-            <div className="w-12 h-[2px] bg-primary" />
-            <span className="text-sm font-bold uppercase tracking-widest text-primary/80">
-              Coaching B2B de Haute Performance
+            <div className="w-12 h-[2px] bg-white" />
+            <span className="text-sm font-bold uppercase tracking-[0.3em] text-white/90">
+              About Us
             </span>
           </motion.div>
-
-          <motion.h1 
-            style={{ y: y2 }}
-            className="text-7xl md:text-8xl lg:text-9xl font-black text-white leading-[0.9] tracking-tighter mb-8"
-          >
-            STAF <br />
-            <span className="text-stroke">AFFAIRES</span>
-          </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/90 mb-10 font-medium leading-relaxed max-w-xl"
+            className="text-xl md:text-2xl text-white mb-12 font-medium leading-relaxed max-w-xl"
           >
             Je sais ce que c'est que de lutter dans le monde de l'entreprise. 
-            Il y a des années, j'ai fait face aux mêmes défis : 
-            <span className="text-primary font-bold"> confusion, doutes, manque de clarté.</span>
+            Il y a des années, j'ai fait face aux mêmes défis — 
+            <span className="text-white font-black italic"> confusion, doutes, manque de clarté.</span>
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-wrap gap-4"
           >
             <Button 
               size="lg" 
-              className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-7 text-lg font-bold group transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl hover:shadow-primary/20"
+              className="bg-black text-white hover:bg-black/80 rounded-full px-10 py-8 text-lg font-bold group transition-all duration-300 hover:scale-105 active:scale-95 shadow-2xl"
             >
               Réserver un appel gratuit
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -98,36 +82,46 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Hero Image */}
-        <motion.div
-          style={{ y: y1, scale }}
-          className="relative aspect-square lg:aspect-[4/5] flex items-center justify-center"
-        >
+        {/* Right: Person Portrait */}
+        <div className="relative h-[70vh] lg:h-[85vh] flex items-end justify-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative w-full h-full"
+            style={{ y: yImage }}
+            className="relative w-full h-full flex items-end justify-center z-20"
           >
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/1746597689538-1769736766387.png"
-              alt="Saïd Taaroust"
-              fill
-              className="object-contain drop-shadow-2xl"
-              priority
-            />
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/1746597689538-1769736766387.png"
+                alt="Saïd Taaroust"
+                fill
+                className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+                priority
+              />
+            </motion.div>
           </motion.div>
-          
-          {/* Decorative Elements */}
-          <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 blur-2xl rounded-full" />
-          <div className="absolute top-10 -left-10 w-20 h-20 bg-brand-orange/20 blur-xl rounded-full" />
-        </motion.div>
+        </div>
+      </div>
+
+      {/* 3. Huge White Text at Bottom */}
+      <div className="absolute bottom-0 left-0 w-full pointer-events-none z-40 select-none overflow-hidden pb-4 md:pb-8 lg:pb-12">
+        <motion.h1 
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          className="text-[15vw] font-black text-white leading-[0.8] tracking-tighter text-center whitespace-nowrap"
+        >
+          STAFF AFFAIRES
+        </motion.h1>
       </div>
 
       {/* Scroll Indicator */}
       <motion.div 
-        style={{ opacity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        style={{ opacity: opacityIndicator }}
+        className="absolute bottom-10 right-10 hidden lg:flex flex-col items-center gap-2 z-50"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/60">Scroll</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-white/60 to-transparent" />

@@ -34,13 +34,13 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <span className={`text-2xl font-black tracking-tighter transition-colors duration-500 ${
-            isScrolled ? "text-primary" : "text-white"
-          }`}>
-            STAF <span className="opacity-50 group-hover:opacity-100 transition-opacity">AFFAIRES</span>
-          </span>
-        </Link>
+          <Link href="/" className="flex items-center gap-2 group">
+            <span className={`text-2xl font-black tracking-tighter transition-colors duration-500 ${
+              isScrolled ? "text-primary" : "text-white"
+            }`}>
+              STAFF <span className="opacity-50 group-hover:opacity-100 transition-opacity">AFFAIRES</span>
+            </span>
+          </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
