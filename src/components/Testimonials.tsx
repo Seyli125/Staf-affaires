@@ -14,7 +14,7 @@ const testimonial = {
 
 export function Testimonials() {
   return (
-    <section className="py-32 bg-[#fafafa] overflow-hidden">
+    <section className="py-32 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

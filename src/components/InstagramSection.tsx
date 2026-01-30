@@ -7,7 +7,7 @@ import { Instagram } from "lucide-react";
 
 export function InstagramSection() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-transparent">
       <div className="container mx-auto px-6">
         <div className="bg-[#fafafa] rounded-[40px] overflow-hidden border border-gray-100 shadow-xl flex flex-col md:flex-row items-center">
           {/* Image Section */}

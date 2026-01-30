@@ -37,7 +37,7 @@ const books = [
 
 export function Services() {
   return (
-    <section className="py-32 bg-[#fafafa]">
+    <section className="py-32 bg-transparent">
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-end mb-16">
           <div>

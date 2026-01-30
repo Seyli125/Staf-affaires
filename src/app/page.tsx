@@ -14,17 +14,66 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <Hero />
-      <Brands />
-      <Services />
-      <VideoSection />
-      <Features />
-      <Testimonials />
-      <InstagramSection />
-      <FAQ />
       
-      {/* Massive Pixel-Perfect Footer */}
-      <footer className="pt-32 pb-12 bg-white">
+      {/* 1. White Section */}
+      <section className="bg-white">
+        <Hero />
+        <Brands />
+      </section>
+
+      {/* Fade White to Orange */}
+      <div className="h-48 bg-gradient-to-b from-white to-brand-orange" />
+
+      {/* 2. Orange Section */}
+      <section className="bg-brand-orange">
+        <Services />
+      </section>
+
+      {/* Fade Orange to White */}
+      <div className="h-48 bg-gradient-to-b from-brand-orange to-white" />
+
+      {/* 3. White Section */}
+      <section className="bg-white">
+        <VideoSection />
+      </section>
+
+      {/* Fade White to Orange */}
+      <div className="h-48 bg-gradient-to-b from-white to-brand-orange" />
+
+      {/* 4. Orange Section */}
+      <section className="bg-brand-orange">
+        <Features />
+      </section>
+
+      {/* Fade Orange to White */}
+      <div className="h-48 bg-gradient-to-b from-brand-orange to-white" />
+
+      {/* 5. White Section */}
+      <section className="bg-white">
+        <Testimonials />
+      </section>
+
+      {/* Fade White to Orange */}
+      <div className="h-48 bg-gradient-to-b from-white to-brand-orange" />
+
+      {/* 6. Orange Section */}
+      <section className="bg-brand-orange">
+        <InstagramSection />
+      </section>
+
+      {/* Fade Orange to White */}
+      <div className="h-48 bg-gradient-to-b from-brand-orange to-white" />
+
+      {/* 7. White Section */}
+      <section className="bg-white">
+        <FAQ />
+      </section>
+
+      {/* Fade White to Orange */}
+      <div className="h-48 bg-gradient-to-b from-white to-brand-orange" />
+      
+      {/* 8. Orange Section (Footer) */}
+      <footer className="pt-32 pb-12 bg-brand-orange">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12 mb-24">
             {/* Column 1 */}
@@ -48,31 +97,25 @@ export default function Home() {
 
             {/* Massive Text */}
             <div className="w-full mb-20">
-              <h2 
-                className="text-[15vw] font-black text-black leading-[0.8] tracking-tighter text-center uppercase whitespace-nowrap"
-                  style={{
-                    maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)'
-                  }}
-              >
+              <h2 className="text-[15vw] font-black text-black leading-[1.2] tracking-tighter text-center uppercase whitespace-nowrap">
                 Saïd Taaroust
               </h2>
             </div>
 
           {/* Bottom Bar */}
-          <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="pt-12 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-8">
             <p className="text-[11px] font-bold uppercase tracking-widest text-black/40">
               © 2026 STAFF AFFAIRES. All Rights Reserved.
             </p>
 
             <div className="flex items-center gap-6">
-              <Link href="#" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all">
+              <Link href="#" className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all">
                 <Facebook className="w-4 h-4" />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all">
+              <Link href="#" className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all">
                 <Twitter className="w-4 h-4" />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all">
+              <Link href="#" className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all">
                 <Instagram className="w-4 h-4" />
               </Link>
             </div>

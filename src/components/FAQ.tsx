@@ -27,7 +27,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-transparent">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
           <motion.div
