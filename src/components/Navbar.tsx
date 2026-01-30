@@ -35,17 +35,17 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="group flex items-center">
-          <div className="relative w-16 h-10 overflow-hidden rounded-lg border border-black/5 shadow-sm transition-transform duration-300 group-hover:scale-105">
-            <Image 
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/sa-1769737491653.jpg?width=8000&height=8000&resize=contain"
-              alt="STAF AFFAIRES"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </Link>
+          {/* Logo */}
+          <Link href="/" className="group flex items-center">
+            <div className="relative w-24 h-14 transition-transform duration-300 group-hover:scale-105">
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/sa-1769737491653.jpg?width=8000&height=8000&resize=contain"
+                alt="STAF AFFAIRES"
+                fill
+                className="object-contain mix-blend-multiply"
+              />
+            </div>
+          </Link>
 
         {/* Center Nav */}
         <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
