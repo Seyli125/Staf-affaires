@@ -29,14 +29,14 @@ export function Features() {
   return (
     <section className="py-32 bg-white">
       <div className="container mx-auto px-6">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-black text-center mb-20 uppercase tracking-tighter"
-        >
-          Pourquoi choisir STAFF AFFAIRES ?
-        </motion.h2>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-black text-center mb-20 uppercase tracking-tighter"
+          >
+            Pourquoi choisir Saïd Taaroust ?
+          </motion.h2>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {whyUs.map((item, index) => (

@@ -36,14 +36,14 @@ export function Navbar() {
     >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <Image 
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
-              alt="STAFF AFFAIRES"
-              width={180}
-              height={60}
-              className="h-10 md:h-12 w-auto object-contain"
-              priority
-            />
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
+                alt="STAFF AFFAIRES"
+                width={240}
+                height={80}
+                className="h-16 md:h-20 w-auto object-contain"
+                priority
+              />
           </Link>
 
         {/* Desktop Nav */}

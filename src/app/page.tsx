@@ -46,12 +46,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Massive Text */}
-          <div className="w-full overflow-hidden mb-20">
-            <h2 className="text-[15vw] font-black text-black leading-none tracking-tighter text-center uppercase whitespace-nowrap">
-              STAFF AFFAIRES
-            </h2>
-          </div>
+            {/* Massive Text */}
+            <div className="w-full overflow-hidden mb-20">
+              <h2 className="text-[15vw] font-black text-black leading-[1.1] tracking-tighter text-center uppercase whitespace-nowrap">
+                Saïd Taaroust
+              </h2>
+            </div>
 
           {/* Bottom Bar */}
           <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
