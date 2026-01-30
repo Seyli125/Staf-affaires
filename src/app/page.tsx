@@ -47,7 +47,7 @@ export default function Home() {
             </div>
           </div>
           <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-6 text-white/40 text-sm font-bold uppercase tracking-widest">
-            <p>© 2026 STAFF AFFAIRES. Tous droits réservés.</p>
+            <p>© 2026 STAF AFFAIRES. Tous droits réservés.</p>
             <div className="flex gap-8">
               <a href="#" className="hover:text-white transition-colors">Mentions Légales</a>
               <a href="#" className="hover:text-white transition-colors">Confidentialité</a>

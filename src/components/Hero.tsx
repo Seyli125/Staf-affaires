@@ -55,12 +55,12 @@ export function Hero() {
       </div>
 
       {/* 3. Huge White Text at Bottom */}
-      <div className="absolute bottom-0 left-0 w-full pointer-events-none z-30 select-none overflow-hidden pb-4 md:pb-12">
+      <div className="absolute bottom-0 left-0 w-full pointer-events-none z-30 select-none overflow-visible pb-4 md:pb-12 px-4">
         <motion.h1 
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-          className="text-[17vw] font-black text-white leading-[0.75] tracking-tighter text-center whitespace-nowrap drop-shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
+          className="text-[12vw] md:text-[15vw] font-black text-white leading-normal tracking-tight text-center whitespace-nowrap drop-shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
         >
           SAÏD TAAROUST
         </motion.h1>
