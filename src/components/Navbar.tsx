@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Accueil", href: "#" },
+  { name: "Home", href: "#" },
   { name: "Services", href: "#services" },
-  { name: "À propos", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Find a Tutor", href: "#" },
+  { name: "Pricing", href: "#" },
 ];
 
 export function Navbar() {
@@ -27,41 +27,54 @@ export function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         isScrolled 
           ? "bg-white/80 backdrop-blur-md py-4 shadow-sm" 
           : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className={`text-2xl font-black tracking-tighter transition-colors duration-500 ${
-              isScrolled ? "text-primary" : "text-white"
-            }`}>
-              STAFF <span className="opacity-50 group-hover:opacity-100 transition-opacity">AFFAIRES</span>
-            </span>
-          </Link>
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <span className={`text-xl font-bold italic tracking-tight transition-colors duration-300 ${
+            isScrolled ? "text-black" : "text-black"
+          }`}>
+            STAFF AFFAIRES
+          </span>
+        </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+        {/* Center Nav */}
+        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+          {navItems.map((item, index) => (
             <Link 
               key={item.name} 
               href={item.href}
-              className={`text-sm font-bold uppercase tracking-widest transition-all duration-500 hover:scale-110 active:scale-95 ${
-                isScrolled ? "text-muted-foreground hover:text-primary" : "text-white/80 hover:text-white"
+              className={`text-[15px] font-medium transition-all duration-300 hover:text-orange-500 relative flex items-center gap-2 ${
+                isScrolled ? "text-black/70" : "text-black"
               }`}
             >
+              {index === 0 && (
+                <span className="w-2 h-2 rounded-full bg-orange-500" />
+              )}
               {item.name}
             </Link>
           ))}
-          <Button 
-            variant={isScrolled ? "default" : "outline"}
-            className={`rounded-full px-6 font-bold transition-all duration-500 hover:scale-105 active:scale-95 ${
-              !isScrolled && "text-white border-white hover:bg-white hover:text-primary"
+        </div>
+
+        {/* Right Nav */}
+        <div className="hidden md:flex items-center gap-6">
+          <Link 
+            href="#"
+            className={`text-[15px] font-medium transition-colors duration-300 ${
+              isScrolled ? "text-black" : "text-black"
             }`}
           >
-            Réserver un appel
+            Sign In
+          </Link>
+          <Button 
+            className="bg-black text-white hover:bg-black/80 rounded-full px-8 py-5 text-sm font-bold transition-transform active:scale-95"
+          >
+            Sign Up
           </Button>
         </div>
 
@@ -71,9 +84,9 @@ export function Navbar() {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
-            <X className={isScrolled ? "text-primary" : "text-white"} />
+            <X className="text-black" />
           ) : (
-            <Menu className={isScrolled ? "text-primary" : "text-white"} />
+            <Menu className="text-black" />
           )}
         </button>
       </div>
@@ -93,14 +106,17 @@ export function Navbar() {
                   key={item.name} 
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-bold text-muted-foreground hover:text-primary transition-colors"
+                  className="text-lg font-bold text-black/70 hover:text-black transition-colors"
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button className="w-full rounded-full py-6 font-bold">
-                Réserver un appel
-              </Button>
+              <div className="flex flex-col gap-4 pt-4 border-t">
+                <Link href="#" className="text-lg font-bold text-black">Sign In</Link>
+                <Button className="w-full rounded-full py-6 font-bold bg-black text-white">
+                  Sign Up
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}
