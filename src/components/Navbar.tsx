@@ -34,37 +34,37 @@ export function Navbar() {
           : "bg-transparent py-6"
       }`}
     >
-      <div className="w-full px-4 md:px-8 flex justify-between items-center relative h-full">
-        {/* Left: Logo */}
-        <div className="flex justify-start items-center -translate-y-4">
-          <Link href="/" className="flex items-center group">
-            <Image 
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
-              alt="STAFF AFFAIRES"
-              width={400}
-              height={120}
-              className="h-24 md:h-32 w-auto object-contain transition-all duration-300"
-              priority
-            />
-          </Link>
-        </div>
+        <div className="w-full px-4 md:px-8 flex justify-between items-center relative h-full">
+          {/* Left: Logo */}
+          <div className="flex justify-start items-center -translate-y-6">
+            <Link href="/" className="flex items-center group">
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
+                alt="STAFF AFFAIRES"
+                width={400}
+                height={120}
+                className="h-24 md:h-32 w-auto object-contain transition-all duration-300"
+                priority
+              />
+            </Link>
+          </div>
 
-            {/* Center: Desktop Nav - Absolute centering for pixel-perfect alignment */}
-            <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-10 -translate-y-2">
-              {navItems.map((item) => (
-                <Link 
-                  key={item.name} 
-                  href={item.href}
-                  className="group flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-all whitespace-nowrap"
-                >
-                  {item.active && <div className="w-2 h-2 bg-brand-orange rounded-full" />}
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+              {/* Center: Desktop Nav - Absolute centering for pixel-perfect alignment */}
+              <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-10 -translate-y-4">
+                {navItems.map((item) => (
+                  <Link 
+                    key={item.name} 
+                    href={item.href}
+                    className="group flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-all whitespace-nowrap"
+                  >
+                    {item.active && <div className="w-2 h-2 bg-brand-orange rounded-full" />}
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
 
-            {/* Right: Actions */}
-            <div className="flex justify-end items-center gap-6 -translate-y-2">
+              {/* Right: Actions */}
+              <div className="flex justify-end items-center gap-6 -translate-y-4">
               <div className="hidden lg:flex items-center gap-6">
                 <Link href="/signin" className="text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-all">
                   Sign In
