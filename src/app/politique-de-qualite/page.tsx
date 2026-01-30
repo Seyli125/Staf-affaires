@@ -8,24 +8,24 @@ export default function PolitiqueQualite() {
       <Navbar />
       <div className="pt-40 pb-32">
         <div className="container mx-auto px-6 max-w-4xl">
-          <h1 className="text-6xl font-black uppercase tracking-tighter mb-16 text-brand-navy leading-none">Engagement <br/><span className="text-brand-gold">Qualité & Audit</span></h1>
-          
-          <div className="grid md:grid-cols-2 gap-8 mb-20">
-            <div className="bg-brand-navy p-10 rounded-[40px] text-white">
-              <ShieldCheck className="w-12 h-12 text-brand-gold mb-6" />
-              <h3 className="text-2xl font-black uppercase mb-4">Certification RNCP</h3>
-              <p className="text-white/70 leading-relaxed">
-                Notre accompagnement est ancré dans la rigueur d'un titre certifié Niveau 6, garantissant une méthodologie éprouvée et une déontologie irréprochable.
-              </p>
+          <h1 className="text-6xl font-black uppercase tracking-tighter mb-16 text-brand-navy leading-none">Engagement <br/><span className="text-brand-orange">Qualité & Audit</span></h1>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-20">
+              <div className="bg-brand-navy p-10 rounded-[40px] text-white">
+                <ShieldCheck className="w-12 h-12 text-brand-orange mb-6" />
+                <h3 className="text-2xl font-black uppercase mb-4">Certification RNCP</h3>
+                <p className="text-white/70 leading-relaxed">
+                  Notre accompagnement est ancré dans la rigueur d'un titre certifié Niveau 6, garantissant une méthodologie éprouvée et une déontologie irréprochable.
+                </p>
+              </div>
+              <div className="bg-brand-orange p-10 rounded-[40px] text-white">
+                <Award className="w-12 h-12 text-white mb-6" />
+                <h3 className="text-2xl font-black uppercase mb-4">Standard Qualiopi</h3>
+                <p className="text-white/70 leading-relaxed">
+                  Nos processus de formation suivent les exigences de qualité les plus strictes pour assurer le développement réel de vos compétences.
+                </p>
+              </div>
             </div>
-            <div className="bg-brand-orange p-10 rounded-[40px] text-white">
-              <Award className="w-12 h-12 text-white mb-6" />
-              <h3 className="text-2xl font-black uppercase mb-4">Standard Qualiopi</h3>
-              <p className="text-white/70 leading-relaxed">
-                Nos processus de formation suivent les exigences de qualité les plus strictes pour assurer le développement réel de vos compétences.
-              </p>
-            </div>
-          </div>
 
           <div className="space-y-12 text-slate-600 leading-relaxed text-lg">
             

@@ -141,14 +141,15 @@ export function Footer() {
               © {new Date().getFullYear()} STAF AFFAIRES
             </p>
             <div className="h-4 w-px bg-white/10 hidden md:block" />
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-6">
               <Image 
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
                 alt="STAF AFFAIRES"
-                width={80}
-                height={24}
-                className="h-6 w-auto object-contain brightness-0 invert opacity-30"
+                width={180}
+                height={54}
+                className="h-12 w-auto object-contain"
               />
+              <div className="h-4 w-px bg-white/10 hidden md:block" />
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 whitespace-nowrap">Certifié RNCP & PNL</span>
             </div>
           </div>

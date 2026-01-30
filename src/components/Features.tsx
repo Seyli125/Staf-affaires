@@ -68,23 +68,23 @@ export function Features() {
             </div>
           </motion.div>
 
-            {/* RNCP Badge - Circular Integration */}
-            <div className="absolute -top-12 -left-12 z-20">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                className="relative w-32 h-32 rounded-full bg-white shadow-2xl border-4 border-brand-orange/20 overflow-hidden flex items-center justify-center p-4 group-hover:scale-110 transition-transform duration-500"
-              >
-                <Image 
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1769789503636.png?width=8000&height=8000&resize=contain"
-                  alt="Certification RNCP Niveau 6"
-                  width={100}
-                  height={100}
-                  className="w-full h-full object-contain"
-                />
-              </motion.div>
-            </div>
+              {/* RNCP Badge - Circular Integration */}
+              <div className="absolute -top-12 -left-12 z-20">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  className="relative w-36 h-36 rounded-full bg-white shadow-2xl border-4 border-brand-orange/20 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-500"
+                >
+                  <Image 
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1769789503636.png?width=8000&height=8000&resize=contain"
+                    alt="Certification RNCP Niveau 6"
+                    width={140}
+                    height={140}
+                    className="w-full h-full object-contain"
+                  />
+                </motion.div>
+              </div>
           </motion.div>
 
           {/* Right: Narrative Content */}
@@ -104,28 +104,28 @@ export function Features() {
               <span className="text-brand-orange font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
                 L'Excellence au Service de votre Transformation
               </span>
-              <h2 className="text-3xl md:text-4xl font-black text-brand-navy leading-tight tracking-tighter uppercase mb-6">
-                Saïd <span className="text-brand-orange italic">TAAROUST</span>
-              </h2>
-              <p className="text-lg md:text-xl font-bold text-brand-navy/80 mb-8 leading-relaxed">
-                Expert en Performance Commerciale & Leadership B2B
-              </p>
-            </div>
-
-            <div className="space-y-6 mb-10">
-              <p className="text-lg font-bold text-brand-navy leading-snug italic border-l-4 border-brand-orange pl-6">
-                "Je ne me contente pas de vous conseiller : je vous donne les clés pour transformer durablement votre potentiel en excellence opérationnelle."
-              </p>
-              
-              <div className="space-y-4 text-slate-600 text-sm leading-relaxed font-medium">
-                <p>
-                  Fort d'une trajectoire de <span className="text-brand-navy font-black">25 années d'expertise</span> sur les terrains les plus exigeants, j'ai accompagné des centaines de dirigeants et de managers vers des sommets de performance. Mon approche est une fusion unique entre la rigueur de la stratégie business et la finesse de l'intelligence comportementale.
-                </p>
-                <p>
-                  Ma double certification <span className="text-brand-navy font-bold">RNCP (Niveau 6) et PNL</span> m'autorise à déployer des méthodes éprouvées qui lèvent les freins psychologiques et accélèrent les résultats, tout en plaçant l'épanouissement humain au cœur de la réussite.
+                <h2 className="text-4xl md:text-6xl font-black text-brand-navy leading-none tracking-tighter uppercase mb-2">
+                  Saïd <span className="text-brand-orange">TAAROUST</span>
+                </h2>
+                <p className="text-xl md:text-2xl font-black text-brand-navy/90 mb-8 leading-tight uppercase tracking-tight">
+                  L'Architecte de votre Performance Commerciale
                 </p>
               </div>
-            </div>
+
+              <div className="space-y-8 mb-10">
+                <p className="text-xl font-bold text-brand-navy leading-relaxed italic border-l-8 border-brand-orange pl-8 bg-brand-orange/5 py-6 rounded-r-3xl">
+                  "Je ne me contente pas de vous conseiller : je fusionne stratégie business et intelligence comportementale pour transformer durablement votre potentiel en excellence opérationnelle."
+                </p>
+                
+                <div className="space-y-6 text-slate-600 text-base leading-relaxed font-medium">
+                  <p>
+                    Fort d'une trajectoire de <span className="text-brand-navy font-black underline decoration-brand-orange decoration-4 underline-offset-4">25 années d'expertise</span> sur les terrains les plus exigeants, j'ai accompagné des centaines de dirigeants vers des sommets de performance.
+                  </p>
+                  <p>
+                    Ma double certification <span className="text-brand-navy font-black">RNCP (Niveau 6) et Technicien PNL</span> m'autorise à déployer des méthodes éprouvées qui lèvent les freins psychologiques et accélèrent vos résultats, tout en plaçant l'humain au cœur de la réussite.
+                  </p>
+                </div>
+              </div>
 
             <div className="grid grid-cols-2 gap-4 mb-10">
               {credentials.map((item, i) => (
