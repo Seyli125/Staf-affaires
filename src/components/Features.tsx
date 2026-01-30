@@ -68,17 +68,22 @@ export function Features() {
             </div>
           </motion.div>
 
-            {/* RNCP Badge - Circle Cropped Logo */}
-            <div className="absolute -top-12 -left-12 z-0">
-              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-white flex items-center justify-center p-2">
+            {/* RNCP Badge - Circular Integration */}
+            <div className="absolute -top-12 -left-12 z-20">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                className="relative w-32 h-32 rounded-full bg-white shadow-2xl border-4 border-brand-orange/20 overflow-hidden flex items-center justify-center p-4 group-hover:scale-110 transition-transform duration-500"
+              >
                 <Image 
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/image-1769788518149.png?width=8000&height=8000&resize=contain"
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1769789503636.png?width=8000&height=8000&resize=contain"
                   alt="Certification RNCP Niveau 6"
-                  width={160}
-                  height={160}
+                  width={100}
+                  height={100}
                   className="w-full h-full object-contain"
                 />
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -94,57 +99,54 @@ export function Features() {
                 initial={{ width: 0 }}
                 whileInView={{ width: 60 }}
                 viewport={{ once: true }}
-                className="h-1.5 bg-brand-orange mb-6"
+                className="h-1 bg-brand-orange mb-6"
               />
               <span className="text-brand-orange font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
-                L'Expertise au Service de l'Excellence
+                L'Excellence au Service de votre Transformation
               </span>
-              <h2 className="text-4xl md:text-5xl font-black text-brand-navy leading-tight tracking-tighter uppercase mb-6">
+              <h2 className="text-3xl md:text-4xl font-black text-brand-navy leading-tight tracking-tighter uppercase mb-6">
                 Saïd <span className="text-brand-orange italic">TAAROUST</span>
               </h2>
-              <h3 className="text-xl md:text-2xl font-bold text-brand-navy/80 mb-8 leading-relaxed">
-                Coach de Dirigeants & Consultant Expert en Performance Commerciale B2B
-              </h3>
+              <p className="text-lg md:text-xl font-bold text-brand-navy/80 mb-8 leading-relaxed">
+                Expert en Performance Commerciale & Leadership B2B
+              </p>
             </div>
 
             <div className="space-y-6 mb-10">
               <p className="text-lg font-bold text-brand-navy leading-snug italic border-l-4 border-brand-orange pl-6">
-                "Ma mission : Accompagner les leaders dans l'optimisation de leur potentiel pour transformer chaque défi en une victoire stratégique."
+                "Je ne me contente pas de vous conseiller : je vous donne les clés pour transformer durablement votre potentiel en excellence opérationnelle."
               </p>
               
               <div className="space-y-4 text-slate-600 text-sm leading-relaxed font-medium">
                 <p>
-                  Fort de plus de <span className="text-brand-navy font-black">25 ans d'expertise opérationnelle</span>, Saïd TAAROUST s'est imposé comme une figure de référence dans l'accompagnement des dirigeants et managers de haut niveau.
+                  Fort d'une trajectoire de <span className="text-brand-navy font-black">25 années d'expertise</span> sur les terrains les plus exigeants, j'ai accompagné des centaines de dirigeants et de managers vers des sommets de performance. Mon approche est une fusion unique entre la rigueur de la stratégie business et la finesse de l'intelligence comportementale.
                 </p>
                 <p>
-                  Son approche, à la fois rigoureuse et humaniste, repose sur une maîtrise profonde de l'intelligence émotionnelle et de la stratégie commerciale. Certifié <span className="text-brand-navy font-bold">RNCP Niveau 6 (Bac+4) et Expert en PNL</span>, il déploie des méthodes d'élite pour lever les freins psychologiques et catalyser la performance collective.
-                </p>
-                <p>
-                  Reconnu pour sa capacité à allier <span className="text-brand-orange font-bold italic">RÉSULTATS TANGIBLES</span> et <span className="text-brand-navy font-bold italic">SENS AU TRAVAIL</span>, il transforme durablement les cultures d'entreprise pour une croissance équilibrée et pérenne.
+                  Ma double certification <span className="text-brand-navy font-bold">RNCP (Niveau 6) et PNL</span> m'autorise à déployer des méthodes éprouvées qui lèvent les freins psychologiques et accélèrent les résultats, tout en plaçant l'épanouissement humain au cœur de la réussite.
                 </p>
               </div>
             </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-10">
-            {credentials.map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-center gap-3 p-4 rounded-[24px] bg-slate-50 hover:bg-white hover:shadow-lg transition-all border border-transparent hover:border-slate-100 group/card"
-              >
-                <div className="w-10 h-10 rounded-xl bg-brand-navy/5 flex items-center justify-center shrink-0 group-hover/card:bg-brand-orange transition-colors duration-500">
-                  <item.icon className="w-5 h-5 text-brand-navy group-hover/card:text-white transition-colors duration-500" />
-                </div>
-                <div>
-                  <p className="font-black text-brand-navy text-[10px] uppercase tracking-wider">{item.title}</p>
-                  <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+            <div className="grid grid-cols-2 gap-4 mb-10">
+              {credentials.map((item, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center gap-3 p-4 rounded-[20px] bg-white shadow-sm hover:shadow-xl transition-all border border-slate-100 group/card"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-brand-navy/5 flex items-center justify-center shrink-0 group-hover/card:bg-brand-orange transition-colors duration-500">
+                    <item.icon className="w-4 h-4 text-brand-navy group-hover/card:text-white transition-colors duration-500" />
+                  </div>
+                  <div>
+                    <p className="font-black text-brand-navy text-[9px] uppercase tracking-wider">{item.title}</p>
+                    <p className="text-[8px] text-slate-400 font-bold uppercase tracking-widest">{item.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
           <Link href="/prendre-rendez-vous">
             <button 

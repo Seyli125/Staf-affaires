@@ -41,8 +41,8 @@ const services = [
         "Accompagnement opérationnel durable"
       ],
       icon: Users,
-      color: "bg-brand-navy/5",
-      accent: "bg-brand-orange",
+      color: "bg-brand-orange/5",
+      accent: "bg-brand-navy",
     },
   ];
 
@@ -61,7 +61,7 @@ const services = [
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-brand-orange font-bold uppercase tracking-[0.2em] text-sm mb-4 block"
+            className="text-brand-orange font-bold uppercase tracking-[0.2em] text-xs mb-4 block"
           >
             Expertise & Excellence
           </motion.span>
@@ -92,7 +92,7 @@ const services = [
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`group p-8 rounded-[40px] ${service.color} border border-transparent hover:border-brand-navy/10 hover:shadow-2xl transition-all duration-500 flex flex-col`}
+              className={`group p-8 rounded-[32px] ${service.color} border border-transparent hover:border-brand-navy/10 hover:shadow-2xl transition-all duration-500 flex flex-col`}
             >
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 ${service.accent} text-white shadow-lg shadow-black/5 group-hover:scale-110 transition-transform duration-500`}>
                 <service.icon className="w-7 h-7" />
@@ -100,7 +100,7 @@ const services = [
               <h3 className="text-xl font-black mb-4 leading-tight text-brand-navy uppercase tracking-tight">
                 {service.title}
               </h3>
-              <p className="text-slate-600 mb-8 leading-relaxed font-medium text-sm">
+              <p className="text-sm text-slate-600 mb-8 leading-relaxed font-medium">
                 {service.description}
               </p>
               <div className="mt-auto space-y-4">
@@ -119,13 +119,13 @@ const services = [
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-brand-navy rounded-[50px] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl"
+          className="bg-brand-navy rounded-[40px] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl"
         >
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/20 blur-[120px] -mr-64 -mt-64 rounded-full" />
           <div className="relative z-10">
-            <div className="grid md:grid-cols-5 gap-12 items-center">
+            <div className="grid md:grid-cols-5 gap-16 items-center">
                 <div className="md:col-span-2">
-                  <h3 className="text-2xl md:text-4xl font-black mb-6 leading-tight tracking-tighter uppercase">
+                  <h3 className="text-2xl md:text-4xl font-black mb-8 leading-tight tracking-tighter uppercase">
                     Focus <br/><span className="text-brand-orange">Opérationnel</span>
                   </h3>
                   <p className="text-white/70 text-base leading-relaxed mb-8">
@@ -135,7 +135,7 @@ const services = [
                     <button 
                       className="group flex items-center gap-3 bg-brand-orange px-8 py-4 rounded-full font-bold hover:bg-white hover:text-brand-navy transition-all text-sm"
                     >
-                      Découvrir l'approche AVR® <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      Découvrir l'approche AVR® <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </button>
                   </Link>
                 </div>
@@ -147,9 +147,9 @@ const services = [
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex items-center gap-6 bg-white/5 p-5 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors group/item"
+                    className="flex items-center gap-6 bg-white/5 p-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors group/item"
                   >
-                    <div className="w-10 h-10 rounded-2xl bg-brand-orange/20 flex items-center justify-center text-brand-orange font-black text-lg group-hover/item:bg-brand-orange group-hover/item:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-orange/20 flex items-center justify-center text-brand-orange font-black text-lg group-hover/item:bg-brand-orange group-hover/item:text-white transition-colors">
                       {i + 1}
                     </div>
                     <span className="text-base font-bold tracking-tight">{spec}</span>

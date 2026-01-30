@@ -122,35 +122,42 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Big Brand Stamp */}
+        <div className="relative mb-12">
+          <div className="absolute inset-0 flex items-center" aria-hidden="true">
+            <div className="w-full border-t border-white/5"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="bg-brand-navy px-8 text-[15vw] font-black text-white/[0.02] uppercase leading-none select-none tracking-tighter">
+              STAF
+            </span>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-12 pt-16 border-t border-white/10">
-          <div className="flex flex-col md:flex-row items-center gap-10">
-            <Link href="/" className="opacity-50 hover:opacity-100 transition-opacity">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-white/10">
+          <div className="flex items-center gap-8">
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">
+              © {new Date().getFullYear()} STAF AFFAIRES
+            </p>
+            <div className="h-4 w-px bg-white/10 hidden md:block" />
+            <div className="flex items-center gap-4">
               <Image 
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
                 alt="STAF AFFAIRES"
-                width={140}
-                height={40}
-                className="h-10 w-auto object-contain brightness-0 invert"
+                width={80}
+                height={24}
+                className="h-6 w-auto object-contain brightness-0 invert opacity-30"
               />
-            </Link>
-            <div className="h-8 w-px bg-white/10 hidden md:block" />
-            <div className="flex flex-col gap-2">
-              <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">
-                © {new Date().getFullYear()} STAF AFFAIRES • TOUS DROITS RÉSERVÉS
-              </p>
-              <div className="flex items-center gap-3 text-[9px] font-black uppercase tracking-[0.3em] text-brand-orange">
-                <ShieldCheck className="w-3 h-3" />
-                <span>Expertise Certifiée RNCP & PNL</span>
-              </div>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 whitespace-nowrap">Certifié RNCP & PNL</span>
             </div>
           </div>
           
-          <div className="flex items-center gap-8">
-            <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20">
-              Performer sans s'épuiser
+          <div className="flex items-center gap-6">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+              Conçu pour l'excellence
             </span>
-            <div className="w-12 h-px bg-brand-orange/40" />
+            <div className="w-8 h-px bg-brand-orange/30" />
           </div>
         </div>
       </div>

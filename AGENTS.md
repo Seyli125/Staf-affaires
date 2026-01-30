@@ -17,7 +17,7 @@ STAF AFFAIRES is a high-end B2B coaching website designed for Saïd Taaroust. Th
 - `public`: Static assets
 
 ## User Preferences
-- Professional, high-end coaching aesthetic (Navy Blue & Gold accents)
+- Professional, high-end coaching aesthetic (Navy Blue & Orange accents)
 - Ultra-modern micro-interactions and scroll-triggered animations
 - Visual fidelity to the provided reference image
 - French language (professional and action-oriented)
@@ -31,7 +31,8 @@ STAF AFFAIRES is a high-end B2B coaching website designed for Saïd Taaroust. Th
 - Use Next.js Image component for optimized media
 - Follow Tailwind 4 conventions for styling
 - Ensure accessibility with ARIA tags
-- Brand Colors: Navy (#0A192F), Gold (#C5A059), Orange (#ff6b4a)
+- Brand Colors: Navy (#0A192F), Orange (#ff6b4a)
+- NO YELLOW OR GOLD: Enforce strict Navy and Orange palette after the hero section.
 
 ## Common Patterns
 - Scroll-triggered fade-ins and slides
