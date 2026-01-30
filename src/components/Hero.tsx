@@ -23,17 +23,17 @@ export function Hero() {
     >
       {/* 1. Main Visual Hero Area */}
       <div className="relative w-full h-[85vh] md:h-[95vh] flex flex-col items-center justify-center hero-gradient px-6 overflow-hidden">
-        {/* Background Massive Text */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-          <motion.h1 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 0.05, scale: 1 }}
-            transition={{ duration: 1.5 }}
-            className="text-bg-massive font-black text-white whitespace-nowrap"
-          >
-            SAID
-          </motion.h1>
-        </div>
+          {/* Background Massive Text */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+            <motion.h1 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 0.05, scale: 1 }}
+              transition={{ duration: 1.5 }}
+              className="text-bg-massive font-black text-white whitespace-nowrap"
+            >
+              SAÏD
+            </motion.h1>
+          </div>
 
         {/* Main Person Image */}
         <motion.div
@@ -60,15 +60,15 @@ export function Hero() {
 
         {/* Massive Foreground Name */}
         <div className="absolute bottom-10 left-0 w-full z-20 overflow-hidden px-4">
-            <motion.h2 
-              style={{ opacity: opacityText, y: yHeroText }}
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="text-massive font-black text-white text-center leading-[0.9] md:leading-[1.1] tracking-tighter"
-            >
-              Saïd Taaroust
-            </motion.h2>
+              <motion.h2 
+                style={{ opacity: opacityText, y: yHeroText }}
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+                className="text-massive font-black text-white text-center leading-[0.9] md:leading-[1.1] tracking-tighter uppercase"
+              >
+                SAÏD TAAROUST
+              </motion.h2>
         </div>
       </div>
 
