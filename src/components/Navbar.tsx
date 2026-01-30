@@ -3,15 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Home", href: "#" },
+  { name: "Accueil", href: "#", active: true },
   { name: "Services", href: "#services" },
-  { name: "Find a Tutor", href: "#" },
-  { name: "Pricing", href: "#" },
+  { name: "À propos", href: "#about" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -28,52 +27,57 @@ export function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
           ? "bg-white/80 backdrop-blur-md py-4 shadow-sm" 
           : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="group flex items-center">
-              <span className="text-2xl font-black tracking-tighter text-black">
-                STAF AFFAIRES
-              </span>
-            </Link>
+        {/* Logo */}
+        <Link href="/" className="flex items-center group">
+          <span className={`text-xl font-bold tracking-tight transition-colors duration-500 italic ${
+            isScrolled ? "text-black" : "text-black/80"
+          }`}>
+            STAF AFFAIRES
+          </span>
+        </Link>
 
-        {/* Center Nav */}
-        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-          {navItems.map((item, index) => (
+        {/* Centered Desktop Nav */}
+        <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+          {navItems.map((item) => (
             <Link 
               key={item.name} 
               href={item.href}
-              className={`text-[15px] font-medium transition-all duration-300 hover:text-orange-500 relative flex items-center gap-2 ${
-                isScrolled ? "text-black/70" : "text-black"
+              className={`text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 ${
+                isScrolled ? "text-black/60 hover:text-black" : "text-black/70 hover:text-black"
               }`}
             >
-              {index === 0 && (
-                <span className="w-2 h-2 rounded-full bg-orange-500" />
+              {item.active && (
+                <motion.span 
+                  layoutId="activeDot"
+                  className="w-1.5 h-1.5 rounded-full bg-brand-orange" 
+                />
               )}
               {item.name}
             </Link>
           ))}
         </div>
 
-        {/* Right Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        {/* Right Side Actions */}
+        <div className="hidden md:flex items-center gap-8">
           <Link 
-            href="#"
-            className={`text-[15px] font-medium transition-colors duration-300 ${
-              isScrolled ? "text-black" : "text-black"
+            href="#" 
+            className={`text-sm font-bold transition-colors ${
+              isScrolled ? "text-black/60 hover:text-black" : "text-black/70 hover:text-black"
             }`}
           >
-            Sign In
+            Se connecter
           </Link>
           <Button 
-            className="bg-black text-white hover:bg-black/80 rounded-full px-8 py-5 text-sm font-bold transition-transform active:scale-95"
+            className="rounded-full px-7 bg-black text-white hover:bg-black/80 font-bold transition-all hover:scale-105 active:scale-95"
           >
-            Sign Up
+            S'inscrire
           </Button>
         </div>
 
@@ -105,17 +109,14 @@ export function Navbar() {
                   key={item.name} 
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-bold text-black/70 hover:text-black transition-colors"
+                  className="text-lg font-bold text-muted-foreground hover:text-primary transition-colors"
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="flex flex-col gap-4 pt-4 border-t">
-                <Link href="#" className="text-lg font-bold text-black">Sign In</Link>
-                <Button className="w-full rounded-full py-6 font-bold bg-black text-white">
-                  Sign Up
-                </Button>
-              </div>
+              <Button className="w-full rounded-full py-6 font-bold">
+                Réserver un appel
+              </Button>
             </div>
           </motion.div>
         )}
