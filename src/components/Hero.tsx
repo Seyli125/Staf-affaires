@@ -20,16 +20,16 @@ export function Hero() {
       <div className="absolute inset-0 hero-gradient opacity-100" />
       
       {/* 1. Large Faded Background Text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <motion.span 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 0.08, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="text-[45vw] font-black text-white leading-none tracking-tighter"
-        >
-          STAFF
-        </motion.span>
-      </div>
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 0.08, scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="text-[45vw] font-black text-white leading-none tracking-tighter"
+          >
+            SAÏD
+          </motion.span>
+        </div>
 
       {/* 2. Centered Portrait with Fade Mask */}
       <div className="relative w-full h-full flex items-end justify-center z-20 flex-grow pt-20">
@@ -62,7 +62,7 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           className="text-[17vw] font-black text-white leading-[0.75] tracking-tighter text-center whitespace-nowrap"
         >
-          STAFF AFFAIRES
+          SAÏD TAAROUST
         </motion.h1>
       </div>
 

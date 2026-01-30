@@ -24,7 +24,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
               <div className="col-span-2">
-                <h2 className="text-4xl font-black mb-8 tracking-tighter">STAFF AFFAIRES</h2>
+                <h2 className="text-4xl font-black mb-8 tracking-tighter">SAÏD TAAROUST</h2>
                 <p className="text-xl text-white/70 max-w-md leading-relaxed">
                   Accompagner les leaders et les entreprises vers une performance durable et un mindset d'exception.
                 </p>
