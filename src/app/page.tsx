@@ -48,7 +48,13 @@ export default function Home() {
 
             {/* Massive Text */}
             <div className="w-full mb-20">
-              <h2 className="text-[15vw] font-black text-black leading-[1.2] tracking-tighter text-center uppercase whitespace-nowrap">
+              <h2 
+                className="text-[15vw] font-black text-black leading-[0.8] tracking-tighter text-center uppercase whitespace-nowrap"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, black 50%, transparent 95%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 95%)'
+                }}
+              >
                 Saïd Taaroust
               </h2>
             </div>
