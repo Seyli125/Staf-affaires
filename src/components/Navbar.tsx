@@ -34,23 +34,23 @@ export function Navbar() {
           : "bg-transparent py-6"
       }`}
     >
-        <div className="container mx-auto px-6 flex items-center">
+        <div className="container mx-auto px-6 grid grid-cols-3 items-center">
           {/* Left: Logo */}
-          <div className="flex-1 flex justify-start">
-            <Link href="/" className="flex items-center gap-2 group">
+          <div className="flex justify-start items-center h-full">
+            <Link href="/" className="flex items-center group">
               <Image 
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
                 alt="STAFF AFFAIRES"
                 width={400}
                 height={120}
-                className="h-24 md:h-32 w-auto object-contain"
+                className="h-14 md:h-18 w-auto object-contain transition-all duration-300"
                 priority
               />
             </Link>
           </div>
 
           {/* Center: Desktop Nav */}
-          <div className="hidden lg:flex flex-1 justify-center items-center gap-10">
+          <div className="hidden lg:flex justify-center items-center gap-10">
             {navItems.map((item) => (
               <Link 
                 key={item.name} 
@@ -64,13 +64,13 @@ export function Navbar() {
           </div>
 
           {/* Right: Actions */}
-          <div className="flex-1 flex justify-end items-center gap-6">
+          <div className="flex justify-end items-center gap-6">
             <div className="hidden lg:flex items-center gap-6">
-              <Link href="/signin" className="text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black">
+              <Link href="/signin" className="text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-all">
                 Sign In
               </Link>
               <Button 
-                className="rounded-full bg-black text-white px-8 py-6 font-bold hover:scale-105 transition-all text-[13px] uppercase tracking-widest"
+                className="rounded-full bg-black text-white px-8 py-6 font-bold hover:scale-105 transition-all text-[13px] uppercase tracking-widest cursor-pointer"
               >
                 Sign Up
               </Button>
@@ -78,10 +78,10 @@ export function Navbar() {
 
             {/* Mobile Toggle */}
             <button 
-              className="lg:hidden text-black"
+              className="lg:hidden text-black p-2 hover:bg-black/5 rounded-full transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X /> : <Menu />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
