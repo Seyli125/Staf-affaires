@@ -84,7 +84,7 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase"
+            className="text-3xl md:text-5xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase"
           >
             L'excellence <br />
             <span className="text-brand-orange italic">reconnue</span> par <br />
@@ -99,7 +99,7 @@ export function Testimonials() {
           className="lg:max-w-sm"
         >
           <div className="p-8 bg-slate-50 rounded-[40px] border border-slate-100">
-            <p className="text-lg text-slate-600 leading-relaxed font-medium italic">
+            <p className="text-base text-slate-600 leading-relaxed font-medium italic">
               "L'impact du coaching se mesure aux résultats durables et à l'épanouissement de ceux qui le vivent au quotidien."
             </p>
           </div>
@@ -119,36 +119,36 @@ export function Testimonials() {
               ease: "easeOut"
             }}
             whileHover={{ y: -10 }}
-            className={`break-inside-avoid relative p-12 rounded-[50px] border transition-all duration-500 group shadow-sm ${
+            className={`break-inside-avoid relative p-10 rounded-[40px] border transition-all duration-500 group shadow-sm ${
               item.highlight 
               ? 'bg-brand-navy text-white border-transparent shadow-3xl shadow-brand-navy/30' 
-              : 'bg-white border-slate-100 hover:border-brand-gold/30 hover:shadow-2xl'
+              : 'bg-white border-slate-100 hover:border-brand-orange/30 hover:shadow-2xl'
             }`}
           >
-            <Quote className={`absolute top-10 right-10 w-16 h-16 transition-transform group-hover:rotate-12 duration-500 ${
+            <Quote className={`absolute top-10 right-10 w-12 h-12 transition-transform group-hover:rotate-12 duration-500 ${
               item.highlight ? 'text-white/5' : 'text-slate-50'
             }`} />
             
-            <p className={`text-xl leading-relaxed mb-12 relative z-10 ${
+            <p className={`text-base leading-relaxed mb-8 relative z-10 ${
               item.highlight ? 'text-white/90 font-medium' : 'text-slate-700'
             }`}>
               "{item.quote}"
             </p>
 
             <div className="flex items-center gap-5 relative z-10 border-t pt-8 border-current/10">
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg ${
-                item.highlight ? 'bg-brand-gold text-white' : 'bg-brand-navy text-white'
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-lg ${
+                item.highlight ? 'bg-brand-orange text-white' : 'bg-brand-navy text-white'
               }`}>
-                <span className="font-black text-xl italic">{item.name[0]}</span>
+                <span className="font-black text-lg italic">{item.name[0]}</span>
               </div>
               <div>
-                <h4 className={`font-black uppercase tracking-tight text-base ${
+                <h4 className={`font-black uppercase tracking-tight text-sm ${
                   item.highlight ? 'text-white' : 'text-brand-navy'
                 }`}>
                   {item.name}
                 </h4>
                 <p className={`text-[10px] font-black uppercase tracking-widest mt-1 opacity-80 ${
-                  item.highlight ? 'text-brand-gold' : 'text-brand-orange'
+                  item.highlight ? 'text-brand-orange' : 'text-brand-orange'
                 }`}>
                   {item.role}
                 </p>
@@ -162,10 +162,10 @@ export function Testimonials() {
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="bg-brand-orange rounded-[60px] p-12 md:p-20 text-white text-center shadow-3xl relative overflow-hidden group"
+        className="bg-brand-orange rounded-[60px] p-10 md:p-16 text-white text-center shadow-3xl relative overflow-hidden group"
       >
         <div className="absolute inset-0 bg-brand-navy opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-        <h3 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase">
+        <h3 className="text-2xl md:text-4xl font-black mb-8 leading-tight tracking-tighter uppercase">
           Rejoignez ceux qui <br /> performent avec <span className="italic underline decoration-brand-navy decoration-8 underline-offset-8">Sens</span>.
         </h3>
         <Link href="/prendre-rendez-vous">

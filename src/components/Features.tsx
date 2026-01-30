@@ -68,51 +68,62 @@ export function Features() {
             </div>
           </motion.div>
 
-          {/* Quote mark decoration */}
-          <div className="absolute -top-10 -left-10 text-brand-orange/10 z-0">
-            <Quote className="w-32 h-32" />
-          </div>
-        </motion.div>
-
-        {/* Right: Narrative Content */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="relative z-10"
-        >
-          <div className="mb-8">
-            <motion.div 
-              initial={{ width: 0 }}
-              whileInView={{ width: 60 }}
-              viewport={{ once: true }}
-              className="h-1.5 bg-brand-orange mb-6"
-            />
-            <span className="text-brand-orange font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
-              L'Expertise au Service de l'Excellence
-            </span>
-            <h2 className="text-4xl md:text-5xl font-black text-brand-navy leading-tight tracking-tighter uppercase mb-6">
-              Saïd <span className="text-brand-orange italic">TAAROUST</span>
-            </h2>
-            <h3 className="text-xl md:text-2xl font-bold text-brand-navy/80 mb-8 leading-relaxed">
-              Coach Expert en Performance Commerciale & Leadership B2B
-            </h3>
-          </div>
-
-          <div className="space-y-6 mb-10">
-            <p className="text-xl font-bold text-brand-navy leading-snug italic border-l-4 border-brand-orange pl-6">
-              "Ma mission est de transformer chaque défi en une opportunité de croissance durable pour vous et vos équipes."
-            </p>
-            
-            <div className="space-y-4 text-slate-600 text-base leading-relaxed font-medium">
-              <p>
-                Avec plus de <span className="text-brand-navy font-black">25 ans d'expérience</span> sur le terrain, j'ai accompagné des centaines de dirigeants et managers dans l'optimisation de leur potentiel. Mon approche combine rigueur stratégique et intelligence émotionnelle.
-              </p>
-              <p>
-                Certifié <span className="text-brand-navy font-bold">RNCP et PNL</span>, j'utilise des méthodes éprouvées pour lever les blocages et accélérer les performances, tout en préservant l'équilibre et le sens au travail.
-              </p>
+            {/* RNCP Badge - Circle Cropped Logo */}
+            <div className="absolute -top-12 -left-12 z-0">
+              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-white flex items-center justify-center p-2">
+                <Image 
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/image-1769788518149.png?width=8000&height=8000&resize=contain"
+                  alt="Certification RNCP Niveau 6"
+                  width={160}
+                  height={160}
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
-          </div>
+          </motion.div>
+
+          {/* Right: Narrative Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative z-10"
+          >
+            <div className="mb-8">
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: 60 }}
+                viewport={{ once: true }}
+                className="h-1.5 bg-brand-orange mb-6"
+              />
+              <span className="text-brand-orange font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
+                L'Expertise au Service de l'Excellence
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-brand-navy leading-tight tracking-tighter uppercase mb-6">
+                Saïd <span className="text-brand-orange italic">TAAROUST</span>
+              </h2>
+              <h3 className="text-xl md:text-2xl font-bold text-brand-navy/80 mb-8 leading-relaxed">
+                Coach de Dirigeants & Consultant Expert en Performance Commerciale B2B
+              </h3>
+            </div>
+
+            <div className="space-y-6 mb-10">
+              <p className="text-lg font-bold text-brand-navy leading-snug italic border-l-4 border-brand-orange pl-6">
+                "Ma mission : Accompagner les leaders dans l'optimisation de leur potentiel pour transformer chaque défi en une victoire stratégique."
+              </p>
+              
+              <div className="space-y-4 text-slate-600 text-sm leading-relaxed font-medium">
+                <p>
+                  Fort de plus de <span className="text-brand-navy font-black">25 ans d'expertise opérationnelle</span>, Saïd TAAROUST s'est imposé comme une figure de référence dans l'accompagnement des dirigeants et managers de haut niveau.
+                </p>
+                <p>
+                  Son approche, à la fois rigoureuse et humaniste, repose sur une maîtrise profonde de l'intelligence émotionnelle et de la stratégie commerciale. Certifié <span className="text-brand-navy font-bold">RNCP Niveau 6 (Bac+4) et Expert en PNL</span>, il déploie des méthodes d'élite pour lever les freins psychologiques et catalyser la performance collective.
+                </p>
+                <p>
+                  Reconnu pour sa capacité à allier <span className="text-brand-orange font-bold italic">RÉSULTATS TANGIBLES</span> et <span className="text-brand-navy font-bold italic">SENS AU TRAVAIL</span>, il transforme durablement les cultures d'entreprise pour une croissance équilibrée et pérenne.
+                </p>
+              </div>
+            </div>
 
           <div className="grid grid-cols-2 gap-4 mb-10">
             {credentials.map((item, i) => (

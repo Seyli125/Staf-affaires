@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { Brands } from "@/components/Brands";
 import { Services } from "@/components/Services";
 import { Features } from "@/components/Features";
 import { VideoSection } from "@/components/VideoSection";
