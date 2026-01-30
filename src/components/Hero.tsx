@@ -14,38 +14,39 @@ export function Hero() {
       
       <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="z-10"
-        >
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-brand-navy/5 border border-brand-navy/10 rounded-full text-brand-navy font-bold text-xs uppercase tracking-widest mb-6"
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="z-10"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-gold"></span>
-            </span>
-            Coach certifié RNCP | Formateur | Expert B2B
-          </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-brand-navy/5 border border-brand-navy/10 rounded-full text-brand-navy font-bold text-xs uppercase tracking-widest mb-6"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-gold"></span>
+              </span>
+              Coach certifié RNCP | Formateur | Expert en développement commercial
+            </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-brand-navy leading-[1.1] mb-6">
-            Performer sans <br />
-            <span className="text-brand-gold italic">s'épuiser.</span>
-          </h1>
-          
-          <h2 className="text-2xl md:text-3xl font-light text-brand-navy/80 mb-8 leading-snug">
-            Manager et vendre avec sens.
-          </h2>
+            <h1 className="text-5xl md:text-7xl font-serif font-bold text-brand-navy leading-[1.1] mb-6">
+              Performer sans <br />
+              <span className="text-brand-gold italic">s'épuiser.</span>
+            </h1>
+            
+            <h2 className="text-2xl md:text-3xl font-light text-brand-navy/80 mb-8 leading-snug">
+              Manager et vendre avec sens.
+            </h2>
 
-          <p className="text-lg text-brand-navy/60 mb-10 max-w-lg leading-relaxed">
-            Coach certifié RNCP | Formateur | Expert en développement commercial depuis 25 ans.
-            L'approche humaniste pour des résultats concrets et durables.
-          </p>
+            <p className="text-lg text-brand-navy/60 mb-10 max-w-lg leading-relaxed">
+              Coach certifié RNCP | Formateur | Expert en développement commercial depuis 25 ans.
+              L'approche humaniste pour des résultats concrets et durables.
+            </p>
+
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
@@ -101,14 +102,15 @@ export function Hero() {
             <div className="absolute -bottom-10 right-10 w-full h-full bg-brand-navy/5 rounded-2xl -z-10" />
             
             <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-2xl">
-              <Image
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/SA2_LE_upscale_prime-1769783680736.jpg?width=8000&height=8000&resize=contain"
-                alt="Saïd Taaroust - Expert en Coaching Professionnel"
-                width={1000}
-                height={1250}
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-                priority
-              />
+                <Image
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/SA2_LE_upscale_prime-1769783680736.jpg?width=8000&height=8000&resize=contain"
+                  alt="Saïd Taaroust - Expert en Coaching Professionnel"
+                  width={1000}
+                  height={1250}
+                  className="w-full h-full object-cover transition-all duration-1000 hover:scale-105"
+                  priority
+                />
+
               <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 to-transparent opacity-60 pointer-events-none" />
             </div>
 

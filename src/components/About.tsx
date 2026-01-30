@@ -27,12 +27,13 @@ export function About() {
             className="relative"
           >
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl z-10 border border-brand-navy/5">
-              <Image
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/SA2_LE_upscale_prime-1769783680736.jpg?width=8000&height=8000&resize=contain"
-                alt="Saïd Taaroust - Portrait Professionnel"
-                fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              />
+                <Image
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/SA2_LE_upscale_prime-1769783680736.jpg?width=8000&height=8000&resize=contain"
+                  alt="Saïd Taaroust - Portrait Professionnel"
+                  fill
+                  className="object-cover transition-all duration-700 hover:scale-105"
+                />
+
               <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/20 to-transparent" />
             </div>
             

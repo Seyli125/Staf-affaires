@@ -47,10 +47,10 @@ const pillars = [
 ];
 
 const specialties = [
-  { title: "Posture du 'Chargé d'affaires aligné'", desc: "Transformation en 4 mois", icon: <UserPlus className="w-5 h-5" /> },
-  { title: "Augmenter votre taux de propositions", desc: "Optimisation commerciale", icon: <TrendingUp className="w-5 h-5" /> },
-  { title: "Signer vos premiers clients", desc: "Accélération des conversions", icon: <Zap className="w-5 h-5" /> },
-  { title: "Piloter votre stratégie commerciale", desc: "Expertise B2B éprouvée", icon: <ShieldCheck className="w-5 h-5" /> },
+  { title: "Posture du 'Chargé d'affaires aligné'", desc: "Développer votre impact en 4 mois", icon: <UserPlus className="w-5 h-5" /> },
+  { title: "Taux de propositions commerciales", desc: "Augmenter votre volume d'offres", icon: <TrendingUp className="w-5 h-5" /> },
+  { title: "Signer vos premiers clients", desc: "Augmenter votre taux de conversions", icon: <Zap className="w-5 h-5" /> },
+  { title: "Votre stratégie commerciale", desc: "Déployer et piloter avec efficacité", icon: <ShieldCheck className="w-5 h-5" /> },
 ];
 
 export function Services() {
