@@ -1,75 +1,115 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { Star, Quote } from "lucide-react";
 
-const testimonial = {
-  text: "Avant de travailler avec Saïd, j'étais bloqué. En seulement trois mois, j'ai triplé mes revenus et construit un système évolutif pour mon entreprise. Ses stratégies changent la donne !",
-  author: "Michael Carter",
-  role: "Entrepreneur",
-  avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop",
-};
+const testimonials = [
+  {
+    name: "Frédérique Laban-Bounayre",
+    role: "Assistante chez Activ'Expertise Landes",
+    date: "9 janv. 2026",
+    text: "Saïd m'a accompagné à faire le point sur mon positionnement et à trouver l'équilibre vie perso/pro. Grâce à sa bienveillance et écoute, j'en ressort avec des véritables clés.",
+  },
+  {
+    name: "Aurélie Durquet",
+    role: "Sophrologue-Masseur",
+    date: "13 octobre 2025",
+    text: "Sa capacité à analyser ma problématique, ses outils et son expérience m'ont permis de dessiner de nouveaux contours professionnels et d'améliorer l'équilibre de mon travail.",
+  },
+  {
+    name: "Mathilda V.",
+    role: "Système & Réseau",
+    date: "13 avr 2025",
+    text: "Saïd m'a accompagné au moment de ma reconversion. Sa bienveillance offre un support rassurant — le cadre idéal. Coaching 100% concluant !",
+  },
+  {
+    name: "Charlotte Sarthou",
+    role: "Directrice RH",
+    date: "26 mars 2025",
+    text: "Son expertise, sa pédagogie et sa capacité à créer un engagement ont fait la différence. Il sait allier théorie et mise en pratique — un véritable partenaire de confiance.",
+  },
+  {
+    name: "Nathalie PERLATI",
+    role: "Chargée d'affaires SNA",
+    date: "21 mars 2025",
+    text: "À chaque intervention : des échanges constructifs, une montée en compétence. Merci Said pour ton aide.",
+  },
+  {
+    name: "Yael PELTIER COHEN",
+    role: "Responsable adjointe",
+    date: "11 mars 2025",
+    text: "Saïd possède une grande maîtrise de son domaine et sait adapter son approche. Son professionnalisme, sa disponibilité et son enthousiasme sont remarquables.",
+  },
+  {
+    name: "Guillaume Bourgier",
+    role: "Fondateur Eventick",
+    date: "25 sep 2023",
+    text: "M'a accompagné en coaching développement commercial. Cela m'a aidé à prendre du recul et mieux analyser les freins. Je recommande vivement Saïd.",
+  },
+];
 
 export function Testimonials() {
   return (
-    <section className="py-32 bg-transparent overflow-hidden">
+    <section id="testimonials" className="py-24 bg-brand-offwhite">
       <div className="container mx-auto px-6">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center text-sm font-black uppercase tracking-[0.4em] text-black mb-16"
-        >
-          Ce que disent nos clients
-        </motion.h2>
-
-        <div className="relative max-w-5xl mx-auto flex items-center justify-center">
-          {/* Navigation Arrows */}
-          <div className="absolute left-0 z-10 hidden md:block">
-            <Button variant="outline" size="icon" className="rounded-full w-14 h-14 border-gray-200">
-              <ChevronLeft className="w-6 h-6" />
-            </Button>
-          </div>
-          <div className="absolute right-0 z-10 hidden md:block">
-            <Button variant="default" size="icon" className="rounded-full w-14 h-14 bg-black text-white">
-              <ChevronRight className="w-6 h-6" />
-            </Button>
-          </div>
-
-          {/* Testimonial Content */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center px-12 md:px-24"
+            className="text-brand-gold font-bold text-sm uppercase tracking-widest"
           >
-            <div className="flex justify-center gap-1 mb-8">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-              ))}
-            </div>
+            Témoignages
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-serif font-bold text-brand-navy mt-4 mb-6"
+          >
+            Ils m'ont fait <span className="text-brand-gold italic">confiance.</span>
+          </motion.h2>
+          <p className="text-brand-navy/60">
+            Retrouvez tous les avis authentiques issus de mon profil LinkedIn.
+          </p>
+        </div>
 
-            <p className="text-2xl md:text-3xl font-medium leading-relaxed mb-12 text-gray-800">
-              "{testimonial.text}"
-            </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((t, index) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white p-8 rounded-3xl border border-brand-navy/5 shadow-sm hover:shadow-xl transition-all duration-500 group"
+            >
+              <div className="flex justify-between items-start mb-6">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-brand-gold text-brand-gold" />
+                  ))}
+                </div>
+                <Quote className="w-8 h-8 text-brand-gold/20 group-hover:text-brand-gold transition-colors" />
+              </div>
 
-            <div className="flex flex-col items-center gap-4">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden shadow-lg border-2 border-white">
-                <Image 
-                  src={testimonial.avatar} 
-                  alt={testimonial.author}
-                  fill
-                  className="object-cover"
-                />
+              <p className="text-brand-navy/80 leading-relaxed mb-8 italic">
+                "{t.text}"
+              </p>
+
+              <div className="mt-auto pt-6 border-t border-brand-navy/5 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-brand-navy/5 flex items-center justify-center font-bold text-brand-navy">
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <h4 className="font-bold text-brand-navy text-sm">{t.name}</h4>
+                  <p className="text-xs text-brand-navy/50">{t.role}</p>
+                  <p className="text-[10px] text-brand-gold mt-1 font-bold">{t.date}</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-black text-lg uppercase tracking-wider">{testimonial.author}</h4>
-                <p className="text-sm font-bold text-primary/60 uppercase tracking-widest">{testimonial.role}</p>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

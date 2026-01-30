@@ -6,20 +6,28 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "À qui s'adresse le coaching STAFF AFFAIRES ?",
-    answer: "Nos services sont conçus pour les entrepreneurs, les dirigeants de PME et les leaders d'équipes qui souhaitent franchir un cap dans leur performance, leur clarté stratégique et leur équilibre de vie.",
-  },
-  {
     question: "Quelle est la durée moyenne d'un accompagnement ?",
-    answer: "Tout dépend de vos objectifs. Nous proposons des parcours intensifs de 3, 4 ou 6 mois, ainsi que des interventions ponctuelles pour des besoins spécifiques.",
-  },
-  {
-    question: "Proposez-vous des séances à distance ?",
-    answer: "Oui, la majorité de nos coachings individuels et mentorats peuvent être réalisés en visioconférence. Pour les coachings d'équipe, nous privilégions le présentiel pour un impact maximal.",
+    answer: "Tout dépend de vos besoins et de vos objectifs. Je propose généralement des parcours d'accompagnement intensifs de 3, 4 ou 6 mois pour garantir des résultats concrets et durables.",
   },
   {
     question: "Comment se déroule la première séance ?",
-    answer: "Nous commençons toujours par un appel de découverte gratuit. Cela nous permet de comprendre vos enjeux, de vérifier si nous sommes alignés et de définir les bases de notre collaboration.",
+    answer: "Nous commençons par un entretien de découverte offert. Cet échange nous permet de faire le point sur votre situation, vos enjeux et de vérifier si mon approche correspond à vos attentes avant de définir un plan d'action.",
+  },
+  {
+    question: "Quel budget faut-il prévoir ?",
+    answer: "Le budget varie selon la nature de la mission (coaching individuel, formation en entreprise ou management externalisé) et sa durée. Un devis personnalisé vous sera remis après notre premier échange.",
+  },
+  {
+    question: "Quels résultats puis-je espérer ?",
+    answer: "Une meilleure posture de manager ou de vendeur, une augmentation de votre taux de transformation commerciale, une gestion du stress optimisée et, surtout, une performance alignée avec vos valeurs.",
+  },
+  {
+    question: "Le management externalisé, c'est quoi exactement ?",
+    answer: "C'est une solution flexible où j'interviens au sein de votre entreprise pour piloter ou co-piloter vos équipes commerciales, structurer vos processus et booster vos résultats sans le coût d'un recrutement fixe à plein temps.",
+  },
+  {
+    question: "L'approche AVR®, comment ça marche ?",
+    answer: "C'est mon approche propriétaire centrée sur l'Alignement, la Valeur et la Responsabilité. Elle permet de sortir des 'recettes magiques' pour se concentrer sur ce qui impacte réellement la performance : le mindset et l'énergie.",
   },
 ];
 
@@ -27,7 +35,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-transparent">
+    <section id="faq" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
           <motion.div
@@ -35,21 +43,22 @@ export function FAQ() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8">
-              QUESTIONS <br />
-              <span className="text-primary">FRÉQUENTES</span>
+            <span className="text-brand-gold font-bold text-sm uppercase tracking-widest">FAQ</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-bold text-brand-navy mt-4 mb-8">
+              Questions <br />
+              <span className="text-brand-gold italic">Fréquentes</span>
             </h2>
-            <p className="text-xl text-muted-foreground font-medium mb-12 max-w-md">
-              Tout ce que vous devez savoir sur nos méthodes d'accompagnement et notre expertise.
+            <p className="text-xl text-brand-navy/60 mb-12 max-w-md">
+              Tout ce que vous devez savoir sur mes méthodes d'accompagnement et mon expertise.
             </p>
-            <div className="bg-primary/5 p-8 rounded-3xl border border-primary/10">
-              <h4 className="font-black text-xl mb-4 tracking-tight">Besoin d'en savoir plus ?</h4>
-              <p className="text-muted-foreground mb-6 font-medium">
-                Si vous ne trouvez pas votre réponse ici, n'hésitez pas à nous contacter directement.
+            <div className="bg-brand-offwhite p-8 rounded-3xl border border-brand-navy/5">
+              <h4 className="font-bold text-xl mb-4 text-brand-navy">Besoin d'en savoir plus ?</h4>
+              <p className="text-brand-navy/60 mb-6">
+                Si vous ne trouvez pas votre réponse ici, n'hésitez pas à me contacter directement.
               </p>
-              <button className="text-primary font-black uppercase tracking-widest text-sm hover:underline">
-                Contactez-nous →
-              </button>
+              <Button asChild className="bg-brand-navy text-white hover:bg-brand-navy/90 rounded-full px-8">
+                <a href="#contact">Me contacter</a>
+              </Button>
             </div>
           </motion.div>
 
@@ -61,16 +70,16 @@ export function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="border-b border-gray-100"
+                className="border-b border-brand-navy/5"
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   className="w-full py-6 flex items-center justify-between text-left group"
                 >
-                  <span className={`text-xl font-bold tracking-tight transition-colors ${openIndex === index ? 'text-primary' : 'text-foreground group-hover:text-primary/70'}`}>
+                  <span className={`text-lg font-bold transition-colors ${openIndex === index ? 'text-brand-gold' : 'text-brand-navy group-hover:text-brand-gold'}`}>
                     {faq.question}
                   </span>
-                  <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all ${openIndex === index ? 'bg-primary border-primary text-white rotate-180' : 'border-gray-200 text-gray-400 group-hover:border-primary/50 group-hover:text-primary'}`}>
+                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${openIndex === index ? 'bg-brand-gold border-brand-gold text-white rotate-180' : 'border-brand-navy/10 text-brand-navy/30 group-hover:border-brand-gold group-hover:text-brand-gold'}`}>
                     {openIndex === index ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>
@@ -83,7 +92,7 @@ export function FAQ() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-6 text-muted-foreground font-medium leading-relaxed">
+                      <p className="pb-6 text-brand-navy/60 leading-relaxed">
                         {faq.answer}
                       </p>
                     </motion.div>
