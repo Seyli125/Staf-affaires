@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Facebook, Linkedin, Mail, MapPin, ArrowUpRight, ShieldCheck, Globe } from "lucide-react";
 

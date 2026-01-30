@@ -1,14 +1,14 @@
-import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { Brands } from "@/components/Brands";
-import { Services } from "@/components/Services";
-import { Features } from "@/components/Features";
-import { VideoSection } from "@/components/VideoSection";
-import { Testimonials } from "@/components/Testimonials";
-import { Timeline } from "@/components/Timeline";
-import { FAQ } from "@/components/FAQ";
-import { Footer } from "@/components/Footer";
-import { BookingSection } from "@/components/BookingSection";
+import { Navbar } from "../components/Navbar";
+import { Hero } from "../components/Hero";
+import { Brands } from "../components/Brands";
+import { Services } from "../components/Services";
+import { Features } from "../components/Features";
+import { VideoSection } from "../components/VideoSection";
+import { Testimonials } from "../components/Testimonials";
+import { Timeline } from "../components/Timeline";
+import { FAQ } from "../components/FAQ";
+import { Footer } from "../components/Footer";
+import { BookingSection } from "../components/BookingSection";
 
 export default function Home() {
   return (
