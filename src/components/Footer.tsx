@@ -122,46 +122,51 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Big Brand Stamp */}
-        <div className="relative mb-12">
-          <div className="absolute inset-0 flex items-center" aria-hidden="true">
-            <div className="w-full border-t border-white/5"></div>
-          </div>
-          <div className="relative flex justify-center">
-            <span className="bg-brand-navy px-8 text-[15vw] font-black text-white/[0.02] uppercase leading-none select-none tracking-tighter">
-              STAF
-            </span>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-white/10">
-          <div className="flex items-center gap-8">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">
-              © {new Date().getFullYear()} STAF AFFAIRES
-            </p>
-            <div className="h-4 w-px bg-white/10 hidden md:block" />
-            <div className="flex items-center gap-6">
-              <Image 
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
-                alt="STAF AFFAIRES"
-                width={180}
-                height={54}
-                className="h-12 w-auto object-contain"
-              />
-              <div className="h-4 w-px bg-white/10 hidden md:block" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 whitespace-nowrap">Certifié RNCP & PNL</span>
+          {/* Big Brand Stamp */}
+          <div className="relative mb-12">
+            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+              <div className="w-full border-t border-white/5"></div>
+            </div>
+            <div className="relative flex justify-center">
+              <span className="bg-brand-navy px-8 text-[15vw] font-black text-white/[0.02] uppercase leading-none select-none tracking-tighter">
+                STAF
+              </span>
             </div>
           </div>
-          
-          <div className="flex items-center gap-6">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
-              Conçu pour l'excellence
-            </span>
-            <div className="w-8 h-px bg-brand-orange/30" />
+
+          {/* Bottom Bar */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-white/10">
+            <div className="flex items-center gap-12">
+              <Link href="/" className="shrink-0">
+                <Image 
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
+                  alt="Logo STAF AFFAIRES"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity"
+                />
+              </Link>
+              <div className="h-4 w-px bg-white/10 hidden md:block" />
+              <div className="flex flex-col gap-1">
+                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">
+                  © {new Date().getFullYear()} STAF AFFAIRES
+                </p>
+                <div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-[0.3em] text-white/20">
+                  <ShieldCheck className="w-3 h-3 text-brand-orange" />
+                  <span>Certifié RNCP Niveau 6 & PNL</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-6">
+              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">
+                Performance & Sens en Équilibre
+              </span>
+              <div className="w-8 h-px bg-brand-orange/30" />
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
-  );
-}
+      </footer>
+    );
+  }
+

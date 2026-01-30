@@ -51,30 +51,30 @@ export function FAQ() {
             </span>
           </div>
           
-            <h2 className="text-3xl md:text-5xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase mb-10">
+            <h2 className="text-4xl md:text-6xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase mb-10">
               Réponses <br />
               <span className="text-brand-orange">Sans Filtre.</span>
             </h2>
             
-            <p className="text-xl text-slate-500 font-medium leading-relaxed mb-12 max-w-md">
+            <p className="text-2xl text-slate-500 font-medium leading-relaxed mb-12 max-w-md">
               Parce que la clarté est la base de toute collaboration efficace. Tout ce que vous devez savoir avant de commencer.
             </p>
 
-            <div className="bg-brand-navy p-8 rounded-[32px] text-white shadow-3xl relative overflow-hidden group">
+            <div className="bg-brand-navy p-10 rounded-[40px] text-white shadow-3xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/20 blur-3xl -mr-16 -mt-16 transition-colors" />
-              <h4 className="font-black text-xl mb-4 uppercase tracking-tight">Une autre question ?</h4>
-              <p className="text-white/60 mb-8 font-medium leading-relaxed text-sm">
+              <h4 className="font-black text-2xl mb-4 uppercase tracking-tight">Une autre question ?</h4>
+              <p className="text-white/60 mb-8 font-medium leading-relaxed">
                 Votre situation est unique. Parlons-en directement pour lever tous vos doutes.
               </p>
               <Link href="/prendre-rendez-vous">
-                <button className="flex items-center gap-3 text-brand-orange font-black uppercase tracking-[0.2em] text-[10px] hover:text-white transition-colors group/link">
+                <button className="flex items-center gap-3 text-brand-orange font-black uppercase tracking-[0.2em] text-xs hover:text-white transition-colors group/link">
                   Réserver mon créneau <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                 </button>
               </Link>
             </div>
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -82,7 +82,7 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`rounded-[24px] border transition-all duration-500 ${
+              className={`rounded-[32px] border transition-all duration-500 ${
                 openIndex === index 
                 ? 'bg-slate-50 border-slate-100 shadow-lg' 
                 : 'bg-white border-transparent hover:border-slate-100'
@@ -90,19 +90,19 @@ export function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full p-6 flex items-center justify-between text-left group"
+                className="w-full p-8 flex items-center justify-between text-left group"
               >
-                <span className={`text-lg font-black uppercase tracking-tight transition-colors ${
+                <span className={`text-xl font-black uppercase tracking-tight transition-colors ${
                   openIndex === index ? 'text-brand-navy' : 'text-slate-500 group-hover:text-brand-navy'
                 }`}>
                   {faq.question}
                 </span>
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 ${
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${
                   openIndex === index 
                   ? 'bg-brand-navy text-white rotate-180' 
                   : 'bg-slate-50 text-slate-400 group-hover:bg-brand-orange/10 group-hover:text-brand-orange'
                 }`}>
-                  {openIndex === index ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                  {openIndex === index ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                 </div>
               </button>
               <AnimatePresence>
@@ -114,9 +114,9 @@ export function FAQ() {
                     transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-6">
-                      <div className="h-px w-10 bg-brand-orange/30 mb-6" />
-                      <p className="text-base text-slate-600 font-medium leading-relaxed">
+                    <div className="px-8 pb-8">
+                      <div className="h-px w-12 bg-brand-orange/30 mb-6" />
+                      <p className="text-lg text-slate-600 font-medium leading-relaxed">
                         {faq.answer}
                       </p>
                     </div>

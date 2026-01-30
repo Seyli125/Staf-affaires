@@ -148,17 +148,17 @@ export function BookingSection() {
           </motion.div>
         </div>
 
-          <div className="lg:col-span-2 space-y-8">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-brand-orange/5 p-8 rounded-[40px] border border-brand-orange/20"
-            >
-              <h4 className="text-xl font-black text-brand-navy mb-4 flex items-center gap-3">
-                <MessageSquare className="w-6 h-6 text-brand-orange" />
-                Pas de créneau disponible ?
-              </h4>
+        <div className="lg:col-span-2 space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-brand-gold/5 p-8 rounded-[40px] border border-brand-gold/20"
+          >
+            <h4 className="text-xl font-black text-brand-navy mb-4 flex items-center gap-3">
+              <MessageSquare className="w-6 h-6 text-brand-gold" />
+              Pas de créneau disponible ?
+            </h4>
             <p className="text-slate-600 mb-8 leading-relaxed">
               Si aucun horaire ne vous convient, n'attendez pas. Contactez Saïd directement via WhatsApp pour une réponse instantanée.
             </p>

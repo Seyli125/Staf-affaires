@@ -13,7 +13,9 @@ import {
   User,
   Building2,
   Phone,
-  ArrowLeft
+  ArrowLeft,
+  ShieldCheck,
+  Zap
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -50,6 +52,17 @@ export default function BookingPage() {
     }
   };
 
+  const WhatsAppButton = () => (
+    <a 
+      href="https://wa.me/33600000000" 
+      target="_blank" 
+      className="inline-flex items-center gap-2 bg-[#25D366]/10 text-[#25D366] px-4 py-2 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-[#25D366] hover:text-white transition-all group"
+    >
+      <MessageSquare className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" /> 
+      WhatsApp Direct
+    </a>
+  );
+
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
@@ -60,30 +73,36 @@ export default function BookingPage() {
           <div className="mb-12">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-brand-navy transition-colors mb-8 font-medium group"
+              className="inline-flex items-center gap-2 text-slate-400 hover:text-brand-navy transition-colors mb-8 font-bold uppercase tracking-[0.2em] text-[10px] group"
             >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Retour à l&apos;accueil
+              <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
+              Retour
             </Link>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <h1 className="text-4xl md:text-6xl font-black text-brand-navy mb-6 tracking-tighter uppercase leading-tight">
-                Prendre <span className="text-brand-orange">Rendez-vous</span>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center">
+                  <Zap className="w-4 h-4 text-brand-orange" />
+                </div>
+                <span className="text-brand-orange font-black uppercase tracking-[0.3em] text-[10px]">Session Stratégique Offerte</span>
+              </div>
+              <h1 className="text-3xl md:text-5xl font-black text-brand-navy mb-6 tracking-tighter uppercase leading-tight">
+                Engagez votre <span className="text-brand-orange">Transformation</span>
               </h1>
-              <p className="text-xl text-slate-600 max-w-2xl leading-relaxed">
-                Réservez votre consultation stratégique de 45 minutes avec Saïd Taaroust. Analysons ensemble vos objectifs de performance.
+              <p className="text-lg text-slate-600 max-w-2xl leading-relaxed font-medium">
+                Un échange privilégié de 45 minutes pour auditer vos processus, lever vos blocages et dessiner votre trajectoire de performance durable.
               </p>
             </motion.div>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-[40px] shadow-2xl shadow-brand-navy/10 border border-brand-navy/5 overflow-hidden">
+              <div className="bg-white rounded-[40px] shadow-[0_32px_64px_-12px_rgba(10,25,47,0.1)] border border-brand-navy/5 overflow-hidden">
                 {/* Progress Bar */}
-                <div className="h-2 bg-slate-100 w-full flex">
+                <div className="h-1.5 bg-slate-100 w-full flex">
                   <motion.div 
                     className="h-full bg-brand-orange" 
                     initial={{ width: "0%" }}
@@ -92,7 +111,7 @@ export default function BookingPage() {
                   />
                 </div>
 
-                <div className="p-8 md:p-12">
+                <div className="p-8 md:p-10">
                   <AnimatePresence mode="wait">
                     {step === 1 && (
                       <motion.div
@@ -102,75 +121,69 @@ export default function BookingPage() {
                         exit={{ opacity: 0, x: -20 }}
                       >
                         <div className="flex justify-between items-center mb-8">
-                          <h2 className="text-2xl font-bold text-brand-navy">Vos informations</h2>
-                          <a 
-                            href="https://wa.me/33600000000" 
-                            target="_blank" 
-                            className="flex items-center gap-2 text-[#25D366] font-bold text-sm hover:underline"
-                          >
-                            <MessageSquare className="w-4 h-4" /> WhatsApp direct
-                          </a>
+                          <h2 className="text-xl font-black text-brand-navy uppercase tracking-tight">Vos Coordonnées</h2>
+                          <WhatsAppButton />
                         </div>
                         <form onSubmit={handleNextStep} className="space-y-6">
                           <div className="grid md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                              <label className="text-sm font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                <User className="w-4 h-4" /> Prénom *
+                              <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                                <User className="w-3 h-3" /> Prénom *
                               </label>
                               <input 
                                 required
                                 type="text"
                                 value={formData.firstName}
                                 onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-brand-orange/20 focus:bg-white outline-none transition-all font-medium"
+                                className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-brand-orange/20 focus:bg-white outline-none transition-all font-bold text-sm"
                                 placeholder="Jean"
                               />
                             </div>
                             <div className="space-y-2">
-                              <label className="text-sm font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                <User className="w-4 h-4" /> Nom *
+                              <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                                <User className="w-3 h-3" /> Nom *
                               </label>
                               <input 
                                 required
                                 type="text"
                                 value={formData.lastName}
                                 onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-brand-orange/20 focus:bg-white outline-none transition-all font-medium"
+                                className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-brand-orange/20 focus:bg-white outline-none transition-all font-bold text-sm"
                                 placeholder="Dupont"
                               />
                             </div>
                           </div>
                           <div className="space-y-2">
-                            <label className="text-sm font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                              <Building2 className="w-4 h-4" /> Entreprise *
+                            <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                              <Building2 className="w-3 h-3" /> Entreprise *
                             </label>
                             <input 
                               required
                               type="text"
                               value={formData.company}
                               onChange={(e) => setFormData({...formData, company: e.target.value})}
-                              className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-brand-orange/20 focus:bg-white outline-none transition-all font-medium"
+                              className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-brand-orange/20 focus:bg-white outline-none transition-all font-bold text-sm"
                               placeholder="Votre société"
                             />
                           </div>
                           <div className="space-y-2">
-                            <label className="text-sm font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                              <Phone className="w-4 h-4" /> Téléphone
+                            <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                              <Phone className="w-3 h-3" /> Téléphone
                             </label>
                             <input 
                               type="tel"
                               value={formData.phone}
                               onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                              className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-brand-orange/20 focus:bg-white outline-none transition-all font-medium"
+                              className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 border-transparent focus:border-brand-orange/20 focus:bg-white outline-none transition-all font-bold text-sm"
                               placeholder="06 00 00 00 00"
                             />
                           </div>
-                          <Button 
+                          <button 
                             type="submit"
-                            className="w-full py-8 rounded-2xl bg-brand-navy text-white font-bold text-lg hover:scale-[1.02] transition-all shadow-xl shadow-brand-navy/20"
+                            className="w-full py-5 rounded-2xl bg-brand-navy text-white font-black uppercase tracking-widest text-[11px] hover:bg-brand-orange transition-all shadow-xl shadow-brand-navy/20 active:scale-95"
                           >
-                            Continuer vers le calendrier <ArrowRight className="ml-2 w-5 h-5" />
-                          </Button>
+                            Étape suivante <ArrowRight className="inline ml-2 w-4 h-4" />
+                          </button>
                         </form>
                       </motion.div>
                     )}
@@ -183,28 +196,19 @@ export default function BookingPage() {
                           exit={{ opacity: 0, x: -20 }}
                         >
                           <div className="flex items-center justify-between mb-8">
-                            <h2 className="text-2xl font-bold text-brand-navy">Choisissez une date</h2>
-                            <div className="flex items-center gap-4">
-                              <a 
-                                href="https://wa.me/33600000000" 
-                                target="_blank" 
-                                className="flex items-center gap-2 text-[#25D366] font-bold text-sm hover:underline"
-                              >
-                                <MessageSquare className="w-4 h-4" /> WhatsApp direct
-                              </a>
-                              <button onClick={() => setStep(1)} className="text-sm font-bold text-slate-400 hover:text-brand-navy transition-colors">Modifier mes infos</button>
-                            </div>
+                            <h2 className="text-xl font-black text-brand-navy uppercase tracking-tight">Disponibilités</h2>
+                            <WhatsAppButton />
                           </div>
                           
-                          <div className="bg-brand-navy rounded-3xl p-6 text-white mb-8">
+                          <div className="bg-brand-navy rounded-3xl p-6 text-white mb-8 border border-white/5">
                             <div className="flex justify-between items-center mb-6">
-                              <h3 className="font-bold">Janvier 2026</h3>
+                              <h3 className="font-black uppercase tracking-widest text-xs">Janvier 2026</h3>
                               <div className="flex gap-2">
-                                <button className="p-2 rounded-full hover:bg-white/10"><ChevronLeft className="w-5 h-5" /></button>
-                                <button className="p-2 rounded-full hover:bg-white/10"><ChevronRight className="w-5 h-5" /></button>
+                                <button className="p-2 rounded-full hover:bg-white/10 transition-colors"><ChevronLeft className="w-4 h-4" /></button>
+                                <button className="p-2 rounded-full hover:bg-white/10 transition-colors"><ChevronRight className="w-4 h-4" /></button>
                               </div>
                             </div>
-                            <div className="grid grid-cols-7 gap-2 mb-4 text-center text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                            <div className="grid grid-cols-7 gap-2 mb-4 text-center text-[8px] font-black text-white/30 uppercase tracking-[0.2em]">
                               {['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'].map(d => <div key={d}>{d}</div>)}
                             </div>
                             <div className="grid grid-cols-7 gap-2">
@@ -212,11 +216,11 @@ export default function BookingPage() {
                                 <button
                                   key={day}
                                   onClick={() => { setSelectedDate(day); setStep(3); }}
-                                  className={`aspect-square rounded-xl flex items-center justify-center text-sm font-bold transition-all ${
+                                  className={`aspect-square rounded-xl flex items-center justify-center text-[10px] font-black transition-all ${
                                     selectedDate === day 
                                     ? 'bg-brand-orange text-white' 
-                                    : 'hover:bg-white/10 text-white/80'
-                                  } ${day > 25 ? 'opacity-20 cursor-not-allowed' : ''}`}
+                                    : 'hover:bg-white/10 text-white/70'
+                                  } ${day > 25 ? 'opacity-10 cursor-not-allowed' : ''}`}
                                   disabled={day > 25}
                                 >
                                   {day}
@@ -224,6 +228,12 @@ export default function BookingPage() {
                               ))}
                             </div>
                           </div>
+                          <button 
+                            onClick={() => setStep(1)}
+                            className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-brand-navy transition-colors"
+                          >
+                            ← Modifier mes coordonnées
+                          </button>
                         </motion.div>
                       )}
 
@@ -234,80 +244,81 @@ export default function BookingPage() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -20 }}
                         >
-                          <div className="flex items-center justify-between mb-6">
-                            <button onClick={() => setStep(2)} className="flex items-center gap-2 text-sm text-slate-400 hover:text-brand-navy transition-colors">
-                              <ChevronLeft className="w-4 h-4" /> Retour au calendrier
-                            </button>
-                            <a 
-                              href="https://wa.me/33600000000" 
-                              target="_blank" 
-                              className="flex items-center gap-2 text-[#25D366] font-bold text-sm hover:underline"
-                            >
-                              <MessageSquare className="w-4 h-4" /> WhatsApp direct
-                            </a>
+                          <div className="flex items-center justify-between mb-8">
+                            <h2 className="text-xl font-black text-brand-navy uppercase tracking-tight">Créneaux Horaires</h2>
+                            <WhatsAppButton />
                           </div>
-                          <h2 className="text-2xl font-bold text-brand-navy mb-2">Choisir l&apos;heure</h2>
-                          <p className="text-slate-500 mb-8 font-medium">Pour le {selectedDate} Janvier 2026</p>
+                          
+                          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-orange mb-6">Le {selectedDate} Janvier 2026</p>
                           
                           <div className="grid grid-cols-2 gap-3">
                             {timeSlots.map(time => (
                               <button
                                 key={time}
                                 onClick={() => setSelectedTime(time)}
-                                className={`p-4 rounded-2xl border-2 transition-all flex items-center justify-center gap-3 font-bold ${
+                                className={`p-4 rounded-xl border-2 transition-all flex items-center justify-center gap-3 font-bold text-xs ${
                                   selectedTime === time 
-                                  ? 'border-brand-orange bg-brand-orange/5 text-brand-orange' 
+                                  ? 'border-brand-orange bg-brand-orange/5 text-brand-orange shadow-inner' 
                                   : 'border-slate-100 hover:border-brand-navy/20 text-brand-navy'
                                 }`}
                               >
-                                <Clock className="w-4 h-4" />
+                                <Clock className="w-3.5 h-3.5" />
                                 {time}
                               </button>
                             ))}
                           </div>
-                          <Button
-                            onClick={handleBooking}
-                            disabled={!selectedTime}
-                            className="w-full mt-10 py-8 bg-brand-navy text-white rounded-2xl font-bold text-lg hover:scale-[1.02] transition-all shadow-xl shadow-brand-navy/20 disabled:opacity-50"
-                          >
-                            Confirmer la réservation <ArrowRight className="ml-2 w-5 h-5" />
-                          </Button>
+                          
+                          <div className="flex flex-col gap-6 mt-10">
+                            <button
+                              onClick={handleBooking}
+                              disabled={!selectedTime}
+                              className="w-full py-5 bg-brand-navy text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-brand-orange transition-all shadow-xl shadow-brand-navy/20 disabled:opacity-50"
+                            >
+                              Finaliser le Rendez-vous
+                            </button>
+                            <button 
+                              onClick={() => setStep(2)}
+                              className="text-center text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-brand-navy transition-colors"
+                            >
+                              ← Retour au calendrier
+                            </button>
+                          </div>
                         </motion.div>
                       )}
 
                     {step === 4 && (
                       <motion.div
                         key="step4"
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="text-center py-12"
+                        className="text-center py-6"
                       >
-                        <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8">
-                          <CheckCircle2 className="w-12 h-12" />
+                        <div className="w-20 h-20 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center mx-auto mb-8">
+                          <CheckCircle2 className="w-10 h-10" />
                         </div>
-                        <h2 className="text-3xl font-black text-brand-navy mb-4">C&apos;est confirmé, {formData.firstName} !</h2>
-                        <p className="text-xl text-slate-600 mb-10 max-w-sm mx-auto leading-relaxed">
-                          Votre consultation est prévue pour le <strong>{selectedDate} Janvier à {selectedTime}</strong>.
+                        <h2 className="text-2xl font-black text-brand-navy uppercase tracking-tight mb-4">C'est confirmé, {formData.firstName} !</h2>
+                        <p className="text-base text-slate-600 mb-10 max-w-sm mx-auto leading-relaxed font-medium">
+                          Votre consultation stratégique est réservée pour le <span className="text-brand-navy font-black">{selectedDate} Janvier à {selectedTime}</span>.
                         </p>
-                        <div className="bg-slate-50 p-6 rounded-3xl mb-10 text-left space-y-3">
-                          <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">Récapitulatif</p>
+                        <div className="bg-slate-50 p-6 rounded-3xl mb-10 text-left space-y-4 border border-slate-100">
+                          <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Détails de la session</p>
                           <div className="flex justify-between items-center border-b border-slate-200 pb-3">
-                            <span className="text-slate-500 font-medium">Expert</span>
-                            <span className="text-brand-navy font-bold">Saïd Taaroust</span>
+                            <span className="text-[10px] font-bold text-slate-500 uppercase">Expert</span>
+                            <span className="text-xs font-black text-brand-navy">Saïd TAAROUST</span>
                           </div>
                           <div className="flex justify-between items-center border-b border-slate-200 pb-3">
-                            <span className="text-slate-500 font-medium">Durée</span>
-                            <span className="text-brand-navy font-bold">45 Minutes</span>
+                            <span className="text-[10px] font-bold text-slate-500 uppercase">Format</span>
+                            <span className="text-xs font-black text-brand-navy">Visioconférence Privée</span>
                           </div>
                           <div className="flex justify-between items-center">
-                            <span className="text-slate-500 font-medium">Lieu</span>
-                            <span className="text-brand-navy font-bold">Visioconférence (Lien envoyé par email)</span>
+                            <span className="text-[10px] font-bold text-slate-500 uppercase">Durée</span>
+                            <span className="text-xs font-black text-brand-navy">45 Minutes</span>
                           </div>
                         </div>
                         <Link href="/">
-                          <Button variant="outline" className="rounded-full px-10 py-6 font-bold border-2 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-all">
-                            Retourner au site
-                          </Button>
+                          <button className="rounded-full px-10 py-5 font-black uppercase tracking-widest text-[11px] bg-brand-navy text-white hover:bg-brand-orange transition-all shadow-xl active:scale-95">
+                            Retour au site
+                          </button>
                         </Link>
                       </motion.div>
                     )}
@@ -317,42 +328,44 @@ export default function BookingPage() {
             </div>
 
             <div className="space-y-8">
-              <div className="bg-brand-orange/5 p-8 rounded-[40px] border border-brand-orange/20 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
-                  <MessageSquare className="w-16 h-16" />
+              <div className="bg-brand-navy p-8 rounded-[40px] text-white relative overflow-hidden group shadow-2xl">
+                <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:rotate-12 transition-transform">
+                  <ShieldCheck className="w-20 h-20" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-navy mb-4 flex items-center gap-3">
-                  Urgence ?
+                <h3 className="text-lg font-black uppercase tracking-tight mb-4 flex items-center gap-3">
+                  Engagement Qualité
                 </h3>
-                <p className="text-slate-600 mb-8 leading-relaxed font-medium">
-                  Si aucun horaire ne vous convient ou si votre besoin est immédiat, contactez Saïd directement.
+                <p className="text-white/60 mb-8 leading-relaxed font-bold text-sm">
+                  Chaque session est soumise à une totale confidentialité. Saïd Taaroust est certifié RNCP Niveau 6 & PNL.
+                </p>
+                <div className="space-y-4">
+                  {[
+                    "Analyse personnalisée",
+                    "Conseils activables",
+                    "Discrétion absolue"
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-white/80">
+                      <div className="w-5 h-5 rounded-lg bg-brand-orange flex items-center justify-center">
+                        <CheckCircle2 className="w-3 h-3 text-white" />
+                      </div>
+                      {text}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-slate-50 p-8 rounded-[40px] border border-slate-100">
+                <h4 className="text-brand-navy font-black mb-6 uppercase tracking-widest text-[10px]">Besoin d'aide ?</h4>
+                <p className="text-xs text-slate-500 font-bold leading-relaxed mb-6">
+                  Une question sur votre accompagnement ou un besoin urgent ?
                 </p>
                 <a 
                   href="https://wa.me/33600000000" 
                   target="_blank" 
-                  className="w-full py-5 bg-[#25D366] text-white rounded-2xl font-bold flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-[#25D366]/30 transition-all transform hover:-translate-y-1"
+                  className="w-full py-4 bg-[#25D366] text-white rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-3 hover:shadow-xl hover:shadow-[#25D366]/20 transition-all active:scale-95"
                 >
-                  WhatsApp Instantané <ArrowRight className="w-5 h-5" />
+                  Contacter via WhatsApp
                 </a>
-              </div>
-
-              <div className="p-6">
-                <h4 className="text-brand-navy font-black mb-8 uppercase tracking-widest text-xs">Préparer votre appel</h4>
-                <ul className="space-y-6">
-                  {[
-                    "Listez vos 3 défis majeurs",
-                    "Préparez vos indicateurs clés",
-                    "Assurez-vous d&apos;être au calme",
-                    "Prévoyez de quoi noter"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-4">
-                      <div className="w-6 h-6 rounded-full bg-brand-navy/5 text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
-                      </div>
-                      <span className="text-slate-600 font-medium leading-tight text-sm">{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </div>
@@ -360,24 +373,6 @@ export default function BookingPage() {
       </div>
 
       <Footer />
-
-      {/* Persistent Floating WhatsApp */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="fixed bottom-8 right-8 z-50"
-      >
-        <a 
-          href="https://wa.me/33600000000" 
-          target="_blank"
-          className="group relative flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 transition-transform"
-        >
-          <MessageSquare className="w-8 h-8" />
-          <span className="absolute right-full mr-4 px-4 py-2 bg-white text-brand-navy text-xs font-black uppercase tracking-widest rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-slate-100">
-            Besoin d'aide ? WhatsApp direct
-          </span>
-        </a>
-      </motion.div>
     </main>
   );
 }
