@@ -38,14 +38,14 @@ export function Navbar() {
           {/* Left: Logo */}
           <div className="flex justify-start items-center -translate-y-6">
             <Link href="/" className="flex items-center group">
-                <Image 
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
-                  alt="STAFF AFFAIRES"
-                  width={400}
-                  height={120}
-                  className="h-24 md:h-32 w-auto object-contain transition-all duration-300 brightness-150 contrast-125"
-                  priority
-                />
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
+                alt="STAFF AFFAIRES"
+                width={400}
+                height={120}
+                className="h-24 md:h-32 w-auto object-contain transition-all duration-300"
+                priority
+              />
             </Link>
           </div>
 
