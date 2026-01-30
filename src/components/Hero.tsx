@@ -38,7 +38,7 @@ export function Hero() {
         {/* Main Person Image */}
         <motion.div
           style={{ y: yImage, opacity: opacityImage, scale: scaleImage }}
-          className="relative w-full h-full max-w-4xl z-10 flex items-center justify-center mt-20"
+          className="relative w-full h-[85%] max-w-4xl z-10 flex items-center justify-center mt-24"
         >
           <div 
             className="relative w-full h-full flex items-center justify-center"
