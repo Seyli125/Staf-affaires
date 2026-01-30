@@ -28,13 +28,13 @@ export function Navbar() {
 
   return (
     <nav 
-className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-isScrolled 
-? "bg-white/80 backdrop-blur-md py-1 shadow-sm" 
-: "bg-transparent py-2"
-}`}
->
-<div className="container mx-auto px-4 md:px-6 flex justify-between items-center relative h-full">
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled 
+          ? "bg-white/80 backdrop-blur-md py-4 shadow-sm" 
+          : "bg-transparent py-6"
+      }`}
+    >
+      <div className="w-full px-4 md:px-8 flex justify-between items-center relative h-full">
         {/* Left: Logo */}
         <div className="flex justify-start items-center">
           <Link href="/" className="flex items-center group">
@@ -50,7 +50,7 @@ isScrolled
         </div>
 
             {/* Center: Desktop Nav - Absolute centering for pixel-perfect alignment */}
-            <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-10">
+            <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-10 -translate-y-1">
               {navItems.map((item) => (
                 <Link 
                   key={item.name} 
@@ -64,7 +64,7 @@ isScrolled
             </div>
 
             {/* Right: Actions */}
-            <div className="flex justify-end items-center gap-6">
+            <div className="flex justify-end items-center gap-6 -translate-y-1">
               <div className="hidden lg:flex items-center gap-6">
                 <Link href="/signin" className="text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-all">
                   Sign In
