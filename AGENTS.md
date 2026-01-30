@@ -22,6 +22,8 @@ STAFF AFFAIRES is a high-end B2B coaching website designed for Saïd Taaroust. T
 - Visual fidelity to the provided reference image
 - French language (professional and action-oriented)
 - High contrast and distinctive typography (Black/Bold headings)
+- Prefer high-quality, sharp visual assets for hero sections
+- Maintain generous spacing between hero imagery and navigation elements
 
 ## Project Guidelines
 - Use `framer-motion` for all complex animations
