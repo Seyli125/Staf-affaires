@@ -36,55 +36,52 @@ export function Features() {
       
       <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-16">
         {/* Left: Visual Impact */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="relative group"
-        >
-          <div className="relative aspect-[4/5] rounded-[60px] overflow-hidden shadow-[0_32px_64px_-12px_rgba(10,25,47,0.2)] border-[12px] border-white z-10">
-            <Image 
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/SA2_LE_upscale_prime-1769783680736.jpg?width=8000&height=8000&resize=contain"
-              alt="Saïd TAAROUST - Expert Performance B2B"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-1000"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent opacity-40" />
-          </div>
-          
-          {/* Experience Badge - Reduced size and volume */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.5, type: "spring" }}
-            className="absolute -bottom-8 -right-8 bg-brand-orange p-8 rounded-[40px] text-white shadow-2xl z-20 hidden md:block max-w-[260px] border-4 border-white"
+            className="relative group"
           >
-            <div className="flex flex-col gap-1 text-center">
-              <span className="text-5xl font-black italic tracking-tighter leading-none mb-2">25+</span>
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] leading-tight opacity-90">
-                Années d'expertise B2B au service des leaders.
-              </span>
+            <div className="relative aspect-[4/5] rounded-[60px] overflow-hidden shadow-[0_32px_64px_-12px_rgba(10,25,47,0.2)] border-[12px] border-white z-10">
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/SA2_LE_upscale_prime-1769783680736.jpg?width=8000&height=8000&resize=contain"
+                alt="Saïd TAAROUST - Expert Performance B2B"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-1000"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent opacity-40" />
             </div>
-          </motion.div>
-
-              {/* RNCP Badge - Circular Integration */}
-              <div className="absolute -top-12 -left-12 z-20">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  className="relative w-36 h-36 rounded-full bg-white shadow-2xl border-4 border-brand-orange/20 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-500"
-                >
+            
+            {/* RNCP Badge - The "Beau Rond" Perfect Integration */}
+            <div className="absolute -top-16 left-1/2 -translate-x-1/2 md:-top-20 md:-left-20 z-40">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 40 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", damping: 12, stiffness: 100 }}
+                className="relative w-52 h-52 rounded-full bg-brand-orange/5 flex items-center justify-center group-hover:scale-105 transition-transform duration-700 overflow-hidden shadow-[0_20px_50px_rgba(10,25,47,0.1)] border-2 border-brand-orange/10"
+              >
+                {/* Clean background match */}
+                <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
+                
+                <div className="relative w-full h-full flex items-center justify-center p-4">
                   <Image 
                     src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1769789503636.png?width=8000&height=8000&resize=contain"
                     alt="Certification RNCP Niveau 6"
-                    width={140}
-                    height={140}
-                    className="w-full h-full object-contain"
+                    width={500}
+                    height={500}
+                    className="w-[90%] h-[90%] object-contain mix-blend-multiply scale-110 drop-shadow-md"
                   />
-                </motion.div>
-              </div>
+                </div>
+                
+                {/* Subtle rotating glow */}
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 rounded-full border border-dashed border-brand-orange/20 pointer-events-none -m-1"
+                />
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Right: Narrative Content */}
