@@ -101,7 +101,16 @@ export default function BookingPage() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
                       >
-                        <h2 className="text-2xl font-bold text-brand-navy mb-8">Vos informations</h2>
+                        <div className="flex justify-between items-center mb-8">
+                          <h2 className="text-2xl font-bold text-brand-navy">Vos informations</h2>
+                          <a 
+                            href="https://wa.me/33600000000" 
+                            target="_blank" 
+                            className="flex items-center gap-2 text-[#25D366] font-bold text-sm hover:underline"
+                          >
+                            <MessageSquare className="w-4 h-4" /> WhatsApp direct
+                          </a>
+                        </div>
                         <form onSubmit={handleNextStep} className="space-y-6">
                           <div className="grid md:grid-cols-2 gap-6">
                             <div className="space-y-2">
@@ -166,87 +175,105 @@ export default function BookingPage() {
                       </motion.div>
                     )}
 
-                    {step === 2 && (
-                      <motion.div
-                        key="step2"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <div className="flex items-center justify-between mb-8">
-                          <h2 className="text-2xl font-bold text-brand-navy">Choisissez une date</h2>
-                          <button onClick={() => setStep(1)} className="text-sm font-bold text-slate-400 hover:text-brand-navy transition-colors">Modifier mes infos</button>
-                        </div>
-                        
-                        <div className="bg-brand-navy rounded-3xl p-6 text-white mb-8">
-                          <div className="flex justify-between items-center mb-6">
-                            <h3 className="font-bold">Janvier 2026</h3>
-                            <div className="flex gap-2">
-                              <button className="p-2 rounded-full hover:bg-white/10"><ChevronLeft className="w-5 h-5" /></button>
-                              <button className="p-2 rounded-full hover:bg-white/10"><ChevronRight className="w-5 h-5" /></button>
+                      {step === 2 && (
+                        <motion.div
+                          key="step2"
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                        >
+                          <div className="flex items-center justify-between mb-8">
+                            <h2 className="text-2xl font-bold text-brand-navy">Choisissez une date</h2>
+                            <div className="flex items-center gap-4">
+                              <a 
+                                href="https://wa.me/33600000000" 
+                                target="_blank" 
+                                className="flex items-center gap-2 text-[#25D366] font-bold text-sm hover:underline"
+                              >
+                                <MessageSquare className="w-4 h-4" /> WhatsApp direct
+                              </a>
+                              <button onClick={() => setStep(1)} className="text-sm font-bold text-slate-400 hover:text-brand-navy transition-colors">Modifier mes infos</button>
                             </div>
                           </div>
-                          <div className="grid grid-cols-7 gap-2 mb-4 text-center text-[10px] font-bold text-white/40 uppercase tracking-widest">
-                            {['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'].map(d => <div key={d}>{d}</div>)}
+                          
+                          <div className="bg-brand-navy rounded-3xl p-6 text-white mb-8">
+                            <div className="flex justify-between items-center mb-6">
+                              <h3 className="font-bold">Janvier 2026</h3>
+                              <div className="flex gap-2">
+                                <button className="p-2 rounded-full hover:bg-white/10"><ChevronLeft className="w-5 h-5" /></button>
+                                <button className="p-2 rounded-full hover:bg-white/10"><ChevronRight className="w-5 h-5" /></button>
+                              </div>
+                            </div>
+                            <div className="grid grid-cols-7 gap-2 mb-4 text-center text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                              {['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'].map(d => <div key={d}>{d}</div>)}
+                            </div>
+                            <div className="grid grid-cols-7 gap-2">
+                              {days.map(day => (
+                                <button
+                                  key={day}
+                                  onClick={() => { setSelectedDate(day); setStep(3); }}
+                                  className={`aspect-square rounded-xl flex items-center justify-center text-sm font-bold transition-all ${
+                                    selectedDate === day 
+                                    ? 'bg-brand-orange text-white' 
+                                    : 'hover:bg-white/10 text-white/80'
+                                  } ${day > 25 ? 'opacity-20 cursor-not-allowed' : ''}`}
+                                  disabled={day > 25}
+                                >
+                                  {day}
+                                </button>
+                              ))}
+                            </div>
                           </div>
-                          <div className="grid grid-cols-7 gap-2">
-                            {days.map(day => (
+                        </motion.div>
+                      )}
+
+                      {step === 3 && (
+                        <motion.div
+                          key="step3"
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                        >
+                          <div className="flex items-center justify-between mb-6">
+                            <button onClick={() => setStep(2)} className="flex items-center gap-2 text-sm text-slate-400 hover:text-brand-navy transition-colors">
+                              <ChevronLeft className="w-4 h-4" /> Retour au calendrier
+                            </button>
+                            <a 
+                              href="https://wa.me/33600000000" 
+                              target="_blank" 
+                              className="flex items-center gap-2 text-[#25D366] font-bold text-sm hover:underline"
+                            >
+                              <MessageSquare className="w-4 h-4" /> WhatsApp direct
+                            </a>
+                          </div>
+                          <h2 className="text-2xl font-bold text-brand-navy mb-2">Choisir l&apos;heure</h2>
+                          <p className="text-slate-500 mb-8 font-medium">Pour le {selectedDate} Janvier 2026</p>
+                          
+                          <div className="grid grid-cols-2 gap-3">
+                            {timeSlots.map(time => (
                               <button
-                                key={day}
-                                onClick={() => { setSelectedDate(day); setStep(3); }}
-                                className={`aspect-square rounded-xl flex items-center justify-center text-sm font-bold transition-all ${
-                                  selectedDate === day 
-                                  ? 'bg-brand-orange text-white' 
-                                  : 'hover:bg-white/10 text-white/80'
-                                } ${day > 25 ? 'opacity-20 cursor-not-allowed' : ''}`}
-                                disabled={day > 25}
+                                key={time}
+                                onClick={() => setSelectedTime(time)}
+                                className={`p-4 rounded-2xl border-2 transition-all flex items-center justify-center gap-3 font-bold ${
+                                  selectedTime === time 
+                                  ? 'border-brand-orange bg-brand-orange/5 text-brand-orange' 
+                                  : 'border-slate-100 hover:border-brand-navy/20 text-brand-navy'
+                                }`}
                               >
-                                {day}
+                                <Clock className="w-4 h-4" />
+                                {time}
                               </button>
                             ))}
                           </div>
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {step === 3 && (
-                      <motion.div
-                        key="step3"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <button onClick={() => setStep(2)} className="flex items-center gap-2 text-sm text-slate-400 hover:text-brand-navy transition-colors mb-6">
-                          <ChevronLeft className="w-4 h-4" /> Retour au calendrier
-                        </button>
-                        <h2 className="text-2xl font-bold text-brand-navy mb-2">Choisir l&apos;heure</h2>
-                        <p className="text-slate-500 mb-8 font-medium">Pour le {selectedDate} Janvier 2026</p>
-                        
-                        <div className="grid grid-cols-2 gap-3">
-                          {timeSlots.map(time => (
-                            <button
-                              key={time}
-                              onClick={() => setSelectedTime(time)}
-                              className={`p-4 rounded-2xl border-2 transition-all flex items-center justify-center gap-3 font-bold ${
-                                selectedTime === time 
-                                ? 'border-brand-orange bg-brand-orange/5 text-brand-orange' 
-                                : 'border-slate-100 hover:border-brand-navy/20 text-brand-navy'
-                              }`}
-                            >
-                              <Clock className="w-4 h-4" />
-                              {time}
-                            </button>
-                          ))}
-                        </div>
-                        <Button
-                          onClick={handleBooking}
-                          disabled={!selectedTime}
-                          className="w-full mt-10 py-8 bg-brand-navy text-white rounded-2xl font-bold text-lg hover:scale-[1.02] transition-all shadow-xl shadow-brand-navy/20 disabled:opacity-50"
-                        >
-                          Confirmer la réservation <ArrowRight className="ml-2 w-5 h-5" />
-                        </Button>
-                      </motion.div>
-                    )}
+                          <Button
+                            onClick={handleBooking}
+                            disabled={!selectedTime}
+                            className="w-full mt-10 py-8 bg-brand-navy text-white rounded-2xl font-bold text-lg hover:scale-[1.02] transition-all shadow-xl shadow-brand-navy/20 disabled:opacity-50"
+                          >
+                            Confirmer la réservation <ArrowRight className="ml-2 w-5 h-5" />
+                          </Button>
+                        </motion.div>
+                      )}
 
                     {step === 4 && (
                       <motion.div

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Linkedin, Mail, MapPin, ArrowUpRight, ShieldCheck, Globe } from "lucide-react";
 
 const footerLinks = {
@@ -29,7 +30,7 @@ export function Footer() {
   return (
     <footer className="bg-brand-navy text-white pt-32 pb-12 relative overflow-hidden">
       {/* Background Decorative Element */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-brand-orange/50 to-transparent" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
@@ -37,10 +38,14 @@ export function Footer() {
           {/* Brand Identity Column */}
           <div className="lg:col-span-5 space-y-10">
             <Link href="/" className="inline-block group">
-              <h3 className="text-3xl font-black tracking-tighter uppercase leading-none">
-                STAF <span className="text-brand-gold">AFFAIRES</span>
-              </h3>
-              <p className="text-[10px] font-black tracking-[0.4em] text-white/40 mt-2 uppercase transition-colors group-hover:text-brand-orange">
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
+                alt="STAF AFFAIRES"
+                width={200}
+                height={60}
+                className="h-16 md:h-20 w-auto object-contain brightness-0 invert"
+              />
+              <p className="text-[10px] font-black tracking-[0.4em] text-white/40 mt-4 uppercase transition-colors group-hover:text-brand-orange">
                 Performance & Sens
               </p>
             </Link>
@@ -51,10 +56,10 @@ export function Footer() {
             </p>
 
             <div className="flex gap-4">
-              <Link href="https://www.linkedin.com/in/said-taaroust-staf-affaires/" target="_blank" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all transform hover:-translate-y-1">
+              <Link href="https://www.linkedin.com/in/said-taaroust-staf-affaires/" target="_blank" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-all transform hover:-translate-y-1">
                 <Linkedin className="w-5 h-5" />
               </Link>
-              <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all transform hover:-translate-y-1">
+              <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-all transform hover:-translate-y-1">
                 <Facebook className="w-5 h-5" />
               </Link>
             </div>
@@ -62,7 +67,7 @@ export function Footer() {
 
           {/* Quick Links Column */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm font-black uppercase tracking-widest text-brand-gold mb-10">Stratégie</h4>
+            <h4 className="text-sm font-black uppercase tracking-widest text-brand-orange mb-10">Stratégie</h4>
             <ul className="space-y-4">
               {footerLinks.navigation.map((link) => (
                 <li key={link.name}>
@@ -77,7 +82,7 @@ export function Footer() {
 
           {/* Legal Column */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm font-black uppercase tracking-widest text-brand-gold mb-10">Engagement</h4>
+            <h4 className="text-sm font-black uppercase tracking-widest text-brand-orange mb-10">Engagement</h4>
             <ul className="space-y-4">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
@@ -92,7 +97,7 @@ export function Footer() {
 
           {/* Contact Column */}
           <div className="lg:col-span-3">
-            <h4 className="text-sm font-black uppercase tracking-widest text-brand-gold mb-10">Parlons-en</h4>
+            <h4 className="text-sm font-black uppercase tracking-widest text-brand-orange mb-10">Parlons-en</h4>
             <div className="bg-white/5 p-8 rounded-[32px] border border-white/10 space-y-6">
               {footerLinks.contact.map((item) => (
                 <Link 
@@ -146,7 +151,7 @@ export function Footer() {
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
               Conçu pour l'excellence
             </span>
-            <div className="w-8 h-px bg-brand-gold/30" />
+            <div className="w-8 h-px bg-brand-orange/30" />
           </div>
         </div>
       </div>

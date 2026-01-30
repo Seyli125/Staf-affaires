@@ -51,27 +51,27 @@ export function FAQ() {
             </span>
           </div>
           
-          <h2 className="text-5xl md:text-8xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase mb-10">
-            Réponses <br />
-            <span className="text-brand-orange">Sans Filtre.</span>
-          </h2>
-          
-          <p className="text-2xl text-slate-500 font-medium leading-relaxed mb-12 max-w-md">
-            Parce que la clarté est la base de toute collaboration efficace. Tout ce que vous devez savoir avant de commencer.
-          </p>
-
-          <div className="bg-brand-navy p-10 rounded-[40px] text-white shadow-3xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/20 blur-3xl -mr-16 -mt-16 group-hover:bg-brand-orange/20 transition-colors" />
-            <h4 className="font-black text-2xl mb-4 uppercase tracking-tight">Une autre question ?</h4>
-            <p className="text-white/60 mb-8 font-medium leading-relaxed">
-              Votre situation est unique. Parlons-en directement pour lever tous vos doutes.
+            <h2 className="text-4xl md:text-6xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase mb-10">
+              Réponses <br />
+              <span className="text-brand-orange">Sans Filtre.</span>
+            </h2>
+            
+            <p className="text-2xl text-slate-500 font-medium leading-relaxed mb-12 max-w-md">
+              Parce que la clarté est la base de toute collaboration efficace. Tout ce que vous devez savoir avant de commencer.
             </p>
-            <Link href="/prendre-rendez-vous">
-              <button className="flex items-center gap-3 text-brand-gold font-black uppercase tracking-[0.2em] text-xs hover:text-white transition-colors group/link">
-                Réserver mon créneau <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-              </button>
-            </Link>
-          </div>
+
+            <div className="bg-brand-navy p-10 rounded-[40px] text-white shadow-3xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/20 blur-3xl -mr-16 -mt-16 transition-colors" />
+              <h4 className="font-black text-2xl mb-4 uppercase tracking-tight">Une autre question ?</h4>
+              <p className="text-white/60 mb-8 font-medium leading-relaxed">
+                Votre situation est unique. Parlons-en directement pour lever tous vos doutes.
+              </p>
+              <Link href="/prendre-rendez-vous">
+                <button className="flex items-center gap-3 text-brand-orange font-black uppercase tracking-[0.2em] text-xs hover:text-white transition-colors group/link">
+                  Réserver mon créneau <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+            </div>
         </motion.div>
 
         <div className="space-y-6">

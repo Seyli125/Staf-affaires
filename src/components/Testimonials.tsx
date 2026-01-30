@@ -73,7 +73,7 @@ export function Testimonials() {
             <div className="flex flex-col">
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-brand-gold text-brand-gold" />
+                  <Star key={i} className="w-4 h-4 fill-brand-orange text-brand-orange" />
                 ))}
               </div>
               <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Évaluation LinkedIn 5/5</span>
@@ -84,11 +84,11 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-8xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase"
+            className="text-4xl md:text-6xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase"
           >
             L'excellence <br />
-            <span className="text-brand-gold italic">reconnue</span> par <br />
-            <span className="text-brand-orange">vos pairs.</span>
+            <span className="text-brand-orange italic">reconnue</span> par <br />
+            <span className="text-brand-navy">vos pairs.</span>
           </motion.h2>
         </div>
         

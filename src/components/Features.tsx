@@ -32,9 +32,9 @@ export function Features() {
   return (
     <section id="features" className="container mx-auto px-6 relative overflow-hidden">
       {/* Decorative background element */}
-      <div className="absolute top-1/2 left-0 w-[800px] h-[800px] bg-brand-orange/5 blur-[120px] -translate-y-1/2 -translate-x-1/2 rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-brand-orange/5 blur-[120px] -translate-y-1/2 -translate-x-1/2 rounded-full pointer-events-none" />
       
-      <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-center mb-32">
+      <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-16">
         {/* Left: Visual Impact */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -42,36 +42,35 @@ export function Features() {
           viewport={{ once: true }}
           className="relative group"
         >
-          <div className="relative aspect-[4/5] rounded-[80px] overflow-hidden shadow-[0_48px_96px_-12px_rgba(10,25,47,0.3)] border-[16px] border-white z-10">
+          <div className="relative aspect-[4/5] rounded-[60px] overflow-hidden shadow-[0_32px_64px_-12px_rgba(10,25,47,0.2)] border-[12px] border-white z-10">
             <Image 
               src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/SA2_LE_upscale_prime-1769783680736.jpg?width=8000&height=8000&resize=contain"
-              alt="Saïd Taaroust - Expert Performance B2B"
+              alt="Saïd TAAROUST - Expert Performance B2B"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-1000"
             />
-            {/* Dark overlay for text readability if needed */}
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent opacity-40" />
           </div>
           
-          {/* Experience Badge */}
+          {/* Experience Badge - Reduced size and volume */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, type: "spring" }}
-            className="absolute -bottom-12 -right-12 bg-brand-gold p-12 rounded-[50px] text-white shadow-3xl z-20 hidden md:block max-w-[320px] border-8 border-white"
+            className="absolute -bottom-8 -right-8 bg-brand-orange p-8 rounded-[40px] text-white shadow-2xl z-20 hidden md:block max-w-[260px] border-4 border-white"
           >
-            <div className="flex flex-col gap-1">
-              <span className="text-6xl font-black italic tracking-tighter leading-none mb-2">40</span>
-              <span className="text-xs font-black uppercase tracking-[0.2em] leading-tight opacity-90">
-                Années d'expertise cumulée à votre service.
+            <div className="flex flex-col gap-1 text-center">
+              <span className="text-5xl font-black italic tracking-tighter leading-none mb-2">25+</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] leading-tight opacity-90">
+                Années d'expertise B2B au service des leaders.
               </span>
             </div>
           </motion.div>
 
           {/* Quote mark decoration */}
           <div className="absolute -top-10 -left-10 text-brand-orange/10 z-0">
-            <Quote className="w-48 h-48" />
+            <Quote className="w-32 h-32" />
           </div>
         </motion.div>
 
@@ -82,39 +81,40 @@ export function Features() {
           viewport={{ once: true }}
           className="relative z-10"
         >
-          <div className="mb-12">
+          <div className="mb-8">
             <motion.div 
               initial={{ width: 0 }}
-              whileInView={{ width: 80 }}
+              whileInView={{ width: 60 }}
               viewport={{ once: true }}
-              className="h-1.5 bg-brand-orange mb-8"
+              className="h-1.5 bg-brand-orange mb-6"
             />
-            <span className="text-brand-orange font-black uppercase tracking-[0.4em] text-xs mb-6 block">
-              Vision & Engagement
+            <span className="text-brand-orange font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
+              L'Expertise au Service de l'Excellence
             </span>
-            <h2 className="text-5xl md:text-7xl font-black text-brand-navy leading-[0.95] tracking-tighter uppercase mb-10">
-              L'humain au <br />
-              <span className="text-brand-gold italic">Cœur</span> du <br />
-              <span className="text-brand-navy">Succès.</span>
+            <h2 className="text-4xl md:text-5xl font-black text-brand-navy leading-tight tracking-tighter uppercase mb-6">
+              Saïd <span className="text-brand-orange italic">TAAROUST</span>
             </h2>
+            <h3 className="text-xl md:text-2xl font-bold text-brand-navy/80 mb-8 leading-relaxed">
+              Coach Expert en Performance Commerciale & Leadership B2B
+            </h3>
           </div>
 
-          <div className="space-y-8 mb-12">
-            <p className="text-2xl font-bold text-brand-navy leading-tight italic border-l-4 border-brand-orange pl-8">
-              "Je transforme la performance commerciale en une aventure humaine durable et épanouissante."
+          <div className="space-y-6 mb-10">
+            <p className="text-xl font-bold text-brand-navy leading-snug italic border-l-4 border-brand-orange pl-6">
+              "Ma mission est de transformer chaque défi en une opportunité de croissance durable pour vous et vos équipes."
             </p>
             
-            <div className="space-y-6 text-slate-600 text-lg leading-relaxed font-medium">
+            <div className="space-y-4 text-slate-600 text-base leading-relaxed font-medium">
               <p>
-                Coach certifié RNCP et expert en développement commercial depuis 25 ans, j'accompagne les leaders qui refusent de choisir entre <span className="text-brand-navy font-black">résultats</span> et <span className="text-brand-navy font-black">équilibre personnel</span>.
+                Avec plus de <span className="text-brand-navy font-black">25 ans d'expérience</span> sur le terrain, j'ai accompagné des centaines de dirigeants et managers dans l'optimisation de leur potentiel. Mon approche combine rigueur stratégique et intelligence émotionnelle.
               </p>
               <p>
-                Mon approche repose sur une conviction profonde : la technique de vente sans mindset n'est qu'un outil éphémère. Le véritable levier, c'est <span className="text-brand-orange font-bold">l'alignement intérieur</span>.
+                Certifié <span className="text-brand-navy font-bold">RNCP et PNL</span>, j'utilise des méthodes éprouvées pour lever les blocages et accélérer les performances, tout en préservant l'équilibre et le sens au travail.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-2 gap-4 mb-10">
             {credentials.map((item, i) => (
               <motion.div 
                 key={i}
@@ -122,14 +122,14 @@ export function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-center gap-4 p-6 rounded-[32px] bg-slate-50 hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-slate-100 group/card"
+                className="flex items-center gap-3 p-4 rounded-[24px] bg-slate-50 hover:bg-white hover:shadow-lg transition-all border border-transparent hover:border-slate-100 group/card"
               >
-                <div className="w-12 h-12 rounded-2xl bg-brand-navy/5 flex items-center justify-center shrink-0 group-hover/card:bg-brand-orange transition-colors duration-500">
-                  <item.icon className="w-6 h-6 text-brand-navy group-hover/card:text-white transition-colors duration-500" />
+                <div className="w-10 h-10 rounded-xl bg-brand-navy/5 flex items-center justify-center shrink-0 group-hover/card:bg-brand-orange transition-colors duration-500">
+                  <item.icon className="w-5 h-5 text-brand-navy group-hover/card:text-white transition-colors duration-500" />
                 </div>
                 <div>
-                  <p className="font-black text-brand-navy text-xs uppercase tracking-wider">{item.title}</p>
-                  <p className="text-[11px] text-slate-400 font-bold uppercase tracking-widest">{item.description}</p>
+                  <p className="font-black text-brand-navy text-[10px] uppercase tracking-wider">{item.title}</p>
+                  <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -137,9 +137,9 @@ export function Features() {
 
           <Link href="/prendre-rendez-vous">
             <button 
-              className="group inline-flex items-center gap-4 px-12 py-6 bg-brand-navy text-white rounded-full font-bold hover:bg-brand-orange transition-all shadow-[0_20px_40px_-10px_rgba(10,25,47,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(255,107,74,0.4)] transform hover:-translate-y-1 active:scale-95"
+              className="group inline-flex items-center gap-4 px-10 py-5 bg-brand-navy text-white rounded-full font-bold hover:bg-brand-orange transition-all shadow-xl hover:shadow-brand-orange/20 transform hover:-translate-y-1 active:scale-95 text-sm"
             >
-              Échanger avec Saïd <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Réserver votre session stratégique <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </Link>
         </motion.div>

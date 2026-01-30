@@ -58,18 +58,18 @@ export function Timeline() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-brand-gold/10 rounded-full mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange/10 rounded-full mb-8"
         >
-          <Zap className="w-4 h-4 text-brand-gold" />
-          <span className="text-brand-gold font-black uppercase tracking-widest text-[10px]">
+          <Zap className="w-4 h-4 text-brand-orange" />
+          <span className="text-brand-orange font-black uppercase tracking-widest text-[10px]">
             Héritage & Vision
           </span>
         </motion.div>
         
-        <h2 className="text-5xl md:text-8xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase mb-12">
+        <h2 className="text-4xl md:text-6xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase mb-12">
           La force de <br />
-          <span className="text-brand-gold italic">l'expérience</span>, <br />
-          <span className="text-brand-orange">le sens en plus.</span>
+          <span className="text-brand-orange italic">l'expérience</span>, <br />
+          <span className="text-brand-navy">le sens en plus.</span>
         </h2>
         
         <p className="text-2xl text-slate-500 leading-relaxed max-w-2xl mx-auto font-medium">

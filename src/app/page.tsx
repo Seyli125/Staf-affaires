@@ -14,10 +14,9 @@ export default function Home() {
     <main className="min-h-screen bg-white overflow-hidden">
       <Navbar />
       
-      {/* 1. Hero & Brands - LOCKED SECTION (Visual/Structure/Content) */}
+      {/* 1. Hero - LOCKED SECTION (Visual/Structure/Content) */}
       <section className="bg-white relative z-10">
         <Hero />
-        <Brands />
       </section>
 
       {/* Rhythmic transitions for a premium, continuous scroll experience */}
@@ -55,15 +54,15 @@ export default function Home() {
         </section>
 
         {/* Transition to Timeline */}
-        <div className="h-32 bg-gradient-to-b from-white to-brand-gold/5" />
+        <div className="h-32 bg-gradient-to-b from-white to-brand-navy/5" />
 
         {/* 6. Timeline Section */}
-        <section className="bg-brand-gold/5 py-24 md:py-32">
+        <section className="bg-brand-navy/5 py-24 md:py-32">
           <Timeline />
         </section>
 
         {/* Transition to FAQ */}
-        <div className="h-32 bg-gradient-to-b from-brand-gold/5 to-white" />
+        <div className="h-32 bg-gradient-to-b from-brand-navy/5 to-white" />
 
         {/* 7. FAQ Section */}
         <section className="bg-white py-24 md:py-32">
