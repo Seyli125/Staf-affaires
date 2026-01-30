@@ -69,22 +69,21 @@ export function Features() {
           </motion.div>
 
           {/* RNCP Logo integration - Circular and clean */}
-          <div className="absolute -top-12 -left-12 z-20">
-            <motion.div 
-              initial={{ opacity: 0, rotate: -10 }}
-              whileInView={{ opacity: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-white flex items-center justify-center p-2"
-            >
-              <Image 
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1769789503636.png?width=8000&height=8000&resize=contain"
-                alt="Certification RNCP Niveau 6"
-                width={160}
-                height={160}
-                className="object-contain scale-110"
-              />
-            </motion.div>
-          </div>
+            <div className="absolute -top-12 -left-12 z-20">
+              <motion.div 
+                initial={{ opacity: 0, rotate: -10 }}
+                whileInView={{ opacity: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-white flex items-center justify-center"
+              >
+                <Image 
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1769789503636.png?width=8000&height=8000&resize=contain"
+                  alt="Certification RNCP Niveau 6"
+                  fill
+                  className="object-contain p-4"
+                />
+              </motion.div>
+            </div>
         </motion.div>
 
         {/* Right: Narrative Content */}
