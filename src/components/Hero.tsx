@@ -10,9 +10,11 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   
-  const yHeroText = useTransform(scrollY, [0, 500], [0, 100]);
-  const yImage = useTransform(scrollY, [0, 500], [0, -50]);
-  const opacityText = useTransform(scrollY, [0, 300], [1, 0.3]);
+    const yHeroText = useTransform(scrollY, [0, 500], [0, 100]);
+    const yImage = useTransform(scrollY, [0, 600], [0, -100]);
+    const opacityText = useTransform(scrollY, [0, 300], [1, 0.3]);
+    const opacityImage = useTransform(scrollY, [0, 500], [1, 0]);
+    const scaleImage = useTransform(scrollY, [0, 500], [1, 0.9]);
 
   return (
     <section 
@@ -35,17 +37,25 @@ export function Hero() {
 
         {/* Main Person Image */}
         <motion.div
-          style={{ y: yImage }}
+          style={{ y: yImage, opacity: opacityImage, scale: scaleImage }}
           className="relative w-full h-full max-w-4xl z-10 flex items-center justify-center mt-20"
         >
-          <Image
-            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/1746597689538-1769736766387.png"
-            alt="Saïd Taaroust"
-            width={1200}
-            height={1200}
-            className="object-contain h-full w-auto drop-shadow-2xl"
-            priority
-          />
+          <div 
+            className="relative w-full h-full flex items-center justify-center"
+            style={{ 
+              maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)'
+            }}
+          >
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/1746597689538-1769736766387.png"
+              alt="Saïd Taaroust"
+              width={1200}
+              height={1200}
+              className="object-contain h-full w-auto drop-shadow-2xl"
+              priority
+            />
+          </div>
         </motion.div>
 
         {/* Massive Foreground Name */}
@@ -57,7 +67,7 @@ export function Hero() {
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
             className="text-massive font-black text-white text-center leading-none tracking-tighter"
           >
-            STAF AFFAIRES
+            STAFF AFFAIRES
           </motion.h2>
         </div>
       </div>

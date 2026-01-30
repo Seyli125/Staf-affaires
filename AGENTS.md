@@ -1,5 +1,5 @@
 ## Project Summary
-STAF AFFAIRES is a high-end B2B coaching website designed for Saïd Taaroust. The project focuses on replicating a premium personal brand aesthetic (James David reference) with a modern, responsive, and animation-rich user experience in French.
+STAFF AFFAIRES is a high-end B2B coaching website designed for Saïd Taaroust. The project focuses on replicating a premium personal brand aesthetic (James David reference) with a modern, responsive, and animation-rich user experience in French.
 
 ## Tech Stack
 - Framework: Next.js 15 (App Router)

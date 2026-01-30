@@ -21,7 +21,7 @@ export default function ContactPage() {
           >
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 uppercase leading-none">
               CONTACTEZ <br />
-              <span className="text-stroke-white text-transparent">STAF AFFAIRES</span>
+              <span className="text-stroke-white text-transparent">STAFF AFFAIRES</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto font-medium leading-relaxed">
               Prêt à franchir une nouvelle étape ? Parlons de vos projets et de comment nous pouvons vous aider à les réaliser.
@@ -49,7 +49,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-black text-lg tracking-tight mb-1">Email</h4>
-                    <p className="text-muted-foreground font-medium">contact@stafaffaires.fr</p>
+                    <p className="text-muted-foreground font-medium">contact@staffaffaires.fr</p>
                   </div>
                 </div>
 

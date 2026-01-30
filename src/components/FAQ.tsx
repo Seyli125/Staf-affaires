@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "À qui s'adresse le coaching STAF AFFAIRES ?",
+    question: "À qui s'adresse le coaching STAFF AFFAIRES ?",
     answer: "Nos services sont conçus pour les entrepreneurs, les dirigeants de PME et les leaders d'équipes qui souhaitent franchir un cap dans leur performance, leur clarté stratégique et leur équilibre de vie.",
   },
   {

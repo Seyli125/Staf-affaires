@@ -36,7 +36,7 @@ export default function Home() {
             
             {/* Column 2 */}
             <div className="flex flex-col gap-6">
-              <span className="text-sm font-bold uppercase tracking-widest text-black">info@stafaffaires.fr</span>
+              <span className="text-sm font-bold uppercase tracking-widest text-black">info@staffaffaires.fr</span>
             </div>
 
             {/* Column 3 */}
@@ -49,14 +49,14 @@ export default function Home() {
           {/* Massive Text */}
           <div className="w-full overflow-hidden mb-20">
             <h2 className="text-[15vw] font-black text-black leading-none tracking-tighter text-center uppercase whitespace-nowrap">
-              STAF AFFAIRES
+              STAFF AFFAIRES
             </h2>
           </div>
 
           {/* Bottom Bar */}
           <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
             <p className="text-[11px] font-bold uppercase tracking-widest text-black/40">
-              © 2026 STAF AFFAIRES. All Rights Reserved.
+              © 2026 STAFF AFFAIRES. All Rights Reserved.
             </p>
 
             <div className="flex items-center gap-6">

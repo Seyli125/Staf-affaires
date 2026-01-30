@@ -45,7 +45,7 @@ export default function AboutPage() {
           >
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 uppercase">
               À PROPOS DE <br />
-              <span className="text-stroke-white text-transparent">STAF AFFAIRES</span>
+              <span className="text-stroke-white text-transparent">STAFF AFFAIRES</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-medium leading-relaxed">
               Découvrez la vision de Saïd Taaroust et comment nous transformons le paysage du leadership B2B.
@@ -87,7 +87,7 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-6 text-xl text-muted-foreground font-medium leading-relaxed">
                 <p>
-                  Avec plus de 15 ans d'expérience dans le conseil stratégique et le management, Saïd Taaroust a fondé STAF AFFAIRES pour répondre à un besoin crucial : l'alignement entre performance opérationnelle et mindset de leader.
+                  Avec plus de 15 ans d'expérience dans le conseil stratégique et le management, Saïd Taaroust a fondé STAFF AFFAIRES pour répondre à un besoin crucial : l'alignement entre performance opérationnelle et mindset de leader.
                 </p>
                 <p>
                   "Je ne suis pas seulement un coach. Je suis un partenaire de croissance qui a vécu les réalités du terrain, les échecs et les succès qui forgent les plus grandes entreprises."

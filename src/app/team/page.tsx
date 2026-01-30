@@ -44,7 +44,7 @@ export default function TeamPage() {
             </span>
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 uppercase leading-none">
               L'ÉQUIPE <br />
-              <span className="text-stroke-white text-transparent">STAF AFFAIRES</span>
+              <span className="text-stroke-white text-transparent">STAFF AFFAIRES</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto font-medium leading-relaxed">
               Une alliance d'experts passionnés par la transformation humaine et la réussite entrepreneuriale.

@@ -35,7 +35,7 @@ export function Features() {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl font-black text-center mb-20 uppercase tracking-tighter"
         >
-          Pourquoi choisir STAF AFFAIRES ?
+          Pourquoi choisir STAFF AFFAIRES ?
         </motion.h2>
 
         <div className="grid lg:grid-cols-3 gap-8">

@@ -20,7 +20,7 @@ export function VideoSection() {
               <span className="text-primary">& ÉVOLUER</span>
             </h2>
             <p className="text-xl text-muted-foreground font-medium">
-              Découvrez ma méthode et l'impact du coaching STAF AFFAIRES sur votre leadership et votre croissance d'entreprise.
+              Découvrez ma méthode et l'impact du coaching STAFF AFFAIRES sur votre leadership et votre croissance d'entreprise.
             </p>
           </div>
           <Button variant="outline" className="rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 group">
