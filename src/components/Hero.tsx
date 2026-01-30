@@ -10,11 +10,11 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   
-  const yHeroText = useTransform(scrollY, [0, 500], [0, 100]);
-  const yImage = useTransform(scrollY, [0, 600], [0, -100]);
-  const opacityText = useTransform(scrollY, [0, 300], [1, 0.3]);
-  const opacityImage = useTransform(scrollY, [0, 500], [1, 0]);
-  const scaleImage = useTransform(scrollY, [0, 500], [1, 0.9]);
+    const yHeroText = useTransform(scrollY, [0, 500], [0, 100]);
+    const yImage = useTransform(scrollY, [0, 600], [0, -100]);
+    const opacityText = useTransform(scrollY, [0, 300], [1, 0.3]);
+    const opacityImage = useTransform(scrollY, [0, 500], [1, 0]);
+    const scaleImage = useTransform(scrollY, [0, 500], [1, 0.9]);
 
   return (
     <section 
@@ -58,32 +58,72 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Massive Foreground Content */}
-        <div className="absolute bottom-12 left-0 w-full z-20 px-4">
-              <motion.div
+        {/* Massive Foreground Name */}
+        <div className="absolute bottom-2 left-0 w-full z-20 px-4">
+              <motion.h2 
                 style={{ opacity: opacityText, y: yHeroText }}
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                className="max-w-6xl mx-auto text-center"
+                className="text-massive font-black text-white text-center leading-[1.1] tracking-tighter uppercase"
               >
-                <h2 className="text-4xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tighter uppercase mb-6">
-                  Performer sans s'épuiser.<br />
-                  <span className="text-brand-orange">Manager et vendre avec sens.</span>
-                </h2>
-                <p className="text-xl md:text-2xl text-white/80 font-medium mb-10 max-w-3xl mx-auto">
-                  Coach certifié RNCP | Formateur | Expert en développement commercial depuis 25 ans
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    size="lg" 
-                    className="bg-brand-orange text-white hover:bg-brand-orange/90 rounded-full px-10 py-8 text-xl font-bold group transition-all duration-300 hover:scale-105 active:scale-95 shadow-2xl"
-                  >
-                    Prendre rendez-vous
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
-              </motion.div>
+                SAÏD TAAROUST
+              </motion.h2>
+        </div>
+      </div>
+
+      {/* 2. About Us Section (Visual Flow) */}
+      <div className="w-full bg-transparent pt-24 pb-32">
+        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-[2px] bg-primary" />
+              <span className="text-sm font-bold uppercase tracking-widest text-primary/80">
+                À propos
+              </span>
+            </div>
+
+            <h3 className="text-4xl md:text-6xl font-black mb-6 leading-[1.1] tracking-tight text-brand-navy">
+              Performer sans s'épuiser. <br />
+              <span className="text-brand-orange">Manager et vendre avec sens.</span>
+            </h3>
+
+            <p className="text-xl md:text-2xl font-medium mb-8 text-slate-600 leading-relaxed max-w-xl">
+              Coach certifié RNCP | Formateur | Expert en développement commercial depuis 25 ans
+            </p>
+
+            <Button 
+              size="lg" 
+              className="bg-brand-navy text-white hover:bg-brand-navy/90 rounded-full px-10 py-8 text-xl font-bold group transition-all duration-300 hover:scale-105 active:scale-95 shadow-2xl"
+            >
+              Prendre rendez-vous
+              <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </motion.div>
+
+          {/* Right Secondary Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="relative aspect-square max-w-md mx-auto"
+          >
+            <div className="absolute inset-0 bg-brand-orange/5 rounded-3xl -rotate-3" />
+              <Image
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/1746597689538_LE_up_cale_prime_wipe_bg-1769742333185.png?width=8000&height=8000&resize=contain"
+                alt="Saïd Taaroust Portrait"
+                width={600}
+                height={600}
+                className="object-cover h-full w-full rounded-3xl filter grayscale opacity-80"
+              />
+          </motion.div>
         </div>
       </div>
     </section>

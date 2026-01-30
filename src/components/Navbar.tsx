@@ -8,10 +8,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Home", href: "/", active: true },
-  { name: "Services", href: "/services" },
-  { name: "Find a Tutor", href: "/team" },
-  { name: "Pricing", href: "/pricing" },
+  { name: "Accueil", href: "/", active: true },
+  { name: "Services", href: "#services" },
+  { name: "Qui suis-je ?", href: "#features" },
+  { name: "Parcours", href: "#timeline" },
 ];
 
 export function Navbar() {
@@ -40,7 +40,7 @@ export function Navbar() {
             <Link href="/" className="flex items-center group">
               <Image 
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
-                alt="STAFF AFFAIRES"
+                alt="STAF AFFAIRES"
                 width={400}
                 height={120}
                 className="h-24 md:h-32 w-auto object-contain transition-all duration-300"
@@ -66,13 +66,10 @@ export function Navbar() {
               {/* Right: Actions */}
               <div className="flex justify-end items-center gap-6 -translate-y-4">
               <div className="hidden lg:flex items-center gap-6">
-                <Link href="/signin" className="text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-all">
-                  Sign In
-                </Link>
                 <Button 
-                  className="rounded-full bg-black text-white px-8 py-6 font-bold hover:scale-105 transition-all text-[13px] uppercase tracking-widest cursor-pointer"
+                  className="rounded-full bg-brand-navy text-white px-8 py-6 font-bold hover:scale-105 transition-all text-[13px] uppercase tracking-widest cursor-pointer shadow-lg"
                 >
-                  Sign Up
+                  Prendre RDV
                 </Button>
               </div>
 

@@ -42,10 +42,15 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   
-    --color-brand-orange: #ff6b4a;
-    --color-brand-orange-light: #ff7557;
-    --color-brand-salmon: #ff8e75;
-  }
+  --color-brand-orange: #ff6b4a;
+  --color-brand-orange-light: #ff7557;
+  --color-brand-salmon: #ff8e75;
+  --color-brand-navy: #0A192F;
+  --color-brand-gold: #C5A059;
+  --color-brand-sage: #84A98C;
+  --font-serif: var(--font-serif);
+}
+
 
 :root {
   --radius: 0.625rem;
