@@ -47,14 +47,14 @@ export function Hero() {
               WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)'
             }}
           >
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/1746597689538-1769736766387.png"
-              alt="Saïd Taaroust"
-              width={1200}
-              height={1200}
-              className="object-contain h-full w-auto drop-shadow-2xl"
-              priority
-            />
+              <Image
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/1746597689538_LE_up_cale_prime_wipe_bg-1769742333185.png?width=8000&height=8000&resize=contain"
+                alt="Saïd Taaroust"
+                width={1200}
+                height={1200}
+                className="object-contain h-full w-auto drop-shadow-2xl"
+                priority
+              />
           </div>
         </motion.div>
 
@@ -73,7 +73,7 @@ export function Hero() {
       </div>
 
       {/* 2. About Us Section (Visual Flow) */}
-      <div className="w-full bg-white pt-24 pb-32">
+      <div className="w-full bg-transparent pt-24 pb-32">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
           {/* Left Content */}
           <motion.div
@@ -113,13 +113,13 @@ export function Hero() {
             className="relative aspect-square max-w-md mx-auto"
           >
             <div className="absolute inset-0 bg-brand-orange/5 rounded-3xl -rotate-3" />
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/1746597689538-1769736766387.png"
-              alt="Saïd Taaroust Portrait"
-              width={600}
-              height={600}
-              className="object-cover h-full w-full rounded-3xl filter grayscale opacity-80"
-            />
+              <Image
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/1746597689538_LE_up_cale_prime_wipe_bg-1769742333185.png?width=8000&height=8000&resize=contain"
+                alt="Saïd Taaroust Portrait"
+                width={600}
+                height={600}
+                className="object-cover h-full w-full rounded-3xl filter grayscale opacity-80"
+              />
           </motion.div>
         </div>
       </div>

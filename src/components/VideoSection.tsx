@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export function VideoSection() {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-24 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

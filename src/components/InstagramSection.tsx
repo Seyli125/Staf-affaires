@@ -12,12 +12,12 @@ export function InstagramSection() {
         <div className="bg-[#fafafa] rounded-[40px] overflow-hidden border border-gray-100 shadow-xl flex flex-col md:flex-row items-center">
           {/* Image Section */}
           <div className="w-full md:w-1/2 relative h-[400px] md:h-[500px]">
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/1746597689538-1769736766387.png"
-              alt="Follow me on Instagram"
-              fill
-              className="object-contain mt-10"
-            />
+              <Image
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/1746597689538_LE_up_cale_prime_wipe_bg-1769742333185.png?width=8000&height=8000&resize=contain"
+                alt="Follow me on Instagram"
+                fill
+                className="object-contain mt-10"
+              />
           </div>
 
           {/* Text Section */}
