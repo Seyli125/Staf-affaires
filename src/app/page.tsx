@@ -21,59 +21,59 @@ export default function Home() {
         <Brands />
       </section>
 
-      {/* Fade White to Orange */}
-      <div className="h-48 bg-gradient-to-b from-white to-brand-orange" />
+      {/* Fade White to Orange (Main) */}
+      <div className="h-[600px] bg-gradient-to-b from-white to-brand-orange" />
 
-      {/* 2. Orange Section */}
+      {/* 2. Orange Section (Main) */}
       <section className="bg-brand-orange">
         <Services />
       </section>
 
-      {/* Fade Orange to White */}
-      <div className="h-48 bg-gradient-to-b from-brand-orange to-white" />
+      {/* Fade Orange (Main) to White */}
+      <div className="h-[600px] bg-gradient-to-b from-brand-orange to-white" />
 
       {/* 3. White Section */}
       <section className="bg-white">
         <VideoSection />
       </section>
 
-      {/* Fade White to Orange */}
-      <div className="h-48 bg-gradient-to-b from-white to-brand-orange" />
+      {/* Fade White to Orange (Light) */}
+      <div className="h-[600px] bg-gradient-to-b from-white to-brand-orange-light" />
 
-      {/* 4. Orange Section */}
-      <section className="bg-brand-orange">
+      {/* 4. Orange Section (Light) */}
+      <section className="bg-brand-orange-light">
         <Features />
       </section>
 
-      {/* Fade Orange to White */}
-      <div className="h-48 bg-gradient-to-b from-brand-orange to-white" />
+      {/* Fade Orange (Light) to White */}
+      <div className="h-[600px] bg-gradient-to-b from-brand-orange-light to-white" />
 
       {/* 5. White Section */}
       <section className="bg-white">
         <Testimonials />
       </section>
 
-      {/* Fade White to Orange */}
-      <div className="h-48 bg-gradient-to-b from-white to-brand-orange" />
+      {/* Fade White to Orange (Light) */}
+      <div className="h-[600px] bg-gradient-to-b from-white to-brand-orange-light" />
 
-      {/* 6. Orange Section */}
-      <section className="bg-brand-orange">
+      {/* 6. Orange Section (Light) */}
+      <section className="bg-brand-orange-light">
         <InstagramSection />
       </section>
 
-      {/* Fade Orange to White */}
-      <div className="h-48 bg-gradient-to-b from-brand-orange to-white" />
+      {/* Fade Orange (Light) to White */}
+      <div className="h-[600px] bg-gradient-to-b from-brand-orange-light to-white" />
 
       {/* 7. White Section */}
       <section className="bg-white">
         <FAQ />
       </section>
 
-      {/* Fade White to Orange */}
-      <div className="h-48 bg-gradient-to-b from-white to-brand-orange" />
+      {/* Fade White to Orange (Light) */}
+      <div className="h-[600px] bg-gradient-to-b from-white to-brand-orange-light" />
       
-      {/* 8. Orange Section (Footer) */}
-      <footer className="pt-32 pb-12 bg-brand-orange">
+      {/* 8. Orange Section (Footer - Light) */}
+      <footer className="pt-32 pb-12 bg-brand-orange-light">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12 mb-24">
             {/* Column 1 */}
