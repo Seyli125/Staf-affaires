@@ -22,7 +22,7 @@ export function Hero() {
       className="relative flex flex-col items-center overflow-hidden"
     >
       {/* 1. Main Visual Hero Area */}
-      <div className="relative w-full h-[85vh] md:h-[95vh] flex flex-col items-center justify-center hero-gradient px-6 overflow-hidden">
+      <div className="relative w-full h-[85vh] md:h-[95vh] flex flex-col items-center justify-center hero-gradient px-6">
           {/* Background Massive Text */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
             <motion.h1 
@@ -59,13 +59,13 @@ export function Hero() {
         </motion.div>
 
         {/* Massive Foreground Name */}
-        <div className="absolute bottom-10 left-0 w-full z-30 overflow-visible px-4">
+        <div className="absolute bottom-10 left-0 w-full z-20 px-4">
               <motion.h2 
                 style={{ opacity: opacityText, y: yHeroText }}
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                className="text-massive font-black text-white text-center tracking-tighter uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]"
+                className="text-massive font-black text-white text-center leading-[1.1] tracking-tighter uppercase"
               >
                 SAÏD TAAROUST
               </motion.h2>
