@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -98,13 +99,15 @@ export function Hero() {
               Coach certifié RNCP | Formateur | Expert en développement commercial depuis 25 ans
             </p>
 
-            <Button 
-              size="lg" 
-              className="bg-brand-navy text-white hover:bg-brand-navy/90 rounded-full px-10 py-8 text-xl font-bold group transition-all duration-300 hover:scale-105 active:scale-95 shadow-2xl"
-            >
-              Prendre rendez-vous
-              <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link href="/prendre-rendez-vous">
+              <Button 
+                size="lg" 
+                className="bg-brand-navy text-white hover:bg-brand-navy/90 rounded-full px-10 py-8 text-xl font-bold group transition-all duration-300 hover:scale-105 active:scale-95 shadow-2xl"
+              >
+                Prendre rendez-vous
+                <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Right Secondary Image */}

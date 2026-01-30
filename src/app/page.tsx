@@ -8,26 +8,25 @@ import { Testimonials } from "@/components/Testimonials";
 import { Timeline } from "@/components/Timeline";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
-import { BookingSection } from "@/components/BookingSection";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white overflow-hidden">
       <Navbar />
       
-      {/* 1. Hero & Brands - LOCKED SECTION */}
+      {/* 1. Hero & Brands - LOCKED SECTION (Visual/Structure/Content) */}
       <section className="bg-white relative z-10">
         <Hero />
         <Brands />
       </section>
 
-      {/* Rhythmic transitions instead of 600px gaps */}
+      {/* Rhythmic transitions for a premium, continuous scroll experience */}
       <div className="relative">
-        {/* Subtle transition to Services */}
+        {/* Transition to Services */}
         <div className="h-32 bg-gradient-to-b from-white to-brand-navy/5" />
         
         {/* 2. Services Section */}
-        <section className="bg-brand-navy/5 py-24">
+        <section className="bg-brand-navy/5 py-24 md:py-32">
           <Services />
         </section>
 
@@ -35,7 +34,7 @@ export default function Home() {
         <div className="h-32 bg-gradient-to-b from-brand-navy/5 to-white" />
 
         {/* 3. Video Section */}
-        <section className="bg-white py-24">
+        <section className="bg-white py-24 md:py-32">
           <VideoSection />
         </section>
 
@@ -43,7 +42,7 @@ export default function Home() {
         <div className="h-32 bg-gradient-to-b from-white to-brand-orange/5" />
 
         {/* 4. Features (Qui suis-je) Section */}
-        <section className="bg-brand-orange/5 py-24">
+        <section className="bg-brand-orange/5 py-24 md:py-32">
           <Features />
         </section>
 
@@ -51,7 +50,7 @@ export default function Home() {
         <div className="h-32 bg-gradient-to-b from-brand-orange/5 to-white" />
 
         {/* 5. Testimonials Section */}
-        <section className="bg-white py-24">
+        <section className="bg-white py-24 md:py-32">
           <Testimonials />
         </section>
 
@@ -59,28 +58,20 @@ export default function Home() {
         <div className="h-32 bg-gradient-to-b from-white to-brand-gold/5" />
 
         {/* 6. Timeline Section */}
-        <section className="bg-brand-gold/5 py-24">
+        <section className="bg-brand-gold/5 py-24 md:py-32">
           <Timeline />
         </section>
 
-        {/* Transition to Booking */}
+        {/* Transition to FAQ */}
         <div className="h-32 bg-gradient-to-b from-brand-gold/5 to-white" />
 
-        {/* 7. Booking Section (Interactive Calendar) */}
-        <section className="bg-white py-24">
-          <BookingSection />
-        </section>
-
-        {/* Transition to FAQ */}
-        <div className="h-32 bg-gradient-to-b from-white to-slate-50" />
-
-        {/* 8. FAQ Section */}
-        <section className="bg-slate-50 py-24">
+        {/* 7. FAQ Section */}
+        <section className="bg-white py-24 md:py-32">
           <FAQ />
         </section>
 
-        {/* Transition to Footer */}
-        <div className="h-32 bg-gradient-to-b from-slate-50 to-brand-navy" />
+        {/* Final Transition to Footer */}
+        <div className="h-32 bg-gradient-to-b from-white to-brand-navy" />
       </div>
       
       <Footer />

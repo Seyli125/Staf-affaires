@@ -106,12 +106,13 @@ export function Footer() {
                   <span className="text-xs font-bold truncate">{item.name}</span>
                 </Link>
               ))}
-              <button 
-                onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full py-4 bg-brand-orange text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white hover:text-brand-navy transition-all shadow-lg shadow-brand-orange/20"
-              >
-                Prendre rendez-vous
-              </button>
+                <Link href="/prendre-rendez-vous" className="block">
+                  <button 
+                    className="w-full py-4 bg-brand-orange text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white hover:text-brand-navy transition-all shadow-lg shadow-brand-orange/20"
+                  >
+                    Prendre rendez-vous
+                  </button>
+                </Link>
             </div>
           </div>
         </div>

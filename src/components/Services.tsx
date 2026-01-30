@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Target, GraduationCap, Users, CheckCircle2, ArrowRight } from "lucide-react";
 
 const services = [
@@ -123,20 +124,21 @@ export function Services() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/20 blur-[120px] -mr-64 -mt-64 rounded-full" />
         <div className="relative z-10">
           <div className="grid md:grid-cols-5 gap-16 items-center">
-            <div className="md:col-span-2">
-              <h3 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase">
-                Focus <br/><span className="text-brand-gold">Opérationnel</span>
-              </h3>
-              <p className="text-white/70 text-lg leading-relaxed mb-8">
-                Parce que la théorie ne suffit pas, nous activons des leviers concrets pour vos résultats quotidiens.
-              </p>
-              <button 
-                onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group flex items-center gap-3 bg-brand-orange px-8 py-4 rounded-full font-bold hover:bg-white hover:text-brand-navy transition-all"
-              >
-                Découvrir l'approche AVR® <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
+              <div className="md:col-span-2">
+                <h3 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase">
+                  Focus <br/><span className="text-brand-gold">Opérationnel</span>
+                </h3>
+                <p className="text-white/70 text-lg leading-relaxed mb-8">
+                  Parce que la théorie ne suffit pas, nous activons des leviers concrets pour vos résultats quotidiens.
+                </p>
+                <Link href="/prendre-rendez-vous">
+                  <button 
+                    className="group flex items-center gap-3 bg-brand-orange px-8 py-4 rounded-full font-bold hover:bg-white hover:text-brand-navy transition-all"
+                  >
+                    Découvrir l'approche AVR® <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
+              </div>
             <div className="md:col-span-3 grid gap-4">
               {specialities.map((spec, i) => (
                 <motion.div 

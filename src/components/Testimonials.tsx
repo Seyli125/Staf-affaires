@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote, MessageSquare } from "lucide-react";
+import { Star, Quote, MessageSquare, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const testimonials = [
   {
@@ -52,92 +53,127 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="container mx-auto px-6 overflow-visible">
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
-        <div className="max-w-2xl">
+    <section id="testimonials" className="container mx-auto px-6 overflow-visible relative">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-12">
+        <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-3 mb-6"
+            className="flex items-center gap-4 mb-8"
           >
-            <div className="flex -space-x-2">
+            <div className="flex -space-x-3">
               {[1, 2, 3, 4].map(i => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200" />
+                <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden shadow-sm">
+                  <img src={`https://i.pravatar.cc/100?img=${i+20}`} alt="User" />
+                </div>
               ))}
             </div>
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-brand-gold text-brand-gold" />
-              ))}
+            <div className="h-8 w-px bg-slate-200 mx-2" />
+            <div className="flex flex-col">
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-brand-gold text-brand-gold" />
+                ))}
+              </div>
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Évaluation LinkedIn 5/5</span>
             </div>
-            <span className="text-sm font-bold text-slate-400 uppercase tracking-widest ml-2">7 Avis LinkedIn</span>
           </motion.div>
+          
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-brand-navy leading-[1.1] tracking-tighter uppercase"
+            className="text-5xl md:text-8xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase"
           >
-            Ils ont <span className="text-brand-gold">osé</span> le changement.
+            L'excellence <br />
+            <span className="text-brand-gold italic">reconnue</span> par <br />
+            <span className="text-brand-orange">vos pairs.</span>
           </motion.h2>
         </div>
-        <motion.p
+        
+        <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="text-xl text-slate-500 max-w-sm leading-relaxed"
+          className="lg:max-w-sm"
         >
-          Découvrez les retours authentiques de dirigeants et managers accompagnés par Saïd.
-        </motion.p>
+          <div className="p-8 bg-slate-50 rounded-[40px] border border-slate-100">
+            <p className="text-lg text-slate-600 leading-relaxed font-medium italic">
+              "L'impact du coaching se mesure aux résultats durables et à l'épanouissement de ceux qui le vivent au quotidien."
+            </p>
+          </div>
+        </motion.div>
       </div>
 
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 mb-24">
         {testimonials.map((item, index) => (
           <motion.div
             key={item.name}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.05 }}
-            className={`break-inside-avoid relative p-10 rounded-[40px] border transition-all duration-500 group ${
+            transition={{ 
+              delay: index * 0.1,
+              duration: 0.6,
+              ease: "easeOut"
+            }}
+            whileHover={{ y: -10 }}
+            className={`break-inside-avoid relative p-12 rounded-[50px] border transition-all duration-500 group shadow-sm ${
               item.highlight 
-              ? 'bg-brand-navy text-white border-transparent shadow-2xl shadow-brand-navy/20 scale-105 z-10' 
-              : 'bg-white border-slate-100 hover:border-brand-gold/30 hover:shadow-xl'
+              ? 'bg-brand-navy text-white border-transparent shadow-3xl shadow-brand-navy/30' 
+              : 'bg-white border-slate-100 hover:border-brand-gold/30 hover:shadow-2xl'
             }`}
           >
-            <Quote className={`absolute top-8 right-8 w-12 h-12 transition-colors ${
-              item.highlight ? 'text-white/10' : 'text-slate-50'
+            <Quote className={`absolute top-10 right-10 w-16 h-16 transition-transform group-hover:rotate-12 duration-500 ${
+              item.highlight ? 'text-white/5' : 'text-slate-50'
             }`} />
             
-            <p className={`text-lg leading-relaxed mb-10 italic relative z-10 ${
+            <p className={`text-xl leading-relaxed mb-12 relative z-10 ${
               item.highlight ? 'text-white/90 font-medium' : 'text-slate-700'
             }`}>
               "{item.quote}"
             </p>
 
-            <div className="flex items-center gap-4 relative z-10">
-              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${
+            <div className="flex items-center gap-5 relative z-10 border-t pt-8 border-current/10">
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg ${
                 item.highlight ? 'bg-brand-gold text-white' : 'bg-brand-navy text-white'
               }`}>
-                <span className="font-black text-lg">{item.name[0]}</span>
+                <span className="font-black text-xl italic">{item.name[0]}</span>
               </div>
               <div>
-                <h4 className={`font-black uppercase tracking-tight text-sm ${
+                <h4 className={`font-black uppercase tracking-tight text-base ${
                   item.highlight ? 'text-white' : 'text-brand-navy'
                 }`}>
                   {item.name}
                 </h4>
-                <p className={`text-[10px] font-black uppercase tracking-widest mt-1 ${
+                <p className={`text-[10px] font-black uppercase tracking-widest mt-1 opacity-80 ${
                   item.highlight ? 'text-brand-gold' : 'text-brand-orange'
                 }`}>
-                  {item.role} • {item.date}
+                  {item.role}
                 </p>
               </div>
             </div>
           </motion.div>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        className="bg-brand-orange rounded-[60px] p-12 md:p-20 text-white text-center shadow-3xl relative overflow-hidden group"
+      >
+        <div className="absolute inset-0 bg-brand-navy opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+        <h3 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase">
+          Rejoignez ceux qui <br /> performent avec <span className="italic underline decoration-brand-navy decoration-8 underline-offset-8">Sens</span>.
+        </h3>
+        <Link href="/prendre-rendez-vous">
+          <button className="bg-brand-navy text-white px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-brand-navy transition-all transform hover:scale-105 active:scale-95 shadow-2xl">
+            Commencer mon accompagnement
+          </button>
+        </Link>
+      </motion.div>
     </section>
   );
 }

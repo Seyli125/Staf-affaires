@@ -65,13 +65,15 @@ export function Navbar() {
 
               {/* Right: Actions */}
               <div className="flex justify-end items-center gap-6 -translate-y-4">
-              <div className="hidden lg:flex items-center gap-6">
-                <Button 
-                  className="rounded-full bg-brand-navy text-white px-8 py-6 font-bold hover:scale-105 transition-all text-[13px] uppercase tracking-widest cursor-pointer shadow-lg"
-                >
-                  Prendre RDV
-                </Button>
-              </div>
+                <div className="hidden lg:flex items-center gap-6">
+                  <Link href="/prendre-rendez-vous">
+                    <Button 
+                      className="rounded-full bg-brand-navy text-white px-8 py-6 font-bold hover:scale-105 transition-all text-[13px] uppercase tracking-widest cursor-pointer shadow-lg"
+                    >
+                      Prendre RDV
+                    </Button>
+                  </Link>
+                </div>
 
               {/* Mobile Toggle */}
               <button 
