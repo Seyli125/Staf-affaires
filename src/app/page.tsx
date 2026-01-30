@@ -3,6 +3,9 @@ import { Hero } from "@/components/Hero";
 import { Brands } from "@/components/Brands";
 import { Services } from "@/components/Services";
 import { Features } from "@/components/Features";
+import { VideoSection } from "@/components/VideoSection";
+import { Testimonials } from "@/components/Testimonials";
+import { FAQ } from "@/components/FAQ";
 
 export default function Home() {
   return (
@@ -12,11 +15,20 @@ export default function Home() {
       <div id="brands">
         <Brands />
       </div>
+      <div id="video">
+        <VideoSection />
+      </div>
       <div id="services">
         <Services />
       </div>
       <div id="features">
         <Features />
+      </div>
+      <div id="testimonials">
+        <Testimonials />
+      </div>
+      <div id="faq">
+        <FAQ />
       </div>
       
       {/* Footer Section */}
