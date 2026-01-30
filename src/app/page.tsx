@@ -47,9 +47,9 @@ export default function Home() {
           </div>
 
             {/* Massive Text */}
-            <div className="w-full overflow-hidden mb-20">
-              <h2 className="text-[15vw] font-black text-black leading-[1.1] tracking-tighter text-center uppercase whitespace-nowrap">
-                Saïd Taaroust
+            <div className="w-full overflow-visible mb-20 px-4">
+              <h2 className="text-massive font-black text-black text-center uppercase whitespace-nowrap">
+                SAÏD TAAROUST
               </h2>
             </div>
 

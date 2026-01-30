@@ -59,13 +59,13 @@ export function Hero() {
         </motion.div>
 
         {/* Massive Foreground Name */}
-        <div className="absolute bottom-10 left-0 w-full z-20 overflow-hidden px-4">
+        <div className="absolute bottom-10 left-0 w-full z-30 overflow-visible px-4">
               <motion.h2 
                 style={{ opacity: opacityText, y: yHeroText }}
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                className="text-massive font-black text-white text-center leading-[0.9] md:leading-[1.1] tracking-tighter uppercase"
+                className="text-massive font-black text-white text-center tracking-tighter uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]"
               >
                 SAÏD TAAROUST
               </motion.h2>
