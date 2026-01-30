@@ -50,10 +50,10 @@ export default function Home() {
             <div className="w-full mb-20">
               <h2 
                 className="text-[15vw] font-black text-black leading-[0.8] tracking-tighter text-center uppercase whitespace-nowrap"
-                style={{
-                  maskImage: 'linear-gradient(to bottom, black 50%, transparent 95%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 95%)'
-                }}
+                  style={{
+                    maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)'
+                  }}
               >
                 Saïd Taaroust
               </h2>

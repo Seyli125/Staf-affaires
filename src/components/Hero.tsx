@@ -64,8 +64,8 @@ export function Hero() {
                 style={{ 
                   opacity: opacityText, 
                   y: yHeroText,
-                  maskImage: 'linear-gradient(to bottom, black 75%, transparent 98%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 98%)'
+                    maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)'
                 }}
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
