@@ -34,51 +34,57 @@ export function Navbar() {
           : "bg-transparent py-6"
       }`}
     >
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-                  <Image 
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
-                    alt="STAFF AFFAIRES"
-                    width={500}
-                    height={150}
-                    className="h-40 md:h-64 w-auto object-contain"
-                    priority
-                  />
-          </Link>
-
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-10">
-          {navItems.map((item) => (
-            <Link 
-              key={item.name} 
-              href={item.href}
-              className="group flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-all"
-            >
-              {item.active && <div className="w-2 h-2 bg-brand-orange rounded-full" />}
-              {item.name}
+        <div className="container mx-auto px-6 flex items-center">
+          {/* Left: Logo */}
+          <div className="flex-1 flex justify-start">
+            <Link href="/" className="flex items-center gap-2 group">
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
+                alt="STAFF AFFAIRES"
+                width={400}
+                height={120}
+                className="h-24 md:h-32 w-auto object-contain"
+                priority
+              />
             </Link>
-          ))}
-        </div>
+          </div>
 
-        <div className="hidden lg:flex items-center gap-6">
-          <Link href="/signin" className="text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black">
-            Sign In
-          </Link>
-          <Button 
-            className="rounded-full bg-black text-white px-8 py-6 font-bold hover:scale-105 transition-all text-[13px] uppercase tracking-widest"
-          >
-            Sign Up
-          </Button>
-        </div>
+          {/* Center: Desktop Nav */}
+          <div className="hidden lg:flex flex-1 justify-center items-center gap-10">
+            {navItems.map((item) => (
+              <Link 
+                key={item.name} 
+                href={item.href}
+                className="group flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-all"
+              >
+                {item.active && <div className="w-2 h-2 bg-brand-orange rounded-full" />}
+                {item.name}
+              </Link>
+            ))}
+          </div>
 
-        {/* Mobile Toggle */}
-        <button 
-          className="lg:hidden text-black"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
-      </div>
+          {/* Right: Actions */}
+          <div className="flex-1 flex justify-end items-center gap-6">
+            <div className="hidden lg:flex items-center gap-6">
+              <Link href="/signin" className="text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black">
+                Sign In
+              </Link>
+              <Button 
+                className="rounded-full bg-black text-white px-8 py-6 font-bold hover:scale-105 transition-all text-[13px] uppercase tracking-widest"
+              >
+                Sign Up
+              </Button>
+            </div>
+
+            {/* Mobile Toggle */}
+            <button 
+              className="lg:hidden text-black"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
