@@ -8,68 +8,80 @@ import { Testimonials } from "@/components/Testimonials";
 import { Timeline } from "@/components/Timeline";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
+import { BookingSection } from "@/components/BookingSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-hidden">
       <Navbar />
       
-      {/* 1. White Section */}
-      <section className="bg-white">
+      {/* 1. Hero & Brands - LOCKED SECTION */}
+      <section className="bg-white relative z-10">
         <Hero />
         <Brands />
       </section>
 
-      {/* Fade White to Navy (Services) */}
-      <div className="h-[600px] bg-gradient-to-b from-white to-brand-navy/5" />
+      {/* Rhythmic transitions instead of 600px gaps */}
+      <div className="relative">
+        {/* Subtle transition to Services */}
+        <div className="h-32 bg-gradient-to-b from-white to-brand-navy/5" />
+        
+        {/* 2. Services Section */}
+        <section className="bg-brand-navy/5 py-24">
+          <Services />
+        </section>
 
-      {/* 2. Services Section */}
-      <section className="bg-brand-navy/5">
-        <Services />
-      </section>
+        {/* Transition to Video */}
+        <div className="h-32 bg-gradient-to-b from-brand-navy/5 to-white" />
 
-      {/* Fade Section to White */}
-      <div className="h-[600px] bg-gradient-to-b from-brand-navy/5 to-white" />
+        {/* 3. Video Section */}
+        <section className="bg-white py-24">
+          <VideoSection />
+        </section>
 
-      {/* 3. White Section */}
-      <section className="bg-white">
-        <VideoSection />
-      </section>
+        {/* Transition to Features (Qui suis-je) */}
+        <div className="h-32 bg-gradient-to-b from-white to-brand-orange/5" />
 
-      {/* Fade White to Features */}
-      <div className="h-[600px] bg-gradient-to-b from-white to-brand-orange/5" />
+        {/* 4. Features (Qui suis-je) Section */}
+        <section className="bg-brand-orange/5 py-24">
+          <Features />
+        </section>
 
-      {/* 4. Features (Qui suis-je) Section */}
-      <section className="bg-brand-orange/5">
-        <Features />
-      </section>
+        {/* Transition to Testimonials */}
+        <div className="h-32 bg-gradient-to-b from-brand-orange/5 to-white" />
 
-      {/* Fade Section to White */}
-      <div className="h-[600px] bg-gradient-to-b from-brand-orange/5 to-white" />
+        {/* 5. Testimonials Section */}
+        <section className="bg-white py-24">
+          <Testimonials />
+        </section>
 
-      {/* 5. White Section */}
-      <section className="bg-white">
-        <Testimonials />
-      </section>
+        {/* Transition to Timeline */}
+        <div className="h-32 bg-gradient-to-b from-white to-brand-gold/5" />
 
-      {/* Fade White to Timeline */}
-      <div className="h-[600px] bg-gradient-to-b from-white to-brand-gold/5" />
+        {/* 6. Timeline Section */}
+        <section className="bg-brand-gold/5 py-24">
+          <Timeline />
+        </section>
 
-      {/* 6. Timeline Section */}
-      <section className="bg-brand-gold/5">
-        <Timeline />
-      </section>
+        {/* Transition to Booking */}
+        <div className="h-32 bg-gradient-to-b from-brand-gold/5 to-white" />
 
-      {/* Fade Section to White */}
-      <div className="h-[600px] bg-gradient-to-b from-brand-gold/5 to-white" />
+        {/* 7. Booking Section (Interactive Calendar) */}
+        <section className="bg-white py-24">
+          <BookingSection />
+        </section>
 
-      {/* 7. White Section */}
-      <section className="bg-white">
-        <FAQ />
-      </section>
+        {/* Transition to FAQ */}
+        <div className="h-32 bg-gradient-to-b from-white to-slate-50" />
 
-      {/* Fade White to Black (Footer) */}
-      <div className="h-[600px] bg-gradient-to-b from-white to-black" />
+        {/* 8. FAQ Section */}
+        <section className="bg-slate-50 py-24">
+          <FAQ />
+        </section>
+
+        {/* Transition to Footer */}
+        <div className="h-32 bg-gradient-to-b from-slate-50 to-brand-navy" />
+      </div>
       
       <Footer />
     </main>
