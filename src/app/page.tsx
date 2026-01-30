@@ -5,64 +5,75 @@ import { Services } from "@/components/Services";
 import { Features } from "@/components/Features";
 import { VideoSection } from "@/components/VideoSection";
 import { Testimonials } from "@/components/Testimonials";
+import { InstagramSection } from "@/components/InstagramSection";
 import { FAQ } from "@/components/FAQ";
+import { Instagram, Twitter, Facebook } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-white">
       <Navbar />
       <Hero />
-      <div id="brands">
-        <Brands />
-      </div>
-      <div id="video">
-        <VideoSection />
-      </div>
-      <div id="services">
-        <Services />
-      </div>
-      <div id="features">
-        <Features />
-      </div>
-      <div id="testimonials">
-        <Testimonials />
-      </div>
-      <div id="faq">
-        <FAQ />
-      </div>
+      <Brands />
+      <Services />
+      <VideoSection />
+      <Features />
+      <Testimonials />
+      <InstagramSection />
+      <FAQ />
       
-      {/* Footer Section */}
-      <footer id="contact" className="py-24 bg-primary text-white">
+      {/* Massive Pixel-Perfect Footer */}
+      <footer className="pt-32 pb-12 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            <div className="col-span-2">
-              <h2 className="text-4xl font-black mb-8 tracking-tighter">STAF AFFAIRES</h2>
-              <p className="text-xl text-white/70 max-w-md leading-relaxed">
-                Accompagner les leaders et les entreprises vers une performance durable et un mindset d'exception.
-              </p>
+          <div className="grid md:grid-cols-4 gap-12 mb-24">
+            {/* Column 1 */}
+            <div className="flex flex-col gap-6">
+              <Link href="/about" className="text-sm font-bold uppercase tracking-widest text-black/60 hover:text-black transition-colors">About Us</Link>
+              <Link href="/services" className="text-sm font-bold uppercase tracking-widest text-black/60 hover:text-black transition-colors">Services</Link>
+              <Link href="/team" className="text-sm font-bold uppercase tracking-widest text-black/60 hover:text-black transition-colors">Find a Tutor</Link>
             </div>
-            <div>
-              <h3 className="font-bold uppercase tracking-widest text-sm mb-6 text-white/50">Navigation</h3>
-              <ul className="space-y-4 font-medium">
-                <li><a href="#" className="hover:text-white/60 transition-colors">Accueil</a></li>
-                <li><a href="#services" className="hover:text-white/60 transition-colors">Services</a></li>
-                <li><a href="#about" className="hover:text-white/60 transition-colors">À propos</a></li>
-                <li><a href="#contact" className="hover:text-white/60 transition-colors">Contact</a></li>
-              </ul>
+            
+            {/* Column 2 */}
+            <div className="flex flex-col gap-6">
+              <span className="text-sm font-bold uppercase tracking-widest text-black">info@stafaffaires.fr</span>
             </div>
-            <div>
-              <h3 className="font-bold uppercase tracking-widest text-sm mb-6 text-white/50">Contact</h3>
-              <ul className="space-y-4 font-medium">
-                <li>contact@stafaffaires.fr</li>
-                <li>Paris, France</li>
-              </ul>
+
+            {/* Column 3 */}
+            <div className="flex flex-col gap-6">
+              <Link href="/faq" className="text-sm font-bold uppercase tracking-widest text-black/60 hover:text-black transition-colors">FAQs</Link>
+              <Link href="/pricing" className="text-sm font-bold uppercase tracking-widest text-black/60 hover:text-black transition-colors">Pricing</Link>
             </div>
           </div>
-          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-6 text-white/40 text-sm font-bold uppercase tracking-widest">
-            <p>© 2026 STAF AFFAIRES. Tous droits réservés.</p>
-            <div className="flex gap-8">
-              <a href="#" className="hover:text-white transition-colors">Mentions Légales</a>
-              <a href="#" className="hover:text-white transition-colors">Confidentialité</a>
+
+          {/* Massive Text */}
+          <div className="w-full overflow-hidden mb-20">
+            <h2 className="text-[15vw] font-black text-black leading-none tracking-tighter text-center uppercase whitespace-nowrap">
+              STAF AFFAIRES
+            </h2>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-black/40">
+              © 2026 STAF AFFAIRES. All Rights Reserved.
+            </p>
+
+            <div className="flex items-center gap-6">
+              <Link href="#" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all">
+                <Facebook className="w-4 h-4" />
+              </Link>
+              <Link href="#" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all">
+                <Twitter className="w-4 h-4" />
+              </Link>
+              <Link href="#" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all">
+                <Instagram className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-black/40">
+              <Link href="#" className="hover:text-black transition-colors">Privacy Policy</Link>
+              <Link href="#" className="hover:text-black transition-colors">Terms & Conditions</Link>
             </div>
           </div>
         </div>

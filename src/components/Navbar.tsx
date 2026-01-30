@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Accueil", href: "/" },
+  { name: "Home", href: "/", active: true },
   { name: "Services", href: "/services" },
-  { name: "À propos", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "Find a Tutor", href: "/team" },
+  { name: "Pricing", href: "/pricing" },
 ];
 
 export function Navbar() {
@@ -35,46 +35,42 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className={`text-2xl font-black tracking-tighter transition-colors duration-500 ${
-            isScrolled ? "text-primary" : "text-white"
-          }`}>
-            STAF <span className="opacity-50 group-hover:opacity-100 transition-opacity">AFFAIRES</span>
+          <span className="text-xl font-black italic tracking-tighter text-black">
+            STAF AFFAIRES
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-10">
           {navItems.map((item) => (
             <Link 
               key={item.name} 
               href={item.href}
-              className={`text-sm font-bold uppercase tracking-widest transition-all duration-500 hover:scale-110 active:scale-95 ${
-                isScrolled ? "text-muted-foreground hover:text-primary" : "text-white/80 hover:text-white"
-              }`}
+              className="group flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black transition-all"
             >
+              {item.active && <div className="w-2 h-2 bg-brand-orange rounded-full" />}
               {item.name}
             </Link>
           ))}
+        </div>
+
+        <div className="hidden lg:flex items-center gap-6">
+          <Link href="/signin" className="text-[13px] font-bold uppercase tracking-widest text-black/60 hover:text-black">
+            Sign In
+          </Link>
           <Button 
-            variant={isScrolled ? "default" : "outline"}
-            className={`rounded-full px-6 font-bold transition-all duration-500 hover:scale-105 active:scale-95 ${
-              !isScrolled && "text-white border-white hover:bg-white hover:text-primary"
-            }`}
+            className="rounded-full bg-black text-white px-8 py-6 font-bold hover:scale-105 transition-all text-[13px] uppercase tracking-widest"
           >
-            Réserver un appel
+            Sign Up
           </Button>
         </div>
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden"
+          className="lg:hidden text-black"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? (
-            <X className={isScrolled ? "text-primary" : "text-white"} />
-          ) : (
-            <Menu className={isScrolled ? "text-primary" : "text-white"} />
-          )}
+          {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
 
@@ -85,22 +81,27 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-border overflow-hidden"
+            className="lg:hidden bg-white border-b border-border overflow-hidden shadow-2xl"
           >
-            <div className="flex flex-col p-6 gap-6">
+            <div className="flex flex-col p-8 gap-8">
               {navItems.map((item) => (
                 <Link 
                   key={item.name} 
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-bold text-muted-foreground hover:text-primary transition-colors"
+                  className="text-xl font-black uppercase tracking-widest text-black"
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button className="w-full rounded-full py-6 font-bold">
-                Réserver un appel
-              </Button>
+              <div className="flex flex-col gap-4 border-t pt-8">
+                <Button variant="outline" className="w-full rounded-full py-6 font-bold uppercase tracking-widest text-[13px]">
+                  Sign In
+                </Button>
+                <Button className="w-full rounded-full py-6 font-bold uppercase tracking-widest text-[13px]">
+                  Sign Up
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}

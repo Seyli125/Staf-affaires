@@ -1,88 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-const testimonials = [
-  {
-    name: "Jean Dupont",
-    role: "CEO, Tech Solutions",
-    content: "L'accompagnement de Saïd a transformé notre vision stratégique. Sa capacité à identifier les blocages est impressionnante.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150",
-  },
-  {
-    name: "Marie Laurent",
-    role: "Directrice RH, Global Corp",
-    content: "Un coaching d'équipe puissant qui a soudé nos managers autour d'un objectif commun. Les résultats sont palpables.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
-  },
-  {
-    name: "Thomas Bernard",
-    role: "Fondateur, StartUp X",
-    content: "Grâce à STAF AFFAIRES, j'ai retrouvé la clarté nécessaire pour scaler mon entreprise sans sacrifier mon bien-être.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
-  },
-];
+const testimonial = {
+  text: "Avant de travailler avec Saïd, j'étais bloqué. En seulement trois mois, j'ai triplé mes revenus et construit un système évolutif pour mon entreprise. Ses stratégies changent la donne !",
+  author: "Michael Carter",
+  role: "Entrepreneur",
+  avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop",
+};
 
 export function Testimonials() {
   return (
-    <section className="py-24 bg-gray-50 overflow-hidden">
+    <section className="py-32 bg-[#fafafa] overflow-hidden">
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center text-sm font-black uppercase tracking-[0.4em] text-black mb-16"
         >
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
-            CE QUE DISENT <br />
-            <span className="text-primary">NOS CLIENTS</span>
-          </h2>
-          <div className="w-24 h-1 bg-primary mx-auto" />
-        </motion.div>
+          Ce que disent nos clients
+        </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((item, index) => (
-            <motion.div
-              key={item.name}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
-              className="bg-white p-10 rounded-3xl shadow-xl border border-gray-100 relative group"
-            >
-              <Quote className="absolute top-8 right-8 w-12 h-12 text-primary/10 group-hover:text-primary/20 transition-colors" />
-              
-              <div className="flex items-center gap-4 mb-8">
-                <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-black text-xl tracking-tight">{item.name}</h4>
-                  <p className="text-sm font-bold text-primary uppercase tracking-widest">{item.role}</p>
-                </div>
+        <div className="relative max-w-5xl mx-auto flex items-center justify-center">
+          {/* Navigation Arrows */}
+          <div className="absolute left-0 z-10 hidden md:block">
+            <Button variant="outline" size="icon" className="rounded-full w-14 h-14 border-gray-200">
+              <ChevronLeft className="w-6 h-6" />
+            </Button>
+          </div>
+          <div className="absolute right-0 z-10 hidden md:block">
+            <Button variant="default" size="icon" className="rounded-full w-14 h-14 bg-black text-white">
+              <ChevronRight className="w-6 h-6" />
+            </Button>
+          </div>
+
+          {/* Testimonial Content */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-center px-12 md:px-24"
+          >
+            <div className="flex justify-center gap-1 mb-8">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+
+            <p className="text-2xl md:text-3xl font-medium leading-relaxed mb-12 text-gray-800">
+              "{testimonial.text}"
+            </p>
+
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden shadow-lg border-2 border-white">
+                <Image 
+                  src={testimonial.avatar} 
+                  alt={testimonial.author}
+                  fill
+                  className="object-cover"
+                />
               </div>
-
-              <p className="text-lg text-muted-foreground font-medium leading-relaxed italic">
-                "{item.content}"
-              </p>
-
-              <div className="mt-8 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-brand-orange fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+              <div>
+                <h4 className="font-black text-lg uppercase tracking-wider">{testimonial.author}</h4>
+                <p className="text-sm font-bold text-primary/60 uppercase tracking-widest">{testimonial.role}</p>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
