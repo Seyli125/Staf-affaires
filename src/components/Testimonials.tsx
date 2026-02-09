@@ -52,12 +52,15 @@ const testimonials = [
   },
 ];
 
+// Premium easing curve
+const premiumEase = [0.25, 0.4, 0.25, 1] as const;
+
 const StarRating = ({ rating }: { rating: number }) => (
   <div className="flex gap-0.5">
     {[...Array(5)].map((_, i) => (
       <Star 
         key={i} 
-        className={`w-3 h-3 ${i < rating ? 'fill-amber-400 text-amber-400' : 'fill-slate-200 text-slate-200'}`} 
+        className={`w-2.5 h-2.5 ${i < rating ? 'fill-amber-400 text-amber-400' : 'fill-slate-200 text-slate-200'}`} 
       />
     ))}
   </div>
@@ -70,32 +73,32 @@ export function Testimonials() {
     offset: ["start end", "end start"]
   });
 
-  const headerY = useTransform(scrollYProgress, [0, 0.5], [30, 0]);
+  const headerY = useTransform(scrollYProgress, [0, 0.5], [20, 0]);
 
   return (
     <section ref={sectionRef} id="testimonials" className="container mx-auto px-4 sm:px-6 overflow-visible">
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 sm:mb-16 gap-6">
+      {/* Header - Compact */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 sm:mb-10 gap-4">
         <motion.div 
           style={{ y: headerY }}
-          className="max-w-xl"
+          className="max-w-lg"
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-3 mb-5"
+            transition={{ duration: 0.6, ease: premiumEase }}
+            className="flex items-center gap-2.5 mb-4"
           >
-            <div className="flex -space-x-2">
+            <div className="flex -space-x-1.5">
               {[1, 2, 3, 4].map(i => (
                 <motion.div 
                   key={i} 
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.1 * i, type: "spring", stiffness: 200 }}
-                  className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm"
+                  transition={{ delay: 0.08 * i, duration: 0.4, ease: premiumEase }}
+                  className="w-6 h-6 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm"
                 >
                   <img src={`https://i.pravatar.cc/100?img=${i+20}`} alt="User" className="w-full h-full object-cover" />
                 </motion.div>
@@ -109,22 +112,22 @@ export function Testimonials() {
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.05, type: "spring" }}
+                    transition={{ delay: 0.25 + i * 0.04, duration: 0.3, ease: premiumEase }}
                   >
-                    <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                    <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
                   </motion.div>
                 ))}
               </div>
-              <span className="text-[10px] font-medium text-slate-400 mt-0.5">5/5 sur LinkedIn</span>
+              <span className="text-[8px] font-medium text-slate-400 mt-0.5">5/5 sur LinkedIn</span>
             </div>
           </motion.div>
           
           <motion.h2
-            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-navy leading-tight"
+            transition={{ duration: 0.7, delay: 0.1, ease: premiumEase }}
+            className="text-lg sm:text-xl md:text-2xl font-bold text-brand-navy leading-tight"
           >
             L'excellence reconnue <br className="hidden sm:block" />
             <span className="text-brand-orange">par vos pairs</span>
@@ -132,78 +135,79 @@ export function Testimonials() {
         </motion.div>
         
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: premiumEase }}
           className="lg:max-w-xs"
         >
-          <p className="text-sm text-slate-500 italic border-l-2 border-brand-orange pl-3">
+          <p className="text-[10px] text-slate-500 italic border-l-2 border-brand-orange pl-2.5">
             "L'impact du coaching se mesure aux résultats durables et à l'épanouissement quotidien."
           </p>
         </motion.div>
       </div>
 
-      {/* Testimonials Grid - Compact Modern Design */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12 sm:mb-16">
+      {/* Testimonials Grid - Compact */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-8 sm:mb-10">
         {testimonials.map((item, index) => (
           <motion.div
             key={item.name}
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            initial={{ opacity: 0, y: 25, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-40px" }}
             transition={{ 
               duration: 0.6, 
-              delay: index * 0.08,
-              ease: [0.25, 0.4, 0.25, 1]
+              delay: index * 0.06,
+              ease: premiumEase
             }}
             whileHover={{ 
-              y: -6, 
-              transition: { duration: 0.3 } 
+              y: -4, 
+              transition: { duration: 0.3, ease: premiumEase } 
             }}
-            className={`relative p-5 rounded-2xl border transition-all duration-300 group cursor-default ${
+            className={`relative p-3.5 sm:p-4 rounded-xl border transition-all duration-400 group cursor-default ${
               item.highlight 
-              ? 'bg-brand-navy text-white border-transparent shadow-xl' 
-              : 'bg-white border-slate-100 hover:border-slate-200 hover:shadow-lg'
+              ? 'bg-brand-navy text-white border-transparent shadow-lg' 
+              : 'bg-white border-slate-100 hover:border-slate-200 hover:shadow-md'
             }`}
           >
             {/* Quote Icon */}
-            <Quote className={`absolute top-4 right-4 w-6 h-6 ${
+            <Quote className={`absolute top-3 right-3 w-4 h-4 ${
               item.highlight ? 'text-white/10' : 'text-slate-100'
             }`} />
             
             {/* Rating & Date */}
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-2.5">
               <StarRating rating={item.rating} />
-              <span className={`text-[10px] font-medium ${item.highlight ? 'text-white/50' : 'text-slate-400'}`}>
+              <span className={`text-[8px] font-medium ${item.highlight ? 'text-white/50' : 'text-slate-400'}`}>
                 {item.date}
               </span>
             </div>
             
             {/* Quote */}
-            <p className={`text-sm leading-relaxed mb-4 ${
+            <p className={`text-[10px] leading-relaxed mb-3 ${
               item.highlight ? 'text-white/90' : 'text-slate-600'
             }`}>
               "{item.quote}"
             </p>
 
             {/* Author */}
-            <div className="flex items-center gap-3 pt-3 border-t border-current/10">
+            <div className="flex items-center gap-2 pt-2.5 border-t border-current/10">
               <motion.div 
-                whileHover={{ scale: 1.1 }}
-                className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
+                whileHover={{ scale: 1.08 }}
+                transition={{ duration: 0.3, ease: premiumEase }}
+                className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
                   item.highlight ? 'bg-brand-orange text-white' : 'bg-brand-navy text-white'
                 }`}
               >
-                <span className="font-bold text-sm">{item.name[0]}</span>
+                <span className="font-bold text-[10px]">{item.name[0]}</span>
               </motion.div>
               <div className="min-w-0">
-                <h4 className={`font-semibold text-xs truncate ${
+                <h4 className={`font-semibold text-[9px] truncate ${
                   item.highlight ? 'text-white' : 'text-brand-navy'
                 }`}>
                   {item.name}
                 </h4>
-                <p className={`text-[10px] truncate ${
+                <p className={`text-[8px] truncate ${
                   item.highlight ? 'text-brand-orange' : 'text-slate-400'
                 }`}>
                   {item.role}
@@ -216,50 +220,48 @@ export function Testimonials() {
 
       {/* CTA - Compact */}
       <motion.div
-        initial={{ opacity: 0, y: 50, scale: 0.98 }}
+        initial={{ opacity: 0, y: 35, scale: 0.98 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-        className="bg-gradient-to-r from-brand-orange to-brand-orange/90 rounded-3xl p-6 sm:p-8 text-white text-center shadow-xl relative overflow-hidden"
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.8, ease: premiumEase }}
+        className="bg-gradient-to-r from-brand-orange to-brand-orange/90 rounded-xl p-5 sm:p-6 text-white text-center shadow-lg relative overflow-hidden"
       >
         <motion.div 
-          className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"
-          animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 pointer-events-none"
         />
         <div className="relative z-10">
           <motion.h3 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-xl sm:text-2xl font-bold mb-4"
+            transition={{ delay: 0.2, duration: 0.5, ease: premiumEase }}
+            className="text-base sm:text-lg font-bold mb-3"
           >
             Rejoignez ceux qui performent avec <span className="underline decoration-white/30 underline-offset-4">Sens</span>
           </motion.h3>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-white/70 text-sm mb-6 max-w-md mx-auto"
+            transition={{ delay: 0.3, duration: 0.5, ease: premiumEase }}
+            className="text-white/70 text-[10px] mb-4 max-w-sm mx-auto"
           >
             Commencez votre transformation dès aujourd'hui
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.4, duration: 0.5, ease: premiumEase }}
           >
             <Link href="/prendre-rendez-vous">
               <motion.button 
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)" }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 bg-white text-brand-navy px-6 py-3 rounded-full font-semibold text-sm hover:bg-brand-navy hover:text-white transition-all duration-300 shadow-lg"
+                whileHover={{ scale: 1.03, boxShadow: "0 15px 30px -8px rgba(0,0,0,0.25)" }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-1.5 bg-white text-brand-navy px-5 py-2.5 rounded-full font-semibold text-[10px] hover:bg-brand-navy hover:text-white transition-all duration-300 shadow-md"
               >
                 Commencer mon accompagnement
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3 h-3" />
               </motion.button>
             </Link>
           </motion.div>

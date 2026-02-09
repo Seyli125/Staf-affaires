@@ -14,63 +14,63 @@ export default function Home() {
       <Navbar />
       
       {/* 1. Hero - LOCKED SECTION (Visual/Structure/Content) */}
-      <section className="bg-white relative z-10">
-        <Hero />
-      </section>
+        <section className="bg-white relative z-10">
+          <Hero />
+        </section>
 
-        {/* Smooth transitions */}
-        <div className="relative">
-          {/* Transition to Services */}
-          <div className="h-20 sm:h-24 bg-gradient-to-b from-white to-slate-50" />
-          
-          {/* Services Section */}
-          <section className="bg-slate-50 py-20 sm:py-24">
-            <Services />
-          </section>
+          {/* Smooth transitions - Optimized spacing */}
+          <div className="relative">
+            {/* Transition to Services */}
+            <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-slate-50" />
+            
+            {/* Services Section */}
+            <section className="bg-slate-50 py-16 sm:py-20">
+              <Services />
+            </section>
 
-          {/* Transition to Video */}
-          <div className="h-20 sm:h-24 bg-gradient-to-b from-slate-50 to-white" />
+            {/* Transition to Video */}
+            <div className="h-16 sm:h-20 bg-gradient-to-b from-slate-50 to-white" />
 
-          {/* Video Section */}
-          <section className="bg-white py-20 sm:py-24">
-            <VideoSection />
-          </section>
+            {/* Video Section */}
+            <section className="bg-white py-16 sm:py-20">
+              <VideoSection />
+            </section>
 
-          {/* Transition to Features */}
-          <div className="h-20 sm:h-24 bg-gradient-to-b from-white to-brand-orange/5" />
+            {/* Transition to Features */}
+            <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-brand-orange/5" />
 
-          {/* Features (Qui suis-je) Section */}
-          <section className="bg-brand-orange/5 py-20 sm:py-24">
-            <Features />
-          </section>
+            {/* Features (Qui suis-je) Section */}
+            <section className="bg-brand-orange/5 py-16 sm:py-20">
+              <Features />
+            </section>
 
-          {/* Transition to Testimonials */}
-          <div className="h-20 sm:h-24 bg-gradient-to-b from-brand-orange/5 to-white" />
+            {/* Transition to Testimonials */}
+            <div className="h-16 sm:h-20 bg-gradient-to-b from-brand-orange/5 to-white" />
 
-          {/* Testimonials Section */}
-          <section className="bg-white py-20 sm:py-24">
-            <Testimonials />
-          </section>
+            {/* Testimonials Section */}
+            <section className="bg-white py-16 sm:py-20">
+              <Testimonials />
+            </section>
 
-          {/* Transition to Timeline */}
-          <div className="h-20 sm:h-24 bg-gradient-to-b from-white to-slate-50" />
+            {/* Transition to Timeline */}
+            <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-slate-50" />
 
-          {/* Timeline Section */}
-          <section className="bg-slate-50 py-20 sm:py-24">
-            <Timeline />
-          </section>
+            {/* Timeline Section */}
+            <section className="bg-slate-50 py-16 sm:py-20">
+              <Timeline />
+            </section>
 
-          {/* Transition to FAQ */}
-          <div className="h-20 sm:h-24 bg-gradient-to-b from-slate-50 to-white" />
+            {/* Transition to FAQ */}
+            <div className="h-16 sm:h-20 bg-gradient-to-b from-slate-50 to-white" />
 
-          {/* FAQ Section */}
-          <section className="bg-white py-20 sm:py-24">
-            <FAQ />
-          </section>
+            {/* FAQ Section */}
+            <section className="bg-white py-16 sm:py-20">
+              <FAQ />
+            </section>
 
-          {/* Final Transition to Footer */}
-          <div className="h-20 sm:h-24 bg-gradient-to-b from-white to-brand-navy" />
-        </div>
+            {/* Final Transition to Footer */}
+            <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-brand-navy" />
+          </div>
       
       <Footer />
     </main>
