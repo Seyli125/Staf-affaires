@@ -25,31 +25,29 @@ export function Features() {
 
   return (
     <section ref={sectionRef} id="features" className="container mx-auto px-4 sm:px-6 relative overflow-hidden">
-      {/* Decorative background */}
+      {/* Decorative background - optimized */}
       <motion.div 
         className="absolute top-1/2 left-0 w-72 h-72 bg-brand-orange/5 blur-[80px] -translate-y-1/2 -translate-x-1/2 rounded-full pointer-events-none"
-        animate={{ 
-          scale: [1, 1.15, 1],
-          opacity: [0.3, 0.4, 0.3]
-        }}
+        initial={{ opacity: 0.3 }}
+        animate={{ opacity: [0.3, 0.4, 0.3] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        {/* Left: Image - Compact and balanced */}
+        {/* Left: Image - Reduced size */}
         <motion.div
           style={{ y: imageY }}
-          initial={{ opacity: 0, x: -40, scale: 0.95 }}
-          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
           className="relative order-1 lg:order-1"
         >
           <div className="relative max-w-[220px] mx-auto">
-            {/* Main Image */}
+            {/* Main Image - Smaller */}
             <motion.div 
               className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-lg border-3 border-white"
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.015 }}
               transition={{ duration: 0.4 }}
             >
               <Image 
@@ -58,16 +56,16 @@ export function Features() {
                 fill
                 className="object-cover object-top"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/30 via-transparent to-transparent" />
             </motion.div>
             
             {/* Experience Badge - Smaller */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.8, x: 15 }}
-              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-              whileHover={{ scale: 1.08 }}
+              transition={{ delay: 0.4, type: "spring", stiffness: 200, damping: 15 }}
+              whileHover={{ scale: 1.05 }}
               className="absolute -bottom-2 -right-2 bg-brand-orange p-2 rounded-lg text-white shadow-md hidden sm:block cursor-default"
             >
               <div className="text-center">
@@ -78,11 +76,11 @@ export function Features() {
 
             {/* RNCP Badge - Smaller */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.8, x: -15 }}
-              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-              whileHover={{ scale: 1.08, rotate: 5 }}
+              transition={{ delay: 0.3, type: "spring", stiffness: 200, damping: 15 }}
+              whileHover={{ scale: 1.05 }}
               className="absolute -top-2 -left-2 z-20 w-11 h-11 rounded-full overflow-hidden border-2 border-white shadow-md bg-white p-1 hidden sm:block"
             >
               <Image 
@@ -94,10 +92,10 @@ export function Features() {
             </motion.div>
           </div>
 
-          {/* Mobile badges */}
-          <div className="flex sm:hidden justify-center gap-2 mt-3">
+          {/* Mobile badges - Smaller */}
+          <div className="flex sm:hidden justify-center gap-1.5 mt-3">
             <motion.span 
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-brand-orange text-white px-2.5 py-1 rounded-full text-[9px] font-semibold"
@@ -105,7 +103,7 @@ export function Features() {
               25+ ans d'expertise
             </motion.span>
             <motion.span 
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
@@ -119,7 +117,7 @@ export function Features() {
         {/* Right: Content */}
         <motion.div
           style={{ y: contentY }}
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
@@ -135,8 +133,8 @@ export function Features() {
               className="h-0.5 bg-brand-orange mb-3"
             />
             <motion.span 
-              initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 }}
               className="text-brand-orange font-semibold text-[11px] mb-1.5 block"
@@ -144,8 +142,8 @@ export function Features() {
               La Signature d'un Expert
             </motion.span>
             <motion.h2 
-              initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-xl sm:text-2xl font-bold text-brand-navy leading-tight mb-1.5"
@@ -165,23 +163,23 @@ export function Features() {
 
           {/* Quote */}
           <motion.div 
-            initial={{ opacity: 0, y: 15, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
             whileHover={{ scale: 1.01 }}
             className="relative bg-slate-50 rounded-lg p-3 mb-5"
           >
-            <Quote className="absolute top-2.5 right-2.5 w-4 h-4 text-slate-200" />
-            <p className="text-xs font-medium text-brand-navy italic leading-relaxed">
+            <Quote className="absolute top-2 right-2 w-4 h-4 text-slate-200" />
+            <p className="text-xs font-medium text-brand-navy italic leading-relaxed pr-4">
               "Transformer vos défis complexes en leviers de croissance, tout en préservant votre équilibre."
             </p>
           </motion.div>
           
-          {/* Description */}
-          <div className="space-y-2.5 text-slate-600 text-xs leading-relaxed mb-5">
+          {/* Description - Reduced */}
+          <div className="space-y-2 text-slate-600 text-xs leading-relaxed mb-5">
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.5 }}
@@ -189,40 +187,40 @@ export function Features() {
               Avec un parcours forgé au sein de structures de premier plan, Saïd Taaroust incarne l'alliance rare entre <span className="text-brand-navy font-semibold">rigueur stratégique</span> et <span className="text-brand-navy font-semibold">intelligence émotionnelle</span>. 
             </motion.p>
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.6 }}
+              transition={{ duration: 0.4, delay: 0.55 }}
             >
               Maître des dynamiques B2B depuis plus de 25 ans, il a propulsé des centaines de dirigeants vers l'excellence. Sa méthode <span className="text-brand-orange font-semibold">AVR®</span> garantit des résultats concrets et durables.
             </motion.p>
           </div>
 
-          {/* Philosophical Quote */}
+          {/* Philosophical quote */}
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.65 }}
-            className="text-[10px] text-slate-400 italic mb-5 border-l-2 border-brand-orange/30 pl-2"
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-[10px] italic text-slate-400 mb-4 border-l-2 border-brand-orange/30 pl-2"
           >
-            "Le vrai succès n'est pas d'aller vite, mais d'aller loin — ensemble."
+            "Le vrai succès n'est pas de tout avoir, mais d'être aligné avec ce qui compte vraiment."
           </motion.p>
 
-          {/* Credentials Grid */}
+          {/* Credentials Grid - Smaller */}
           <div className="grid grid-cols-2 gap-2 mb-5">
             {credentials.map((item, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 15, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ 
                   duration: 0.4, 
-                  delay: 0.5 + i * 0.08,
+                  delay: 0.6 + i * 0.08,
                   ease: [0.25, 0.4, 0.25, 1]
                 }}
-                whileHover={{ y: -3, boxShadow: "0 8px 24px -8px rgba(0,0,0,0.08)" }}
+                whileHover={{ y: -2, boxShadow: "0 8px 20px -8px rgba(0,0,0,0.1)" }}
                 className="flex items-center gap-2 p-2.5 rounded-lg bg-white border border-slate-100 transition-all duration-300 group cursor-default"
               >
                 <div className="w-7 h-7 rounded-md bg-slate-50 flex items-center justify-center shrink-0 group-hover:bg-brand-orange transition-colors duration-300">
@@ -236,7 +234,7 @@ export function Features() {
             ))}
           </div>
 
-          {/* CTA */}
+          {/* CTA - Smaller */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -245,7 +243,7 @@ export function Features() {
           >
             <Link href="/prendre-rendez-vous">
               <motion.button 
-                whileHover={{ scale: 1.02, boxShadow: "0 16px 32px -8px rgba(10, 25, 47, 0.25)" }}
+                whileHover={{ scale: 1.02, boxShadow: "0 15px 30px -8px rgba(10, 25, 47, 0.25)" }}
                 whileTap={{ scale: 0.98 }}
                 className="group inline-flex items-center gap-2 px-5 py-2.5 bg-brand-navy text-white rounded-full font-semibold text-xs hover:bg-brand-orange transition-all duration-300 shadow-md w-full sm:w-auto justify-center"
               >

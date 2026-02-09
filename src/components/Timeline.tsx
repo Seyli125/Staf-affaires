@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
 import { Briefcase, GraduationCap, Building2, TrendingUp, Users, Target, ShieldCheck, ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
 
@@ -59,71 +58,82 @@ export function Timeline() {
     offset: ["start end", "end start"]
   });
 
-  const lineHeight = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
+  const lineHeight = useTransform(scrollYProgress, [0.15, 0.85], ["0%", "100%"]);
 
   return (
     <section ref={sectionRef} id="timeline" className="container mx-auto px-4 sm:px-6 overflow-visible relative">
-      {/* Header */}
-      <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
+      {/* Header - Reduced */}
+      <div className="max-w-xl mx-auto text-center mb-10 sm:mb-12">
         <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.9 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, type: "spring" }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange/10 rounded-full mb-5"
+          transition={{ duration: 0.5, type: "spring", damping: 15 }}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-orange/10 rounded-full mb-4"
         >
           <motion.div
             animate={{ rotate: [0, 360] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
           >
-            <Zap className="w-3.5 h-3.5 text-brand-orange" />
+            <Zap className="w-3 h-3 text-brand-orange" />
           </motion.div>
-          <span className="text-brand-orange font-semibold text-xs">
+          <span className="text-brand-orange font-semibold text-[10px]">
             Héritage & Vision
           </span>
         </motion.div>
         
         <motion.h2 
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-navy leading-tight mb-4"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-navy leading-tight mb-3"
         >
           La force de <span className="text-brand-orange">l'expérience</span>
         </motion.h2>
         
         <motion.p 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-sm text-slate-500 max-w-lg mx-auto leading-relaxed"
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed"
         >
           40 années d'immersion terrain condensées dans une méthode propriétaire au service de votre transformation.
         </motion.p>
+
+        {/* Philosophical quote */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-[10px] italic text-slate-400 mt-3 max-w-xs mx-auto"
+        >
+          "Chaque étape du chemin construit celui que vous devenez."
+        </motion.p>
       </div>
 
-      {/* Timeline */}
-      <div className="relative max-w-4xl mx-auto">
+      {/* Timeline - Reduced */}
+      <div className="relative max-w-3xl mx-auto">
         {/* Progress Line */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 md:-translate-x-1/2">
+        <div className="absolute left-3 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 md:-translate-x-1/2">
           <motion.div 
             style={{ height: lineHeight }}
             className="w-full bg-gradient-to-b from-brand-orange to-brand-navy origin-top"
           />
         </div>
 
-        <div className="space-y-8 sm:space-y-10">
+        <div className="space-y-6 sm:space-y-8">
           {timelineData.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={{ 
-                duration: 0.6, 
-                delay: index * 0.1,
+                duration: 0.5, 
+                delay: index * 0.08,
                 ease: [0.25, 0.4, 0.25, 1]
               }}
               className={`relative flex flex-col md:flex-row items-start md:items-center ${
@@ -135,19 +145,19 @@ export function Timeline() {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2 + index * 0.1, type: "spring", stiffness: 300 }}
-                className="absolute left-4 md:left-1/2 w-3 h-3 bg-white border-2 border-brand-navy rounded-full md:-translate-x-1/2 z-10"
+                transition={{ delay: 0.15 + index * 0.08, type: "spring", stiffness: 300, damping: 15 }}
+                className="absolute left-3 md:left-1/2 w-2.5 h-2.5 bg-white border-2 border-brand-navy rounded-full md:-translate-x-1/2 z-10"
               />
 
-              {/* Content Card */}
-              <div className="ml-10 md:ml-0 md:w-1/2 md:px-6">
+              {/* Content Card - Reduced */}
+              <div className="ml-8 md:ml-0 md:w-1/2 md:px-5">
                 <motion.div 
                   whileHover={{ 
-                    y: -4, 
-                    boxShadow: item.highlight ? "0 20px 40px -10px rgba(10,25,47,0.3)" : "0 10px 30px -10px rgba(0,0,0,0.1)" 
+                    y: -3, 
+                    boxShadow: item.highlight ? "0 15px 30px -8px rgba(10,25,47,0.25)" : "0 8px 20px -8px rgba(0,0,0,0.1)" 
                   }}
-                  className={`p-5 rounded-2xl transition-all duration-300 cursor-default ${
-                    item.highlight ? 'bg-brand-navy text-white shadow-xl' : 'bg-white border border-slate-100 hover:border-slate-200'
+                  className={`p-4 rounded-xl transition-all duration-300 cursor-default ${
+                    item.highlight ? 'bg-brand-navy text-white shadow-lg' : 'bg-white border border-slate-100 hover:border-slate-200'
                   } ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}
                 >
                   {item.highlight && (
@@ -155,33 +165,33 @@ export function Timeline() {
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ delay: 0.3 }}
-                      className="inline-block bg-brand-orange text-white px-2.5 py-1 rounded-full text-[8px] font-bold uppercase tracking-wider mb-3"
+                      transition={{ delay: 0.2 }}
+                      className="inline-block bg-brand-orange text-white px-2 py-0.5 rounded-full text-[7px] font-bold uppercase tracking-wider mb-2"
                     >
                       L'Aboutissement
                     </motion.span>
                   )}
 
-                  <div className={`flex items-center gap-2.5 mb-3 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                  <div className={`flex items-center gap-2 mb-2 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
                     <motion.div 
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+                      whileHover={{ scale: 1.1 }}
+                      className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${
                         item.highlight ? 'bg-white/10 text-brand-orange' : 'bg-brand-navy text-white'
                       }`}
                     >
-                      <item.icon className="w-4 h-4" />
+                      <item.icon className="w-3 h-3" />
                     </motion.div>
-                    <span className={`text-[10px] font-semibold tracking-wider ${
+                    <span className={`text-[9px] font-semibold tracking-wider ${
                       item.highlight ? 'text-brand-orange' : 'text-brand-orange'
                     }`}>{item.year}</span>
                   </div>
 
-                  <h3 className={`text-sm font-bold mb-1.5 ${
+                  <h3 className={`text-xs font-bold mb-1 ${
                     item.highlight ? 'text-white' : 'text-brand-navy'
                   }`}>
                     {item.title}
                   </h3>
-                  <p className={`text-xs leading-relaxed ${
+                  <p className={`text-[10px] leading-relaxed ${
                     item.highlight ? 'text-white/70' : 'text-slate-500'
                   }`}>
                     {item.description}
@@ -195,40 +205,41 @@ export function Timeline() {
         </div>
       </div>
 
-      {/* CTA */}
+      {/* CTA - Reduced */}
       <motion.div
-        initial={{ opacity: 0, y: 50, scale: 0.98 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-        className="mt-14 sm:mt-20 p-6 sm:p-8 bg-brand-navy rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-5 max-w-4xl mx-auto shadow-2xl relative overflow-hidden"
+        transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+        className="mt-12 sm:mt-16 p-5 sm:p-6 bg-brand-navy rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 max-w-3xl mx-auto shadow-xl relative overflow-hidden"
       >
         <motion.div 
-          className="absolute top-0 right-0 w-48 h-48 bg-brand-orange/20 rounded-full blur-3xl -mr-24 -mt-24"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-0 right-0 w-40 h-40 bg-brand-orange/15 rounded-full blur-2xl -mr-20 -mt-20"
+          initial={{ opacity: 0.15 }}
+          animate={{ opacity: [0.15, 0.25, 0.15] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         />
         
-        <div className="relative z-10 flex items-center gap-4 text-center sm:text-left">
+        <div className="relative z-10 flex items-center gap-3 text-center sm:text-left">
           <motion.div 
-            whileHover={{ scale: 1.1, rotate: 10 }}
-            className="w-12 h-12 rounded-xl bg-brand-orange flex items-center justify-center shrink-0 shadow-lg hidden sm:flex"
+            whileHover={{ scale: 1.1 }}
+            className="w-10 h-10 rounded-lg bg-brand-orange flex items-center justify-center shrink-0 shadow-md hidden sm:flex"
           >
-            <ShieldCheck className="w-6 h-6 text-white" />
+            <ShieldCheck className="w-5 h-5 text-white" />
           </motion.div>
           <div>
-            <h4 className="text-base sm:text-lg font-bold mb-1">Crédibilité Certifiée</h4>
-            <p className="text-white/60 text-xs">RNCP Niveau 6 & Technicien PNL • Approche AVR®</p>
+            <h4 className="text-sm sm:text-base font-bold mb-0.5">Crédibilité Certifiée</h4>
+            <p className="text-white/60 text-[10px]">RNCP Niveau 6 & Technicien PNL • Approche AVR®</p>
           </div>
         </div>
         
         <Link href="/prendre-rendez-vous">
           <motion.button 
-            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            className="relative z-10 px-6 py-3 bg-white text-brand-navy rounded-full font-semibold text-sm hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-lg flex items-center gap-2 whitespace-nowrap"
+            whileHover={{ scale: 1.03, boxShadow: "0 15px 30px -8px rgba(0,0,0,0.25)" }}
+            whileTap={{ scale: 0.97 }}
+            className="relative z-10 px-5 py-2.5 bg-white text-brand-navy rounded-full font-semibold text-xs hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-md flex items-center gap-1.5 whitespace-nowrap"
           >
-            Passer à l'action <ArrowRight className="w-4 h-4" />
+            Passer à l'action <ArrowRight className="w-3.5 h-3.5" />
           </motion.button>
         </Link>
       </motion.div>
