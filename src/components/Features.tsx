@@ -51,8 +51,8 @@ export function Features() {
             transition={{ ...smoothSpring }}
             className="relative"
           >
-            {/* Main Image - Controlled max size */}
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white max-w-xs lg:max-w-sm mx-auto">
+              {/* Main Image - Controlled max size */}
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white max-w-[200px] lg:max-w-[220px] mx-auto">
               <Image 
                 src="/images/said-meeting.jpg"
                 alt="Saïd TAAROUST - Expert Performance B2B"
@@ -104,112 +104,148 @@ export function Features() {
           </div>
         </motion.div>
 
-        {/* Right: Content */}
-        <motion.div
-          style={{ y: contentY }}
-          className="relative z-10 order-2 lg:order-2"
-        >
-          {/* Header */}
-          <motion.div 
-            className="mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ ...smoothSpring }}
+          {/* Right: Content - Redesigned Biography */}
+          <motion.div
+            style={{ y: contentY }}
+            className="relative z-10 order-2 lg:order-2"
           >
+            {/* Header with dynamic styling */}
             <motion.div 
-              initial={{ width: 0 }}
-              whileInView={{ width: 40 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-0.5 bg-brand-orange mb-4"
-            />
-            <span className="text-brand-orange font-semibold text-sm mb-3 block">
-              La Signature d'un Expert
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy leading-tight mb-3">
-              Saïd <span className="text-brand-orange">TAAROUST</span>
-            </h2>
-            <p className="text-base text-slate-500 font-medium">
-              Coach d'Élite • Expert Performance Commerciale & Leadership B2B
-            </p>
-          </motion.div>
+              className="mb-5"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ ...smoothSpring }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 32 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="h-[3px] bg-gradient-to-r from-brand-orange to-brand-salmon rounded-full"
+                />
+                <span className="text-brand-orange font-bold text-xs uppercase tracking-widest">
+                  L'Expert
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy leading-none mb-2">
+                Saïd <span className="text-brand-orange">TAAROUST</span>
+              </h2>
+              <p className="text-sm text-slate-400 font-medium tracking-wide">
+                Coach d'Élite • Architecte de Performance B2B
+              </p>
+            </motion.div>
 
-          {/* Quote - Philosophical touch */}
-          <motion.div 
-            className="relative bg-gradient-to-br from-slate-50 to-white rounded-2xl p-5 mb-6 border border-slate-100"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...smoothSpring, delay: 0.2 }}
-          >
-            <Quote className="absolute top-4 right-4 w-6 h-6 text-brand-orange/20" />
-            <p className="text-base font-medium text-brand-navy italic leading-relaxed">
-              "Transformer vos défis complexes en leviers de croissance, tout en préservant votre équilibre."
-            </p>
-            <p className="text-xs text-brand-orange mt-2 font-semibold">— Philosophie STAF AFFAIRES</p>
-          </motion.div>
-          
-          {/* Description */}
-          <motion.div 
-            className="space-y-4 text-slate-600 text-base leading-relaxed mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...smoothSpring, delay: 0.3 }}
-          >
-            <p>
-              Avec un parcours forgé au sein de structures de premier plan, Saïd Taaroust incarne l'alliance rare entre <span className="text-brand-navy font-semibold">rigueur stratégique</span> et <span className="text-brand-navy font-semibold">intelligence émotionnelle</span>. 
-            </p>
-            <p>
-              Maître des dynamiques B2B depuis plus de 25 ans, il a propulsé des centaines de dirigeants vers l'excellence. Sa méthode <span className="text-brand-orange font-semibold">AVR®</span> garantit des résultats concrets et durables.
-            </p>
-          </motion.div>
-
-          {/* Credentials Grid - Better balanced */}
-          <motion.div 
-            className="grid grid-cols-2 gap-3 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...smoothSpring, delay: 0.4 }}
-          >
-            {credentials.map((item, i) => (
+            {/* Engaging Bio Cards */}
+            <div className="space-y-3 mb-6">
+              {/* Card 1 - Hook */}
               <motion.div 
-                key={i}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-300 group"
+                className="relative bg-gradient-to-br from-brand-navy to-brand-navy/95 rounded-xl p-4 text-white overflow-hidden group cursor-default"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ ...smoothSpring, delay: 0.1 }}
+                whileHover={{ scale: 1.01 }}
               >
-                <div className="w-9 h-9 rounded-lg bg-slate-50 flex items-center justify-center shrink-0 group-hover:bg-brand-orange transition-colors duration-300">
-                  <item.icon className="w-4 h-4 text-brand-navy group-hover:text-white transition-colors duration-300" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-semibold text-brand-navy text-sm truncate">{item.title}</p>
-                  <p className="text-xs text-slate-400 truncate">{item.description}</p>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-brand-orange/20 blur-2xl rounded-full -mr-8 -mt-8 group-hover:bg-brand-orange/30 transition-colors" />
+                <div className="relative z-10 flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-brand-orange/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <Zap className="w-4 h-4 text-brand-orange" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm mb-1">Le déclencheur de transformations</p>
+                    <p className="text-xs text-white/70 leading-relaxed">
+                      En 25 ans, Saïd a accompagné +500 dirigeants vers des résultats qu'ils pensaient inaccessibles. Son secret ? Aligner la stratégie avec l'humain.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
-            ))}
-          </motion.div>
 
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...smoothSpring, delay: 0.5 }}
-          >
-            <Link href="/prendre-rendez-vous">
-              <motion.button 
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-brand-navy text-white rounded-full font-semibold text-base hover:bg-brand-orange transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto justify-center"
+              {/* Card 2 - Method */}
+              <motion.div 
+                className="relative bg-gradient-to-br from-slate-50 to-white rounded-xl p-4 border border-slate-100 overflow-hidden group cursor-default"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ ...smoothSpring, delay: 0.2 }}
+                whileHover={{ scale: 1.01 }}
               >
-                Réserver votre session stratégique 
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </Link>
+                <div className="absolute bottom-0 left-0 w-20 h-20 bg-brand-orange/10 blur-2xl rounded-full -ml-6 -mb-6" />
+                <div className="relative z-10 flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <Brain className="w-4 h-4 text-brand-orange" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm text-brand-navy mb-1">La méthode AVR® — son arme secrète</p>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      Une approche neuro-psychologique unique qui fusionne rigueur commerciale et intelligence émotionnelle. Pas de théorie creuse — que du concret.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Card 3 - Promise */}
+              <motion.div 
+                className="relative bg-gradient-to-r from-brand-orange/10 to-brand-salmon/10 rounded-xl p-4 border border-brand-orange/20 overflow-hidden group cursor-default"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ ...smoothSpring, delay: 0.3 }}
+                whileHover={{ scale: 1.01 }}
+              >
+                <Quote className="absolute top-3 right-3 w-5 h-5 text-brand-orange/20" />
+                <div className="relative z-10">
+                  <p className="text-sm font-semibold text-brand-navy italic leading-relaxed mb-2">
+                    "Je ne vends pas du coaching. Je construis des trajectoires de réussite sur-mesure."
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1 h-4 bg-brand-orange rounded-full" />
+                    <p className="text-[10px] text-brand-orange font-bold uppercase tracking-wider">Sa promesse</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Credentials - Compact horizontal */}
+            <motion.div 
+              className="flex flex-wrap gap-2 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ ...smoothSpring, delay: 0.4 }}
+            >
+              {credentials.map((item, i) => (
+                <motion.div 
+                  key={i}
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-100 hover:border-brand-orange/30 hover:shadow-sm transition-all duration-300 group cursor-default"
+                >
+                  <item.icon className="w-3.5 h-3.5 text-brand-orange" />
+                  <span className="text-xs font-semibold text-brand-navy">{item.title}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ ...smoothSpring, delay: 0.5 }}
+            >
+              <Link href="/prendre-rendez-vous">
+                <motion.button 
+                  whileHover={{ scale: 1.02, boxShadow: "0 20px 40px -10px rgba(197, 160, 89, 0.4)" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-brand-navy to-brand-navy/90 text-white rounded-full font-semibold text-sm hover:from-brand-orange hover:to-brand-salmon transition-all duration-500 shadow-lg w-full sm:w-auto justify-center"
+                >
+                  Découvrir son approche
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </Link>
+            </motion.div>
           </motion.div>
-        </motion.div>
       </div>
     </section>
   );

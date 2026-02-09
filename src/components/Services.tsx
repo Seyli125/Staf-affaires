@@ -226,7 +226,7 @@ export function Services() {
             viewport={{ once: true }}
             transition={{ ...smoothSpring, delay: 0.2 }}
           >
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 max-w-[240px] mx-auto">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 max-w-[180px] mx-auto">
               <Image
                 src="/images/said-casual.jpg"
                 alt="Saïd Taaroust"
