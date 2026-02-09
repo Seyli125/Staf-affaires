@@ -21,55 +21,55 @@ export default function Home() {
         {/* Smooth transitions */}
         <div className="relative">
           {/* Transition to Services */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-slate-50" />
+          <div className="h-20 sm:h-24 bg-gradient-to-b from-white to-slate-50" />
           
           {/* Services Section */}
-          <section className="bg-slate-50 py-16 sm:py-20">
+          <section className="bg-slate-50 py-20 sm:py-24">
             <Services />
           </section>
 
           {/* Transition to Video */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-slate-50 to-white" />
+          <div className="h-20 sm:h-24 bg-gradient-to-b from-slate-50 to-white" />
 
           {/* Video Section */}
-          <section className="bg-white py-16 sm:py-20">
+          <section className="bg-white py-20 sm:py-24">
             <VideoSection />
           </section>
 
           {/* Transition to Features */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-brand-orange/5" />
+          <div className="h-20 sm:h-24 bg-gradient-to-b from-white to-brand-orange/5" />
 
           {/* Features (Qui suis-je) Section */}
-          <section className="bg-brand-orange/5 py-16 sm:py-20">
+          <section className="bg-brand-orange/5 py-20 sm:py-24">
             <Features />
           </section>
 
           {/* Transition to Testimonials */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-brand-orange/5 to-white" />
+          <div className="h-20 sm:h-24 bg-gradient-to-b from-brand-orange/5 to-white" />
 
           {/* Testimonials Section */}
-          <section className="bg-white py-16 sm:py-20">
+          <section className="bg-white py-20 sm:py-24">
             <Testimonials />
           </section>
 
           {/* Transition to Timeline */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-slate-50" />
+          <div className="h-20 sm:h-24 bg-gradient-to-b from-white to-slate-50" />
 
           {/* Timeline Section */}
-          <section className="bg-slate-50 py-16 sm:py-20">
+          <section className="bg-slate-50 py-20 sm:py-24">
             <Timeline />
           </section>
 
           {/* Transition to FAQ */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-slate-50 to-white" />
+          <div className="h-20 sm:h-24 bg-gradient-to-b from-slate-50 to-white" />
 
           {/* FAQ Section */}
-          <section className="bg-white py-16 sm:py-20">
+          <section className="bg-white py-20 sm:py-24">
             <FAQ />
           </section>
 
           {/* Final Transition to Footer */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-brand-navy" />
+          <div className="h-20 sm:h-24 bg-gradient-to-b from-white to-brand-navy" />
         </div>
       
       <Footer />
