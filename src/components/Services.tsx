@@ -173,19 +173,19 @@ export function Services() {
         <div className="absolute top-0 right-0 w-60 h-60 bg-brand-orange/20 blur-[100px] -mr-30 -mt-30 rounded-full" />
         <div className="absolute bottom-0 left-0 w-40 h-40 bg-brand-salmon/10 blur-[80px] -ml-20 -mb-20 rounded-full" />
         
-          <div className="relative z-10 grid md:grid-cols-[auto_1fr] gap-6 items-start">
-            {/* Image - Taille réduite pour s'aligner avec le texte */}
-                <div className="relative order-2 md:order-1 flex justify-center">
-                  <div className="relative w-[100px] h-[120px] sm:w-[110px] sm:h-[130px] rounded-lg overflow-hidden shadow-lg border border-white/10">
-                    <Image
-                      src="/images/said-meeting.jpg"
-                      alt="Saïd Taaroust"
-                      fill
-                      className="object-cover object-top"
-                      sizes="110px"
-                    />
-                  </div>
-                </div>
+          <div className="relative z-10 grid md:grid-cols-[140px_1fr] gap-6 items-stretch">
+            {/* Image - S'étire sur toute la hauteur du contenu */}
+            <div className="relative order-2 md:order-1 hidden md:block">
+              <div className="relative w-full h-full min-h-[200px] rounded-xl overflow-hidden shadow-lg border border-white/10">
+                <Image
+                  src="/images/said-meeting.jpg"
+                  alt="Saïd Taaroust"
+                  fill
+                  className="object-cover object-top"
+                  sizes="140px"
+                />
+              </div>
+            </div>
           
           {/* Content */}
           <div className="order-1 md:order-2">
