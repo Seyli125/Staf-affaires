@@ -2,21 +2,20 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
-import { Briefcase, GraduationCap, Building2, TrendingUp, Users, Target, ShieldCheck, ArrowRight, Zap, Quote } from "lucide-react";
+import { Briefcase, GraduationCap, Building2, TrendingUp, Users, Target, ShieldCheck, ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
 
 const timelineData = [
   {
     year: "2000 - 2002",
     title: "Formation Initiale",
-    description: "BTS Gestion commerciale & DEUG Arts visuels. L'équilibre entre rigueur stratégique et créativité.",
+    description: "BTS Gestion commerciale & DEUG Arts visuels.",
     icon: GraduationCap,
   },
   {
     year: "2002 - 2012",
     title: "Leadership Opérationnel",
-    description: "Directeur adjoint chez Go Sport (10 ans). Gestion d'équipes et pilotage P&L.",
+    description: "Directeur adjoint Go Sport (10 ans). Gestion d'équipes.",
     icon: Building2,
   },
   {
@@ -28,7 +27,7 @@ const timelineData = [
   {
     year: "2014 - 2020",
     title: "L'impulsion : STAF40",
-    description: "Fondateur. Accompagnement stratégique pour les dirigeants de TPE/PME.",
+    description: "Fondateur. Accompagnement stratégique dirigeants TPE/PME.",
     icon: Target,
   },
   {
@@ -40,7 +39,7 @@ const timelineData = [
   {
     year: "2021 - 2025",
     title: "Haute Performance",
-    description: "Coach-consultant associé. Coaching de performance collective et individuelle.",
+    description: "Coach-consultant associé. Coaching collectif et individuel.",
     icon: Users,
   },
   {
@@ -51,13 +50,6 @@ const timelineData = [
     highlight: true,
   },
 ];
-
-const smoothSpring = {
-  type: "spring" as const,
-  stiffness: 100,
-  damping: 30,
-  mass: 1
-};
 
 export function Timeline() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -70,114 +62,92 @@ export function Timeline() {
 
   return (
     <section ref={sectionRef} id="timeline" className="container mx-auto px-4 sm:px-6 overflow-visible relative">
-      {/* Header */}
+      {/* Header - Compact */}
       <motion.div 
-        className="max-w-2xl mx-auto text-center mb-12 sm:mb-16"
-        initial={{ opacity: 0, y: 40 }}
+        className="max-w-xl mx-auto text-center mb-10 sm:mb-12"
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ ...smoothSpring }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
       >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ ...smoothSpring, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange/10 rounded-full mb-5"
-        >
-          <Zap className="w-4 h-4 text-brand-orange" />
-          <span className="text-brand-orange font-semibold text-sm">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-orange/10 rounded-full mb-4">
+          <Zap className="w-3.5 h-3.5 text-brand-orange" />
+          <span className="text-brand-orange font-semibold text-xs">
             Héritage & Vision
           </span>
-        </motion.div>
+        </div>
         
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy leading-tight mb-4">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-navy leading-tight mb-3">
           La force de <span className="text-brand-orange">l'expérience</span>
         </h2>
         
-        <p className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
-          25 années d'immersion terrain condensées dans une méthode propriétaire au service de votre transformation.
+        <p className="text-sm sm:text-base text-slate-500 max-w-lg mx-auto leading-relaxed">
+          25 années d'immersion terrain condensées dans une méthode propriétaire.
         </p>
 
         {/* Philosophical quote */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="mt-6 text-sm italic text-brand-orange/80 font-medium"
-        >
+        <p className="mt-4 text-xs italic text-brand-orange/80 font-medium">
           "L'expérience est le seul professeur qui nous fait passer l'examen avant de nous donner la leçon."
-        </motion.p>
+        </p>
       </motion.div>
 
-      {/* Timeline */}
-      <div className="relative max-w-4xl mx-auto">
+      {/* Timeline - Compact */}
+      <div className="relative max-w-3xl mx-auto">
         {/* Progress Line */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 md:-translate-x-1/2">
+        <div className="absolute left-3 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 md:-translate-x-1/2">
           <motion.div 
             style={{ height: lineProgress }}
             className="w-full bg-gradient-to-b from-brand-orange to-brand-navy"
           />
         </div>
 
-        <div className="space-y-8 sm:space-y-10">
+        <div className="space-y-6 sm:space-y-7">
           {timelineData.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ ...smoothSpring, delay: index * 0.08 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
               className={`relative flex flex-col md:flex-row items-start md:items-center ${
                 index % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
             >
               {/* Timeline Marker */}
-              <motion.div 
-                className="absolute left-4 md:left-1/2 w-3 h-3 bg-white border-2 border-brand-navy rounded-full md:-translate-x-1/2 z-10"
-                whileInView={{ scale: [0, 1.2, 1] }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 + 0.2 }}
-              />
+              <div className="absolute left-3 md:left-1/2 w-2.5 h-2.5 bg-white border-2 border-brand-navy rounded-full md:-translate-x-1/2 z-10" />
 
               {/* Content Card */}
-              <div className="ml-12 md:ml-0 md:w-1/2 md:px-8">
-                <motion.div 
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className={`p-5 rounded-2xl transition-all duration-300 ${
-                    item.highlight ? 'bg-brand-navy text-white shadow-xl' : 'bg-white border border-slate-100 hover:shadow-lg hover:border-slate-200'
-                  } ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}
-                >
+              <div className="ml-10 md:ml-0 md:w-1/2 md:px-6">
+                <div className={`timeline-card p-4 rounded-xl transition-all duration-200 ${
+                  item.highlight ? 'bg-brand-navy text-white shadow-lg' : 'bg-white border border-slate-100'
+                } ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                   
                   {item.highlight && (
-                    <span className="inline-block bg-brand-orange text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">
+                    <span className="inline-block bg-brand-orange text-white px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider mb-2">
                       L'Aboutissement
                     </span>
                   )}
 
-                  <div className={`flex items-center gap-3 mb-3 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
+                  <div className={`flex items-center gap-2 mb-2 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
                       item.highlight ? 'bg-white/10 text-brand-orange' : 'bg-brand-navy text-white'
                     }`}>
-                      <item.icon className="w-4 h-4" />
+                      <item.icon className="w-3.5 h-3.5" />
                     </div>
-                    <span className={`text-xs font-semibold tracking-wider ${
-                      item.highlight ? 'text-brand-orange' : 'text-brand-orange'
-                    }`}>{item.year}</span>
+                    <span className="text-[10px] font-semibold tracking-wider text-brand-orange">{item.year}</span>
                   </div>
 
-                  <h3 className={`text-base font-bold mb-2 ${
+                  <h3 className={`text-sm font-bold mb-1 ${
                     item.highlight ? 'text-white' : 'text-brand-navy'
                   }`}>
                     {item.title}
                   </h3>
-                  <p className={`text-sm leading-relaxed ${
+                  <p className={`text-xs leading-relaxed ${
                     item.highlight ? 'text-white/70' : 'text-slate-500'
                   }`}>
                     {item.description}
                   </p>
-                </motion.div>
+                </div>
               </div>
               
               <div className="hidden md:block md:w-1/2" />
@@ -186,41 +156,30 @@ export function Timeline() {
         </div>
       </div>
 
-      {/* CTA */}
+      {/* CTA - Compact */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ ...smoothSpring }}
-        className="mt-16 sm:mt-20 p-6 sm:p-10 bg-brand-navy rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-6 max-w-4xl mx-auto shadow-2xl relative overflow-hidden"
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="mt-12 sm:mt-14 p-5 sm:p-7 bg-brand-navy rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-5 max-w-3xl mx-auto shadow-xl relative overflow-hidden"
       >
-        <motion.div 
-          className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/20 rounded-full blur-3xl -mr-32 -mt-32"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 5, repeat: Infinity }}
-        />
+        <div className="absolute top-0 right-0 w-48 h-48 bg-brand-orange/20 rounded-full blur-3xl -mr-24 -mt-24" />
         
-        <div className="relative z-10 flex items-center gap-5 text-center sm:text-left">
-          <motion.div 
-            whileHover={{ rotate: 10, scale: 1.1 }}
-            className="w-14 h-14 rounded-2xl bg-brand-orange flex items-center justify-center shrink-0 shadow-xl hidden sm:flex"
-          >
-            <ShieldCheck className="w-7 h-7 text-white" />
-          </motion.div>
+        <div className="relative z-10 flex items-center gap-4 text-center sm:text-left">
+          <div className="w-11 h-11 rounded-xl bg-brand-orange flex items-center justify-center shrink-0 shadow-lg hidden sm:flex">
+            <ShieldCheck className="w-5 h-5 text-white" />
+          </div>
           <div>
-            <h4 className="text-lg sm:text-xl font-bold mb-1">Crédibilité Certifiée</h4>
-            <p className="text-white/60 text-sm">RNCP Niveau 6 & Technicien PNL • Approche AVR®</p>
+            <h4 className="text-base sm:text-lg font-bold mb-0.5">Crédibilité Certifiée</h4>
+            <p className="text-white/60 text-xs">RNCP Niveau 6 & Technicien PNL • Approche AVR®</p>
           </div>
         </div>
         
         <Link href="/prendre-rendez-vous">
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative z-10 px-6 py-3 bg-white text-brand-navy rounded-full font-semibold text-sm hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-xl flex items-center gap-2 whitespace-nowrap"
-          >
-            Passer à l'action <ArrowRight className="w-4 h-4" />
-          </motion.button>
+          <button className="cta-button relative z-10 px-5 py-2.5 bg-white text-brand-navy rounded-full font-semibold text-sm shadow-lg flex items-center gap-2 whitespace-nowrap">
+            Passer à l'action <ArrowRight className="w-3.5 h-3.5" />
+          </button>
         </Link>
       </motion.div>
     </section>

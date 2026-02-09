@@ -340,3 +340,212 @@ nextjs-portal {
 .scroll-snap-item {
   scroll-snap-align: center;
 }
+
+/* ============================================
+   GPU-ACCELERATED SERVICE CARD ANIMATIONS
+   Zero latency hover effects
+   ============================================ */
+
+.service-card {
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px) translateZ(0);
+  box-shadow: 0 20px 40px -12px rgba(10, 25, 47, 0.15),
+              0 8px 16px -8px rgba(10, 25, 47, 0.1);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.service-card .service-icon {
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(3deg) translateZ(0);
+}
+
+.service-card .service-cta {
+  will-change: background-color, color;
+  transition: background-color 0.15s ease,
+              color 0.15s ease;
+}
+
+.service-card:hover .service-cta {
+  background-color: #0A192F;
+  color: white;
+}
+
+/* Speciality items hover */
+.speciality-item {
+  will-change: transform, background-color;
+  transform: translateZ(0);
+  transition: transform 0.15s ease,
+              background-color 0.15s ease;
+}
+
+.speciality-item:hover {
+  transform: translateX(4px) translateZ(0);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* CTA Button hover */
+.cta-button {
+  will-change: transform, background-color;
+  transform: translateZ(0);
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease;
+}
+
+.cta-button:hover {
+  transform: scale(1.03) translateZ(0);
+  background-color: white;
+  color: #0A192F;
+}
+
+.cta-button:active {
+  transform: scale(0.98) translateZ(0);
+}
+
+/* ============================================
+   REDUCED GLOBAL SIZES (~10-15%)
+   ============================================ */
+
+/* Section spacing reduced */
+.section-spacing {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+  .section-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Premium card styling */
+.premium-card {
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.25s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-4px) translateZ(0);
+  box-shadow: 0 16px 32px -8px rgba(10, 25, 47, 0.12);
+}
+
+/* Bio card image fade animation */
+@keyframes bioImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.bio-image-reveal {
+  animation: bioImageReveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Credential item hover */
+.credential-item {
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.15s ease,
+              background-color 0.15s ease;
+}
+
+.credential-item:hover {
+  transform: translateY(-2px) translateZ(0);
+}
+
+/* Timeline card hover */
+.timeline-card {
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px) translateZ(0);
+  box-shadow: 0 12px 24px -6px rgba(10, 25, 47, 0.1);
+}
+
+/* Testimonial card hover */
+.testimonial-card {
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px) translateZ(0);
+}
+
+/* Video play button */
+.video-play-btn {
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.video-play-btn:hover {
+  transform: scale(1.1) translateZ(0);
+}
+
+.video-play-btn:active {
+  transform: scale(0.95) translateZ(0);
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .testimonial-card,
+  .timeline-card,
+  .premium-card,
+  .cta-button,
+  .video-play-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Optimize paint layers */
+.bg-brand-navy,
+.bg-brand-orange,
+.bg-gradient-to-r,
+.bg-gradient-to-br {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Lazy loading optimization */
+img[loading="lazy"] {
+  content-visibility: auto;
+}
+
+/* Font display optimization */
+@font-face {
+  font-display: swap;
+}

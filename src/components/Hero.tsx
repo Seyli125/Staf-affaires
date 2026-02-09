@@ -59,78 +59,79 @@ export function Hero() {
           </div>
         </motion.div>
 
-{/* Massive Foreground Name - Auto-scaling for mobile */}
-            <div className="absolute bottom-[3%] sm:bottom-[8%] md:bottom-[11%] left-0 w-full z-20 px-2 sm:px-4">
-            <motion.h2 
-              style={{ opacity: opacityText, y: yHeroText }}
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="text-massive font-black text-white text-center leading-[1] tracking-tighter uppercase whitespace-nowrap"
-            >
-              SAÏD TAAROUST
-            </motion.h2>
-          </div>
+        {/* Massive Foreground Name - Auto-scaling for mobile */}
+        <div className="absolute bottom-[3%] sm:bottom-[8%] md:bottom-[11%] left-0 w-full z-20 px-2 sm:px-4">
+          <motion.h2 
+            style={{ opacity: opacityText, y: yHeroText }}
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            className="text-massive font-black text-white text-center leading-[1] tracking-tighter uppercase whitespace-nowrap"
+          >
+            SAÏD TAAROUST
+          </motion.h2>
+        </div>
       </div>
 
-        {/* 2. About Us Section - Compact */}
-        <div className="w-full bg-transparent pt-10 sm:pt-14 pb-12 sm:pb-16">
-          <div className="container mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="order-2 md:order-1"
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-6 h-[2px] bg-brand-orange" />
-                <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-brand-orange">
-                  À propos
-                </span>
-              </div>
+      {/* 2. About Us Section - Compact, balanced proportions */}
+      <div className="w-full bg-transparent pt-8 sm:pt-10 pb-10 sm:pb-12">
+        <div className="container mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-6 md:gap-10 items-center">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="order-2 md:order-1"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-5 h-[2px] bg-brand-orange" />
+              <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-widest text-brand-orange">
+                À propos
+              </span>
+            </div>
 
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 leading-tight text-brand-navy">
-                Performer sans s'épuiser. <br className="hidden sm:block" />
-                <span className="text-brand-orange">Manager et vendre avec sens.</span>
-              </h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 leading-tight text-brand-navy">
+              Performer sans s'épuiser. <br className="hidden sm:block" />
+              <span className="text-brand-orange">Manager et vendre avec sens.</span>
+            </h3>
 
-              <p className="text-sm sm:text-base font-medium mb-5 text-slate-500 leading-relaxed max-w-lg">
-                Coach certifié RNCP | Formateur | Expert en développement commercial depuis 25 ans
-              </p>
+            <p className="text-xs sm:text-sm font-medium mb-4 text-slate-500 leading-relaxed max-w-md">
+              Coach certifié RNCP | Formateur | Expert en développement commercial depuis 25 ans
+            </p>
 
-              <Link href="/prendre-rendez-vous">
-                <Button 
-                  size="lg" 
-                  className="bg-brand-navy text-white hover:bg-brand-orange rounded-full px-6 py-3 text-sm font-semibold group transition-all shadow-lg w-full sm:w-auto"
-                >
-                  Prendre rendez-vous
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </motion.div>
+            <Link href="/prendre-rendez-vous">
+              <Button 
+                size="default" 
+                className="bg-brand-navy text-white hover:bg-brand-orange rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold group transition-all shadow-lg w-full sm:w-auto"
+              >
+                Prendre rendez-vous
+                <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </motion.div>
 
-            {/* Right - Photo portrait */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative max-w-xs mx-auto order-1 md:order-2"
-            >
-              <div className="absolute inset-0 bg-brand-orange/10 rounded-2xl -rotate-3 scale-95" />
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-4 border-white">
-                <Image
-                  src="/images/said-portrait-1.jpg"
-                  alt="Saïd Taaroust Portrait"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-            </motion.div>
-          </div>
+          {/* Right - Photo portrait - Reduced size */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative max-w-[200px] sm:max-w-[220px] mx-auto order-1 md:order-2"
+          >
+            <div className="absolute inset-0 bg-brand-orange/10 rounded-xl -rotate-3 scale-95" />
+            <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg border-3 border-white">
+              <Image
+                src="/images/said-portrait-1.jpg"
+                alt="Saïd Taaroust Portrait"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 640px) 200px, 220px"
+              />
+            </div>
+          </motion.div>
         </div>
+      </div>
     </section>
   );
 }

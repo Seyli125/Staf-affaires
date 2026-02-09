@@ -58,14 +58,6 @@ const specialities = [
   "Déployer et piloter une stratégie commerciale impactante"
 ];
 
-// Smooth spring animation config
-const smoothSpring = {
-  type: "spring" as const,
-  stiffness: 100,
-  damping: 30,
-  mass: 1
-};
-
 export function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -74,7 +66,7 @@ export function Services() {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.8]);
-  const y = useTransform(scrollYProgress, [0, 0.2], [60, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.2], [40, 0]);
 
   return (
     <motion.section 
@@ -83,219 +75,151 @@ export function Services() {
       className="container mx-auto px-4 sm:px-6 overflow-visible"
       style={{ opacity }}
     >
-      {/* Header */}
+      {/* Header - Reduced sizes */}
       <motion.div 
-        className="max-w-2xl mx-auto text-center mb-12 sm:mb-16"
+        className="max-w-xl mx-auto text-center mb-10 sm:mb-12"
         style={{ y }}
       >
-        <motion.span 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ ...smoothSpring, delay: 0.1 }}
-          className="inline-flex items-center gap-2 text-brand-orange font-semibold text-xs mb-4 px-4 py-2 bg-brand-orange/10 rounded-full"
-        >
-          <Sparkles className="w-3.5 h-3.5" />
+        <span className="inline-flex items-center gap-2 text-brand-orange font-semibold text-[10px] mb-3 px-3 py-1.5 bg-brand-orange/10 rounded-full">
+          <Sparkles className="w-3 h-3" />
           Expertise & Excellence
-        </motion.span>
+        </span>
         
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ ...smoothSpring, delay: 0.2 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy mb-4 leading-tight text-balance"
-        >
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-navy mb-3 leading-tight text-balance">
           Propulsez votre performance
-        </motion.h2>
+        </h2>
         
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ ...smoothSpring, delay: 0.3 }}
-          className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed"
-        >
+        <p className="text-sm sm:text-base text-slate-500 max-w-lg mx-auto leading-relaxed">
           Trois piliers complémentaires pour une transformation durable, alliant posture mentale et efficacité terrain.
-        </motion.p>
+        </p>
 
         {/* Philosophical touch */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="mt-6 text-sm italic text-brand-orange/80 font-medium"
-        >
+        <p className="mt-4 text-xs italic text-brand-orange/80 font-medium">
           "L'excellence n'est pas un acte, mais une habitude."
-        </motion.p>
+        </p>
       </motion.div>
 
-      {/* Services Cards - Balanced proportions */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
+      {/* Services Cards - GPU-accelerated hover, reduced sizes */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-12 sm:mb-16">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ ...smoothSpring, delay: index * 0.15 }}
-            whileHover={{ y: -8, transition: { duration: 0.3 } }}
-            className="group relative bg-white rounded-2xl border border-slate-100 hover:border-slate-200 hover:shadow-2xl transition-all duration-500 overflow-hidden"
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="service-card group relative bg-white rounded-xl border border-slate-100 overflow-hidden"
           >
             {/* Badge */}
-            <div className="absolute top-4 right-4 z-10">
-              <span className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-gradient-to-r ${service.gradient} text-white shadow-md`}>
+            <div className="absolute top-3 right-3 z-10">
+              <span className={`text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-gradient-to-r ${service.gradient} text-white shadow-sm`}>
                 {service.badge}
               </span>
             </div>
             
             {/* Icon Header - Reduced height */}
-            <div className={`relative h-20 bg-gradient-to-br ${service.gradient} flex items-center justify-center`}>
+            <div className={`relative h-16 bg-gradient-to-br ${service.gradient} flex items-center justify-center`}>
               <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-              <motion.div
-                whileHover={{ scale: 1.15, rotate: 5 }}
-                transition={{ type: "spring", stiffness: 400 }}
-              >
-                <service.icon className="w-9 h-9 text-white/90" />
-              </motion.div>
+              <div className="service-icon">
+                <service.icon className="w-7 h-7 text-white/90" />
+              </div>
             </div>
             
-            {/* Content - Improved spacing */}
-            <div className="p-6">
-              <h3 className="text-lg font-bold text-brand-navy mb-1.5 group-hover:text-brand-orange transition-colors duration-300">
+            {/* Content - Compact spacing */}
+            <div className="p-4 sm:p-5">
+              <h3 className="text-base font-bold text-brand-navy mb-1 group-hover:text-brand-orange transition-colors duration-200">
                 {service.title}
               </h3>
-              <p className="text-sm text-slate-400 font-medium mb-3">
+              <p className="text-xs text-slate-400 font-medium mb-2">
                 {service.subtitle}
               </p>
-              <p className="text-sm text-slate-600 mb-5 leading-relaxed">
+              <p className="text-xs text-slate-600 mb-4 leading-relaxed">
                 {service.description}
               </p>
               
-              {/* Items */}
-              <div className="space-y-2.5">
-                {service.items.map((item, i) => (
-                  <motion.div 
+              {/* Items - Compact */}
+              <div className="space-y-2">
+                {service.items.map((item) => (
+                  <div 
                     key={item} 
-                    className="flex items-start gap-2.5 text-sm text-slate-600"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 * i }}
+                    className="flex items-start gap-2 text-xs text-slate-600"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5" />
                     <span>{item}</span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
               
               {/* CTA */}
-              <Link href="/prendre-rendez-vous" className="block mt-6">
-                <motion.button 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 text-sm font-semibold text-brand-navy bg-slate-50 hover:bg-brand-navy hover:text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
-                >
+              <Link href="/prendre-rendez-vous" className="block mt-4">
+                <button className="service-cta w-full py-2.5 text-xs font-semibold text-brand-navy bg-slate-50 rounded-lg flex items-center justify-center gap-1.5">
                   En savoir plus
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </Link>
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Focus Operationnel - Balanced layout */}
+      {/* Focus Operationnel - Balanced, compact */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ ...smoothSpring }}
-        className="bg-brand-navy rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-2xl"
+        transition={{ duration: 0.6 }}
+        className="bg-brand-navy rounded-2xl p-5 sm:p-8 text-white relative overflow-hidden shadow-xl"
       >
-        <div className="absolute top-0 right-0 w-80 h-80 bg-brand-orange/20 blur-[120px] -mr-40 -mt-40 rounded-full" />
-        <div className="absolute bottom-0 left-0 w-60 h-60 bg-brand-salmon/10 blur-[100px] -ml-30 -mb-30 rounded-full" />
+        <div className="absolute top-0 right-0 w-60 h-60 bg-brand-orange/20 blur-[100px] -mr-30 -mt-30 rounded-full" />
+        <div className="absolute bottom-0 left-0 w-40 h-40 bg-brand-salmon/10 blur-[80px] -ml-20 -mb-20 rounded-full" />
         
-        <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+        <div className="relative z-10 grid md:grid-cols-2 gap-6 items-center">
           {/* Image - Smaller, balanced */}
-          <motion.div 
-            className="relative order-2 md:order-1"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ ...smoothSpring, delay: 0.2 }}
-          >
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 max-w-[180px] mx-auto">
+          <div className="relative order-2 md:order-1">
+            <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-xl border-2 border-white/10 max-w-[140px] mx-auto">
               <Image
                 src="/images/said-casual.jpg"
                 alt="Saïd Taaroust"
                 fill
                 className="object-cover object-top"
+                sizes="140px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
             </div>
-            <motion.div 
-              className="absolute -bottom-3 -right-3 bg-brand-orange text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-lg hidden sm:block"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
+            <div className="absolute -bottom-2 -right-2 bg-brand-orange text-white px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-lg hidden sm:block">
               Méthode AVR®
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
           
           {/* Content */}
           <div className="order-1 md:order-2">
-            <motion.h3 
-              className="text-2xl sm:text-3xl font-bold mb-3"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...smoothSpring, delay: 0.1 }}
-            >
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">
               Focus <span className="text-brand-orange">Opérationnel</span>
-            </motion.h3>
+            </h3>
             
-            <motion.p 
-              className="text-white/60 text-base mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...smoothSpring, delay: 0.2 }}
-            >
+            <p className="text-white/60 text-sm mb-4">
               Des leviers concrets pour vos résultats quotidiens.
-            </motion.p>
+            </p>
             
-            <div className="grid gap-3 mb-6">
+            <div className="grid gap-2 mb-5">
               {specialities.map((spec, i) => (
-                <motion.div 
+                <div 
                   key={spec}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ ...smoothSpring, delay: 0.1 + i * 0.1 }}
-                  whileHover={{ x: 5, transition: { duration: 0.2 } }}
-                  className="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-all duration-300 cursor-default"
+                  className="speciality-item flex items-center gap-2.5 bg-white/5 p-2.5 rounded-lg border border-white/5"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-brand-orange/20 flex items-center justify-center text-brand-orange font-bold text-sm shrink-0">
+                  <div className="w-6 h-6 rounded-md bg-brand-orange/20 flex items-center justify-center text-brand-orange font-bold text-xs shrink-0">
                     {i + 1}
                   </div>
-                  <span className="text-sm font-medium">{spec}</span>
-                </motion.div>
+                  <span className="text-xs font-medium">{spec}</span>
+                </div>
               ))}
             </div>
             
             <Link href="/prendre-rendez-vous">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 bg-brand-orange px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-brand-navy transition-all duration-300 text-sm shadow-lg"
-              >
+              <button className="cta-button flex items-center gap-2 bg-brand-orange px-5 py-2.5 rounded-full font-semibold text-sm shadow-lg">
                 Découvrir l'approche AVR® 
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
             </Link>
           </div>
         </div>
