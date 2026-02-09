@@ -59,8 +59,8 @@ export function Hero() {
           </div>
         </motion.div>
 
-          {/* Massive Foreground Name - Auto-scaling for mobile */}
-          <div className="absolute bottom-[2%] sm:bottom-[8%] md:bottom-[10%] left-0 w-full z-20 px-2 sm:px-4">
+{/* Massive Foreground Name - Auto-scaling for mobile */}
+            <div className="absolute bottom-[3%] sm:bottom-[8%] md:bottom-[10%] left-0 w-full z-20 px-2 sm:px-4">
             <motion.h2 
               style={{ opacity: opacityText, y: yHeroText }}
               initial={{ y: 100, opacity: 0 }}
