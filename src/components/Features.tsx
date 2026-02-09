@@ -1,115 +1,177 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Award, Users, Zap, Brain, ArrowRight, Quote } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { Award, Users, Zap, Brain, ArrowRight, Quote, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+const stats = [
+  { number: "25+", label: "Années d'expertise", suffix: "" },
+  { number: "500+", label: "Dirigeants accompagnés", suffix: "" },
+  { number: "98", label: "De satisfaction", suffix: "%" },
+];
+
+const credentials = [
+  { icon: Award, label: "Coach RNCP Niveau 6" },
+  { icon: Brain, label: "Technicien PNL certifié" },
+  { icon: Zap, label: "Créateur méthode AVR®" },
+  { icon: Users, label: "Expert B2B 25 ans" },
+];
+
 export function Features() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 0.3], [80, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+
   return (
-    <section id="biographie" className="py-24 lg:py-32 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
+    <section 
+      ref={sectionRef}
+      id="biographie" 
+      className="py-20 lg:py-28 relative overflow-hidden"
+    >
+      {/* Subtle background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-orange/[0.02] to-transparent" />
       
-      {/* Subtle background decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-orange/[0.02] to-transparent pointer-events-none" />
-      
-      <div className="container mx-auto px-4 sm:px-6 max-w-6xl relative">
+      <motion.div 
+        className="container mx-auto px-4 sm:px-6 max-w-6xl relative"
+        style={{ opacity }}
+      >
         
-        {/* Opening Quote - Emotional Hook */}
+        {/* Opening Quote */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center mb-16 lg:mb-20"
         >
-          <Quote className="w-8 h-8 text-brand-orange/30 mx-auto mb-6" />
-          <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-light text-brand-navy max-w-4xl mx-auto leading-snug">
-            "La vraie performance, c'est celle qui vous fait <span className="text-brand-orange font-medium">grandir</span> sans vous <span className="italic">consumer</span>."
+          <Quote className="w-10 h-10 text-brand-orange/20 mx-auto mb-6" />
+          <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-light text-brand-navy max-w-3xl mx-auto leading-snug tracking-tight">
+            "La vraie performance, c'est celle qui vous fait{" "}
+            <span className="text-brand-orange font-medium">grandir</span>{" "}
+            sans vous <em className="font-serif">consumer</em>."
           </blockquote>
-          <div className="mt-6 flex items-center justify-center gap-3">
-            <div className="w-12 h-px bg-brand-orange/40" />
-            <span className="text-sm font-medium text-slate-500">Saïd Taaroust</span>
-            <div className="w-12 h-px bg-brand-orange/40" />
+          <div className="mt-8 flex items-center justify-center gap-4">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent" />
+            <span className="text-sm font-medium text-slate-500 tracking-wide">Saïd Taaroust</span>
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent" />
           </div>
         </motion.div>
 
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
-          {/* Left: Portrait - 2 columns */}
+          {/* Left: Portrait - 5 columns */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-2 relative"
+            className="lg:col-span-5 relative"
           >
-            <div className="relative max-w-[280px] mx-auto lg:mx-0">
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-l-2 border-t-2 border-brand-orange/20 rounded-tl-3xl" />
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-r-2 border-b-2 border-brand-navy/10 rounded-br-3xl" />
-              
-              {/* Image */}
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/said-casual.jpg"
-                  alt="Saïd Taaroust"
-                  fill
-                  className="object-cover object-top"
-                  sizes="280px"
-                  priority
-                />
-                {/* Subtle overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/20 via-transparent to-transparent" />
-              </div>
-              
-              {/* Floating credential */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white px-5 py-3 rounded-xl shadow-lg border border-slate-100"
-              >
-                <div className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-brand-orange" />
-                  <span className="text-xs font-semibold text-brand-navy whitespace-nowrap">Coach Certifié RNCP</span>
+            <div className="sticky top-24">
+              <div className="relative max-w-[320px] mx-auto lg:mx-0">
+                
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -left-4 w-20 h-20 border-l-2 border-t-2 border-brand-orange/30 rounded-tl-2xl" />
+                <div className="absolute -bottom-4 -right-4 w-20 h-20 border-r-2 border-b-2 border-brand-navy/20 rounded-br-2xl" />
+                
+                {/* Main Image */}
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/images/said-casual.jpg"
+                    alt="Saïd Taaroust"
+                    fill
+                    className="object-cover object-top"
+                    sizes="320px"
+                    priority
+                  />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/30 via-transparent to-transparent" />
                 </div>
-              </motion.div>
+                
+                {/* Floating Credential Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center">
+                      <Award className="w-5 h-5 text-brand-orange" />
+                    </div>
+                    <div>
+                      <span className="text-sm font-bold text-brand-navy block">Coach Certifié</span>
+                      <span className="text-xs text-slate-400">RNCP Niveau 6</span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Rating badge */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6, duration: 0.5 }}
+                  className="absolute top-4 -left-4 bg-brand-navy text-white px-3 py-2 rounded-lg shadow-lg"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                    <span className="text-xs font-bold">5.0</span>
+                  </div>
+                  <span className="text-[10px] text-white/60">LinkedIn</span>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right: Story Content - 3 columns */}
-          <div className="lg:col-span-3 space-y-8">
+          {/* Right: Story Content - 7 columns */}
+          <div className="lg:col-span-7 space-y-8">
             
-            {/* Section Label */}
+            {/* Section Label & Title */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              <span className="inline-block text-brand-orange text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                L'histoire
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "3rem" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="h-[2px] bg-brand-orange mb-5"
+              />
+              <span className="inline-block text-brand-orange text-[11px] font-semibold tracking-[0.2em] uppercase mb-3">
+                Mon Histoire
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-brand-navy leading-tight">
-                Un parcours forgé sur le terrain
+                Un parcours forgé{" "}
+                <span className="text-brand-orange">sur le terrain</span>
               </h2>
             </motion.div>
 
-            {/* Story - Chapter 1 */}
+            {/* Story - Introduction */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="space-y-4"
             >
-              <p className="text-slate-600 leading-relaxed text-base">
-                <span className="text-brand-navy font-semibold text-lg">Tout a commencé il y a 25 ans</span>, dans les tranchées 
-                du commerce B2B. Des milliers de négociations, des équipes à motiver, des objectifs à dépasser. 
-                J'ai tout vécu : les victoires qui galvanisent, mais aussi <em className="text-brand-navy">l'épuisement qui guette 
-                ceux qui donnent tout.</em>
+              <p className="text-slate-600 leading-relaxed text-base lg:text-lg">
+                <span className="text-brand-navy font-semibold text-xl">Il y a 25 ans</span>, 
+                je plongeais dans l'univers exigeant du commerce B2B. Des milliers de négociations, 
+                des équipes à galvaniser, des objectifs à dépasser. J'ai connu les victoires 
+                qui transcendent — mais aussi{" "}
+                <em className="text-brand-navy font-medium">l'épuisement qui guette ceux qui donnent tout.</em>
               </p>
             </motion.div>
 
@@ -119,12 +181,13 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative pl-6 border-l-2 border-brand-orange/30"
+              className="relative pl-6 border-l-2 border-brand-orange/40"
             >
-              <p className="text-slate-600 leading-relaxed text-base">
-                Un jour, j'ai compris une vérité que peu osent admettre : <span className="text-brand-navy font-medium">les meilleurs 
-                performeurs ne sont pas ceux qui s'épuisent le plus, mais ceux qui savent préserver leur énergie 
-                pour les moments décisifs.</span>
+              <div className="absolute left-0 top-0 w-2 h-2 bg-brand-orange rounded-full -translate-x-[5px]" />
+              <p className="text-slate-600 leading-relaxed text-base lg:text-lg">
+                <span className="text-brand-navy font-semibold">Le déclic est venu d'une prise de conscience :</span>{" "}
+                les meilleurs performeurs ne sont pas ceux qui s'épuisent le plus, 
+                mais ceux qui savent préserver leur énergie pour les moments décisifs.
               </p>
             </motion.div>
 
@@ -134,12 +197,12 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="space-y-4"
             >
-              <p className="text-slate-600 leading-relaxed text-base">
-                C'est de cette prise de conscience qu'est née la <span className="text-brand-orange font-semibold">méthode AVR®</span>. 
-                Une approche qui ne vous demande pas de choisir entre réussite et équilibre — elle vous montre 
-                comment l'une nourrit l'autre.
+              <p className="text-slate-600 leading-relaxed text-base lg:text-lg">
+                C'est de cette révélation qu'est née la{" "}
+                <span className="text-brand-orange font-bold">méthode AVR®</span> — 
+                Accélération, Valeur, Résilience. Une approche qui ne vous demande pas 
+                de choisir entre réussite et équilibre. Elle vous montre comment l'une nourrit l'autre.
               </p>
             </motion.div>
 
@@ -149,13 +212,9 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="grid grid-cols-3 gap-4 py-6"
+              className="grid grid-cols-3 gap-4 py-8 border-y border-slate-100"
             >
-              {[
-                { number: "25+", label: "Années d'expertise" },
-                { number: "500+", label: "Dirigeants accompagnés" },
-                { number: "98%", label: "De satisfaction" },
-              ].map((stat, i) => (
+              {stats.map((stat, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -164,32 +223,36 @@ export function Features() {
                   transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-2xl sm:text-3xl font-bold text-brand-navy">{stat.number}</div>
-                  <div className="text-xs text-slate-500 mt-1">{stat.label}</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-brand-navy">
+                    {stat.number}<span className="text-brand-orange">{stat.suffix}</span>
+                  </div>
+                  <div className="text-xs sm:text-sm text-slate-500 mt-1">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
 
-            {/* Credentials Pills */}
+            {/* Credentials Grid */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex flex-wrap gap-2"
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="grid grid-cols-2 gap-3"
             >
-              {[
-                { icon: Brain, label: "Technicien PNL" },
-                { icon: Zap, label: "Méthode AVR®" },
-                { icon: Users, label: "Expert B2B" },
-              ].map((item, i) => (
-                <div
+              {credentials.map((item, i) => (
+                <motion.div
                   key={i}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100/80 rounded-full"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
+                  className="credential-item flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-brand-orange/30 hover:bg-white transition-all duration-300"
                 >
-                  <item.icon className="w-3.5 h-3.5 text-brand-orange" />
-                  <span className="text-xs font-medium text-slate-600">{item.label}</span>
-                </div>
+                  <div className="w-9 h-9 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
+                    <item.icon className="w-4 h-4 text-brand-orange" />
+                  </div>
+                  <span className="text-sm font-medium text-slate-700">{item.label}</span>
+                </motion.div>
               ))}
             </motion.div>
 
@@ -202,18 +265,18 @@ export function Features() {
               className="pt-4"
             >
               <Link href="/prendre-rendez-vous">
-                <button className="group inline-flex items-center gap-3 px-6 py-3.5 bg-brand-navy text-white rounded-full font-medium text-sm hover:bg-brand-navy/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:translate-y-[-2px]">
-                  Discuter avec Saïd
+                <button className="group inline-flex items-center gap-3 px-7 py-4 bg-brand-navy text-white rounded-full font-semibold text-sm hover:bg-brand-orange transition-all duration-300 shadow-lg hover:shadow-xl">
+                  Échanger avec Saïd
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
-              <p className="mt-3 text-xs text-slate-400">
+              <p className="mt-4 text-sm text-slate-400">
                 30 min • Gratuit • Sans engagement
               </p>
             </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
