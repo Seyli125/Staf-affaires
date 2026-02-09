@@ -1,8 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Linkedin, Mail, MapPin, ArrowUpRight, ShieldCheck, Globe } from "lucide-react";
+import { Facebook, Linkedin, Mail, MapPin, ArrowUpRight, ShieldCheck, Globe, ArrowRight } from "lucide-react";
 
 const footerLinks = {
   navigation: [
@@ -26,6 +27,13 @@ const footerLinks = {
   ]
 };
 
+const smoothSpring = {
+  type: "spring" as const,
+  stiffness: 100,
+  damping: 30,
+  mass: 1
+};
+
 export function Footer() {
   return (
     <footer className="bg-brand-navy text-white pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 relative overflow-hidden">
@@ -36,7 +44,13 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-12 md:gap-16 mb-12 sm:mb-16 md:mb-24">
           
           {/* Brand Identity Column */}
-          <div className="col-span-2 md:col-span-2 lg:col-span-5 space-y-6 sm:space-y-8 md:space-y-10">
+          <motion.div 
+            className="col-span-2 md:col-span-2 lg:col-span-5 space-y-6 sm:space-y-8 md:space-y-10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ ...smoothSpring }}
+          >
             <Link href="/" className="inline-block group">
               <Image 
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
@@ -55,71 +69,120 @@ export function Footer() {
               Une approche humaniste pour performer sans s'épuiser.
             </p>
 
+            {/* Philosophical quote */}
+            <p className="text-sm italic text-white/40 border-l-2 border-brand-orange/50 pl-4">
+              "Le voyage de mille lieues commence par un premier pas."
+            </p>
+
             <div className="flex gap-3 sm:gap-4">
-              <Link href="https://www.linkedin.com/in/said-taaroust-staf-affaires/" target="_blank" className="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-all transform hover:-translate-y-1">
-                <Linkedin className="w-4 sm:w-5 h-4 sm:h-5" />
-              </Link>
-              <Link href="#" className="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-all transform hover:-translate-y-1">
-                <Facebook className="w-4 sm:w-5 h-4 sm:h-5" />
-              </Link>
+              <motion.div whileHover={{ y: -3, scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link href="https://www.linkedin.com/in/said-taaroust-staf-affaires/" target="_blank" className="w-11 sm:w-12 h-11 sm:h-12 rounded-xl sm:rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-all">
+                  <Linkedin className="w-4 sm:w-5 h-4 sm:h-5" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ y: -3, scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link href="#" className="w-11 sm:w-12 h-11 sm:h-12 rounded-xl sm:rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-all">
+                  <Facebook className="w-4 sm:w-5 h-4 sm:h-5" />
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links Column */}
-          <div className="col-span-1 lg:col-span-2">
+          <motion.div 
+            className="col-span-1 lg:col-span-2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ ...smoothSpring, delay: 0.1 }}
+          >
             <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-brand-orange mb-6 sm:mb-8 md:mb-10">Stratégie</h4>
             <ul className="space-y-3 sm:space-y-4">
-              {footerLinks.navigation.map((link) => (
-                <li key={link.name}>
+              {footerLinks.navigation.map((link, i) => (
+                <motion.li 
+                  key={link.name}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                >
                   <Link href={link.href} className="text-white/40 hover:text-white transition-colors text-xs sm:text-sm font-bold uppercase tracking-tight flex items-center group">
                     {link.name}
                     <ArrowUpRight className="w-2.5 sm:w-3 h-2.5 sm:h-3 ml-1.5 sm:ml-2 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Legal Column */}
-          <div className="col-span-1 lg:col-span-2">
+          <motion.div 
+            className="col-span-1 lg:col-span-2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ ...smoothSpring, delay: 0.2 }}
+          >
             <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-brand-orange mb-6 sm:mb-8 md:mb-10">Engagement</h4>
             <ul className="space-y-3 sm:space-y-4">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
+              {footerLinks.legal.map((link, i) => (
+                <motion.li 
+                  key={link.name}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                >
                   <Link href={link.href} className="text-white/40 hover:text-white transition-colors text-xs sm:text-sm font-bold uppercase tracking-tight flex items-center group">
                     {link.name}
                     <ArrowUpRight className="w-2.5 sm:w-3 h-2.5 sm:h-3 ml-1.5 sm:ml-2 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Column */}
-          <div className="col-span-2 lg:col-span-3">
+          <motion.div 
+            className="col-span-2 lg:col-span-3"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ ...smoothSpring, delay: 0.3 }}
+          >
             <h4 className="text-xs sm:text-sm font-black uppercase tracking-widest text-brand-orange mb-6 sm:mb-8 md:mb-10">Parlons-en</h4>
             <div className="bg-white/5 p-5 sm:p-6 md:p-8 rounded-[20px] sm:rounded-[32px] border border-white/10 space-y-4 sm:space-y-6">
-              {footerLinks.contact.map((item) => (
-                <Link 
-                  key={item.name} 
-                  href={item.href}
-                  className="flex items-center gap-3 sm:gap-4 text-white/70 hover:text-white transition-colors group"
+              {footerLinks.contact.map((item, i) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
                 >
-                  <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-orange transition-colors shrink-0">
-                    <item.icon className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
-                  </div>
-                  <span className="text-[10px] sm:text-xs font-bold truncate">{item.name}</span>
-                </Link>
+                  <Link 
+                    href={item.href}
+                    className="flex items-center gap-3 sm:gap-4 text-white/70 hover:text-white transition-colors group"
+                  >
+                    <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg sm:rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-orange transition-colors shrink-0">
+                      <item.icon className="w-4 sm:w-4 h-4 sm:h-4" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-semibold truncate">{item.name}</span>
+                  </Link>
+                </motion.div>
               ))}
               <Link href="/prendre-rendez-vous" className="block">
-                <button 
-                  className="w-full py-3 sm:py-4 bg-brand-orange text-white rounded-xl sm:rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-widest hover:bg-white hover:text-brand-navy transition-all shadow-lg shadow-brand-orange/20"
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3.5 sm:py-4 bg-brand-orange text-white rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-white hover:text-brand-navy transition-all duration-300 shadow-lg shadow-brand-orange/20 flex items-center justify-center gap-2"
                 >
                   Prendre rendez-vous
-                </button>
+                  <ArrowRight className="w-4 h-4" />
+                </motion.button>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Big Brand Stamp */}
@@ -135,7 +198,13 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-white/10">
+        <motion.div 
+          className="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-white/10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 md:gap-12">
             <Link href="/" className="shrink-0">
               <Image 
@@ -164,9 +233,8 @@ export function Footer() {
             </span>
             <div className="w-6 sm:w-8 h-px bg-brand-orange/30 hidden sm:block" />
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
 }
-

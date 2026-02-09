@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Star, Quote, ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { Star, Quote, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 const testimonials = [
@@ -51,51 +52,79 @@ const testimonials = [
   },
 ];
 
+const smoothSpring = {
+  type: "spring" as const,
+  stiffness: 100,
+  damping: 30,
+  mass: 1
+};
+
 const StarRating = ({ rating }: { rating: number }) => (
   <div className="flex gap-0.5">
     {[...Array(5)].map((_, i) => (
       <Star 
         key={i} 
-        className={`w-3 h-3 ${i < rating ? 'fill-amber-400 text-amber-400' : 'fill-slate-200 text-slate-200'}`} 
+        className={`w-3.5 h-3.5 ${i < rating ? 'fill-amber-400 text-amber-400' : 'fill-slate-200 text-slate-200'}`} 
       />
     ))}
   </div>
 );
 
 export function Testimonials() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const headerY = useTransform(scrollYProgress, [0, 0.3], [40, 0]);
+  const cardsOpacity = useTransform(scrollYProgress, [0, 0.2], [0.5, 1]);
+
   return (
-    <section id="testimonials" className="container mx-auto px-4 sm:px-6 overflow-visible">
+    <section ref={sectionRef} id="testimonials" className="container mx-auto px-4 sm:px-6 overflow-visible">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 sm:mb-14 gap-6">
+      <motion.div 
+        className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 sm:mb-16 gap-8"
+        style={{ y: headerY }}
+      >
         <div className="max-w-xl">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 mb-4"
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ ...smoothSpring }}
+            className="flex items-center gap-3 mb-5"
           >
             <div className="flex -space-x-2">
               {[1, 2, 3, 4].map(i => (
-                <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="w-9 h-9 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-md"
+                >
                   <img src={`https://i.pravatar.cc/100?img=${i+20}`} alt="User" className="w-full h-full object-cover" />
-                </div>
+                </motion.div>
               ))}
             </div>
             <div className="flex flex-col">
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
+                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <span className="text-[10px] font-medium text-slate-400 mt-0.5">5/5 sur LinkedIn</span>
+              <span className="text-xs font-medium text-slate-400 mt-0.5">5/5 sur LinkedIn</span>
             </div>
           </motion.div>
           
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-navy leading-tight"
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ ...smoothSpring, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy leading-tight"
           >
             L'excellence reconnue <br className="hidden sm:block" />
             <span className="text-brand-orange">par vos pairs</span>
@@ -103,66 +132,72 @@ export function Testimonials() {
         </div>
         
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="lg:max-w-xs"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ ...smoothSpring, delay: 0.2 }}
+          className="lg:max-w-sm"
         >
-          <p className="text-sm text-slate-500 italic border-l-2 border-brand-orange pl-3">
+          <p className="text-base text-slate-500 italic border-l-2 border-brand-orange pl-4">
             "L'impact du coaching se mesure aux résultats durables et à l'épanouissement quotidien."
           </p>
+          <p className="text-sm text-brand-orange font-semibold mt-2 pl-4">— Philosophie STAF</p>
         </motion.div>
-      </div>
+      </motion.div>
 
-      {/* Testimonials Grid - Compact Modern Design */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 sm:mb-14">
+      {/* Testimonials Grid - Better proportioned cards */}
+      <motion.div 
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-14 sm:mb-18"
+        style={{ opacity: cardsOpacity }}
+      >
         {testimonials.map((item, index) => (
           <motion.div
             key={item.name}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.05 }}
-            className={`relative p-5 rounded-xl border transition-all duration-300 group ${
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ ...smoothSpring, delay: index * 0.1 }}
+            whileHover={{ y: -6, transition: { duration: 0.3 } }}
+            className={`relative p-6 rounded-2xl border transition-all duration-300 group ${
               item.highlight 
-              ? 'bg-brand-navy text-white border-transparent shadow-lg' 
-              : 'bg-white border-slate-100 hover:border-slate-200 hover:shadow-md'
+              ? 'bg-brand-navy text-white border-transparent shadow-xl' 
+              : 'bg-white border-slate-100 hover:border-slate-200 hover:shadow-xl'
             }`}
           >
             {/* Quote Icon */}
-            <Quote className={`absolute top-4 right-4 w-6 h-6 ${
+            <Quote className={`absolute top-5 right-5 w-7 h-7 ${
               item.highlight ? 'text-white/10' : 'text-slate-100'
             }`} />
             
             {/* Rating & Date */}
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-4">
               <StarRating rating={item.rating} />
-              <span className={`text-[10px] font-medium ${item.highlight ? 'text-white/50' : 'text-slate-400'}`}>
+              <span className={`text-xs font-medium ${item.highlight ? 'text-white/50' : 'text-slate-400'}`}>
                 {item.date}
               </span>
             </div>
             
             {/* Quote */}
-            <p className={`text-sm leading-relaxed mb-4 ${
+            <p className={`text-base leading-relaxed mb-5 ${
               item.highlight ? 'text-white/90' : 'text-slate-600'
             }`}>
               "{item.quote}"
             </p>
 
             {/* Author */}
-            <div className="flex items-center gap-3 pt-3 border-t border-current/10">
-              <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
+            <div className="flex items-center gap-3 pt-4 border-t border-current/10">
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
                 item.highlight ? 'bg-brand-orange text-white' : 'bg-brand-navy text-white'
               }`}>
-                <span className="font-bold text-sm">{item.name[0]}</span>
+                <span className="font-bold text-base">{item.name[0]}</span>
               </div>
               <div className="min-w-0">
-                <h4 className={`font-semibold text-xs truncate ${
+                <h4 className={`font-semibold text-sm truncate ${
                   item.highlight ? 'text-white' : 'text-brand-navy'
                 }`}>
                   {item.name}
                 </h4>
-                <p className={`text-[10px] truncate ${
+                <p className={`text-xs truncate ${
                   item.highlight ? 'text-brand-orange' : 'text-slate-400'
                 }`}>
                   {item.role}
@@ -171,28 +206,48 @@ export function Testimonials() {
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      {/* CTA - Compact */}
+      {/* CTA - Premium design */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        className="bg-gradient-to-r from-brand-orange to-brand-orange/90 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg relative overflow-hidden"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ ...smoothSpring }}
+        className="bg-gradient-to-r from-brand-orange to-brand-orange/90 rounded-3xl p-8 sm:p-12 text-white text-center shadow-2xl relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        <div className="relative z-10">
-          <h3 className="text-xl sm:text-2xl font-bold mb-3">
+        <motion.div 
+          className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        />
+        
+        <div className="relative z-10 max-w-2xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <Sparkles className="w-6 h-6 mx-auto mb-4 opacity-80" />
+          </motion.div>
+          
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-balance">
             Rejoignez ceux qui performent avec <span className="underline decoration-white/30 underline-offset-4">Sens</span>
           </h3>
-          <p className="text-white/70 text-sm mb-5 max-w-md mx-auto">
+          <p className="text-white/70 text-base sm:text-lg mb-8 max-w-lg mx-auto">
             Commencez votre transformation dès aujourd'hui
           </p>
           <Link href="/prendre-rendez-vous">
-            <button className="inline-flex items-center gap-2 bg-white text-brand-navy px-6 py-3 rounded-full font-semibold text-sm hover:bg-brand-navy hover:text-white transition-all shadow-lg hover:shadow-xl">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 bg-white text-brand-navy px-8 py-4 rounded-full font-semibold text-base hover:bg-brand-navy hover:text-white transition-all duration-300 shadow-xl hover:shadow-2xl"
+            >
               Commencer mon accompagnement
-              <ArrowRight className="w-4 h-4" />
-            </button>
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
           </Link>
         </div>
       </motion.div>
