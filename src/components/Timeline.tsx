@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import { Briefcase, GraduationCap, Building2, TrendingUp, Users, Target, ShieldCheck, ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
 
@@ -51,157 +51,94 @@ const timelineData = [
   },
 ];
 
-// Premium easing curve
-const premiumEase = [0.25, 0.4, 0.25, 1] as const;
-
 export function Timeline() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const lineHeight = useTransform(scrollYProgress, [0.15, 0.85], ["0%", "100%"]);
-
   return (
-    <section ref={sectionRef} id="timeline" className="container mx-auto px-4 sm:px-6 overflow-visible relative">
-      {/* Header - Compact */}
-      <div className="max-w-lg mx-auto text-center mb-8 sm:mb-10">
+    <section id="timeline" className="container mx-auto px-4 sm:px-6 overflow-visible relative">
+      {/* Header */}
+      <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: premiumEase }}
-          className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-brand-orange/10 rounded-full mb-3"
+          className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-orange/10 rounded-full mb-4"
         >
-          <motion.div
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-          >
-            <Zap className="w-2.5 h-2.5 text-brand-orange" />
-          </motion.div>
-          <span className="text-brand-orange font-semibold text-[9px]">
+          <Zap className="w-3 h-3 text-brand-orange" />
+          <span className="text-brand-orange font-semibold text-xs">
             Héritage & Vision
           </span>
         </motion.div>
         
-        <motion.h2 
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1, ease: premiumEase }}
-          className="text-lg sm:text-xl md:text-2xl font-bold text-brand-navy leading-tight mb-2.5"
-        >
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-navy leading-tight mb-3">
           La force de <span className="text-brand-orange">l'expérience</span>
-        </motion.h2>
+        </h2>
         
-        <motion.p 
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15, ease: premiumEase }}
-          className="text-[10px] text-slate-500 max-w-sm mx-auto leading-relaxed"
-        >
+        <p className="text-sm text-slate-500 max-w-lg mx-auto">
           40 années d'immersion terrain condensées dans une méthode propriétaire au service de votre transformation.
-        </motion.p>
-
-        {/* Philosophical quote */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2, ease: premiumEase }}
-          className="text-[9px] italic text-slate-400 mt-2 max-w-xs mx-auto"
-        >
-          "Chaque étape du chemin construit celui que vous devenez."
-        </motion.p>
+        </p>
       </div>
 
-      {/* Timeline - Compact */}
-      <div className="relative max-w-2xl mx-auto">
+      {/* Timeline */}
+      <div className="relative max-w-4xl mx-auto">
         {/* Progress Line */}
-        <div className="absolute left-2.5 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 md:-translate-x-1/2">
+        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 md:-translate-x-1/2">
           <motion.div 
-            style={{ height: lineHeight }}
-            className="w-full bg-gradient-to-b from-brand-orange to-brand-navy origin-top"
+            initial={{ height: 0 }}
+            whileInView={{ height: '100%' }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="w-full bg-gradient-to-b from-brand-orange to-brand-navy"
           />
         </div>
 
-        <div className="space-y-5 sm:space-y-6">
+        <div className="space-y-6 sm:space-y-8">
           {timelineData.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.06,
-                ease: premiumEase
-              }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
               className={`relative flex flex-col md:flex-row items-start md:items-center ${
                 index % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
             >
               {/* Timeline Marker */}
-              <motion.div 
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.12 + index * 0.06, duration: 0.4, ease: premiumEase }}
-                className="absolute left-2.5 md:left-1/2 w-2 h-2 bg-white border-2 border-brand-navy rounded-full md:-translate-x-1/2 z-10"
-              />
+              <div className="absolute left-4 md:left-1/2 w-2.5 h-2.5 bg-white border-2 border-brand-navy rounded-full md:-translate-x-1/2 z-10" />
 
-              {/* Content Card - Compact */}
-              <div className="ml-6 md:ml-0 md:w-1/2 md:px-4">
-                <motion.div 
-                  whileHover={{ 
-                    y: -2, 
-                    boxShadow: item.highlight ? "0 12px 24px -6px rgba(10,25,47,0.2)" : "0 6px 16px -6px rgba(0,0,0,0.08)" 
-                  }}
-                  transition={{ duration: 0.3, ease: premiumEase }}
-                  className={`p-3 rounded-lg transition-all duration-300 cursor-default ${
-                    item.highlight ? 'bg-brand-navy text-white shadow-md' : 'bg-white border border-slate-100 hover:border-slate-200'
-                  } ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}
-                >
+              {/* Content Card */}
+              <div className="ml-10 md:ml-0 md:w-1/2 md:px-6">
+                <div className={`p-4 rounded-xl transition-all duration-300 hover:shadow-md ${
+                  item.highlight ? 'bg-brand-navy text-white shadow-lg' : 'bg-white border border-slate-100'
+                } ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
+                  
                   {item.highlight && (
-                    <motion.span 
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2, duration: 0.4, ease: premiumEase }}
-                      className="inline-block bg-brand-orange text-white px-1.5 py-0.5 rounded-full text-[6px] font-bold uppercase tracking-wider mb-1.5"
-                    >
+                    <span className="inline-block bg-brand-orange text-white px-2 py-0.5 rounded-full text-[8px] font-bold uppercase tracking-wider mb-2">
                       L'Aboutissement
-                    </motion.span>
+                    </span>
                   )}
 
-                  <div className={`flex items-center gap-1.5 mb-1.5 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-                    <motion.div 
-                      whileHover={{ scale: 1.08 }}
-                      transition={{ duration: 0.3, ease: premiumEase }}
-                      className={`w-5 h-5 rounded-md flex items-center justify-center shrink-0 ${
-                        item.highlight ? 'bg-white/10 text-brand-orange' : 'bg-brand-navy text-white'
-                      }`}
-                    >
-                      <item.icon className="w-2.5 h-2.5" />
-                    </motion.div>
-                    <span className={`text-[8px] font-semibold tracking-wider ${
+                  <div className={`flex items-center gap-2 mb-2 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                    <div className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 ${
+                      item.highlight ? 'bg-white/10 text-brand-orange' : 'bg-brand-navy text-white'
+                    }`}>
+                      <item.icon className="w-3.5 h-3.5" />
+                    </div>
+                    <span className={`text-[10px] font-semibold tracking-wider ${
                       item.highlight ? 'text-brand-orange' : 'text-brand-orange'
                     }`}>{item.year}</span>
                   </div>
 
-                  <h3 className={`text-[10px] font-bold mb-0.5 ${
+                  <h3 className={`text-sm font-bold mb-1 ${
                     item.highlight ? 'text-white' : 'text-brand-navy'
                   }`}>
                     {item.title}
                   </h3>
-                  <p className={`text-[8px] leading-relaxed ${
+                  <p className={`text-xs leading-relaxed ${
                     item.highlight ? 'text-white/70' : 'text-slate-500'
                   }`}>
                     {item.description}
                   </p>
-                </motion.div>
+                </div>
               </div>
               
               <div className="hidden md:block md:w-1/2" />
@@ -210,40 +147,29 @@ export function Timeline() {
         </div>
       </div>
 
-      {/* CTA - Compact */}
+      {/* CTA */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.7, ease: premiumEase }}
-        className="mt-10 sm:mt-12 p-4 sm:p-5 bg-brand-navy rounded-xl text-white flex flex-col sm:flex-row items-center justify-between gap-3 max-w-2xl mx-auto shadow-lg relative overflow-hidden"
+        viewport={{ once: true }}
+        className="mt-12 sm:mt-16 p-5 sm:p-8 bg-brand-navy rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto shadow-xl relative overflow-hidden"
       >
-        <motion.div 
-          className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/15 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"
-        />
+        <div className="absolute top-0 right-0 w-48 h-48 bg-brand-orange/20 rounded-full blur-3xl -mr-24 -mt-24" />
         
-        <div className="relative z-10 flex items-center gap-2.5 text-center sm:text-left">
-          <motion.div 
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.3, ease: premiumEase }}
-            className="w-8 h-8 rounded-lg bg-brand-orange flex items-center justify-center shrink-0 shadow-md hidden sm:flex"
-          >
-            <ShieldCheck className="w-4 h-4 text-white" />
-          </motion.div>
+        <div className="relative z-10 flex items-center gap-4 text-center sm:text-left">
+          <div className="w-12 h-12 rounded-xl bg-brand-orange flex items-center justify-center shrink-0 shadow-lg hidden sm:flex">
+            <ShieldCheck className="w-6 h-6 text-white" />
+          </div>
           <div>
-            <h4 className="text-[11px] sm:text-xs font-bold mb-0.5">Crédibilité Certifiée</h4>
-            <p className="text-white/60 text-[8px]">RNCP Niveau 6 & Technicien PNL • Approche AVR®</p>
+            <h4 className="text-base sm:text-lg font-bold mb-0.5">Crédibilité Certifiée</h4>
+            <p className="text-white/60 text-xs">RNCP Niveau 6 & Technicien PNL • Approche AVR®</p>
           </div>
         </div>
         
         <Link href="/prendre-rendez-vous">
-          <motion.button 
-            whileHover={{ scale: 1.02, boxShadow: "0 12px 24px -6px rgba(0,0,0,0.2)" }}
-            whileTap={{ scale: 0.98 }}
-            className="relative z-10 px-4 py-2 bg-white text-brand-navy rounded-full font-semibold text-[10px] hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-md flex items-center gap-1.5 whitespace-nowrap"
-          >
-            Passer à l'action <ArrowRight className="w-3 h-3" />
-          </motion.button>
+          <button className="relative z-10 px-5 py-2.5 bg-white text-brand-navy rounded-full font-semibold text-sm hover:bg-brand-orange hover:text-white transition-all shadow-lg flex items-center gap-2 whitespace-nowrap">
+            Passer à l'action <ArrowRight className="w-4 h-4" />
+          </button>
         </Link>
       </motion.div>
     </section>
