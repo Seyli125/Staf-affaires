@@ -64,18 +64,25 @@ export function FAQ() {
                 Tout ce que vous devez savoir sur l'approche AVR® et nos accompagnements.
               </p>
 
-              <div className="bg-brand-navy p-8 rounded-[32px] text-white shadow-3xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-brand-orange/20 blur-3xl -mr-12 -mt-12 transition-colors" />
-                <h4 className="font-black text-xl mb-3 uppercase tracking-tight">Une autre question ?</h4>
-                <p className="text-white/60 mb-6 font-medium leading-relaxed text-sm">
-                  Votre situation est unique. Parlons-en directement pour lever tous vos doutes.
-                </p>
-                <Link href="/prendre-rendez-vous">
-                  <button className="flex items-center gap-3 text-brand-orange font-black uppercase tracking-[0.2em] text-[10px] hover:text-white transition-colors group/link">
-                    Réserver mon créneau <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
-                  </button>
-                </Link>
-              </div>
+                <div className="bg-brand-navy p-8 rounded-[32px] text-white shadow-3xl relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-brand-orange/20 blur-3xl -mr-12 -mt-12 transition-colors" />
+                  <h4 className="font-black text-xl mb-3 uppercase tracking-tight">Une autre question ?</h4>
+                  <p className="text-white/60 mb-6 font-medium leading-relaxed text-sm">
+                    Votre situation est unique. Parlons-en directement pour lever tous vos doutes.
+                  </p>
+                  <div className="flex flex-col gap-3">
+                    <Link href="/faq">
+                      <button className="flex items-center gap-3 text-white font-black uppercase tracking-[0.2em] text-[10px] hover:text-brand-orange transition-colors group/link">
+                        Voir toutes les questions <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                      </button>
+                    </Link>
+                    <Link href="/prendre-rendez-vous">
+                      <button className="flex items-center gap-3 text-brand-orange font-black uppercase tracking-[0.2em] text-[10px] hover:text-white transition-colors group/link">
+                        Réserver mon créneau <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                      </button>
+                    </Link>
+                  </div>
+                </div>
           </motion.div>
 
           <div className="space-y-4">
