@@ -176,7 +176,7 @@ export function Services() {
           <div className="relative z-10 grid md:grid-cols-2 gap-6 items-center">
             {/* Image - Échangée: said-meeting.jpg (formel) */}
             <div className="relative order-2 md:order-1">
-              <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-xl border-2 border-white/10 max-w-[180px] sm:max-w-[200px] mx-auto">
+              <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-xl border-2 border-white/10 max-w-[120px] sm:max-w-[140px] mx-auto">
                 <Image
                   src="/images/said-meeting.jpg"
                   alt="Saïd Taaroust"
