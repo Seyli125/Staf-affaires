@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote, MessageSquare, ArrowRight } from "lucide-react";
+import { Star, Quote, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const testimonials = [
@@ -10,25 +10,29 @@ const testimonials = [
     role: "Assistante chez Activ'Expertise Landes",
     date: "Janv. 2026",
     quote: "Saïd m'a accompagné à faire le point sur mon positionnement et à trouver l'équilibre vie perso/pro. Grâce à sa bienveillance et écoute, j'en ressors avec des véritables clés.",
+    rating: 5,
     highlight: true,
   },
   {
     name: "Aurélie Durquet",
     role: "Sophrologue-Masseur",
     date: "Oct. 2025",
-    quote: "Sa capacité à analyser ma problématique, ses outils et son expérience m'ont permis de dessiner de nouveaux contours professionnels et d'améliorer l'équilibre de mon travail.",
+    quote: "Sa capacité à analyser ma problématique, ses outils et son expérience m'ont permis de dessiner de nouveaux contours professionnels.",
+    rating: 5,
   },
   {
     name: "Mathilda V.",
     role: "Système & Réseau",
     date: "Avr. 2025",
     quote: "Saïd m'a accompagné au moment de ma reconversion. Sa bienveillance offre un support rassurant — le cadre idéal. Coaching 100% concluant !",
+    rating: 5,
   },
   {
     name: "Charlotte Sarthou",
     role: "Directrice RH",
     date: "Mars 2025",
-    quote: "Son expertise, sa pédagogie et sa capacité à créer un engagement ont fait la différence. Il sait allier théorie et mise en pratique — un véritable partenaire de confiance.",
+    quote: "Son expertise, sa pédagogie et sa capacité à créer un engagement ont fait la différence. Un véritable partenaire de confiance.",
+    rating: 5,
     highlight: true,
   },
   {
@@ -36,47 +40,54 @@ const testimonials = [
     role: "Chargée d'affaires SNA",
     date: "Mars 2025",
     quote: "À chaque intervention : des échanges constructifs, une montée en compétence. Merci Said pour ton aide.",
-  },
-  {
-    name: "Yael PELTIER COHEN",
-    role: "Responsable adjointe",
-    date: "Mars 2025",
-    quote: "Saïd possède une grande maîtrise de son domaine et sait adapter son approche. Son professionnalisme, sa disponibilité et son enthousiasme sont remarquables.",
+    rating: 5,
   },
   {
     name: "Guillaume Bourgier",
     role: "Fondateur Eventick",
     date: "Sep. 2023",
-    quote: "M'a accompagné en coaching développement commercial. Cela m'a aidé à prendre du recul et mieux analyser les freins. Je recommande vivement Saïd.",
+    quote: "M'a accompagné en coaching développement commercial. Cela m'a aidé à prendre du recul et mieux analyser les freins.",
+    rating: 5,
   },
 ];
 
+const StarRating = ({ rating }: { rating: number }) => (
+  <div className="flex gap-0.5">
+    {[...Array(5)].map((_, i) => (
+      <Star 
+        key={i} 
+        className={`w-3 h-3 ${i < rating ? 'fill-amber-400 text-amber-400' : 'fill-slate-200 text-slate-200'}`} 
+      />
+    ))}
+  </div>
+);
+
 export function Testimonials() {
   return (
-    <section id="testimonials" className="container mx-auto px-6 overflow-visible relative">
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-12">
-        <div className="max-w-3xl">
+    <section id="testimonials" className="container mx-auto px-4 sm:px-6 overflow-visible">
+      {/* Header */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 sm:mb-14 gap-6">
+        <div className="max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 mb-8"
+            className="flex items-center gap-3 mb-4"
           >
-            <div className="flex -space-x-3">
+            <div className="flex -space-x-2">
               {[1, 2, 3, 4].map(i => (
-                <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden shadow-sm">
-                  <img src={`https://i.pravatar.cc/100?img=${i+20}`} alt="User" />
+                <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                  <img src={`https://i.pravatar.cc/100?img=${i+20}`} alt="User" className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
-            <div className="h-8 w-px bg-slate-200 mx-2" />
             <div className="flex flex-col">
-              <div className="flex gap-1">
+              <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-brand-orange text-brand-orange" />
+                  <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Évaluation LinkedIn 5/5</span>
+              <span className="text-[10px] font-medium text-slate-400 mt-0.5">5/5 sur LinkedIn</span>
             </div>
           </motion.div>
           
@@ -84,11 +95,10 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-brand-navy leading-[0.9] tracking-tighter uppercase"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-navy leading-tight"
           >
-            L'excellence <br />
-            <span className="text-brand-orange italic">reconnue</span> par <br />
-            <span className="text-brand-navy">vos pairs.</span>
+            L'excellence reconnue <br className="hidden sm:block" />
+            <span className="text-brand-orange">par vos pairs</span>
           </motion.h2>
         </div>
         
@@ -96,59 +106,64 @@ export function Testimonials() {
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="lg:max-w-sm"
+          className="lg:max-w-xs"
         >
-          <div className="p-8 bg-slate-50 rounded-[40px] border border-slate-100">
-            <p className="text-lg text-slate-600 leading-relaxed font-medium italic">
-              "L'impact du coaching se mesure aux résultats durables et à l'épanouissement de ceux qui le vivent au quotidien."
-            </p>
-          </div>
+          <p className="text-sm text-slate-500 italic border-l-2 border-brand-orange pl-3">
+            "L'impact du coaching se mesure aux résultats durables et à l'épanouissement quotidien."
+          </p>
         </motion.div>
       </div>
 
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 mb-24">
+      {/* Testimonials Grid - Compact Modern Design */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 sm:mb-14">
         {testimonials.map((item, index) => (
           <motion.div
             key={item.name}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ 
-              delay: index * 0.1,
-              duration: 0.6,
-              ease: "easeOut"
-            }}
-            whileHover={{ y: -10 }}
-            className={`break-inside-avoid relative p-12 rounded-[50px] border transition-all duration-500 group shadow-sm ${
+            transition={{ delay: index * 0.05 }}
+            className={`relative p-5 rounded-xl border transition-all duration-300 group ${
               item.highlight 
-              ? 'bg-brand-navy text-white border-transparent shadow-3xl shadow-brand-navy/30' 
-              : 'bg-white border-slate-100 hover:border-brand-gold/30 hover:shadow-2xl'
+              ? 'bg-brand-navy text-white border-transparent shadow-lg' 
+              : 'bg-white border-slate-100 hover:border-slate-200 hover:shadow-md'
             }`}
           >
-            <Quote className={`absolute top-10 right-10 w-16 h-16 transition-transform group-hover:rotate-12 duration-500 ${
-              item.highlight ? 'text-white/5' : 'text-slate-50'
+            {/* Quote Icon */}
+            <Quote className={`absolute top-4 right-4 w-6 h-6 ${
+              item.highlight ? 'text-white/10' : 'text-slate-100'
             }`} />
             
-            <p className={`text-xl leading-relaxed mb-12 relative z-10 ${
-              item.highlight ? 'text-white/90 font-medium' : 'text-slate-700'
+            {/* Rating & Date */}
+            <div className="flex items-center justify-between mb-3">
+              <StarRating rating={item.rating} />
+              <span className={`text-[10px] font-medium ${item.highlight ? 'text-white/50' : 'text-slate-400'}`}>
+                {item.date}
+              </span>
+            </div>
+            
+            {/* Quote */}
+            <p className={`text-sm leading-relaxed mb-4 ${
+              item.highlight ? 'text-white/90' : 'text-slate-600'
             }`}>
               "{item.quote}"
             </p>
 
-            <div className="flex items-center gap-5 relative z-10 border-t pt-8 border-current/10">
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg ${
-                item.highlight ? 'bg-brand-gold text-white' : 'bg-brand-navy text-white'
+            {/* Author */}
+            <div className="flex items-center gap-3 pt-3 border-t border-current/10">
+              <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
+                item.highlight ? 'bg-brand-orange text-white' : 'bg-brand-navy text-white'
               }`}>
-                <span className="font-black text-xl italic">{item.name[0]}</span>
+                <span className="font-bold text-sm">{item.name[0]}</span>
               </div>
-              <div>
-                <h4 className={`font-black uppercase tracking-tight text-base ${
+              <div className="min-w-0">
+                <h4 className={`font-semibold text-xs truncate ${
                   item.highlight ? 'text-white' : 'text-brand-navy'
                 }`}>
                   {item.name}
                 </h4>
-                <p className={`text-[10px] font-black uppercase tracking-widest mt-1 opacity-80 ${
-                  item.highlight ? 'text-brand-gold' : 'text-brand-orange'
+                <p className={`text-[10px] truncate ${
+                  item.highlight ? 'text-brand-orange' : 'text-slate-400'
                 }`}>
                   {item.role}
                 </p>
@@ -158,21 +173,28 @@ export function Testimonials() {
         ))}
       </div>
 
+      {/* CTA - Compact */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.98 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="bg-brand-orange rounded-[60px] p-12 md:p-20 text-white text-center shadow-3xl relative overflow-hidden group"
+        className="bg-gradient-to-r from-brand-orange to-brand-orange/90 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-brand-navy opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-        <h3 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase">
-          Rejoignez ceux qui <br /> performent avec <span className="italic underline decoration-brand-navy decoration-8 underline-offset-8">Sens</span>.
-        </h3>
-        <Link href="/prendre-rendez-vous">
-          <button className="bg-brand-navy text-white px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-brand-navy transition-all transform hover:scale-105 active:scale-95 shadow-2xl">
-            Commencer mon accompagnement
-          </button>
-        </Link>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+        <div className="relative z-10">
+          <h3 className="text-xl sm:text-2xl font-bold mb-3">
+            Rejoignez ceux qui performent avec <span className="underline decoration-white/30 underline-offset-4">Sens</span>
+          </h3>
+          <p className="text-white/70 text-sm mb-5 max-w-md mx-auto">
+            Commencez votre transformation dès aujourd'hui
+          </p>
+          <Link href="/prendre-rendez-vous">
+            <button className="inline-flex items-center gap-2 bg-white text-brand-navy px-6 py-3 rounded-full font-semibold text-sm hover:bg-brand-navy hover:text-white transition-all shadow-lg hover:shadow-xl">
+              Commencer mon accompagnement
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </Link>
+        </div>
       </motion.div>
     </section>
   );

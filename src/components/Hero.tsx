@@ -73,63 +73,64 @@ export function Hero() {
           </div>
       </div>
 
-      {/* 2. About Us Section (Visual Flow) */}
-      <div className="w-full bg-transparent pt-12 sm:pt-16 md:pt-24 pb-16 sm:pb-24 md:pb-32">
-        <div className="container mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 md:gap-20 items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="order-2 md:order-1"
-          >
-            <div className="flex items-center gap-3 mb-4 sm:mb-6">
-              <div className="w-8 sm:w-10 h-[2px] bg-primary" />
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-primary/80">
-                À propos
-              </span>
-            </div>
+        {/* 2. About Us Section - Compact */}
+        <div className="w-full bg-transparent pt-10 sm:pt-14 pb-12 sm:pb-16">
+          <div className="container mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-2 md:order-1"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-6 h-[2px] bg-brand-orange" />
+                <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-brand-orange">
+                  À propos
+                </span>
+              </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black mb-4 sm:mb-6 leading-[1.1] tracking-tight text-brand-navy">
-              Performer sans s'épuiser. <br className="hidden sm:block" />
-              <span className="text-brand-orange">Manager et vendre avec sens.</span>
-            </h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 leading-tight text-brand-navy">
+                Performer sans s'épuiser. <br className="hidden sm:block" />
+                <span className="text-brand-orange">Manager et vendre avec sens.</span>
+              </h3>
 
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium mb-6 sm:mb-8 text-slate-600 leading-relaxed max-w-xl">
-              Coach certifié RNCP | Formateur | Expert en développement commercial depuis 25 ans
-            </p>
+              <p className="text-sm sm:text-base font-medium mb-5 text-slate-500 leading-relaxed max-w-lg">
+                Coach certifié RNCP | Formateur | Expert en développement commercial depuis 25 ans
+              </p>
 
-            <Link href="/prendre-rendez-vous">
-              <Button 
-                size="lg" 
-                className="bg-brand-navy text-white hover:bg-brand-navy/90 rounded-full px-6 sm:px-10 py-6 sm:py-8 text-base sm:text-lg md:text-xl font-bold group transition-all duration-300 hover:scale-105 active:scale-95 shadow-2xl w-full sm:w-auto"
-              >
-                Prendre rendez-vous
-                <ArrowRight className="ml-2 sm:ml-3 w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-          </motion.div>
+              <Link href="/prendre-rendez-vous">
+                <Button 
+                  size="lg" 
+                  className="bg-brand-navy text-white hover:bg-brand-orange rounded-full px-6 py-3 text-sm font-semibold group transition-all shadow-lg w-full sm:w-auto"
+                >
+                  Prendre rendez-vous
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </motion.div>
 
-          {/* Right Secondary Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="relative aspect-square max-w-xs sm:max-w-sm md:max-w-md mx-auto order-1 md:order-2"
-          >
-            <div className="absolute inset-0 bg-brand-orange/5 rounded-2xl sm:rounded-3xl -rotate-3" />
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/1746597689538_LE_up_cale_prime_wipe_bg-1769742333185.png?width=8000&height=8000&resize=contain"
-              alt="Saïd Taaroust Portrait"
-              width={600}
-              height={600}
-              className="object-cover h-full w-full rounded-2xl sm:rounded-3xl filter grayscale opacity-80"
-            />
-          </motion.div>
+            {/* Right - Photo portrait */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative max-w-xs mx-auto order-1 md:order-2"
+            >
+              <div className="absolute inset-0 bg-brand-orange/10 rounded-2xl -rotate-3 scale-95" />
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+                <Image
+                  src="/images/said-portrait-1.jpg"
+                  alt="Saïd Taaroust Portrait"
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </div>
     </section>
   );
 }
