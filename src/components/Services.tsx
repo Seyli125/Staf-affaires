@@ -175,18 +175,18 @@ export function Services() {
         
           <div className="relative z-10 grid md:grid-cols-2 gap-6 items-center">
             {/* Image - Échangée: said-meeting.jpg (formel) */}
-            <div className="relative order-2 md:order-1">
-              <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-xl border-2 border-white/10 max-w-[120px] sm:max-w-[140px] mx-auto">
+            <div className="relative order-2 md:order-1 flex justify-center">
+              <div className="relative w-[200px] h-[250px] sm:w-[240px] sm:h-[300px] rounded-xl overflow-hidden shadow-xl border-2 border-white/10">
                 <Image
                   src="/images/said-meeting.jpg"
                   alt="Saïd Taaroust"
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 640px) 180px, 200px"
+                  sizes="(max-width: 640px) 200px, 240px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
               </div>
-              <div className="absolute -bottom-2 -right-2 bg-brand-orange text-white px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-lg hidden sm:block">
+              <div className="absolute -bottom-2 right-1/2 translate-x-1/2 sm:right-auto sm:translate-x-0 sm:-right-2 bg-brand-orange text-white px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-lg">
                 Méthode AVR®
               </div>
             </div>
