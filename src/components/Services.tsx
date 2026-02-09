@@ -173,23 +173,23 @@ export function Services() {
         <div className="absolute top-0 right-0 w-60 h-60 bg-brand-orange/20 blur-[100px] -mr-30 -mt-30 rounded-full" />
         <div className="absolute bottom-0 left-0 w-40 h-40 bg-brand-salmon/10 blur-[80px] -ml-20 -mb-20 rounded-full" />
         
-        <div className="relative z-10 grid md:grid-cols-2 gap-6 items-center">
-          {/* Image - Smaller, balanced */}
-          <div className="relative order-2 md:order-1">
-            <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-xl border-2 border-white/10 max-w-[140px] mx-auto">
-              <Image
-                src="/images/said-casual.jpg"
-                alt="Saïd Taaroust"
-                fill
-                className="object-cover object-top"
-                sizes="140px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
+          <div className="relative z-10 grid md:grid-cols-2 gap-6 items-center">
+            {/* Image - Échangée: said-meeting.jpg (formel) */}
+            <div className="relative order-2 md:order-1">
+              <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-xl border-2 border-white/10 max-w-[180px] sm:max-w-[200px] mx-auto">
+                <Image
+                  src="/images/said-meeting.jpg"
+                  alt="Saïd Taaroust"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 640px) 180px, 200px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
+              </div>
+              <div className="absolute -bottom-2 -right-2 bg-brand-orange text-white px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-lg hidden sm:block">
+                Méthode AVR®
+              </div>
             </div>
-            <div className="absolute -bottom-2 -right-2 bg-brand-orange text-white px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-lg hidden sm:block">
-              Méthode AVR®
-            </div>
-          </div>
           
           {/* Content */}
           <div className="order-1 md:order-2">

@@ -70,23 +70,23 @@ export function Features() {
           <div className="lg:col-span-4 relative bg-gradient-to-br from-brand-navy to-brand-navy/90 p-5 lg:p-6 flex flex-col items-center justify-center min-h-[280px] lg:min-h-0">
             <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
             
-            {/* Portrait - Échangé: said-meeting.jpg ici (plus formel) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="relative z-10"
-            >
-              <div className="relative w-28 h-36 sm:w-32 sm:h-40 rounded-xl overflow-hidden shadow-xl border-2 border-white/20">
-                <Image 
-                  src="/images/said-meeting.jpg"
-                  alt="Saïd TAAROUST - Expert Performance B2B"
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 640px) 112px, 128px"
-                />
-              </div>
+              {/* Portrait - Échangé: said-casual.jpg ici (décontracté) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="relative z-10"
+              >
+                <div className="relative w-40 h-52 sm:w-44 sm:h-56 rounded-xl overflow-hidden shadow-xl border-2 border-white/20">
+                  <Image 
+                    src="/images/said-casual.jpg"
+                    alt="Saïd TAAROUST - Expert Performance B2B"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 640px) 160px, 176px"
+                  />
+                </div>
               
               {/* RNCP Badge */}
               <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md bg-white p-1">
