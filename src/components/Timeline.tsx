@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Briefcase, GraduationCap, Building2, TrendingUp, Users, Target, ShieldCheck, ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
 
@@ -150,28 +151,47 @@ export function Timeline() {
         </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mt-20 sm:mt-28 md:mt-40 p-6 sm:p-8 md:p-12 lg:p-16 bg-brand-navy rounded-[32px] sm:rounded-[40px] md:rounded-[60px] text-white flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto shadow-2xl relative overflow-hidden group"
-      >
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-orange/10 via-transparent to-brand-orange/5 opacity-50" />
-        <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-8 md:gap-10 text-center sm:text-left">
-          <div className="w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-20 rounded-xl sm:rounded-2xl bg-brand-orange flex items-center justify-center shrink-0 shadow-2xl rotate-3 group-hover:rotate-6 transition-transform">
-            <ShieldCheck className="w-7 sm:w-8 md:w-10 h-7 sm:h-8 md:h-10 text-white" />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 sm:mt-28 md:mt-40 p-6 sm:p-8 md:p-12 lg:p-16 bg-brand-navy rounded-[32px] sm:rounded-[40px] md:rounded-[60px] text-white flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto shadow-2xl relative overflow-hidden group"
+        >
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-orange/10 via-transparent to-brand-orange/5 opacity-50" />
+          
+          {/* Image de Saïd en consultation */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative z-10 hidden lg:block"
+          >
+            <div className="relative w-40 h-48 rounded-[24px] overflow-hidden border-4 border-white/10 shadow-2xl -rotate-3 group-hover:rotate-0 transition-transform duration-500">
+              <Image
+                src="/images/said-consulting.jpg"
+                alt="Saïd Taaroust en consultation"
+                fill
+                className="object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 via-transparent to-transparent" />
+            </div>
+          </motion.div>
+          
+          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-8 md:gap-10 text-center sm:text-left flex-1">
+            <div className="w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-20 rounded-xl sm:rounded-2xl bg-brand-orange flex items-center justify-center shrink-0 shadow-2xl rotate-3 group-hover:rotate-6 transition-transform">
+              <ShieldCheck className="w-7 sm:w-8 md:w-10 h-7 sm:h-8 md:h-10 text-white" />
+            </div>
+            <div>
+              <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black uppercase tracking-tight mb-1 sm:mb-2">Crédibilité Certifiée</h4>
+              <p className="text-white/60 font-bold text-xs sm:text-sm md:text-base italic tracking-wide">RNCP Niveau 6 & Technicien PNL • Approche AVR®</p>
+            </div>
           </div>
-          <div>
-            <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black uppercase tracking-tight mb-1 sm:mb-2">Crédibilité Certifiée</h4>
-            <p className="text-white/60 font-bold text-xs sm:text-sm md:text-base italic tracking-wide">RNCP Niveau 6 & Technicien PNL • Approche AVR®</p>
-          </div>
-        </div>
-        <Link href="/prendre-rendez-vous">
-          <button className="relative z-10 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-white text-brand-navy rounded-full font-black uppercase tracking-wider sm:tracking-widest hover:bg-brand-orange hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-xl flex items-center gap-2 sm:gap-3 text-xs sm:text-sm whitespace-nowrap">
-            Passer à l'action <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5" />
-          </button>
-        </Link>
-      </motion.div>
+          <Link href="/prendre-rendez-vous">
+            <button className="relative z-10 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-white text-brand-navy rounded-full font-black uppercase tracking-wider sm:tracking-widest hover:bg-brand-orange hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-xl flex items-center gap-2 sm:gap-3 text-xs sm:text-sm whitespace-nowrap">
+              Passer à l'action <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5" />
+            </button>
+          </Link>
+        </motion.div>
     </section>
   );
 }

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Target, GraduationCap, Users, CheckCircle2, ArrowRight } from "lucide-react";
 
 const services = [
@@ -115,50 +116,71 @@ export function Services() {
         ))}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="bg-brand-navy rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl"
-      >
-        <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] bg-brand-orange/20 blur-[80px] sm:blur-[120px] -mr-24 sm:-mr-48 -mt-24 sm:-mt-48 rounded-full" />
-        <div className="relative z-10">
-          <div className="grid md:grid-cols-5 gap-8 md:gap-10 items-center">
-            <div className="md:col-span-2">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-3 sm:mb-5 leading-tight tracking-tighter uppercase">
-                Focus <br className="hidden sm:block"/><span className="text-brand-orange">Opérationnel</span>
-              </h3>
-              <p className="text-white/70 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
-                Parce que la théorie ne suffit pas, nous activons des leviers concrets pour vos résultats quotidiens.
-              </p>
-              <Link href="/prendre-rendez-vous">
-                <button 
-                  className="group flex items-center gap-2 sm:gap-3 bg-brand-orange px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold hover:bg-white hover:text-brand-navy transition-all text-[10px] sm:text-xs w-full sm:w-auto justify-center sm:justify-start"
-                >
-                  Découvrir l'approche AVR® <ArrowRight className="w-3.5 sm:w-4 h-3.5 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
-            </div>
-            <div className="md:col-span-3 grid gap-2 sm:gap-2.5">
-              {specialities.map((spec, i) => (
-                <motion.div 
-                  key={spec}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-3 sm:gap-4 bg-white/5 p-3 sm:p-4 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-colors group/item"
-                >
-                  <div className="w-7 sm:w-8 h-7 sm:h-8 rounded-md sm:rounded-lg bg-brand-orange/20 flex items-center justify-center text-brand-orange font-black text-xs sm:text-sm group-hover/item:bg-brand-orange group-hover/item:text-white transition-colors shrink-0">
-                    {i + 1}
-                  </div>
-                  <span className="text-xs sm:text-sm font-bold tracking-tight">{spec}</span>
-                </motion.div>
-              ))}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-brand-navy rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl"
+        >
+          <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] bg-brand-orange/20 blur-[80px] sm:blur-[120px] -mr-24 sm:-mr-48 -mt-24 sm:-mt-48 rounded-full" />
+          <div className="relative z-10">
+            <div className="grid md:grid-cols-5 gap-8 md:gap-10 items-center">
+              {/* Image de Saïd */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="md:col-span-2 relative"
+              >
+                <div className="relative aspect-[3/4] rounded-[20px] sm:rounded-[28px] overflow-hidden shadow-2xl border-4 border-white/10 max-w-[280px] mx-auto">
+                  <Image
+                    src="/images/said-casual.jpg"
+                    alt="Saïd Taaroust - Approche personnalisée"
+                    fill
+                    className="object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
+                </div>
+                <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-brand-orange text-white px-4 py-2 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-lg hidden sm:block">
+                  Approche AVR®
+                </div>
+              </motion.div>
+              
+              <div className="md:col-span-3">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-3 sm:mb-5 leading-tight tracking-tighter uppercase">
+                  Focus <br className="hidden sm:block"/><span className="text-brand-orange">Opérationnel</span>
+                </h3>
+                <p className="text-white/70 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
+                  Parce que la théorie ne suffit pas, nous activons des leviers concrets pour vos résultats quotidiens.
+                </p>
+                <div className="grid gap-2 sm:gap-2.5 mb-6">
+                  {specialities.map((spec, i) => (
+                    <motion.div 
+                      key={spec}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-center gap-3 sm:gap-4 bg-white/5 p-3 sm:p-4 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-colors group/item"
+                    >
+                      <div className="w-7 sm:w-8 h-7 sm:h-8 rounded-md sm:rounded-lg bg-brand-orange/20 flex items-center justify-center text-brand-orange font-black text-xs sm:text-sm group-hover/item:bg-brand-orange group-hover/item:text-white transition-colors shrink-0">
+                        {i + 1}
+                      </div>
+                      <span className="text-xs sm:text-sm font-bold tracking-tight">{spec}</span>
+                    </motion.div>
+                  ))}
+                </div>
+                <Link href="/prendre-rendez-vous">
+                  <button 
+                    className="group flex items-center gap-2 sm:gap-3 bg-brand-orange px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold hover:bg-white hover:text-brand-navy transition-all text-[10px] sm:text-xs w-full sm:w-auto justify-center sm:justify-start"
+                  >
+                    Découvrir l'approche AVR® <ArrowRight className="w-3.5 sm:w-4 h-3.5 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
     </section>
   );
 }

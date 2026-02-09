@@ -42,13 +42,13 @@ export function Features() {
           viewport={{ once: true }}
           className="relative group order-1 lg:order-1"
         >
-          <div className="relative aspect-[4/5] rounded-[32px] sm:rounded-[48px] overflow-hidden shadow-[0_24px_48px_-12px_rgba(10,25,47,0.15)] border-[4px] sm:border-[8px] border-white z-10 max-w-sm sm:max-w-none mx-auto">
-            <Image 
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/SA2_LE_upscale_prime-1769783680736.jpg?width=8000&height=8000&resize=contain"
-              alt="Saïd TAAROUST - Expert Performance B2B"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-1000"
-            />
+            <div className="relative aspect-[4/5] rounded-[32px] sm:rounded-[48px] overflow-hidden shadow-[0_24px_48px_-12px_rgba(10,25,47,0.15)] border-[4px] sm:border-[8px] border-white z-10 max-w-sm sm:max-w-none mx-auto">
+              <Image 
+                src="/images/said-meeting.jpg"
+                alt="Saïd TAAROUST - Expert Performance B2B"
+                fill
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-1000"
+              />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent opacity-40" />
           </div>
           
