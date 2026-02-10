@@ -2,17 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Shield, Database, Clock, Users, Lock, FileText, Settings, Mail } from "lucide-react";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { ArrowLeft, Shield, Database, Eye, Lock, UserCheck, Mail, Clock, FileText } from "lucide-react";
 
 export default function PolitiqueConfidentialite() {
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
-      
       {/* Header */}
-      <section className="bg-brand-navy pt-32 pb-16 sm:pt-40 sm:pb-20">
+      <section className="bg-brand-navy text-white py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -21,15 +17,15 @@ export default function PolitiqueConfidentialite() {
           >
             <Link 
               href="/" 
-              className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors mb-6 text-sm font-medium"
+              className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors mb-8 text-sm font-medium"
             >
               <ArrowLeft className="w-4 h-4" />
               Retour à l'accueil
             </Link>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               Politique de Confidentialité
             </h1>
-            <p className="text-white/60 text-base sm:text-lg max-w-2xl">
+            <p className="text-white/60 text-lg max-w-2xl">
               Protection de vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD) - Règlement UE 2016/679.
             </p>
           </motion.div>
@@ -37,31 +33,20 @@ export default function PolitiqueConfidentialite() {
       </section>
 
       {/* Content */}
-      <section className="py-12 sm:py-16">
+      <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
-          <div className="space-y-8 sm:space-y-10">
+          <div className="space-y-12">
             
             {/* Introduction */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-slate-50 rounded-2xl p-6 sm:p-8"
+              className="bg-brand-orange/5 border border-brand-orange/20 rounded-2xl p-6 sm:p-8"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center">
-                  <Shield className="w-5 h-5 text-brand-orange" />
-                </div>
-                <h2 className="text-lg sm:text-xl font-bold text-brand-navy">Introduction</h2>
-              </div>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                <p>
-                  La présente Politique de confidentialité a pour but de vous informer sur la manière dont STAF AFFAIRES, SASU immatriculée au RCS de Mont de Marsan sous le N° SIREN 944 424 670, collecte, utilise, stocke et protège vos données personnelles dans le cadre de l'utilisation du site www.stafaffaires.com.
-                </p>
-                <p>
-                  STAF AFFAIRES s'engage à respecter la vie privée des utilisateurs de son site et à protéger les données personnelles qui lui sont communiquées, conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés du 6 janvier 1978 modifiée.
-                </p>
-              </div>
+              <p className="text-slate-700 leading-relaxed">
+                STAF AFFAIRES, représentée par Saïd TAAROUST, s'engage à protéger la vie privée des utilisateurs de son site internet et de ses services. Cette politique de confidentialité décrit comment nous collectons, utilisons, stockons et protégeons vos données personnelles.
+              </p>
             </motion.div>
 
             {/* Responsable du traitement */}
@@ -69,19 +54,22 @@ export default function PolitiqueConfidentialite() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-slate-50 rounded-2xl p-6 sm:p-8"
+              className="space-y-4"
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 text-brand-navy">
                 <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center">
-                  <Users className="w-5 h-5 text-brand-orange" />
+                  <Shield className="w-5 h-5 text-brand-orange" />
                 </div>
-                <h2 className="text-lg sm:text-xl font-bold text-brand-navy">1. Responsable du traitement</h2>
+                <h2 className="text-xl sm:text-2xl font-bold">1. Responsable du traitement</h2>
               </div>
-              <div className="space-y-2.5 text-slate-600 text-sm sm:text-base">
-                <p>Le responsable du traitement des données personnelles est :</p>
-                <p><strong className="text-brand-navy">STAF AFFAIRES</strong></p>
-                <p><strong className="text-brand-navy">Représentant légal :</strong> Saïd TAAROUST, Président</p>
-                <p><strong className="text-brand-navy">Email :</strong> <a href="mailto:contact@stafaffaires.com" className="text-brand-orange hover:underline">contact@stafaffaires.com</a></p>
+              <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 space-y-3">
+                <p><strong>Responsable :</strong> STAF AFFAIRES - SASU</p>
+                <p><strong>Représentant :</strong> Saïd TAAROUST, Président</p>
+                <p><strong>SIREN :</strong> 944 424 670</p>
+                <p><strong>Email DPO :</strong> contact@stafaffaires.com</p>
+                <p className="text-slate-600 text-sm mt-4">
+                  Pour toute question relative à la protection de vos données, vous pouvez contacter notre responsable du traitement à l'adresse ci-dessus.
+                </p>
               </div>
             </motion.div>
 
@@ -90,32 +78,40 @@ export default function PolitiqueConfidentialite() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-slate-50 rounded-2xl p-6 sm:p-8"
+              className="space-y-4"
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 text-brand-navy">
                 <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center">
                   <Database className="w-5 h-5 text-brand-orange" />
                 </div>
-                <h2 className="text-lg sm:text-xl font-bold text-brand-navy">2. Données personnelles collectées</h2>
+                <h2 className="text-xl sm:text-2xl font-bold">2. Données personnelles collectées</h2>
               </div>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                <p>Nous collectons les données suivantes lorsque vous interagissez avec notre site :</p>
-                
-                <div className="space-y-3">
-                  <div className="bg-white rounded-xl p-4 border border-slate-100">
-                    <h3 className="font-semibold text-brand-navy mb-2">Données d'identification</h3>
-                    <p>Nom, prénom, adresse e-mail, numéro de téléphone, nom de l'entreprise, fonction (collectées via les formulaires de contact ou de réservation).</p>
-                  </div>
-                  
-                  <div className="bg-white rounded-xl p-4 border border-slate-100">
-                    <h3 className="font-semibold text-brand-navy mb-2">Données de navigation</h3>
-                    <p>Adresse IP, type de navigateur, système d'exploitation, pages visitées, durée de la visite, données de connexion.</p>
-                  </div>
-                  
-                  <div className="bg-white rounded-xl p-4 border border-slate-100">
-                    <h3 className="font-semibold text-brand-navy mb-2">Cookies et traceurs</h3>
-                    <p>Cookies techniques nécessaires au fonctionnement du site, cookies analytiques (avec votre consentement), cookies de préférences.</p>
-                  </div>
+              <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 space-y-6">
+                <div>
+                  <h3 className="font-semibold text-brand-navy mb-3">Données d'identification :</h3>
+                  <ul className="list-disc list-inside space-y-1 text-slate-700">
+                    <li>Nom et prénom</li>
+                    <li>Adresse email professionnelle</li>
+                    <li>Numéro de téléphone</li>
+                    <li>Nom de l'entreprise et fonction</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-brand-navy mb-3">Données de navigation :</h3>
+                  <ul className="list-disc list-inside space-y-1 text-slate-700">
+                    <li>Adresse IP</li>
+                    <li>Type de navigateur et système d'exploitation</li>
+                    <li>Pages consultées et durée de visite</li>
+                    <li>Données de cookies (voir notre politique cookies)</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-brand-navy mb-3">Données contractuelles :</h3>
+                  <ul className="list-disc list-inside space-y-1 text-slate-700">
+                    <li>Informations relatives aux prestations souscrites</li>
+                    <li>Historique des échanges et communications</li>
+                    <li>Données de facturation</li>
+                  </ul>
                 </div>
               </div>
             </motion.div>
@@ -125,24 +121,37 @@ export default function PolitiqueConfidentialite() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-slate-50 rounded-2xl p-6 sm:p-8"
+              className="space-y-4"
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 text-brand-navy">
                 <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center">
-                  <FileText className="w-5 h-5 text-brand-orange" />
+                  <Eye className="w-5 h-5 text-brand-orange" />
                 </div>
-                <h2 className="text-lg sm:text-xl font-bold text-brand-navy">3. Finalités du traitement</h2>
+                <h2 className="text-xl sm:text-2xl font-bold">3. Finalités du traitement</h2>
               </div>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                <p>Vos données personnelles sont traitées pour les finalités suivantes :</p>
-                <ul className="list-disc list-inside space-y-2 ml-2">
-                  <li>Gestion des demandes de contact et de renseignements</li>
-                  <li>Gestion des réservations de consultations et de séances de coaching</li>
-                  <li>Exécution des prestations de services (coaching, formation, accompagnement)</li>
-                  <li>Envoi de communications professionnelles (uniquement si vous y avez consenti)</li>
-                  <li>Amélioration de l'expérience utilisateur sur le site</li>
-                  <li>Établissement de statistiques de fréquentation anonymisées</li>
-                  <li>Respect des obligations légales et réglementaires</li>
+              <div className="bg-slate-50 rounded-2xl p-6 sm:p-8">
+                <p className="text-slate-700 mb-4">Vos données personnelles sont collectées et traitées pour les finalités suivantes :</p>
+                <ul className="space-y-3 text-slate-700">
+                  <li className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-brand-orange/20 text-brand-orange flex items-center justify-center text-sm font-bold shrink-0">1</span>
+                    <span><strong>Exécution contractuelle :</strong> Gestion des prestations de coaching, formation et accompagnement</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-brand-orange/20 text-brand-orange flex items-center justify-center text-sm font-bold shrink-0">2</span>
+                    <span><strong>Relation client :</strong> Réponse à vos demandes de contact et de renseignements</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-brand-orange/20 text-brand-orange flex items-center justify-center text-sm font-bold shrink-0">3</span>
+                    <span><strong>Communication :</strong> Envoi d'informations sur nos services (avec votre consentement)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-brand-orange/20 text-brand-orange flex items-center justify-center text-sm font-bold shrink-0">4</span>
+                    <span><strong>Amélioration :</strong> Analyse statistique pour améliorer notre site et nos services</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-brand-orange/20 text-brand-orange flex items-center justify-center text-sm font-bold shrink-0">5</span>
+                    <span><strong>Obligations légales :</strong> Respect des obligations comptables et fiscales</span>
+                  </li>
                 </ul>
               </div>
             </motion.div>
@@ -152,49 +161,69 @@ export default function PolitiqueConfidentialite() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-slate-50 rounded-2xl p-6 sm:p-8"
+              className="space-y-4"
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 text-brand-navy">
                 <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center">
-                  <Lock className="w-5 h-5 text-brand-orange" />
+                  <FileText className="w-5 h-5 text-brand-orange" />
                 </div>
-                <h2 className="text-lg sm:text-xl font-bold text-brand-navy">4. Base légale du traitement</h2>
+                <h2 className="text-xl sm:text-2xl font-bold">4. Base légale du traitement</h2>
               </div>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                <p>Le traitement de vos données personnelles repose sur les bases légales suivantes :</p>
-                <ul className="list-disc list-inside space-y-2 ml-2">
-                  <li><strong>Votre consentement</strong> : pour l'envoi de communications commerciales et l'utilisation de cookies non essentiels</li>
-                  <li><strong>L'exécution d'un contrat</strong> : pour la gestion des prestations de services</li>
+              <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 space-y-4 text-slate-700">
+                <p>Le traitement de vos données repose sur les bases légales suivantes :</p>
+                <ul className="list-disc list-inside space-y-2">
+                  <li><strong>L'exécution d'un contrat</strong> : pour la fourniture de nos prestations</li>
+                  <li><strong>Votre consentement</strong> : pour l'envoi de communications commerciales</li>
                   <li><strong>L'intérêt légitime</strong> : pour l'amélioration de nos services et la sécurité du site</li>
-                  <li><strong>Les obligations légales</strong> : pour la conservation de certaines données à des fins comptables ou fiscales</li>
+                  <li><strong>Les obligations légales</strong> : pour le respect des réglementations applicables</li>
                 </ul>
               </div>
             </motion.div>
 
-            {/* Conservation */}
+            {/* Durée de conservation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-slate-50 rounded-2xl p-6 sm:p-8"
+              className="space-y-4"
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 text-brand-navy">
                 <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center">
                   <Clock className="w-5 h-5 text-brand-orange" />
                 </div>
-                <h2 className="text-lg sm:text-xl font-bold text-brand-navy">5. Durée de conservation des données</h2>
+                <h2 className="text-xl sm:text-2xl font-bold">5. Durée de conservation</h2>
               </div>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                <p>Les données personnelles sont conservées pour la durée nécessaire aux finalités pour lesquelles elles ont été collectées :</p>
-                <ul className="list-disc list-inside space-y-2 ml-2">
-                  <li><strong>Données de contact</strong> : 3 ans après le dernier contact</li>
-                  <li><strong>Données clients</strong> : durée de la relation contractuelle + 5 ans (obligations légales)</li>
-                  <li><strong>Données de navigation</strong> : 13 mois maximum</li>
-                  <li><strong>Cookies</strong> : 13 mois maximum à compter du dépôt</li>
-                </ul>
-                <p>
-                  Au-delà de ces durées, les données sont soit supprimées, soit anonymisées à des fins statistiques.
-                </p>
+              <div className="bg-slate-50 rounded-2xl p-6 sm:p-8">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-slate-200">
+                      <th className="text-left py-3 font-semibold text-brand-navy">Type de données</th>
+                      <th className="text-left py-3 font-semibold text-brand-navy">Durée de conservation</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-slate-700">
+                    <tr className="border-b border-slate-100">
+                      <td className="py-3">Données de contact (prospects)</td>
+                      <td className="py-3">3 ans à compter du dernier contact</td>
+                    </tr>
+                    <tr className="border-b border-slate-100">
+                      <td className="py-3">Données clients</td>
+                      <td className="py-3">5 ans après la fin de la relation contractuelle</td>
+                    </tr>
+                    <tr className="border-b border-slate-100">
+                      <td className="py-3">Données de facturation</td>
+                      <td className="py-3">10 ans (obligation légale comptable)</td>
+                    </tr>
+                    <tr className="border-b border-slate-100">
+                      <td className="py-3">Cookies analytiques</td>
+                      <td className="py-3">13 mois maximum</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3">Données de navigation</td>
+                      <td className="py-3">12 mois</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </motion.div>
 
@@ -203,18 +232,24 @@ export default function PolitiqueConfidentialite() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-4 px-2"
+              className="space-y-4"
             >
-              <h2 className="text-lg sm:text-xl font-bold text-brand-navy">6. Destinataires des données</h2>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                <p>
-                  Vos données personnelles sont destinées exclusivement à STAF AFFAIRES et à ses sous-traitants techniques (hébergeur, outils de gestion) dans le strict cadre de l'exécution de leurs missions.
-                </p>
-                <p>
-                  <strong>Vos données ne sont jamais vendues, louées ou transmises à des tiers à des fins commerciales.</strong>
-                </p>
-                <p>
-                  En cas de transfert de données hors de l'Union Européenne, des garanties appropriées sont mises en place (clauses contractuelles types, certification Privacy Shield le cas échéant).
+              <div className="flex items-center gap-3 text-brand-navy">
+                <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center">
+                  <UserCheck className="w-5 h-5 text-brand-orange" />
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold">6. Destinataires des données</h2>
+              </div>
+              <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 space-y-4 text-slate-700">
+                <p>Vos données personnelles peuvent être transmises aux destinataires suivants :</p>
+                <ul className="list-disc list-inside space-y-2">
+                  <li>Personnel habilité de STAF AFFAIRES</li>
+                  <li>Sous-traitants techniques (hébergement, emailing) dans le cadre de contrats conformes au RGPD</li>
+                  <li>Organismes de formation partenaires (le cas échéant, avec votre accord)</li>
+                  <li>Autorités administratives ou judiciaires (sur requête légale)</li>
+                </ul>
+                <p className="text-sm text-slate-600 mt-4">
+                  <strong>Important :</strong> Vos données ne sont jamais vendues à des tiers. Tout transfert hors UE fait l'objet de garanties appropriées (clauses contractuelles types, décision d'adéquation).
                 </p>
               </div>
             </motion.div>
@@ -224,18 +259,22 @@ export default function PolitiqueConfidentialite() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-4 px-2"
+              className="space-y-4"
             >
-              <h2 className="text-lg sm:text-xl font-bold text-brand-navy">7. Sécurité des données</h2>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                <p>
-                  STAF AFFAIRES met en œuvre toutes les mesures techniques et organisationnelles appropriées pour assurer la sécurité et la confidentialité de vos données personnelles :
-                </p>
-                <ul className="list-disc list-inside space-y-2 ml-2">
+              <div className="flex items-center gap-3 text-brand-navy">
+                <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center">
+                  <Lock className="w-5 h-5 text-brand-orange" />
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold">7. Sécurité des données</h2>
+              </div>
+              <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 space-y-4 text-slate-700">
+                <p>STAF AFFAIRES met en œuvre les mesures techniques et organisationnelles appropriées pour protéger vos données :</p>
+                <ul className="list-disc list-inside space-y-2">
                   <li>Chiffrement des données sensibles (SSL/TLS)</li>
-                  <li>Accès restreint aux données personnelles</li>
-                  <li>Sauvegardes régulières et sécurisées</li>
-                  <li>Mise à jour régulière des systèmes de sécurité</li>
+                  <li>Accès restreint aux données par authentification</li>
+                  <li>Hébergement sécurisé chez des prestataires certifiés</li>
+                  <li>Sauvegardes régulières et procédures de récupération</li>
+                  <li>Sensibilisation du personnel aux bonnes pratiques</li>
                 </ul>
               </div>
             </motion.div>
@@ -245,71 +284,68 @@ export default function PolitiqueConfidentialite() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-brand-orange/5 border border-brand-orange/20 rounded-2xl p-6 sm:p-8"
+              className="space-y-4"
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 text-brand-navy">
                 <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center">
-                  <Settings className="w-5 h-5 text-brand-orange" />
+                  <UserCheck className="w-5 h-5 text-brand-orange" />
                 </div>
-                <h2 className="text-lg sm:text-xl font-bold text-brand-navy">8. Vos droits</h2>
+                <h2 className="text-xl sm:text-2xl font-bold">8. Vos droits</h2>
               </div>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                <p>Conformément au RGPD, vous disposez des droits suivants sur vos données personnelles :</p>
-                <ul className="list-disc list-inside space-y-2 ml-2">
-                  <li><strong>Droit d'accès</strong> : obtenir la confirmation que vos données sont traitées et en obtenir une copie</li>
-                  <li><strong>Droit de rectification</strong> : demander la correction de données inexactes ou incomplètes</li>
-                  <li><strong>Droit à l'effacement</strong> : demander la suppression de vos données (« droit à l'oubli »)</li>
-                  <li><strong>Droit à la limitation</strong> : demander la suspension du traitement de vos données</li>
-                  <li><strong>Droit d'opposition</strong> : vous opposer au traitement de vos données pour des motifs légitimes</li>
-                  <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré et les transférer à un autre responsable</li>
-                  <li><strong>Droit de retirer votre consentement</strong> : à tout moment, sans affecter la licéité du traitement antérieur</li>
-                </ul>
-                
-                <div className="bg-white rounded-xl p-4 border border-slate-100 mt-6">
-                  <p className="font-semibold text-brand-navy mb-2">Pour exercer vos droits :</p>
-                  <p>Envoyez votre demande accompagnée d'une copie de votre pièce d'identité à :</p>
-                  <p className="mt-2"><strong>Email :</strong> <a href="mailto:contact@stafaffaires.com" className="text-brand-orange hover:underline">contact@stafaffaires.com</a></p>
+              <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 space-y-4">
+                <p className="text-slate-700">Conformément au RGPD, vous disposez des droits suivants :</p>
+                <div className="grid sm:grid-cols-2 gap-4 mt-4">
+                  <div className="bg-white p-4 rounded-xl border border-slate-200">
+                    <h4 className="font-semibold text-brand-navy mb-2">Droit d'accès</h4>
+                    <p className="text-sm text-slate-600">Obtenir confirmation du traitement et accéder à vos données</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200">
+                    <h4 className="font-semibold text-brand-navy mb-2">Droit de rectification</h4>
+                    <p className="text-sm text-slate-600">Corriger des données inexactes ou incomplètes</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200">
+                    <h4 className="font-semibold text-brand-navy mb-2">Droit à l'effacement</h4>
+                    <p className="text-sm text-slate-600">Demander la suppression de vos données ("droit à l'oubli")</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200">
+                    <h4 className="font-semibold text-brand-navy mb-2">Droit à la limitation</h4>
+                    <p className="text-sm text-slate-600">Limiter le traitement dans certaines circonstances</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200">
+                    <h4 className="font-semibold text-brand-navy mb-2">Droit à la portabilité</h4>
+                    <p className="text-sm text-slate-600">Recevoir vos données dans un format structuré</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200">
+                    <h4 className="font-semibold text-brand-navy mb-2">Droit d'opposition</h4>
+                    <p className="text-sm text-slate-600">Vous opposer au traitement pour motifs légitimes</p>
+                  </div>
                 </div>
-                
-                <p className="mt-4">
-                  En cas de difficulté, vous pouvez également introduire une réclamation auprès de la CNIL (Commission Nationale de l'Informatique et des Libertés) : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-brand-orange hover:underline">www.cnil.fr</a>
+                <p className="text-sm text-slate-600 mt-4">
+                  Pour exercer vos droits, contactez-nous à : <strong>contact@stafaffaires.com</strong>
                 </p>
               </div>
             </motion.div>
 
-            {/* Cookies */}
+            {/* Réclamation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-4 px-2"
+              className="space-y-4"
             >
-              <h2 className="text-lg sm:text-xl font-bold text-brand-navy">9. Politique relative aux cookies</h2>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+              <h2 className="text-xl sm:text-2xl font-bold text-brand-navy">9. Réclamation</h2>
+              <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 text-slate-700">
                 <p>
-                  Le site utilise des cookies pour améliorer votre expérience de navigation. Un bandeau de consentement vous permet de gérer vos préférences lors de votre première visite.
+                  Si vous estimez que le traitement de vos données n'est pas conforme à la réglementation, vous pouvez introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) :
                 </p>
-                <p>
-                  Pour en savoir plus sur les cookies utilisés et gérer vos préférences, vous pouvez cliquer sur le lien « Gérer les cookies » en bas de page.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Modifications */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="space-y-4 px-2"
-            >
-              <h2 className="text-lg sm:text-xl font-bold text-brand-navy">10. Modifications de la politique</h2>
-              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                <p>
-                  STAF AFFAIRES se réserve le droit de modifier la présente politique de confidentialité à tout moment. Les modifications seront publiées sur cette page avec indication de la date de mise à jour.
-                </p>
-                <p>
-                  Nous vous encourageons à consulter régulièrement cette page pour rester informé des éventuelles modifications.
-                </p>
+                <div className="mt-4 p-4 bg-white rounded-xl border border-slate-200">
+                  <p><strong>CNIL</strong></p>
+                  <p>3 Place de Fontenoy - TSA 80715</p>
+                  <p>75334 Paris Cedex 07</p>
+                  <p className="mt-2">
+                    <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-brand-orange hover:underline">www.cnil.fr</a>
+                  </p>
+                </div>
               </div>
             </motion.div>
 
@@ -318,30 +354,39 @@ export default function PolitiqueConfidentialite() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-brand-navy rounded-2xl p-6 sm:p-8 text-white"
+              className="bg-brand-navy text-white rounded-2xl p-6 sm:p-8"
             >
               <div className="flex items-center gap-3 mb-4">
-                <Mail className="w-5 h-5 text-brand-orange" />
-                <h2 className="text-lg sm:text-xl font-bold">Contact</h2>
+                <Mail className="w-6 h-6 text-brand-orange" />
+                <h2 className="text-xl sm:text-2xl font-bold">Contact</h2>
               </div>
-              <p className="text-white/70 mb-4 text-sm sm:text-base">
-                Pour toute question concernant cette politique de confidentialité ou vos données personnelles :
+              <p className="text-white/80 mb-4">
+                Pour toute question relative à cette politique de confidentialité ou pour exercer vos droits :
               </p>
-              <div className="space-y-2 text-sm sm:text-base">
-                <p><strong>Email :</strong> <a href="mailto:contact@stafaffaires.com" className="text-brand-orange hover:underline">contact@stafaffaires.com</a></p>
-                <p><strong>Site web :</strong> <a href="https://www.stafaffaires.com" className="text-brand-orange hover:underline">www.stafaffaires.com</a></p>
+              <div className="space-y-2">
+                <p><strong>Email :</strong> contact@stafaffaires.com</p>
+                <p><strong>Adresse :</strong> STAF AFFAIRES, France</p>
               </div>
             </motion.div>
 
-            <p className="text-xs sm:text-sm text-slate-400 text-center pt-4">
-              Dernière mise à jour : 1er mai 2025
-            </p>
+            {/* Mise à jour */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center space-y-2"
+            >
+              <p className="text-slate-500 text-sm">
+                Cette politique de confidentialité peut être mise à jour. La date de dernière modification sera toujours indiquée.
+              </p>
+              <p className="text-slate-600 font-medium">
+                Dernière mise à jour : 1er mai 2025
+              </p>
+            </motion.div>
 
           </div>
         </div>
       </section>
-      
-      <Footer />
     </main>
   );
 }

@@ -572,23 +572,55 @@ export default function PrendreRendezVousPage() {
                       />
                     </div>
 
-                    {/* Trust indicators */}
-                    <div className="flex flex-wrap gap-6 justify-center text-sm text-muted-foreground py-4">
-                      <div className="flex items-center gap-2">
-                        <Shield className="w-4 h-4 text-brand-orange" />
-                        <span>Données sécurisées</span>
+{/* RGPD Consent */}
+                      <div className="space-y-4 py-4">
+                        <label className="flex items-start gap-3 cursor-pointer group">
+                          <input
+                            type="checkbox"
+                            required
+                            className="mt-1 w-5 h-5 rounded border-2 border-gray-300 text-brand-orange focus:ring-brand-orange focus:ring-offset-0 cursor-pointer"
+                          />
+                          <span className="text-sm text-gray-600 leading-relaxed">
+                            J'accepte que mes données personnelles soient collectées et traitées conformément à la{" "}
+                            <Link href="/politique-de-confidentialite" className="text-brand-orange hover:underline font-medium">
+                              politique de confidentialité
+                            </Link>{" "}
+                            de STAF AFFAIRES pour la gestion de ma demande de rendez-vous. <span className="text-red-500">*</span>
+                          </span>
+                        </label>
+                        
+                        <label className="flex items-start gap-3 cursor-pointer group">
+                          <input
+                            type="checkbox"
+                            className="mt-1 w-5 h-5 rounded border-2 border-gray-300 text-brand-orange focus:ring-brand-orange focus:ring-offset-0 cursor-pointer"
+                          />
+                          <span className="text-sm text-gray-600 leading-relaxed">
+                            J'accepte de recevoir des communications de STAF AFFAIRES (actualités, offres, conseils). Vous pouvez vous désinscrire à tout moment.
+                          </span>
+                        </label>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-brand-orange" />
-                        <span>Confirmation immédiate</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Award className="w-4 h-4 text-brand-orange" />
-                        <span>100% gratuit</span>
-                      </div>
-                    </div>
 
-                    {/* Submit button */}
+                      {/* Trust indicators */}
+                      <div className="flex flex-wrap gap-6 justify-center text-sm text-muted-foreground py-4">
+                        <div className="flex items-center gap-2">
+                          <Shield className="w-4 h-4 text-brand-orange" />
+                          <span>Données sécurisées</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Zap className="w-4 h-4 text-brand-orange" />
+                          <span>Confirmation immédiate</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Award className="w-4 h-4 text-brand-orange" />
+                          <span>100% gratuit</span>
+                        </div>
+                      </div>
+
+                      <p className="text-xs text-gray-500 text-center">
+                        <span className="text-red-500">*</span> Champs obligatoires. Vos données sont protégées conformément au RGPD.
+                      </p>
+
+                      {/* Submit button */}
                     <MagneticButton intensity={0.2} scale={1.02} className="w-full">
                       <button
                         type="submit"

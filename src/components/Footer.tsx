@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Linkedin, Mail, MapPin, ArrowUpRight, ShieldCheck, Globe, ArrowRight } from "lucide-react";
+import { Facebook, Linkedin, Mail, MapPin, ArrowUpRight, ShieldCheck, Globe, ArrowRight, Cookie } from "lucide-react";
+import { CookieSettingsButton } from "./CookieBanner";
 
 const footerLinks = {
   navigation: [
@@ -13,13 +14,13 @@ const footerLinks = {
     { name: "Témoignages", href: "#testimonials" },
     { name: "Parcours", href: "#timeline" },
   ],
-  legal: [
-    { name: "Mentions Légales", href: "/mentions-legales" },
-    { name: "Confidentialité", href: "/politique-de-confidentialite" },
-    { name: "Conditions de Vente", href: "/cgv" },
-    { name: "Qualité & Audit", href: "/politique-de-qualite" },
-    { name: "RGPD", href: "/rgpd" },
-  ],
+legal: [
+      { name: "Mentions Légales", href: "/mentions-legales" },
+      { name: "Confidentialité", href: "/politique-de-confidentialite" },
+      { name: "CGV", href: "/cgv" },
+      { name: "CGU", href: "/cgu" },
+      { name: "Qualité & Audit", href: "/politique-de-qualite" },
+    ],
   contact: [
     { name: "saidtaaroust@gmail.com", href: "mailto:saidtaaroust@gmail.com", icon: Mail },
     { name: "France & International", href: "#", icon: Globe },
@@ -227,12 +228,14 @@ export function Footer() {
             </div>
           </div>
           
-          <div className="flex items-center gap-4 sm:gap-6">
-            <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/20 text-center sm:text-left">
-              Performance & Sens en Équilibre
-            </span>
-            <div className="w-6 sm:w-8 h-px bg-brand-orange/30 hidden sm:block" />
-          </div>
+<div className="flex items-center gap-4 sm:gap-6">
+              <CookieSettingsButton />
+              <div className="w-px h-4 bg-white/10 hidden sm:block" />
+              <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/20 text-center sm:text-left">
+                Performance & Sens en Équilibre
+              </span>
+              <div className="w-6 sm:w-8 h-px bg-brand-orange/30 hidden sm:block" />
+            </div>
         </motion.div>
       </div>
     </footer>
