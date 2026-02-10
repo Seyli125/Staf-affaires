@@ -66,7 +66,7 @@ export function Hero() {
         </motion.div>
 
         {/* Massive Foreground Name */}
-        <div className="absolute bottom-[5%] sm:bottom-[8%] md:bottom-[10%] left-0 w-full z-20 px-2 sm:px-4">
+        <div className="absolute bottom-[2%] sm:bottom-[4%] md:bottom-[6%] left-0 w-full z-20 px-2 sm:px-4">
           <motion.h2 
             style={{ opacity: opacityText, y: yHeroText }}
             initial={{ y: 80, opacity: 0 }}
