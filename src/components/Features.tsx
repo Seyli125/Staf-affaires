@@ -75,26 +75,26 @@ export function Features() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="lg:col-span-5 relative"
           >
-            <div className="sticky top-24">
-              <div className="relative max-w-[320px] mx-auto lg:mx-0">
-                
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -left-4 w-20 h-20 border-l-2 border-t-2 border-brand-orange/30 rounded-tl-2xl" />
-                <div className="absolute -bottom-4 -right-4 w-20 h-20 border-r-2 border-b-2 border-brand-navy/20 rounded-br-2xl" />
-                
-                {/* Main Image */}
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/said-casual.jpg"
-                    alt="Saïd Taaroust"
-                    fill
-                    className="object-cover object-top"
-                    sizes="320px"
-                    priority
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/30 via-transparent to-transparent" />
-                </div>
+              <div className="sticky top-24">
+                <div className="relative w-fit mx-auto lg:mx-0">
+                  
+                  {/* Decorative elements */}
+                  <div className="absolute -top-3 -left-3 w-16 h-16 border-l-2 border-t-2 border-brand-orange/30 rounded-tl-xl" />
+                  <div className="absolute -bottom-3 -right-3 w-16 h-16 border-r-2 border-b-2 border-brand-navy/20 rounded-br-xl" />
+                  
+                  {/* Main Image - Fixed dimensions for full control */}
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="/images/said-casual.jpg"
+                      alt="Saïd Taaroust"
+                      width={240}
+                      height={300}
+                      className="object-cover object-top w-[200px] h-[250px] sm:w-[220px] sm:h-[275px] lg:w-[240px] lg:h-[300px]"
+                      priority
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/30 via-transparent to-transparent" />
+                  </div>
                 
                 {/* Floating Credential Card */}
                 <motion.div
