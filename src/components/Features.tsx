@@ -84,14 +84,14 @@ export function Features() {
                   
                   {/* Main Image - Fixed dimensions for full control */}
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                    <Image
-                      src="/images/said-casual.jpg"
-                      alt="Saïd Taaroust"
-                      width={240}
-                      height={300}
-                      className="object-cover object-top w-[200px] h-[250px] sm:w-[220px] sm:h-[275px] lg:w-[240px] lg:h-[300px]"
-                      priority
-                    />
+                <Image
+                  src="/images/said-casual.jpg"
+                  alt="Saïd Taaroust - Coach Business"
+                  width={320}
+                  height={400}
+                  className="w-[280px] h-[350px] sm:w-[300px] sm:h-[375px] lg:w-[320px] lg:h-[400px] object-cover"
+                  priority
+                />
                     {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/30 via-transparent to-transparent" />
                   </div>
