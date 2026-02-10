@@ -64,19 +64,19 @@ export function Features() {
           </div>
         </motion.div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          
-          {/* Left: Portrait - 5 columns */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-5 relative"
-          >
-              <div className="sticky top-24">
-                <div className="relative w-fit mx-auto lg:mx-0">
+          {/* Main Content Grid */}
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+            
+            {/* Left: Portrait - 4 columns */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+              className="lg:col-span-4 relative"
+            >
+                <div className="sticky top-24">
+                  <div className="relative w-fit mx-auto lg:ml-auto lg:mr-0">
                   
                   {/* Decorative elements */}
                   <div className="absolute -top-3 -left-3 w-16 h-16 border-l-2 border-t-2 border-brand-orange/30 rounded-tl-xl" />
@@ -133,8 +133,8 @@ export function Features() {
             </div>
           </motion.div>
 
-          {/* Right: Story Content - 7 columns */}
-          <div className="lg:col-span-7 space-y-8">
+            {/* Right: Story Content - 8 columns */}
+            <div className="lg:col-span-8 space-y-6">
             
             {/* Section Label & Title */}
             <motion.div
