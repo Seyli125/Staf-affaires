@@ -82,16 +82,16 @@ export function Features() {
                   <div className="absolute -top-3 -left-3 w-16 h-16 border-l-2 border-t-2 border-brand-orange/30 rounded-tl-xl" />
                   <div className="absolute -bottom-3 -right-3 w-16 h-16 border-r-2 border-b-2 border-brand-navy/20 rounded-br-xl" />
                   
-                  {/* Main Image - Fixed dimensions for full control */}
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/said-casual.jpg"
-                  alt="Saïd Taaroust - Coach Business"
-                  width={320}
-                  height={400}
-                  className="w-[280px] h-[350px] sm:w-[300px] sm:h-[375px] lg:w-[320px] lg:h-[400px] object-cover"
-                  priority
-                />
+                {/* Main Image - Fixed dimensions for full control */}
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/images/said-casual.jpg"
+                    alt="Saïd Taaroust - Coach Business"
+                    width={360}
+                    height={450}
+                    className="w-[300px] h-[375px] sm:w-[330px] sm:h-[412px] lg:w-[360px] lg:h-[450px] object-cover"
+                    priority
+                  />
                     {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/30 via-transparent to-transparent" />
                   </div>
