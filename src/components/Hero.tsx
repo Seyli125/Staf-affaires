@@ -131,15 +131,15 @@ export function Hero() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link href="/prendre-rendez-vous">
-                  <Button 
-                    size="lg" 
-                    className="hero-cta bg-brand-navy text-white hover:bg-brand-orange rounded-full px-6 py-3 text-sm font-semibold group transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto"
-                  >
-                    Prendre rendez-vous
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
+<Link href="/prendre-rendez-vous">
+                    <Button 
+                      size="lg" 
+                      className="hero-cta bg-brand-navy text-white hover:bg-brand-orange rounded-full px-6 py-3 text-sm font-semibold group transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto animate-attention"
+                    >
+                      Prendre rendez-vous
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
                 
                 <Button 
                   variant="outline"
@@ -176,17 +176,18 @@ export function Hero() {
                   />
                 </div>
                 
-                {/* Floating badge */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="absolute -bottom-4 -right-4 bg-brand-navy text-white px-4 py-2 rounded-lg shadow-lg"
-                >
-                  <span className="text-xs font-bold">25+ ans</span>
-                  <span className="text-[10px] block text-white/70">d'expertise</span>
-                </motion.div>
+{/* Floating badge */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.5, type: "spring", stiffness: 200 }}
+                    whileHover={{ scale: 1.05, rotate: 2 }}
+                    className="absolute -bottom-4 -right-4 bg-brand-navy text-white px-4 py-2 rounded-lg shadow-lg animate-subtle-float cursor-default"
+                  >
+                    <span className="text-xs font-bold">25+ ans</span>
+                    <span className="text-[10px] block text-white/70">d'expertise</span>
+                  </motion.div>
               </div>
             </motion.div>
           </div>

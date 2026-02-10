@@ -140,10 +140,14 @@ export function Services() {
             
             {/* Content */}
             <div className="p-6">
-              {/* Icon */}
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 service-icon`}>
-                <service.icon className="w-6 h-6 text-white" />
-              </div>
+{/* Icon */}
+                <motion.div 
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 service-icon`}
+                  whileHover={{ rotate: [0, -10, 10, -5, 0], scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <service.icon className="w-6 h-6 text-white" />
+                </motion.div>
               
               <h3 className="text-lg font-bold text-brand-navy mb-1 group-hover:text-brand-orange transition-colors duration-300">
                 {service.title}
@@ -157,15 +161,26 @@ export function Services() {
               
               {/* Items */}
               <div className="space-y-2.5 mb-6">
-                {service.items.map((item) => (
-                  <div 
-                    key={item} 
-                    className="flex items-start gap-2.5 text-sm text-slate-600"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+{service.items.map((item, itemIndex) => (
+                    <motion.div 
+                      key={item} 
+                      className="flex items-start gap-2.5 text-sm text-slate-600"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + itemIndex * 0.1 }}
+                    >
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 + itemIndex * 0.1, type: "spring", stiffness: 300 }}
+                      >
+                        <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                      </motion.div>
+                      <span>{item}</span>
+                    </motion.div>
+                  ))}
               </div>
               
               {/* CTA */}

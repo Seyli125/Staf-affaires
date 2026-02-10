@@ -386,6 +386,170 @@ html {
   animation: subtleFloat 4s ease-in-out infinite;
 }
 
+/* ============================================
+   EMOTIONAL MICRO-ANIMATIONS
+   ============================================ */
+
+/* Heartbeat pulse for important elements */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.05); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.03); }
+  56% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* Gentle glow pulse */
+@keyframes glowPulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 107, 74, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(255, 107, 74, 0.5), 0 0 60px rgba(255, 107, 74, 0.2);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Shimmer effect for premium feel */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Breathing effect for calm engagement */
+@keyframes breathe {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* Text reveal with emotion */
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Magnetic hover effect */
+.magnetic-hover {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.magnetic-hover:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* Icon bounce on hover */
+.icon-bounce:hover svg,
+.icon-bounce:hover .icon {
+  animation: iconBounce 0.5s ease;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-4px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-2px); }
+}
+
+/* Attention grabber for CTAs */
+@keyframes attentionPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(255, 107, 74, 0.4);
+  }
+  50% { 
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 107, 74, 0.6);
+  }
+}
+
+.animate-attention {
+  animation: attentionPulse 2.5s ease-in-out infinite;
+}
+
+/* Floating decoration elements */
+@keyframes floatSlow {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(10px, -10px) rotate(2deg); }
+  66% { transform: translate(-5px, 5px) rotate(-1deg); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+/* Stagger fade for lists */
+.stagger-fade > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-fade > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-fade > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-fade > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-fade > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Underline reveal on hover */
+.underline-reveal {
+  position: relative;
+}
+
+.underline-reveal::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b4a, #ff8e75);
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.underline-reveal:hover::after {
+  width: 100%;
+}
+
+/* Color shift on hover */
+.color-shift {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.color-shift:hover {
+  color: #ff6b4a;
+  transform: translateX(3px);
+}
+
 /* Line reveal animation */
 @keyframes revealLine {
   from { width: 0; }

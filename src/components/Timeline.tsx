@@ -111,12 +111,19 @@ export function Timeline() {
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
-                {/* Timeline Dot */}
-                <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-white border-2 border-brand-navy rounded-full md:-translate-x-1/2 z-10 mt-2 md:mt-0">
-                  {item.highlight && (
-                    <span className="absolute inset-0 bg-brand-orange rounded-full animate-ping opacity-50" />
-                  )}
-                </div>
+{/* Timeline Dot */}
+                  <motion.div 
+                    className="absolute left-4 md:left-1/2 w-3 h-3 bg-white border-2 border-brand-navy rounded-full md:-translate-x-1/2 z-10 mt-2 md:mt-0"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, type: "spring", stiffness: 400, damping: 15 }}
+                    whileHover={{ scale: 1.5, borderColor: "#ff6b4a" }}
+                  >
+                    {item.highlight && (
+                      <span className="absolute inset-0 bg-brand-orange rounded-full animate-ping opacity-50" />
+                    )}
+                  </motion.div>
 
                 {/* Content Card */}
                 <div className="flex-1 ml-10 md:ml-0 md:w-1/2 md:px-8">
@@ -135,13 +142,17 @@ export function Timeline() {
                     <div className={`flex items-center gap-3 mb-3 ${
                       index % 2 !== 0 ? "md:flex-row-reverse md:justify-end" : ""
                     }`}>
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                        item.highlight 
-                          ? 'bg-white/10 text-brand-orange' 
-                          : 'bg-brand-navy/5 text-brand-navy'
-                      }`}>
-                        <item.icon className="w-5 h-5" />
-                      </div>
+<motion.div 
+                          className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                            item.highlight 
+                              ? 'bg-white/10 text-brand-orange' 
+                              : 'bg-brand-navy/5 text-brand-navy'
+                          }`}
+                          whileHover={{ rotate: 360, scale: 1.1 }}
+                          transition={{ duration: 0.6, type: "spring" }}
+                        >
+                          <item.icon className="w-5 h-5" />
+                        </motion.div>
                       <span className={`text-[11px] font-bold tracking-wider ${
                         item.highlight ? 'text-brand-orange' : 'text-brand-orange'
                       }`}>
@@ -186,9 +197,13 @@ export function Timeline() {
             {/* Content */}
             <div className="relative z-10 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-4 text-center sm:text-left">
-                <div className="w-14 h-14 rounded-2xl bg-brand-orange flex items-center justify-center shrink-0 shadow-lg hidden sm:flex">
-                  <ShieldCheck className="w-7 h-7 text-white" />
-                </div>
+<motion.div 
+                    className="w-14 h-14 rounded-2xl bg-brand-orange flex items-center justify-center shrink-0 shadow-lg hidden sm:flex"
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <ShieldCheck className="w-7 h-7 text-white" />
+                  </motion.div>
                 <div>
                   <h4 className="text-xl sm:text-2xl font-bold text-white mb-1">Crédibilité Certifiée</h4>
                   <p className="text-white/60 text-sm">RNCP Niveau 6 • Technicien PNL • Approche AVR®</p>
