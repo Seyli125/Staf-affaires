@@ -4,7 +4,7 @@ import { ShieldCheck, Award, CheckCircle2, Search } from "lucide-react";
 
 export default function PolitiqueQualite() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#FFFFFF] dark:bg-[#1D1D1F]">
       <Navbar />
       <div className="pt-40 pb-32">
         <div className="container mx-auto px-6 max-w-4xl">

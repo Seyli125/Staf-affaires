@@ -68,7 +68,7 @@ export default function AboutPage() {
   const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
 
   return (
-    <main className="min-h-screen bg-white overflow-hidden">
+    <main className="min-h-screen bg-[#FFFFFF] dark:bg-[#1D1D1F] overflow-hidden">
       <Navbar />
 
       {/* ============================================
@@ -145,7 +145,7 @@ export default function AboutPage() {
             <LineReveal delay={0.5}>
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.9] mt-2">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-salmon">
-                  STAFF AFFAIRES
+                  STAF AFFAIRES
                 </span>
               </h1>
             </LineReveal>
@@ -261,7 +261,7 @@ export default function AboutPage() {
               <ScrollReveal delay={0.3}>
                 <p className="text-xl text-muted-foreground font-medium leading-relaxed mb-10">
                   Avec plus de 25 ans d'expérience dans le conseil stratégique
-                  et le management, Saïd Taaroust a fondé STAFF AFFAIRES pour
+                  et le management, Saïd Taaroust a fondé STAF AFFAIRES pour
                   répondre à un besoin crucial : l'alignement entre performance
                   opérationnelle et mindset de leader.
                 </p>

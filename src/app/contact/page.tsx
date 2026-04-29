@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
@@ -8,29 +9,27 @@ import {
   Phone,
   MapPin,
   Send,
-  MessageSquare,
   Linkedin,
   Instagram,
   ArrowRight,
-  Sparkles,
   CheckCircle2,
+  Clock,
+  Gift,
+  User,
 } from "lucide-react";
 import Link from "next/link";
 import {
   ScrollReveal,
   StaggerContainer,
   StaggerItem,
-  LineReveal,
-  MagneticButton,
-  TiltCard,
 } from "@/components/animations";
 
 const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "contact@staffaffaires.fr",
-    link: "mailto:contact@staffaffaires.fr",
+    value: "saidtaaroust@gmail.com",
+    link: "mailto:saidtaaroust@gmail.com",
   },
   {
     icon: Phone,
@@ -41,364 +40,349 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Localisation",
-    value: "Paris, France (Disponible à l'international)",
+    value: "Landes – Mont-de-Marsan",
+    subtitle: "Disponible à l'international",
     link: null,
   },
 ];
 
-const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+const promises = [
+  { icon: Clock, text: "Réponse sous 24h" },
+  { icon: Gift, text: "Consultation initiale offerte" },
+  { icon: User, text: "Accompagnement personnalisé" },
 ];
 
-const benefits = [
-  "Réponse sous 24h",
-  "Consultation initiale offerte",
-  "Accompagnement personnalisé",
-];
+const FORMSPREE_URL = "https://formspree.io/f/mnjlvneb";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({ nom: "", email: "", sujet: "", message: "", rgpd: false, newsletter: false });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.rgpd) return;
+    setIsSubmitting(true);
+    try {
+      await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `Nouveau message — ${formData.nom}`,
+          _replyto: formData.email,
+          "Nom": formData.nom,
+          "Email": formData.email,
+          "Sujet": formData.sujet,
+          "Message": formData.message,
+          "Newsletter": formData.newsletter ? "Oui" : "Non",
+        }),
+      });
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error("Contact form error:", err);
+    }
+    setIsSubmitting(false);
+  };
+
   return (
-    <main className="min-h-screen bg-white overflow-hidden">
+    <main className="min-h-screen bg-[#FFFFFF] dark:bg-[#1D1D1F] overflow-hidden">
       <Navbar />
 
       {/* ============================================
-          HERO SECTION
+          HERO — Minimal & Elegant
       ============================================ */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-brand-navy">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0 opacity-30"
-            style={{
-              background:
-                "radial-gradient(ellipse at 30% 30%, rgba(255,107,74,0.4) 0%, transparent 50%)",
-            }}
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 8, repeat: Infinity }}
-          />
-          <motion.div
-            className="absolute inset-0 opacity-20"
-            style={{
-              background:
-                "radial-gradient(ellipse at 70% 70%, rgba(255,142,117,0.4) 0%, transparent 50%)",
-            }}
-            animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 10, repeat: Infinity }}
-          />
-        </div>
-
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <ScrollReveal delay={0.2}>
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-full px-5 py-2 mb-8">
-              <MessageSquare className="w-4 h-4 text-brand-orange" />
-              <span className="text-white/80 font-bold uppercase tracking-[0.2em] text-xs">
-                Parlons de vous
-              </span>
-            </div>
-          </ScrollReveal>
-
-          <div className="mb-8">
-            <LineReveal delay={0.3}>
-              <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter uppercase leading-[0.9]">
-                CONTACTEZ
+      <section className="pt-40 pb-20 relative">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl">
+            <ScrollReveal>
+              <p className="text-brand-orange font-bold text-sm uppercase tracking-[0.2em] mb-5">
+                Contact
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <h1 className="text-4xl md:text-6xl font-black text-brand-navy tracking-tight leading-[1.05]">
+                Parlons de votre
+                <br />
+                <span className="text-brand-orange">prochaine étape.</span>
               </h1>
-            </LineReveal>
-            <LineReveal delay={0.5}>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] mt-2">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-salmon">
-                  STAFF AFFAIRES
-                </span>
-              </h1>
-            </LineReveal>
-          </div>
-
-          <ScrollReveal delay={0.7}>
-            <p className="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto font-medium leading-relaxed">
-              Prêt à franchir une nouvelle étape ? Parlons de vos projets et
-              de comment nous pouvons vous aider à les réaliser.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ============================================
-          CONTACT CONTENT
-      ============================================ */}
-      <section className="py-32 relative">
-        {/* Background decoration */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-orange/5 to-transparent -skew-x-12 translate-x-1/4" />
-
-        <div className="container mx-auto px-6 relative">
-          <div className="grid lg:grid-cols-2 gap-20">
-            {/* Contact Info Side */}
-            <div>
-              <ScrollReveal>
-                <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-12">
-                  <span className="text-brand-orange">COORDONNÉES</span>
-                </h2>
-              </ScrollReveal>
-
-              <StaggerContainer className="space-y-8" staggerDelay={0.1}>
-                {contactInfo.map((item) => (
-                  <StaggerItem key={item.title}>
-                    <motion.div
-                      className="flex items-start gap-6 group"
-                      whileHover={{ x: 10 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="w-16 h-16 bg-brand-navy/5 rounded-2xl flex items-center justify-center text-brand-navy group-hover:bg-brand-orange group-hover:text-white transition-all duration-300 shadow-lg group-hover:shadow-brand-orange/20">
-                        <item.icon className="w-7 h-7" />
-                      </div>
-                      <div>
-                        <h4 className="font-black text-lg tracking-tight mb-1 group-hover:text-brand-orange transition-colors">
-                          {item.title}
-                        </h4>
-                        {item.link ? (
-                          <a
-                            href={item.link}
-                            className="text-muted-foreground font-medium hover:text-brand-orange transition-colors"
-                          >
-                            {item.value}
-                          </a>
-                        ) : (
-                          <p className="text-muted-foreground font-medium">
-                            {item.value}
-                          </p>
-                        )}
-                      </div>
-                    </motion.div>
-                  </StaggerItem>
-                ))}
-              </StaggerContainer>
-
-              {/* Social Links */}
-              <ScrollReveal delay={0.4}>
-                <div className="mt-16 pt-16 border-t border-gray-100">
-                  <h3 className="font-black text-xl mb-6 tracking-tight">
-                    SUIVEZ-NOUS
-                  </h3>
-                  <div className="flex gap-4">
-                    {socialLinks.map((social) => (
-                      <MagneticButton
-                        key={social.label}
-                        intensity={0.4}
-                        scale={1.1}
-                      >
-                        <a
-                          href={social.href}
-                          className="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-orange transition-all shadow-lg hover:shadow-brand-orange/20"
-                          aria-label={social.label}
-                        >
-                          <social.icon className="w-6 h-6" />
-                        </a>
-                      </MagneticButton>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Benefits */}
-              <ScrollReveal delay={0.5}>
-                <div className="mt-12 p-8 bg-brand-navy/5 rounded-3xl">
-                  <div className="space-y-4">
-                    {benefits.map((benefit) => (
-                      <div
-                        key={benefit}
-                        className="flex items-center gap-3 text-brand-navy font-bold"
-                      >
-                        <CheckCircle2 className="w-5 h-5 text-brand-orange" />
-                        {benefit}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            {/* Contact Form Side */}
-            <ScrollReveal direction="right">
-              <TiltCard maxTilt={3} glareOpacity={0.05}>
-                <div className="bg-white p-10 md:p-14 rounded-[3rem] shadow-2xl border border-gray-100 relative overflow-hidden">
-                  {/* Decorative icon */}
-                  <MessageSquare className="absolute -top-10 -right-10 w-40 h-40 text-brand-orange/5 -rotate-12" />
-
-                  <form className="relative z-10 space-y-8">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">
-                          Nom
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Votre nom"
-                          className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-brand-orange/30 focus:bg-white rounded-2xl font-medium outline-none transition-all"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="votre@email.com"
-                          className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-brand-orange/30 focus:bg-white rounded-2xl font-medium outline-none transition-all"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">
-                        Sujet
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Comment pouvons-nous vous aider ?"
-                        className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-brand-orange/30 focus:bg-white rounded-2xl font-medium outline-none transition-all"
-                      />
-                    </div>
-
-<div className="space-y-2">
-                        <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">
-                          Message
-                        </label>
-                        <textarea
-                          placeholder="Dites-nous en plus sur vos besoins..."
-                          rows={5}
-                          className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-brand-orange/30 focus:bg-white rounded-2xl font-medium outline-none transition-all resize-none"
-                        />
-                      </div>
-
-                      {/* RGPD Consent */}
-                      <div className="space-y-4">
-                        <label className="flex items-start gap-3 cursor-pointer group">
-                          <input
-                            type="checkbox"
-                            required
-                            className="mt-1 w-5 h-5 rounded border-2 border-gray-300 text-brand-orange focus:ring-brand-orange focus:ring-offset-0 cursor-pointer"
-                          />
-                          <span className="text-sm text-gray-600 leading-relaxed">
-                            J'accepte que mes données personnelles soient collectées et traitées conformément à la{" "}
-                            <Link href="/politique-de-confidentialite" className="text-brand-orange hover:underline font-medium">
-                              politique de confidentialité
-                            </Link>{" "}
-                            de STAF AFFAIRES. <span className="text-red-500">*</span>
-                          </span>
-                        </label>
-                        
-                        <label className="flex items-start gap-3 cursor-pointer group">
-                          <input
-                            type="checkbox"
-                            className="mt-1 w-5 h-5 rounded border-2 border-gray-300 text-brand-orange focus:ring-brand-orange focus:ring-offset-0 cursor-pointer"
-                          />
-                          <span className="text-sm text-gray-600 leading-relaxed">
-                            J'accepte de recevoir des communications commerciales de la part de STAF AFFAIRES (newsletters, offres, actualités). Vous pouvez vous désinscrire à tout moment.
-                          </span>
-                        </label>
-                      </div>
-
-                      <p className="text-xs text-gray-500">
-                        <span className="text-red-500">*</span> Champs obligatoires. Vos données sont protégées conformément au RGPD.{" "}
-                        <Link href="/politique-de-confidentialite" className="text-brand-orange hover:underline">
-                          En savoir plus
-                        </Link>
-                      </p>
-
-                      <MagneticButton
-                      intensity={0.2}
-                      scale={1.02}
-                      className="w-full"
-                    >
-                      <button
-                        type="submit"
-                        className="w-full py-6 rounded-2xl bg-brand-navy text-white font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-brand-orange transition-colors shadow-xl hover:shadow-brand-orange/20 group"
-                      >
-                        Envoyer le message
-                        <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </button>
-                    </MagneticButton>
-                  </form>
-                </div>
-              </TiltCard>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <p className="text-gray-500 text-lg mt-6 max-w-xl leading-relaxed">
+                Prêt à franchir un nouveau cap ? Partagez-nous votre projet et
+                découvrez comment STAF Affaires peut vous accompagner.
+              </p>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* ============================================
-          MAP SECTION
+          MAIN CONTENT — Form + Info
       ============================================ */}
-      <section className="h-[400px] w-full bg-gray-100 relative overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <MapPin className="w-16 h-16 text-brand-orange mx-auto mb-4" />
-            </motion.div>
-            <span className="font-black uppercase tracking-widest text-brand-navy">
-              Paris, France
-            </span>
-            <p className="text-muted-foreground mt-2 font-medium">
-              Disponible à l'international
-            </p>
-          </motion.div>
+      <section className="pb-28 relative">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-5 gap-16 items-start">
+            {/* ---- FORM (3/5) ---- */}
+            <div className="lg:col-span-3 order-1">
+              <ScrollReveal>
+                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-[0_4px_40px_rgba(0,0,0,0.06)] border border-gray-100/80">
+                  <h2 className="text-xl font-black text-brand-navy tracking-tight mb-1">
+                    Envoyez-nous un message
+                  </h2>
+                  <p className="text-gray-400 text-sm mb-8">
+                    Tous les champs marqués d'un * sont obligatoires.
+                  </p>
+
+                  {isSubmitted ? (
+                    <div className="text-center py-8">
+                      <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle2 className="w-8 h-8 text-green-500" />
+                      </div>
+                      <h3 className="text-xl font-black text-brand-navy mb-2">Message envoyé !</h3>
+                      <p className="text-gray-400 text-sm">Nous vous répondrons dans les 24h.</p>
+                    </div>
+                  ) : (
+                  <form className="space-y-5" onSubmit={handleSubmit}>
+                    <div className="grid md:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block text-xs font-bold text-brand-navy/70 uppercase tracking-wider mb-2">
+                          Nom <span className="text-brand-orange">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="Votre nom"
+                          value={formData.nom}
+                          onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
+                          className="w-full px-4 py-3 bg-[#FFFFFF] border border-gray-200 focus:border-brand-orange/40 focus:bg-white rounded-xl text-sm font-medium outline-none transition-all placeholder:text-gray-300"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-brand-navy/70 uppercase tracking-wider mb-2">
+                          Email <span className="text-brand-orange">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          placeholder="votre@email.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="w-full px-4 py-3 bg-[#FFFFFF] border border-gray-200 focus:border-brand-orange/40 focus:bg-white rounded-xl text-sm font-medium outline-none transition-all placeholder:text-gray-300"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-brand-navy/70 uppercase tracking-wider mb-2">
+                        Sujet <span className="text-brand-orange">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Comment pouvons-nous vous aider ?"
+                        value={formData.sujet}
+                        onChange={(e) => setFormData({ ...formData, sujet: e.target.value })}
+                        className="w-full px-4 py-3 bg-[#FFFFFF] border border-gray-200 focus:border-brand-orange/40 focus:bg-white rounded-xl text-sm font-medium outline-none transition-all placeholder:text-gray-300"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-brand-navy/70 uppercase tracking-wider mb-2">
+                        Message <span className="text-brand-orange">*</span>
+                      </label>
+                      <textarea
+                        required
+                        placeholder="Dites-nous en plus sur vos besoins..."
+                        rows={5}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className="w-full px-4 py-3 bg-[#FFFFFF] border border-gray-200 focus:border-brand-orange/40 focus:bg-white rounded-xl text-sm font-medium outline-none transition-all resize-none placeholder:text-gray-300"
+                      />
+                    </div>
+
+                    {/* RGPD */}
+                    <div className="space-y-3 pt-1">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          required
+                          checked={formData.rgpd}
+                          onChange={(e) => setFormData({ ...formData, rgpd: e.target.checked })}
+                          className="mt-0.5 w-4 h-4 rounded border-2 border-gray-300 text-brand-orange focus:ring-brand-orange focus:ring-offset-0 cursor-pointer accent-[#ff6b4a]"
+                        />
+                        <span className="text-xs text-gray-500 leading-relaxed">
+                          J'accepte que mes données personnelles soient
+                          collectées et traitées conformément à la{" "}
+                          <Link
+                            href="/politique-de-confidentialite"
+                            className="text-brand-orange hover:underline font-semibold"
+                          >
+                            politique de confidentialité
+                          </Link>{" "}
+                          de STAF Affaires.{" "}
+                          <span className="text-brand-orange">*</span>
+                        </span>
+                      </label>
+
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={formData.newsletter}
+                          onChange={(e) => setFormData({ ...formData, newsletter: e.target.checked })}
+                          className="mt-0.5 w-4 h-4 rounded border-2 border-gray-300 text-brand-orange focus:ring-brand-orange focus:ring-offset-0 cursor-pointer accent-[#ff6b4a]"
+                        />
+                        <span className="text-xs text-gray-500 leading-relaxed">
+                          J'accepte de recevoir des communications de STAF
+                          Affaires (newsletters, offres, actualités). Désinscription possible à tout moment.
+                        </span>
+                      </label>
+                    </div>
+
+                    <motion.button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-4 mt-2 rounded-xl bg-brand-navy text-white font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-3 hover:bg-brand-orange transition-colors duration-300 shadow-lg group disabled:opacity-60"
+                      whileHover={{ y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
+                      <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
+                    </motion.button>
+                  </form>
+                  )}
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* ---- SIDEBAR (2/5) ---- */}
+            <div className="lg:col-span-2 order-2 space-y-8">
+              {/* Contact info cards */}
+              <StaggerContainer className="space-y-4" staggerDelay={0.08}>
+                {contactInfo.map((item) => (
+                  <StaggerItem key={item.title}>
+                    <motion.div
+                      className="bg-white rounded-2xl p-5 border border-gray-100/80 shadow-[0_2px_20px_rgba(0,0,0,0.04)] group"
+                      whileHover={{ y: -3 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-brand-navy/5 flex items-center justify-center text-brand-navy group-hover:bg-brand-orange group-hover:text-white transition-all duration-300 shrink-0">
+                          <item.icon className="w-[18px] h-[18px]" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
+                            {item.title}
+                          </p>
+                          {item.link ? (
+                            <a
+                              href={item.link}
+                              className="text-sm font-semibold text-brand-navy hover:text-brand-orange transition-colors"
+                            >
+                              {item.value}
+                            </a>
+                          ) : (
+                            <>
+                              <p className="text-sm font-semibold text-brand-navy">
+                                {item.value}
+                              </p>
+                              {item.subtitle && (
+                                <p className="text-xs text-gray-400 mt-0.5">
+                                  {item.subtitle}
+                                </p>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+
+              {/* Promises */}
+              <ScrollReveal delay={0.3}>
+                <div className="bg-brand-navy rounded-2xl p-6 text-white">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-white/50 mb-5">
+                    Nos engagements
+                  </h3>
+                  <div className="space-y-4">
+                    {promises.map((item) => (
+                      <div key={item.text} className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                          <item.icon className="w-4 h-4 text-brand-orange" />
+                        </div>
+                        <span className="text-sm font-medium text-white/80">
+                          {item.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Social */}
+              <ScrollReveal delay={0.4}>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                    Retrouvez-nous
+                  </span>
+                  <div className="h-px bg-gray-200 flex-1" />
+                  <div className="flex gap-2">
+                    {[
+                      { icon: Linkedin, href: "#", label: "LinkedIn" },
+                      { icon: Instagram, href: "#", label: "Instagram" },
+                    ].map((social) => (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        aria-label={social.label}
+                        className="w-9 h-9 rounded-lg bg-white border border-gray-100 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-orange hover:border-brand-orange transition-all duration-300 shadow-sm"
+                      >
+                        <social.icon className="w-4 h-4" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
       </section>
 
       {/* ============================================
-          CTA SECTION
+          CTA — Clean & Focused
       ============================================ */}
-      <section className="py-24 bg-brand-navy relative overflow-hidden">
-        <motion.div
-          className="absolute inset-0 opacity-20"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(255,107,74,0.3) 0%, transparent 60%)",
-          }}
-        />
+      <section className="py-20 relative">
+        {/* Subtle top divider */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent" />
 
-        <div className="container mx-auto px-6 text-center relative z-10">
+        <div className="container mx-auto px-6 text-center">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-8 tracking-tighter">
-              PRÉFÉREZ-VOUS{" "}
-              <span className="text-brand-orange">UN APPEL DIRECT ?</span>
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
-            <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto">
-              Réservez directement un créneau pour une session stratégique
-              gratuite avec Saïd Taaroust.
+            <p className="text-brand-orange font-bold text-sm uppercase tracking-[0.2em] mb-4">
+              Préférez-vous échanger de vive voix ?
             </p>
           </ScrollReveal>
-
+          <ScrollReveal delay={0.1}>
+            <h2 className="text-2xl md:text-3xl font-black text-brand-navy tracking-tight mb-3">
+              Réservez un appel stratégique gratuit
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <p className="text-gray-400 text-sm mb-8 max-w-md mx-auto">
+              30 minutes avec Saïd Taaroust pour explorer vos enjeux et définir
+              la meilleure approche.
+            </p>
+          </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <MagneticButton intensity={0.3} scale={1.05}>
+            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
               <Link
                 href="/prendre-rendez-vous"
-                className="inline-flex items-center gap-3 bg-white text-brand-navy px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-brand-orange hover:text-white transition-colors shadow-2xl group"
+                className="inline-flex items-center gap-3 bg-brand-navy text-white px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-sm hover:bg-brand-orange transition-colors duration-300 shadow-lg group"
               >
-                Réserver un appel
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Réserver un créneau
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </MagneticButton>
+            </motion.div>
           </ScrollReveal>
         </div>
       </section>

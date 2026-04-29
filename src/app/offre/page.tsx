@@ -129,7 +129,7 @@ export default function OffrePage() {
     const heroScale = useTransform(heroProgress, [0, 0.5], [1, 0.9]);
 
     return (
-        <main className="min-h-screen bg-white overflow-hidden">
+        <main className="min-h-screen bg-[#FFFFFF] dark:bg-[#1D1D1F] overflow-hidden">
             <Navbar />
 
             {/* ============================================
@@ -633,7 +633,7 @@ export default function OffrePage() {
 
                     <ScrollReveal delay={0.4}>
                         <p className="text-white/40 text-sm mt-8 font-medium">
-                            Appel 100% gratuit • Sans engagement • 30 minutes qui peuvent tout changer
+                            Appel 100% gratuit • Sans engagement • 45 minutes qui peuvent tout changer
                         </p>
                     </ScrollReveal>
                 </div>

@@ -1,25 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Linkedin, Mail, MapPin, ArrowUpRight, ShieldCheck, Globe, ArrowRight, Cookie } from "lucide-react";
+import { Facebook, Linkedin, Mail, ArrowUpRight, ShieldCheck, Globe, ArrowRight } from "lucide-react";
 import { CookieSettingsButton } from "./CookieBanner";
 
 const footerLinks = {
   navigation: [
     { name: "Accueil", href: "/" },
-    { name: "Expertise", href: "#services" },
-    { name: "Philosophie", href: "#about" },
-    { name: "Témoignages", href: "#testimonials" },
-    { name: "Parcours", href: "#timeline" },
-  ],
+    { name: "Expertise", href: "/#services" },
+    { name: "Qui suis-je ?", href: "/#biographie" },
+    { name: "Témoignages", href: "/#testimonials" },
+    ],
 legal: [
       { name: "Mentions Légales", href: "/mentions-legales" },
       { name: "Confidentialité", href: "/politique-de-confidentialite" },
       { name: "CGV", href: "/cgv" },
       { name: "CGU", href: "/cgu" },
-      { name: "Qualité & Audit", href: "/politique-de-qualite" },
     ],
   contact: [
     { name: "saidtaaroust@gmail.com", href: "mailto:saidtaaroust@gmail.com", icon: Mail },
@@ -36,12 +35,15 @@ const smoothSpring = {
 };
 
 export function Footer() {
+  const [year, setYear] = useState<number | null>(null);
+  useEffect(() => { setYear(new Date().getFullYear()); }, []);
+
   return (
-    <footer className="bg-brand-navy text-white pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 relative overflow-hidden">
+    <footer className="bg-brand-navy text-white pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 relative overflow-hidden border-t border-white/5 dark:border-white/10">
       {/* Background Decorative Element */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-brand-orange/50 to-transparent" />
       
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="mx-auto px-6 sm:px-8 lg:px-12 max-w-[1280px] relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-12 md:gap-16 mb-12 sm:mb-16 md:mb-24">
           
           {/* Brand Identity Column */}
@@ -54,19 +56,19 @@ export function Footer() {
           >
             <Link href="/" className="inline-block group">
               <Image 
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
-                alt="STAF AFFAIRES"
-                width={200}
-                height={60}
-                className="h-12 sm:h-16 md:h-20 w-auto object-contain brightness-0 invert"
-              />
+                  src="/images/logo-staf-affaires.png"
+                  alt="STAF AFFAIRES"
+                  width={200}
+                  height={60}
+                  className="h-12 sm:h-16 md:h-20 w-auto object-contain brightness-0 invert"
+                />
               <p className="text-[8px] sm:text-[10px] font-black tracking-[0.3em] sm:tracking-[0.4em] text-white/40 mt-3 sm:mt-4 uppercase transition-colors group-hover:text-brand-orange">
                 Performance & Sens
               </p>
             </Link>
             
             <p className="text-sm sm:text-base md:text-lg text-white/60 leading-relaxed max-w-md font-medium">
-              L'excellence de l'accompagnement B2B pour dirigeants et managers. 
+              L'excellence de l'accompagnement B2B pour prestataires et managers. 
               Une approche humaniste pour performer sans s'épuiser.
             </p>
 
@@ -209,18 +211,18 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 md:gap-12">
             <Link href="/" className="shrink-0">
               <Image 
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/a258b3e3-0205-4bf5-95de-0163cb732922/_a_wipe_bg-1769739098466.png?width=8000&height=8000&resize=contain"
-                alt="Logo STAF AFFAIRES"
-                width={120}
-                height={40}
-                className="h-8 sm:h-10 w-auto object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity"
-              />
+                  src="/images/logo-staf-affaires.png"
+                  alt="Logo STAF AFFAIRES"
+                  width={120}
+                  height={40}
+                  className="h-8 sm:h-10 w-auto object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity"
+                />
             </Link>
             <div className="h-4 w-px bg-white/10 hidden md:block" />
             <div className="flex flex-col gap-1 text-center sm:text-left">
-              <p className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/30">
-                © {new Date().getFullYear()} STAF AFFAIRES
-              </p>
+                <p className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/30">
+                  © {year ?? ''} STAF AFFAIRES
+                </p>
               <div className="flex items-center justify-center sm:justify-start gap-2 text-[7px] sm:text-[8px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/20">
                 <ShieldCheck className="w-2.5 sm:w-3 h-2.5 sm:h-3 text-brand-orange" />
                 <span>Certifié RNCP Niveau 6 & PNL</span>

@@ -6,7 +6,7 @@ import { ArrowLeft, FileText, ScrollText } from "lucide-react";
 
 export default function CGV() {
   return (
-    <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-[#FFFFFF] dark:bg-[#1D1D1F]">
       {/* Header */}
       <section className="bg-brand-navy text-white py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6">

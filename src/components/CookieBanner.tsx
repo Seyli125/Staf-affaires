@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Cookie, X, Settings, Check, ChevronDown, ChevronUp } from "lucide-react";
+import { Cookie, Check, ChevronDown, ChevronUp } from "lucide-react";
 
 interface CookiePreferences {
   necessary: boolean;
@@ -28,7 +28,6 @@ export function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) {
-      // Délai pour afficher le bandeau après le chargement de la page
       const timer = setTimeout(() => setIsVisible(true), 1500);
       return () => clearTimeout(timer);
     } else {
@@ -47,21 +46,11 @@ export function CookieBanner() {
   };
 
   const acceptAll = () => {
-    saveConsent({
-      necessary: true,
-      analytics: true,
-      marketing: true,
-      preferences: true,
-    });
+    saveConsent({ necessary: true, analytics: true, marketing: true, preferences: true });
   };
 
   const acceptNecessary = () => {
-    saveConsent({
-      necessary: true,
-      analytics: false,
-      marketing: false,
-      preferences: false,
-    });
+    saveConsent({ necessary: true, analytics: false, marketing: false, preferences: false });
   };
 
   const saveCustomPreferences = () => {
@@ -69,40 +58,33 @@ export function CookieBanner() {
   };
 
   const togglePreference = (key: keyof CookiePreferences) => {
-    if (key === "necessary") return; // Les cookies nécessaires ne peuvent pas être désactivés
-    setPreferences((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
+    if (key === "necessary") return;
+    setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const cookieTypes = [
     {
       id: "necessary" as const,
-      name: "Cookies essentiels",
-      description:
-        "Ces cookies sont indispensables au fonctionnement du site. Ils permettent d'utiliser les fonctionnalités principales comme la navigation et l'accès aux zones sécurisées.",
+      name: "Essentiels",
+      description: "Indispensables au fonctionnement du site.",
       required: true,
     },
     {
       id: "analytics" as const,
-      name: "Cookies analytiques",
-      description:
-        "Ces cookies nous aident à comprendre comment les visiteurs utilisent le site, en collectant des informations de manière anonyme. Ils nous permettent d'améliorer continuellement votre expérience.",
+      name: "Analytiques",
+      description: "Nous aident à améliorer votre expérience.",
       required: false,
     },
     {
       id: "marketing" as const,
-      name: "Cookies marketing",
-      description:
-        "Ces cookies sont utilisés pour suivre les visiteurs sur les sites web. L'intention est d'afficher des publicités pertinentes et engageantes pour l'utilisateur.",
+      name: "Marketing",
+      description: "Personnalisent le contenu affiché.",
       required: false,
     },
     {
       id: "preferences" as const,
-      name: "Cookies de préférences",
-      description:
-        "Ces cookies permettent au site de se souvenir de vos choix (comme votre langue ou la région où vous vous trouvez) et de fournir des fonctionnalités améliorées et personnalisées.",
+      name: "Préférences",
+      description: "Mémorisent vos choix personnels.",
       required: false,
     },
   ];
@@ -111,67 +93,43 @@ export function CookieBanner() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
+          initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6"
+          exit={{ y: 40, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-[380px] z-50"
         >
-          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
-            {/* Header */}
-            <div className="p-4 sm:p-6 border-b border-slate-100">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-brand-orange/10 flex items-center justify-center shrink-0">
-                    <Cookie className="w-5 h-5 text-brand-orange" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-brand-navy text-lg">
-                      Gestion des cookies
-                    </h3>
-                    <p className="text-slate-600 text-sm mt-1">
-                      Nous utilisons des cookies pour améliorer votre expérience
-                    </p>
-                  </div>
+          <div className="bg-white dark:bg-[#2C2C2E] rounded-2xl shadow-[0_8px_40px_-8px_rgba(10,25,47,0.15)] dark:shadow-[0_8px_40px_-8px_rgba(0,0,0,0.4)] border border-slate-100 dark:border-white/10 overflow-hidden">
+            {/* Main content */}
+            <div className="p-5">
+              {/* Icon + title row */}
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
+                  <Cookie className="w-4 h-4 text-brand-orange" />
                 </div>
-                <button
-                  onClick={() => setIsVisible(false)}
-                  className="p-2 hover:bg-slate-100 rounded-lg transition-colors"
-                  aria-label="Fermer"
-                >
-                  <X className="w-5 h-5 text-slate-400" />
-                </button>
+                <h3 className="font-bold text-brand-navy dark:text-white text-sm leading-tight">Cookies</h3>
               </div>
-            </div>
 
-            {/* Content */}
-            <div className="p-4 sm:p-6">
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                Ce site utilise des cookies pour vous offrir une meilleure
-                expérience de navigation, analyser le trafic et personnaliser le
-                contenu. En cliquant sur "Accepter tout", vous consentez à
-                l'utilisation de tous les cookies. Vous pouvez également
-                personnaliser vos préférences ou consulter notre{" "}
+              <p className="text-slate-500 dark:text-white/50 text-xs leading-relaxed mb-4">
+                Nous utilisons des cookies pour améliorer votre expérience.{" "}
                 <Link
                   href="/politique-de-confidentialite"
                   className="text-brand-orange hover:underline font-medium"
                 >
-                  politique de confidentialité
+                  En savoir plus
                 </Link>
-                .
               </p>
 
-              {/* Toggle Settings */}
+              {/* Settings toggle */}
               <button
                 onClick={() => setShowSettings(!showSettings)}
-                className="flex items-center gap-2 text-sm text-brand-navy font-medium hover:text-brand-orange transition-colors mb-4"
+                className="flex items-center gap-1.5 text-xs text-brand-navy/60 dark:text-white/50 font-medium hover:text-brand-navy dark:hover:text-white transition-colors mb-4"
               >
-                <Settings className="w-4 h-4" />
-                Personnaliser mes choix
+                Personnaliser
                 {showSettings ? (
-                  <ChevronUp className="w-4 h-4" />
+                  <ChevronUp className="w-3 h-3" />
                 ) : (
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-3 h-3" />
                 )}
               </button>
 
@@ -182,45 +140,45 @@ export function CookieBanner() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <div className="space-y-3 mb-6 p-4 bg-slate-50 rounded-xl">
+                    <div className="space-y-2 mb-4">
                       {cookieTypes.map((cookie) => (
                         <div
                           key={cookie.id}
-                          className="flex items-start justify-between gap-4 p-3 bg-white rounded-lg border border-slate-100"
+                          className="flex items-center justify-between gap-3 py-2 px-3 bg-slate-50 dark:bg-white/5 rounded-lg"
                         >
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2">
-                              <h4 className="font-semibold text-brand-navy text-sm">
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-1.5">
+                              <span className="font-semibold text-brand-navy dark:text-white text-xs">
                                 {cookie.name}
-                              </h4>
+                              </span>
                               {cookie.required && (
-                                <span className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">
+                                <span className="text-[9px] bg-slate-200 dark:bg-white/10 text-slate-500 dark:text-white/50 px-1.5 py-0.5 rounded-full leading-none">
                                   Requis
                                 </span>
                               )}
                             </div>
-                            <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                            <p className="text-[10px] text-slate-400 dark:text-white/40 mt-0.5 leading-snug">
                               {cookie.description}
                             </p>
                           </div>
                           <button
                             onClick={() => togglePreference(cookie.id)}
                             disabled={cookie.required}
-                            className={`relative w-12 h-6 rounded-full transition-colors shrink-0 ${
+                              className={`relative w-9 h-5 rounded-full transition-colors shrink-0 ${
                               preferences[cookie.id]
                                 ? "bg-brand-orange"
-                                : "bg-slate-200"
+                                : "bg-slate-200 dark:bg-white/15"
                             } ${cookie.required ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
                             aria-label={`${preferences[cookie.id] ? "Désactiver" : "Activer"} ${cookie.name}`}
                           >
                             <span
-                              className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-transform ${
+                              className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${
                                 preferences[cookie.id]
-                                  ? "translate-x-7"
-                                  : "translate-x-1"
+                                  ? "translate-x-[18px]"
+                                  : "translate-x-0.5"
                               }`}
                             />
                           </button>
@@ -232,48 +190,31 @@ export function CookieBanner() {
               </AnimatePresence>
 
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex gap-2">
                 <button
                   onClick={acceptNecessary}
-                  className="flex-1 px-4 py-3 border border-slate-200 text-slate-700 rounded-xl font-medium text-sm hover:bg-slate-50 transition-colors"
+                  className="flex-1 px-3 py-2.5 border border-slate-200 dark:border-white/15 text-slate-600 dark:text-white/60 rounded-xl font-semibold text-xs hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
                 >
-                  Refuser les cookies optionnels
+                  Refuser
                 </button>
                 {showSettings ? (
                   <button
                     onClick={saveCustomPreferences}
-                    className="flex-1 px-4 py-3 bg-brand-navy text-white rounded-xl font-medium text-sm hover:bg-brand-navy/90 transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 px-3 py-2.5 bg-brand-navy text-white rounded-xl font-semibold text-xs hover:bg-brand-navy/90 transition-colors flex items-center justify-center gap-1.5"
                   >
-                    <Check className="w-4 h-4" />
-                    Enregistrer mes préférences
+                    <Check className="w-3 h-3" />
+                    Enregistrer
                   </button>
                 ) : (
                   <button
                     onClick={acceptAll}
-                    className="flex-1 px-4 py-3 bg-brand-orange text-white rounded-xl font-medium text-sm hover:bg-brand-orange/90 transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 px-3 py-2.5 bg-brand-orange text-white rounded-xl font-semibold text-xs hover:bg-brand-orange/90 transition-colors flex items-center justify-center gap-1.5"
                   >
-                    <Check className="w-4 h-4" />
-                    Accepter tout
+                    <Check className="w-3 h-3" />
+                    Accepter
                   </button>
                 )}
               </div>
-            </div>
-
-            {/* Footer */}
-            <div className="px-4 sm:px-6 py-3 bg-slate-50 border-t border-slate-100">
-              <p className="text-xs text-slate-500 text-center">
-                En savoir plus sur notre{" "}
-                <Link
-                  href="/politique-de-confidentialite"
-                  className="text-brand-orange hover:underline"
-                >
-                  politique de confidentialité
-                </Link>{" "}
-                et nos{" "}
-                <Link href="/cgu" className="text-brand-orange hover:underline">
-                  conditions d'utilisation
-                </Link>
-              </p>
             </div>
           </div>
         </motion.div>

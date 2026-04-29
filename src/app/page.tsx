@@ -1,78 +1,101 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { Observations } from "@/components/Observations";
 import { Services } from "@/components/Services";
 import { Features } from "@/components/Features";
-import { VideoSection } from "@/components/VideoSection";
+import { SaidVideoIntro } from "@/components/SaidVideoIntro";
+
 import { Testimonials } from "@/components/Testimonials";
-import { Timeline } from "@/components/Timeline";
+
+import { FocusTabs } from "@/components/FocusTabs";
+import { TrustedBy } from "@/components/TrustedBy";
+import { FinalCTA } from "@/components/FinalCTA";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white overflow-hidden">
-      <Navbar />
-      
-      {/* 1. Hero - LOCKED SECTION (Visual/Structure/Content) */}
-      <section className="bg-white relative z-10">
+
+        
+        <Navbar />
+        
+        {/* 1. Hero - Promesse */}
         <Hero />
-      </section>
 
-        {/* Smooth transitions with reduced spacing (~10-15% smaller) */}
+        {/* Content sections — uniform vertical rhythm */}
         <div className="relative">
-          {/* Transition to Services */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-slate-50" />
-          
-          {/* Services Section */}
-          <section className="bg-slate-50 py-16 sm:py-20">
-            <Services />
-          </section>
 
-          {/* Transition to Video */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-slate-50 to-white" />
 
-          {/* Video Section */}
-          <section className="bg-white py-16 sm:py-20">
-            <VideoSection />
-          </section>
+           {/* Observations */}
+           <section className="py-12 sm:py-16 lg:py-20">
+             <Observations />
+           </section>
 
-          {/* Transition to Features */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-brand-orange/5" />
+           {/* Divider */}
+           <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
+             <div className="h-px divider-shimmer" />
+           </div>
 
-          {/* Features (Qui suis-je) Section */}
-          <section className="bg-brand-orange/5 py-16 sm:py-20">
-            <Features />
-          </section>
+           {/* 2. Services - Valeur */}
+           <section className="py-12 sm:py-16 lg:py-20">
+             <Services />
+           </section>
 
-          {/* Transition to Testimonials */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-brand-orange/5 to-white" />
+           {/* Divider */}
+           <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
+             <div className="h-px divider-shimmer" />
+           </div>
 
-          {/* Testimonials Section */}
-          <section className="bg-white py-16 sm:py-20">
-            <Testimonials />
-          </section>
+            {/* Focus Opérationnel AVR® & PPS® */}
+            <section className="py-12 sm:py-16 lg:py-20">
+              <FocusTabs />
+            </section>
 
-          {/* Transition to Timeline */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-slate-50" />
+           {/* Divider */}
+           <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
+             <div className="h-px divider-shimmer" />
+           </div>
 
-          {/* Timeline Section */}
-          <section className="bg-slate-50 py-16 sm:py-20">
-            <Timeline />
-          </section>
+           {/* Vidéo de présentation - juste avant la biographie */}
+           <SaidVideoIntro />
 
-          {/* Transition to FAQ */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-slate-50 to-white" />
+           {/* 4. Features (Biographie) - Connexion */}
+           <section>
+             <Features />
+           </section>
 
-          {/* FAQ Section */}
-          <section className="bg-white py-16 sm:py-20">
-            <FAQ />
-          </section>
+           {/* Divider */}
+           <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
+             <div className="h-px divider-shimmer" />
+           </div>
 
-          {/* Final Transition to Footer */}
-          <div className="h-16 sm:h-20 bg-gradient-to-b from-white to-brand-navy" />
+            {/* Testimonials Section */}
+           <section className="py-12 sm:py-16 lg:py-20">
+             <Testimonials />
+           </section>
+
+           {/* Trusted By / Social Proof Logos */}
+           <TrustedBy />
+
+           {/* Final CTA */}
+           <FinalCTA />
+
+           {/* Divider */}
+           <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
+             <div className="h-px divider-shimmer" />
+           </div>
+
+           {/* FAQ Section */}
+           <section className="py-12 sm:py-16 lg:py-20">
+             <FAQ />
+           </section>
+
+           {/* Final Transition to Footer */}
+           <div className="h-12 sm:h-16 bg-gradient-to-b from-transparent to-brand-navy" />
         </div>
-      
-      <Footer />
-    </main>
+        
+        <Footer />
+      </main>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 import { Briefcase, GraduationCap, Building2, TrendingUp, Users, Target, ShieldCheck, ArrowRight, Zap, Award } from "lucide-react";
 import Link from "next/link";
@@ -52,16 +52,24 @@ const timelineData = [
 ];
 
 export function Timeline() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
+    const sectionRef = useRef<HTMLElement>(null);
+    const timelineRef = useRef<HTMLDivElement>(null);
 
-  const lineProgress = useTransform(scrollYProgress, [0.1, 0.85], ["0%", "100%"]);
+    const { scrollYProgress } = useScroll({
+      target: timelineRef,
+      offset: ["start 80%", "end 20%"],
+    });
 
-  return (
-    <section ref={sectionRef} id="timeline" className="py-16 sm:py-20 overflow-hidden">
+    const smoothProgress = useSpring(scrollYProgress, {
+      stiffness: 60,
+      damping: 20,
+      restDelta: 0.001,
+    });
+
+    const scaleY = useTransform(smoothProgress, [0, 1], [0, 1]);
+
+    return (
+    <section ref={sectionRef} id="timeline" className="py-16 sm:py-20 overflow-hidden" style={{ background: "#FFFFFF" }}>
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
         
         {/* Header */}
@@ -79,24 +87,27 @@ export function Timeline() {
             </span>
           </span>
           
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy dark:text-white leading-tight mb-4">
             La force de <span className="text-brand-orange">l'expérience</span>
           </h2>
           
-          <p className="text-base sm:text-lg text-slate-500 max-w-lg mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-500 dark:text-white/45 max-w-lg mx-auto leading-relaxed">
             25 années d'immersion terrain condensées dans une méthode propriétaire.
           </p>
         </motion.div>
 
         {/* Timeline */}
-        <div className="relative">
-          {/* Progress Line - Center */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 md:-translate-x-1/2">
-            <motion.div 
-              style={{ height: lineProgress }}
-              className="w-full bg-gradient-to-b from-brand-orange via-brand-orange to-brand-navy"
-            />
-          </div>
+          <div ref={timelineRef} className="relative">
+            {/* Background Line - static track */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-white/10 md:-translate-x-1/2" />
+
+            {/* Animated Progress Line - draws on scroll */}
+            <motion.div
+              className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-1/2 origin-top"
+              style={{ scaleY }}
+            >
+              <div className="w-full h-full bg-gradient-to-b from-brand-orange via-brand-orange to-brand-navy" />
+            </motion.div>
 
           {/* Timeline Items */}
           <div className="space-y-8 md:space-y-12">
@@ -111,48 +122,58 @@ export function Timeline() {
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
-{/* Timeline Dot */}
+                  {/* Timeline Dot */}
                   <motion.div 
-                    className="absolute left-4 md:left-1/2 w-3 h-3 bg-white border-2 border-brand-navy rounded-full md:-translate-x-1/2 z-10 mt-2 md:mt-0"
+                    className={`absolute left-4 md:left-1/2 md:-translate-x-1/2 z-10 mt-2 md:mt-0 flex items-center justify-center transition-all duration-300 ${
+                      item.highlight
+                        ? "w-5 h-5 bg-brand-orange border-2 border-brand-orange rounded-full shadow-[0_0_0_4px_rgba(255,107,74,0.2),0_0_0_8px_rgba(255,107,74,0.06)]"
+                        : "w-4 h-4 bg-white dark:bg-[#2C2C2E] border-2 border-brand-navy/40 dark:border-white/30 rounded-full hover:scale-150 hover:border-brand-orange"
+                    }`}
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, type: "spring", stiffness: 400, damping: 15 }}
-                    whileHover={{ scale: 1.5, borderColor: "#ff6b4a" }}
                   >
                     {item.highlight && (
-                      <span className="absolute inset-0 bg-brand-orange rounded-full animate-ping opacity-50" />
+                      <span className="absolute inset-0 bg-brand-orange rounded-full animate-ping opacity-30" />
                     )}
                   </motion.div>
 
                 {/* Content Card */}
                 <div className="flex-1 ml-10 md:ml-0 md:w-1/2 md:px-8">
-                  <div className={`timeline-card p-5 sm:p-6 rounded-2xl transition-all duration-300 ${
-                    item.highlight 
-                      ? 'bg-brand-navy text-white shadow-xl' 
-                      : 'bg-white border border-slate-100 hover:border-slate-200 hover:shadow-lg'
-                  } ${index % 2 === 0 ? "md:mr-auto md:text-left" : "md:ml-auto md:text-left md:md:text-right"}`}>
-                    
-                    {item.highlight && (
-                      <span className="inline-block bg-brand-orange text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">
-                        L'Aboutissement
-                      </span>
-                    )}
+                    <div className={`timeline-card p-5 sm:p-6 rounded-2xl transition-all duration-300 ${
+                          item.highlight 
+                            ? 'relative text-white shadow-2xl border border-transparent' 
+                            : 'bg-white dark:bg-[#2C2C2E] border border-slate-100 dark:border-white/10 hover:border-slate-200 dark:hover:border-white/20 hover:shadow-lg dark:hover:shadow-black/20'
+                        } ${index % 2 === 0 ? "md:mr-auto md:text-left" : "md:ml-auto md:text-left md:md:text-right"}`}
+                        style={item.highlight ? { background: "linear-gradient(135deg, #0A192F 0%, #0f2744 60%, #0A192F 100%)", boxShadow: "0 24px 80px -12px rgba(10,25,47,0.5), 0 0 0 1px rgba(255,107,74,0.15) inset" } : {}}
+                      >
+                        
+                        {/* Glow ring for highlight card */}
+                        {item.highlight && (
+                            <div
+                              className="absolute -inset-[2px] rounded-2xl bg-gradient-to-r from-brand-orange via-brand-navy to-brand-orange dark:from-brand-orange/40 dark:via-brand-orange/10 dark:to-brand-orange/40 opacity-40 -z-10"
+                            />
+                          )}
+
+                      {item.highlight && (
+                        <span className="inline-block bg-brand-orange text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">
+                          L'Aboutissement
+                        </span>
+                      )}
 
                     <div className={`flex items-center gap-3 mb-3 ${
                       index % 2 !== 0 ? "md:flex-row-reverse md:justify-end" : ""
                     }`}>
-<motion.div 
-                          className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                            item.highlight 
-                              ? 'bg-white/10 text-brand-orange' 
-                              : 'bg-brand-navy/5 text-brand-navy'
+<div 
+                          className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 hover:rotate-12 hover:scale-110 transition-transform duration-300 ${
+                              item.highlight 
+                                ? 'bg-white/10 dark:bg-brand-orange/10 text-brand-orange' 
+                                : 'bg-brand-navy/5 dark:bg-white/5 text-brand-navy dark:text-white/70'
                           }`}
-                          whileHover={{ rotate: 360, scale: 1.1 }}
-                          transition={{ duration: 0.6, type: "spring" }}
                         >
                           <item.icon className="w-5 h-5" />
-                        </motion.div>
+                        </div>
                       <span className={`text-[11px] font-bold tracking-wider ${
                         item.highlight ? 'text-brand-orange' : 'text-brand-orange'
                       }`}>
@@ -161,13 +182,13 @@ export function Timeline() {
                     </div>
 
                     <h3 className={`text-lg font-bold mb-2 ${
-                      item.highlight ? 'text-white' : 'text-brand-navy'
+                      item.highlight ? 'text-white' : 'text-brand-navy dark:text-white'
                     }`}>
                       {item.title}
                     </h3>
                     
                     <p className={`text-sm leading-relaxed ${
-                      item.highlight ? 'text-white/70' : 'text-slate-500'
+                      item.highlight ? 'text-white/70 dark:text-white/60' : 'text-slate-500 dark:text-white/50'
                     }`}>
                       {item.description}
                     </p>
@@ -192,18 +213,16 @@ export function Timeline() {
           <div className="relative rounded-3xl overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 bg-brand-navy" />
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/20 rounded-full blur-[100px]" />
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full -mr-16 -mt-16 pointer-events-none" style={{ background: "radial-gradient(circle, rgba(255,107,74,0.15) 0%, transparent 70%)" }} />
             
             {/* Content */}
             <div className="relative z-10 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-4 text-center sm:text-left">
-<motion.div 
+<div 
                     className="w-14 h-14 rounded-2xl bg-brand-orange flex items-center justify-center shrink-0 shadow-lg hidden sm:flex"
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <ShieldCheck className="w-7 h-7 text-white" />
-                  </motion.div>
+                    >
+                      <ShieldCheck className="w-7 h-7 text-white" />
+                    </div>
                 <div>
                   <h4 className="text-xl sm:text-2xl font-bold text-white mb-1">Crédibilité Certifiée</h4>
                   <p className="text-white/60 text-sm">RNCP Niveau 6 • Technicien PNL • Approche AVR®</p>
@@ -211,7 +230,7 @@ export function Timeline() {
               </div>
               
               <Link href="/prendre-rendez-vous">
-                <button className="cta-button px-6 py-3.5 bg-white text-brand-navy rounded-full font-semibold text-sm shadow-lg flex items-center gap-2 whitespace-nowrap hover:bg-brand-orange hover:text-white transition-all duration-300">
+                <button className="cta-button px-6 py-3.5 bg-white dark:bg-white text-brand-navy rounded-full font-semibold text-sm shadow-lg flex items-center gap-2 whitespace-nowrap hover:bg-brand-orange hover:text-white transition-all duration-300">
                   Passer à l'action
                   <ArrowRight className="w-4 h-4" />
                 </button>

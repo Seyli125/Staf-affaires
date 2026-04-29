@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { VisualEditsMessenger } from "orchids-visual-edits";
 import { CookieBanner } from "@/components/CookieBanner";
+import { CustomCursor } from "@/components/CustomCursor";
+import { IntroScreen } from "@/components/IntroScreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +32,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning className="light">
+      <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
-      >
-        {children}
-          <CookieBanner />
+          className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
+          style={{ colorScheme: "light" }}
+        >
+            <IntroScreen />
+              <div
+                id="site-wrapper"
+                style={{
+                    borderTopLeftRadius: "14px",
+                    borderTopRightRadius: "14px",
+                    borderBottomLeftRadius: "14px",
+                    borderBottomRightRadius: "14px",
+                    overflow: "hidden",
+                    backgroundColor: "#FFFFFF",
+                    minHeight: "calc(100dvh - 12px)",
+                  width: "100%",
+                  position: "relative",
+                }}
+              >
+              {children}
+              <CookieBanner />
+            </div>
+            <CustomCursor />
           <VisualEditsMessenger />
         </body>
     </html>

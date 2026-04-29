@@ -123,7 +123,7 @@ export default function ServicesPage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <main className="min-h-screen bg-white overflow-hidden">
+    <main className="min-h-screen bg-[#FFFFFF] dark:bg-[#1D1D1F] overflow-hidden">
       <Navbar />
 
       {/* ============================================
@@ -135,7 +135,7 @@ export default function ServicesPage() {
       >
         {/* Background with diagonal split */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-white" />
+            <div className="absolute inset-0 bg-[#FFFFFF] dark:bg-[#1D1D1F]" />
           <motion.div
             className="absolute top-0 right-0 w-2/3 h-full bg-brand-navy origin-top-right"
             initial={{ scaleX: 0 }}
@@ -190,9 +190,9 @@ export default function ServicesPage() {
               <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl font-medium leading-relaxed">
                 Des solutions d'accompagnement pragmatiques, orientées résultats,
                 pour transformer vos défis en{" "}
-                <span className="text-brand-navy font-bold">
-                  opportunités de croissance
-                </span>
+                  <span className="text-brand-navy dark:text-white font-bold">
+                    opportunités de croissance
+                  </span>
                 .
               </p>
             </ScrollReveal>
@@ -218,7 +218,7 @@ export default function ServicesPage() {
       {/* ============================================
           SERVICES GRID - Staggered 3D Cards
       ============================================ */}
-      <section className="py-32 bg-gray-50 relative">
+      <section className="py-32 relative">
         {/* Decorative background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-brand-orange/20 to-transparent" />
@@ -239,7 +239,7 @@ export default function ServicesPage() {
                   scale={1.02}
                 >
                   <motion.div
-                    className="bg-white p-10 rounded-[2.5rem] shadow-xl border border-gray-100 flex flex-col h-full group hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+                      className="bg-[#FFFFFF] dark:bg-[#2C2C2E] p-10 rounded-[2.5rem] shadow-xl border border-gray-100 dark:border-white/10 flex flex-col h-full group hover:shadow-2xl dark:hover:shadow-black/30 transition-all duration-500 relative overflow-hidden"
                     whileHover={{ y: -5 }}
                   >
                     {/* Background gradient on hover */}
@@ -273,7 +273,7 @@ export default function ServicesPage() {
                       {service.details.map((detail, i) => (
                         <motion.li
                           key={detail}
-                          className="flex items-center gap-3 text-sm font-bold text-brand-navy/80"
+                          className="flex items-center gap-3 text-sm font-bold text-brand-navy/80 dark:text-white/70"
                           initial={{ opacity: 0, x: -10 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
@@ -362,7 +362,7 @@ export default function ServicesPage() {
 
           <ScrollReveal delay={0.2}>
             <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
-              Prenons 30 minutes pour analyser votre situation et définir
+              Prenons 45 minutes pour analyser votre situation et définir
               ensemble le parcours le plus adapté à vos besoins.
             </p>
           </ScrollReveal>

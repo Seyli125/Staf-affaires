@@ -43,7 +43,7 @@ export function BookingSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-white rounded-[40px] shadow-2xl shadow-brand-navy/10 border border-brand-navy/5 overflow-hidden"
+            className="bg-[#FFFFFF] dark:bg-[#2C2C2E] rounded-[40px] shadow-2xl shadow-brand-navy/10 dark:shadow-black/30 border border-brand-navy/5 dark:border-white/10 overflow-hidden"
           >
             <div className="p-8 bg-brand-navy text-white flex justify-between items-center">
               <div>

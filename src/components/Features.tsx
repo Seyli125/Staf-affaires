@@ -1,282 +1,335 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { Award, Users, Zap, Brain, ArrowRight, Quote, Star } from "lucide-react";
+import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { Award, Users, Zap, Brain, ArrowRight, Star, Target, Lightbulb, TrendingUp, MessageCircle, Briefcase } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useReducedMotion } from "@/lib/animations";
+
+const ease = [0.2, 0.9, 0.2, 1] as const;
+const easeOut = [0.16, 1, 0.3, 1] as const;
 
 const stats = [
-  { number: "25+", label: "Années d'expertise", suffix: "" },
-  { number: "500+", label: "Dirigeants accompagnés", suffix: "" },
-  { number: "98", label: "De satisfaction", suffix: "%" },
+  { number: 25, label: "Années d'expertise terrain", suffix: "+", prefix: "" },
+  { number: 12, label: "Années de management opérationnel", suffix: "", prefix: "" },
+  { number: 15, label: "Années de formation & coaching", suffix: "+", prefix: "" },
 ];
 
-const credentials = [
-  { icon: Award, label: "Coach RNCP Niveau 6" },
-  { icon: Brain, label: "Technicien PNL certifié" },
-  { icon: Zap, label: "Créateur méthode AVR®" },
-  { icon: Users, label: "Expert B2B 25 ans" },
+function AnimatedNumber({ value, suffix, prefix }: { value: number; suffix: string; prefix: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const motionVal = useMotionValue(0);
+  const reducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (!isInView || reducedMotion) {
+      if (ref.current) ref.current.textContent = `${prefix}${value}${suffix}`;
+      return;
+    }
+    const controls = animate(motionVal, value, {
+      duration: 1.4,
+      ease: [0.25, 0.1, 0.25, 1],
+    });
+    const unsubscribe = motionVal.on("change", (v) => {
+      if (ref.current) ref.current.textContent = `${prefix}${Math.round(v)}${suffix}`;
+    });
+    return () => {
+      controls.stop();
+      unsubscribe();
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInView]);
+
+  return <span ref={ref}>{prefix}0{suffix}</span>;
+}
+
+const piliers = [
+  { icon: Brain, label: "Préparation Mentale & Intelligence Émotionnelle" },
+  { icon: Lightbulb, label: "Programmation Neuro-Linguistique (PNL)" },
+  { icon: Star, label: "Approche Talents" },
+  { icon: MessageCircle, label: "Communication Non Violente" },
+  { icon: Briefcase, label: "Outils de coaching professionnel" },
 ];
+
+const confiance = [
+  { icon: TrendingUp, label: "25+ ans d'expérience terrain" },
+  { icon: Target, label: "Approche holistique & sur-mesure" },
+  { icon: Users, label: "Environnements variés (PME, ETI, grands groupes)" },
+];
+
+const viewport = { once: true, margin: "-60px" } as const;
 
 export function Features() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
+  const reducedMotion = useReducedMotion();
 
-  const y = useTransform(scrollYProgress, [0, 0.3], [80, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const fadeUp = (delay = 0) =>
+    reducedMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 } as const,
+          whileInView: { opacity: 1, y: 0 },
+          viewport,
+          transition: { duration: 0.55, delay, ease },
+        };
 
   return (
-    <section 
-      ref={sectionRef}
-      id="biographie" 
-      className="py-20 lg:py-28 relative overflow-hidden"
-    >
-      {/* Subtle background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-orange/[0.02] to-transparent" />
-      
-      <motion.div 
-        className="container mx-auto px-4 sm:px-6 max-w-6xl relative"
-        style={{ opacity }}
-      >
-        
-        {/* Opening Quote */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center mb-16 lg:mb-20"
-        >
-          <Quote className="w-10 h-10 text-brand-orange/20 mx-auto mb-6" />
-          <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-light text-brand-navy max-w-3xl mx-auto leading-snug tracking-tight">
-            "La vraie performance, c'est celle qui vous fait{" "}
-            <span className="text-brand-orange font-medium">grandir</span>{" "}
-            sans vous <em className="font-serif">consumer</em>."
-          </blockquote>
-          <div className="mt-8 flex items-center justify-center gap-4">
-            <div className="w-16 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent" />
-            <span className="text-sm font-medium text-slate-500 tracking-wide">Saïd Taaroust</span>
-            <div className="w-16 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent" />
+      <section id="biographie" className="relative overflow-hidden py-12 sm:py-16 lg:py-20 section-vignette">
+      <div className="absolute inset-0 bg-transparent dark:bg-[#1C1C1E]" />
+      {/* Subtle warm texture — top right */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none opacity-[0.03]" style={{ background: "radial-gradient(circle at top right, #ff6b4a, transparent 70%)" }} />
+
+      <div className="mx-auto px-6 sm:px-8 lg:px-12 max-w-[1280px] relative">
+
+        {/* HEADER */}
+        <motion.div {...fadeUp(0)} className="text-center mb-10 sm:mb-14 lg:mb-16">
+          <span className="inline-block text-brand-orange text-[11px] font-semibold tracking-[0.25em] uppercase mb-5">
+            Biographie
+          </span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-navy dark:text-white leading-[1.15] tracking-tight max-w-3xl mx-auto">
+            Toute performance durable est le résultat d&apos;une{" "}
+            <span className="text-brand-orange italic">transformation intérieure</span>
+          </h2>
+          <p className="mt-5 text-slate-500 dark:text-white/50 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Les compétences et les méthodes ne suffisent pas... Il faut se connaître, se pratiquer, se trans-former. C'EST DU VÉCU !
+          </p>
+
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <motion.div
+              className="w-16 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent"
+              initial={reducedMotion ? false : { scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={viewport}
+              transition={{ duration: 0.8, delay: 0.3, ease: easeOut }}
+            />
+            <span className="text-sm font-medium text-slate-400 dark:text-white/40 tracking-wide">Saïd Taaroust</span>
+            <motion.div
+              className="w-16 h-px bg-gradient-to-r from-transparent via-brand-orange/40 to-transparent"
+              initial={reducedMotion ? false : { scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={viewport}
+              transition={{ duration: 0.8, delay: 0.4, ease: easeOut }}
+            />
           </div>
         </motion.div>
 
-          {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-            
-            {/* Left: Portrait - 4 columns */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-              className="lg:col-span-4 relative"
-            >
-                <div className="sticky top-24">
-                  <div className="relative w-fit mx-auto lg:ml-auto lg:mr-0">
-                  
-                  {/* Decorative elements */}
-                  <div className="absolute -top-3 -left-3 w-16 h-16 border-l-2 border-t-2 border-brand-orange/30 rounded-tl-xl" />
-                  <div className="absolute -bottom-3 -right-3 w-16 h-16 border-r-2 border-b-2 border-brand-navy/20 rounded-br-xl" />
-                  
-                {/* Main Image - Fixed dimensions for full control */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/said-casual.jpg"
-                    alt="Saïd Taaroust - Coach Business"
-                    width={360}
-                    height={450}
-                    className="w-[300px] h-[375px] sm:w-[330px] sm:h-[412px] lg:w-[360px] lg:h-[450px] object-cover"
-                    priority
-                  />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/30 via-transparent to-transparent" />
-                  </div>
-                
-                {/* Floating Credential Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center">
-                      <Award className="w-5 h-5 text-brand-orange" />
-                    </div>
-                    <div>
-                      <span className="text-sm font-bold text-brand-navy block">Coach Certifié</span>
-                      <span className="text-xs text-slate-400">RNCP Niveau 6</span>
-                    </div>
-                  </div>
-                </motion.div>
+        {/* PORTRAIT + INTRO */}
+          <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-14 items-start mb-12 sm:mb-16 lg:mb-20">
 
-                {/* Rating badge */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6, duration: 0.5 }}
-                  className="absolute top-4 -left-4 bg-brand-navy text-white px-3 py-2 rounded-lg shadow-lg"
-                >
-                  <div className="flex items-center gap-1.5">
-                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                    <span className="text-xs font-bold">5.0</span>
-                  </div>
-                  <span className="text-[10px] text-white/60">LinkedIn</span>
-                </motion.div>
+          {/* Photo */}
+          <motion.div
+            {...fadeUp(0.05)}
+            className="relative mx-auto lg:mx-0 w-52 sm:w-60 lg:w-72 shrink-0"
+          >
+            <div className="relative">
+              <div className="absolute -inset-3 rounded-2xl border border-brand-orange/10" />
+              <div className="relative rounded-2xl overflow-hidden shadow-xl dark:shadow-black/40">
+                <Image
+                  src="/images/said-casual.jpg"
+                  alt="Saïd Taaroust - Coach Business & Préparateur Mental"
+                  width={288}
+                  height={360}
+                  className="w-full h-auto aspect-[4/5] object-cover"
+                  sizes="(max-width: 640px) 208px, (max-width: 1024px) 240px, 288px"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 via-transparent to-transparent" />
               </div>
+              <motion.div
+                {...fadeUp(0.3)}
+                className="absolute -bottom-3 -right-3 bg-white dark:bg-[#2C2C2E] px-3 py-2 rounded-xl shadow-lg dark:shadow-black/20 border border-slate-100 dark:border-white/10 flex items-center gap-2"
+              >
+                <Award className="w-4 h-4 text-brand-orange" />
+                <span className="text-xs font-bold text-brand-navy dark:text-white">Certifié RNCP</span>
+              </motion.div>
+            </div>
+            <div className="mt-6 text-center lg:text-left">
+              <p className="text-base font-bold text-brand-navy dark:text-white">Saïd Taaroust</p>
+              <p className="text-xs text-slate-400 dark:text-white/40 mt-1">Coach &middot; Formateur &middot; Préparateur mental</p>
             </div>
           </motion.div>
 
-            {/* Right: Story Content - 8 columns */}
-            <div className="lg:col-span-8 space-y-6">
-            
-            {/* Section Label & Title */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+          {/* Intro text */}
+          <motion.div
+            {...fadeUp(0.1)}
+            className="space-y-5"
+          >
+            <div>
               <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: "3rem" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="h-[2px] bg-brand-orange mb-5"
+                initial={reducedMotion ? false : { scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, delay: 0.2, ease: easeOut }}
+                className="h-[2px] bg-brand-orange mb-4 w-12"
+                style={{ transformOrigin: "left" }}
               />
               <span className="inline-block text-brand-orange text-[11px] font-semibold tracking-[0.2em] uppercase mb-3">
-                Mon Histoire
+                Le Parcours
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-brand-navy leading-tight">
-                Un parcours forgé{" "}
-                <span className="text-brand-orange">sur le terrain</span>
-              </h2>
-            </motion.div>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-brand-navy dark:text-white leading-[1.2] tracking-tight">
+                Forgé par{" "}
+                <span className="text-brand-orange italic">le terrain</span>,{" "}
+                passionné par{" "}
+                <span className="text-brand-orange italic">les sciences humaines</span>{" "}
+                et l&apos;entrepreneuriat
+              </h3>
+            </div>
 
-            {/* Story - Introduction */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <p className="text-slate-600 leading-relaxed text-base lg:text-lg">
-                <span className="text-brand-navy font-semibold text-xl">Il y a 25 ans</span>, 
-                je plongeais dans l'univers exigeant du commerce B2B. Des milliers de négociations, 
-                des équipes à galvaniser, des objectifs à dépasser. J'ai connu les victoires 
-                qui transcendent — mais aussi{" "}
-                <em className="text-brand-navy font-medium">l'épuisement qui guette ceux qui donnent tout.</em>
-              </p>
-            </motion.div>
+              {/* Version A — Desktop : aérée, intertitres, emphases */}
+              <div className="hidden sm:block space-y-5">
+                <div>
+                  <span className="text-[10px] font-bold tracking-[0.18em] uppercase text-brand-orange/70 mb-1.5 block">25 ans de terrain</span>
+                  <p className="text-slate-600 dark:text-white/60 leading-[1.8] text-[15px] lg:text-base">
+                    <span className="text-brand-navy dark:text-white font-semibold">Coach certifié RNCP, formateur professionnel depuis 2011 et préparateur mental</span> — Saïd Taaroust cumule{" "}
+                    <span className="font-semibold text-brand-navy dark:text-white">25 ans d&apos;expériences dans des univers variés</span> :{" "}
+                    vendeur expert, manager de centre de profits, chargé d&apos;affaires, consultant en entreprise et entrepreneur.
+                  </p>
+                </div>
 
-            {/* Story - Turning Point */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative pl-6 border-l-2 border-brand-orange/40"
-            >
-              <div className="absolute left-0 top-0 w-2 h-2 bg-brand-orange rounded-full -translate-x-[5px]" />
-              <p className="text-slate-600 leading-relaxed text-base lg:text-lg">
-                <span className="text-brand-navy font-semibold">Le déclic est venu d'une prise de conscience :</span>{" "}
-                les meilleurs performeurs ne sont pas ceux qui s'épuisent le plus, 
-                mais ceux qui savent préserver leur énergie pour les moments décisifs.
-              </p>
-            </motion.div>
+                <div>
+                  <span className="text-[10px] font-bold tracking-[0.18em] uppercase text-brand-orange/70 mb-1.5 block">La naissance de STAF Affaires</span>
+                  <p className="text-slate-600 dark:text-white/60 leading-[1.8] text-[15px] lg:text-base">
+                    Après <span className="font-semibold text-brand-navy dark:text-white">10 ans à la Chambre de Commerce et d&apos;Industrie</span>, il fonde en 2025 la société{" "}
+                    <span className="text-brand-orange font-semibold">STAF Affaires</span> avec pour ambition de partager ses 2 terrains de jeu :{" "}
+                    <span className="italic">l&apos;Art de la Vente Responsable</span> et <span className="italic">la prise de poste des managers</span>.
+                  </p>
+                </div>
 
-            {/* Story - The Method */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <p className="text-slate-600 leading-relaxed text-base lg:text-lg">
-                C'est de cette révélation qu'est née la{" "}
-                <span className="text-brand-orange font-bold">méthode AVR®</span> — 
-                Accélération, Valeur, Résilience. Une approche qui ne vous demande pas 
-                de choisir entre réussite et équilibre. Elle vous montre comment l'une nourrit l'autre.
-              </p>
-            </motion.div>
+                <div>
+                  <span className="text-[10px] font-bold tracking-[0.18em] uppercase text-brand-orange/70 mb-1.5 block">Une posture d&apos;allié</span>
+                  <p className="text-slate-600 dark:text-white/60 leading-[1.8] text-[15px] lg:text-base">
+                    Saïd ne se positionne jamais en <span className="italic">expert distant</span>. Il prend le rôle d&apos;allié, pas d&apos;un sachant —{" "}
+                    avec <span className="font-semibold text-brand-navy dark:text-white">l&apos;exigence de celui qui connaît le terrain</span> et{" "}
+                    <span className="font-semibold text-brand-navy dark:text-white">la bienveillance de celui qui comprend les enjeux humains</span>.
+                  </p>
+                </div>
+              </div>
 
-            {/* Key Numbers */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="grid grid-cols-3 gap-4 py-8 border-y border-slate-100"
-            >
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-3xl sm:text-4xl font-bold text-brand-navy">
-                    {stat.number}<span className="text-brand-orange">{stat.suffix}</span>
-                  </div>
-                  <div className="text-xs sm:text-sm text-slate-500 mt-1">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
+              {/* Version B — Mobile : sauts de ligne fréquents, lecture rapide */}
+              <div className="sm:hidden space-y-4">
+                <p className="text-slate-600 dark:text-white/60 leading-[1.9] text-[14px]">
+                  <span className="text-brand-navy dark:text-white font-semibold block mb-0.5">Coach certifié RNCP · Formateur depuis 2011 · Préparateur mental</span>
+                  25 ans d&apos;expériences terrain :<br />
+                  vendeur expert, manager, chargé d&apos;affaires,<br />
+                  consultant et entrepreneur.
+                </p>
 
-            {/* Credentials Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="grid grid-cols-2 gap-3"
-            >
-              {credentials.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
-                  className="credential-item flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-brand-orange/30 hover:bg-white transition-all duration-300"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
-                    <item.icon className="w-4 h-4 text-brand-orange" />
-                  </div>
-                  <span className="text-sm font-medium text-slate-700">{item.label}</span>
-                </motion.div>
-              ))}
-            </motion.div>
+                <p className="text-slate-600 dark:text-white/60 leading-[1.9] text-[14px]">
+                  10 ans à la CCI.<br />
+                  En 2025, il fonde <span className="text-brand-orange font-semibold">STAF Affaires</span> pour partager<br />
+                  ses 2 terrains de jeu :<br />
+                  <span className="italic">l&apos;Art de la Vente Responsable</span><br />
+                  <span className="italic">et la prise de poste des managers.</span>
+                </p>
 
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="pt-4"
-            >
-              <Link href="/prendre-rendez-vous">
-                <button className="group inline-flex items-center gap-3 px-7 py-4 bg-brand-navy text-white rounded-full font-semibold text-sm hover:bg-brand-orange transition-all duration-300 shadow-lg hover:shadow-xl">
-                  Échanger avec Saïd
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
-              <p className="mt-4 text-sm text-slate-400">
-                30 min • Gratuit • Sans engagement
-              </p>
-            </motion.div>
-          </div>
+                <p className="text-slate-600 dark:text-white/60 leading-[1.9] text-[14px]">
+                  Pas un expert distant.<br />
+                  Un allié — pas un sachant.<br />
+                  <span className="font-semibold text-brand-navy dark:text-white">L&apos;exigence du terrain.</span>{" "}
+                  <span className="font-semibold text-brand-navy dark:text-white">La bienveillance des enjeux humains.</span>
+                </p>
+              </div>
+
+            {/* Stats */}
+              <div className="grid grid-cols-3 gap-3 pt-3">
+                {stats.map((stat, i) => (
+                  <motion.div
+                    key={i}
+                    {...fadeUp(0.25 + i * 0.08)}
+                    className="text-center py-4 rounded-xl border transition-colors duration-200"
+                    style={{ background: i === 0 ? "linear-gradient(135deg, rgba(255,107,74,0.06) 0%, rgba(255,107,74,0.02) 100%)" : "rgba(10,25,47,0.03)", borderColor: i === 0 ? "rgba(255,107,74,0.15)" : "rgba(10,25,47,0.06)" }}
+                  >
+                    <div className="text-xl sm:text-2xl font-black text-brand-navy dark:text-white" style={i === 0 ? { background: "linear-gradient(135deg, #ff6b4a 0%, #e85d35 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" } : {}}>
+                      <AnimatedNumber value={stat.number} suffix={stat.suffix} prefix={stat.prefix} />
+                    </div>
+                    <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-white/45 mt-1 px-2 leading-snug">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+          </motion.div>
         </div>
-      </motion.div>
+
+        {/* CITATION + CONVICTION */}
+        <motion.div {...fadeUp(0)} className="mb-10 sm:mb-14 lg:mb-16 max-w-3xl mx-auto">
+          <div className="flex flex-col gap-5">
+            <div className="group relative flex items-start gap-4 sm:gap-5">
+              <div className="shrink-0 mt-1">
+                <div className="w-9 h-9 rounded-full bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange/20 transition-colors duration-300">
+                  <div className="w-2 h-2 rounded-full bg-brand-orange" />
+                </div>
+              </div>
+              <div>
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-orange/70 mb-1.5 block">Engagement</span>
+                <p className="text-brand-navy dark:text-white/90 text-sm sm:text-[15px] leading-[1.75] font-medium italic">
+                  &laquo;&nbsp;Créer, transmettre et accompagner les autres sont les motivations qui me guident depuis plus de 20 ans&nbsp;&raquo;
+                </p>
+              </div>
+            </div>
+
+            <div className="ml-[1.125rem] w-px h-4 bg-gradient-to-b from-brand-orange/20 to-transparent" />
+
+            <div className="group relative flex items-start gap-4 sm:gap-5">
+              <div className="shrink-0 mt-1">
+                <div className="w-9 h-9 rounded-full bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange/20 transition-colors duration-300">
+                  <div className="w-2 h-2 rounded-full bg-brand-orange" />
+                </div>
+              </div>
+              <div>
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-orange/70 mb-1.5 block">Conviction</span>
+                <p className="text-brand-navy dark:text-white/90 text-sm sm:text-[15px] leading-[1.75] font-medium italic">
+                  &laquo;&nbsp;Tout le monde sait comment faire… Peu savent comment être et durer sans s'épuiser.&nbsp;&raquo;
+                </p>
+                <p className="mt-1.5 text-slate-500 dark:text-white/45 text-xs sm:text-sm leading-relaxed">
+                  Le Mindset et l&apos;Intelligence émotionnelle priment sur les méthodes et les outils.
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* PILIERS METHODOLOGIQUES */}
+        <motion.div {...fadeUp(0)} className="mb-12 sm:mb-16 lg:mb-20 max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <span className="inline-block text-brand-orange text-[11px] font-semibold tracking-[0.25em] uppercase mb-3">Fondations</span>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-brand-navy dark:text-white leading-[1.15] tracking-tight mb-3">
+              Une approche fondée sur une posture et{" "}
+              <span className="text-brand-orange italic">des outils essentiels</span>
+            </h3>
+            <p className="text-slate-500 dark:text-white/50 text-sm sm:text-base max-w-xl mx-auto">
+              J&apos;adapte ces outils en fonction de votre personnalité, de votre contexte et de vos objectifs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {piliers.map((item, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp(0.08 + i * 0.06)}
+                className="group relative bg-white dark:bg-[#2C2C2E] rounded-xl p-5 sm:p-6 border border-slate-100 dark:border-white/10 hover:border-brand-orange/25 dark:hover:border-brand-orange/25 transition-all duration-300 shadow-sm hover:shadow-md text-center"
+              >
+                <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-orange/15 transition-colors duration-300">
+                  <item.icon className="w-5 h-5 text-brand-orange" />
+                </div>
+                <span className="text-[13px] sm:text-sm font-semibold text-brand-navy dark:text-white leading-snug block">{item.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+          {/* CTA */}
+        <motion.div {...fadeUp(0)} className="text-center">
+          <Link href="/prendre-rendez-vous">
+            <button className="cta-magnetic touch-ripple group inline-flex items-center gap-3 px-8 py-4 bg-brand-navy text-white rounded-full font-semibold text-sm hover:bg-brand-orange transition-colors duration-300 shadow-lg hover:shadow-xl">
+              Échanger avec Saïd
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+          </Link>
+          <p className="mt-4 text-sm text-slate-400 dark:text-white/40">
+            45 min &middot; Gratuit &middot; Sans engagement
+          </p>
+        </motion.div>
+
+      </div>
     </section>
   );
 }

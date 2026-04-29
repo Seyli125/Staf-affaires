@@ -50,7 +50,7 @@ const socialIcons = [
 
 export default function TeamPage() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden">
+    <main className="min-h-screen bg-[#FFFFFF] dark:bg-[#1D1D1F] overflow-hidden">
       <Navbar />
 
       {/* ============================================
@@ -107,7 +107,7 @@ export default function TeamPage() {
             <LineReveal delay={0.5}>
               <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] mt-2">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-salmon">
-                  STAFF AFFAIRES
+                  STAF AFFAIRES
                 </span>
               </h1>
             </LineReveal>

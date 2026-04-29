@@ -35,7 +35,7 @@ const articles = [
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#FFFFFF] dark:bg-[#1D1D1F]">
       <Navbar />
       
       {/* Hero */}
@@ -58,7 +58,7 @@ export default function BlogPage() {
             </p>
           </motion.div>
         </div>
-        <div className="absolute inset-0 bg-white opacity-40" />
+        <div className="absolute inset-0 bg-[#FFFFFF] opacity-40" />
       </section>
 
       {/* Featured Article Slider Placeholder / Grid */}
