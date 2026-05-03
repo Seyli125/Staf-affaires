@@ -24,6 +24,10 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "STAF Affaires | Saïd Taaroust - Coaching & Formation",
   description: "Performer sans s'épuiser. Manager et vendre avec sens. Coach certifié RNCP expert en développement commercial.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
